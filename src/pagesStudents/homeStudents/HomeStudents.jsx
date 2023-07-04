@@ -1,9 +1,39 @@
-import React from 'react'
+import React from "react";
+import { ContainerHomeStudents, ContainerHomeStudentsCont } from "./StyleHomeStudents";
+import HeaderStudents from "../headerStudents/HeaderStudents";
+import FooterStudents from "../footerStudents/FooterStudents";
+import ImgHome from "../assets/imageHomeStudents.png";
 
 const HomeStudents = () => {
   return (
-    <div>HomeStudents</div>
-  )
-}
+    <ContainerHomeStudents>
+      <HeaderStudents />
+      <ContainerHomeStudentsCont>
+      <div>
+        <h2>
+          ¡Bienvenid@ a Live!
+          <br />
+          Nos complace <br />
+          enormemente que te <br />
+          unas a nosotros en este <br />
+          emocionante proceso. <br />
+          Aquí, encontrarás <br />
+          información detallada
+          <br />
+          sobre tu evolución en <br />
+          cada fase de tu viaje.
+          <br />
+        </h2>
+      </div>
+      <div>
+        <figure>
+          <img src={ImgHome} alt="" />
+        </figure>
+      </div>
+      </ContainerHomeStudentsCont>
+      <FooterStudents />
+    </ContainerHomeStudents>
+  );
+};
 
-export default HomeStudents
+export default HomeStudents;
