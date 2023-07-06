@@ -7,10 +7,12 @@ import StateStudents from '../pagesStudents/stateStudents/StateStudents';
 import ProfileStudents from '../pagesStudents/profileStudents/ProfileStudents';
 import BenefitsStudents from '../pagesStudents/benefitsStudents/BenefitsStudents';
 import BootService from '../pagesStudents/bootService/BootService';
+import {GlobalStyles} from "../StylesGlobal/GlobalStyles"
 
 const AppRouter = () => {
   return (
-    <div>
+    
+      <GlobalStyles>
       <BrowserRouter>
         <Routes>
             <Route index element={<Login/>}/>
@@ -22,7 +24,8 @@ const AppRouter = () => {
             <Route path="bootservice" element={<BootService/>}/>
         </Routes>
       </BrowserRouter>
-    </div>
+      </GlobalStyles>
+    
   )
 }
 
