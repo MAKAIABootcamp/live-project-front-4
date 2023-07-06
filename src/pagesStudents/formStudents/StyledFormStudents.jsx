@@ -1,11 +1,7 @@
 import { styled } from "styled-components";
-import baground from '../assets/bgFormulario.png';
 
 export const DivFormulario = styled.div`
-  background-image: url(${baground});
-  background-size: cover;
-  background-position: center;
-  position: absolute;
+ 
   width: 100%;
   height: 100vh;
   button {
@@ -31,6 +27,7 @@ margin-left:450px ;
   img {
     height:100% ;
     width:100% ;
+    
    
   }
   `

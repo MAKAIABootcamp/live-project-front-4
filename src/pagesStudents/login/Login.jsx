@@ -1,15 +1,15 @@
 import React from 'react'
-import {  DivImagen, DivLogin, General,  SectionRegistro } from './StyledLogin'
-import logo from '../assets/WhatsApp Image 2023-07-04 at 9.33.41 AM.jpeg'
-import general from '../assets/Image 2586.png'
+import {   DivImagen, DivLogin, General,  SectionRegistro } from './StyledLogin'
+import logo from '../assets/LOGOBOOTCAMOSCURO.png'
+import login from '../assets/loginActualizado.png'
 const Login = () => {
   return (
    <General>
     <DivImagen>
       <figure>
-        <img src={general} alt="" />
+        <img src={login} alt="" />
       </figure>
-      </DivImagen>
+    </DivImagen>
        <DivLogin>
       <figure>
         <img src={logo} alt="" />
