@@ -1,7 +1,7 @@
 import React from 'react'
 import { DivFormulario, SectionInput, SectionLogo } from './StyledFormStudents'
 import FooterStudents from '../footerStudents/FooterStudents'
-import logo from '../assets/LOGOBOOTCAMOSCURO.png'
+import logo from '../../../assets/LOGOBOOTCAMOSCURO.png'
 
 const FormStudents = () => {
   return (

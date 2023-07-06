@@ -6,13 +6,13 @@ import {
   ContainerHeaderLogo,
   ContainerHeaderSignOff,
 } from "./StyledHeaderStudents";
-import house from "../assets/homeIcons.svg";
-import logo from "../assets/fondo png makaia.png";
-import process from "../assets/setting.svg";
-import perfil from "../assets/user.svg";
-import benefits from "../assets/rocket-outline gris.svg";
-import bootService from "../assets/robot gris.svg";
-import avatar from '../assets/avatar.jpg'
+import house from "../../../assets/homeIcons.svg";
+import logo from "../../../assets/LOGO BOOTCAMP.png";
+import process from "../../../assets/setting.svg";
+import perfil from "../../../assets/user.svg";
+import benefits from "../../../assets/rocket-outline gris.svg";
+import bootService from "../../../assets/robot gris.svg";
+import avatar from '../../../assets/avatar.jpg'
 
 const HeaderStudents = () => {
   return (

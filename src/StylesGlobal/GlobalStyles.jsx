@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import fondoGeneral from '../../src/pagesStudents/assets/FONDOGENERAL.png'
+import fondoGeneral from '../assets/FONDOGENERAL.png'
 
 export const GlobalStyles = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap');
