@@ -1,7 +1,7 @@
 import React from 'react'
 import {   DivImagen, DivLogin, General,  SectionRegistro } from './StyledLogin'
-import logo from '../assets/LOGOBOOTCAMOSCURO.png'
-import login from '../assets/loginActualizado.png'
+import logo from '../../../assets/LOGOBOOTCAMOSCURO.png'
+import login from '../../../assets/loginActualizado.png'
 const Login = () => {
   return (
    <General>
