@@ -1,12 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from '../pagesStudents/login/Login';
-import HomeStudents from '../pagesStudents/homeStudents/HomeStudents';
-import FormStudents from '../pagesStudents/formStudents/FormStudents';
-import StateStudents from '../pagesStudents/stateStudents/StateStudents';
-import ProfileStudents from '../pagesStudents/profileStudents/ProfileStudents';
-import BenefitsStudents from '../pagesStudents/benefitsStudents/BenefitsStudents';
-import BootService from '../pagesStudents/bootService/BootService';
+import Login from '../pages/Students/login/Login';
+import HomeStudents from '../pages/Students/homeStudents/HomeStudents';
+import FormStudents from '../pages/Students/formStudents/FormStudents';
+import StateStudents from '../pages/Students/stateStudents/StateStudents';
+import ProfileStudents from '../pages/Students/profileStudents/ProfileStudents';
+import BenefitsStudents from '../pages/Students/benefitsStudents/BenefitsStudents';
+import BootService from '../pages/Students/bootService/BootService';
 import {GlobalStyles} from "../StylesGlobal/GlobalStyles"
 
 const AppRouter = () => {

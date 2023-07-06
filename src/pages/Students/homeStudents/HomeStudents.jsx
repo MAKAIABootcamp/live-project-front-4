@@ -6,7 +6,7 @@ import {
 } from "./StyleHomeStudents";
 import HeaderStudents from "../headerStudents/HeaderStudents";
 import FooterStudents from "../footerStudents/FooterStudents";
-import ImgHome from "../assets/imageHomeStudents.png";
+import ImgHome from "../../../assets/imageHomeStudents.png";
 
 const HomeStudents = () => {
   return (
