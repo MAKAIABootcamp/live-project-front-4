@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from '../componentsGeneral/componentsSuperUser/home/Home'
+import Home from '../../componentsGeneral/componentsSuperUser/home/Home'
 
 const HomeSuperUser = () => {
   return (
