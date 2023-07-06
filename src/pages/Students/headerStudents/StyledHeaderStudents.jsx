@@ -10,17 +10,17 @@ export const ContainerHeader = styled.section`
   font-weight: 300;
   font-size: 14px;
 `;
-export const ContainerHeaderLogo = styled.div`
+export const ContainerHeaderLogo = styled.section`
   display: flex;
 
   img {
     width: 120px;
   }
 `;
-export const ContainerHeaderLinks = styled.div`
+export const ContainerHeaderLinks = styled.section`
   display: flex;
 `;
-export const ContainerHeaderLinksUnt = styled.div`
+export const ContainerHeaderLinksUnt = styled.section`
   display: flex;
   align-items: center;
   figure{
@@ -29,7 +29,7 @@ export const ContainerHeaderLinksUnt = styled.div`
   }
 `;
 
-export const ContainerHeaderSignOff = styled.div`
+export const ContainerHeaderSignOff = styled.section`
 display: flex;
 align-items: center;
 figure{

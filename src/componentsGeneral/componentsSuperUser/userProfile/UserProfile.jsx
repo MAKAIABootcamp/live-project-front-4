@@ -8,7 +8,8 @@ import {
   DivProfile,
 } from "./UserProfileStyled";
 import { Formik } from "formik";
-import azul from "../../../assets/azul.jpg";
+// import azul from "../../../assets/azul.jpg";
+import robot from '../../../assets/robot gris.svg'
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import { EditOutlined } from "@ant-design/icons";
 
@@ -18,7 +19,7 @@ const UserProfile = () => {
       <HeaderSuperUser />
       <DivProfile>
         <Div>
-          <img src={azul} alt="" />
+          <img src={robot} alt="" />
 
           <p>
             Luisa Lafaure <EditOutlined />

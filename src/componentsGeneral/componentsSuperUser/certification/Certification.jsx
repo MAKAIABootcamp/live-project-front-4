@@ -1,6 +1,5 @@
 import React from 'react'
 import Lupa from '../../../assets/lupa.png'
-import { BackgroundGeneral } from '../../../router/StyleGlobal'
 import { TitleAndSearchCertification, SectionSearchCertification, CoursesCertified, SectionYearStyle, ButtonLastCourse } from './CertificationStyle'
 
 const Certification = () => {
@@ -93,7 +92,6 @@ const Certification = () => {
 
   return (
     <>
-      <BackgroundGeneral>
         <TitleAndSearchCertification>
           <p>Certificación</p>
           <SectionSearchCertification>
@@ -124,7 +122,6 @@ const Certification = () => {
             </>
           ))}
         </CoursesCertified>
-      </BackgroundGeneral>
     </>
   )
 }
