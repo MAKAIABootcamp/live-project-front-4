@@ -9,7 +9,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-image: url(https://res.cloudinary.com/dvk0btnav/image/upload/v1688442314/backgroundLive_htg9zu.jpg);
-
+height: 92vh;
 h2{
     font-size: 30px;
     font-weight: 300;

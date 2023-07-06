@@ -7,9 +7,8 @@ align-items:center;
 background:#03203A  ;
 height:50px ;
 width:100% ;
-position: fixed;
 bottom: 0;
-  margin:0 ;
+margin:0 ;
 `
 
 export const SectionDerechos = styled.section`
