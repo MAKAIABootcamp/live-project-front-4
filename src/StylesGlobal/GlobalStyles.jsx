@@ -8,12 +8,12 @@ padding:0 ;
 list-style:none;
 text-decoration:none;
 box-sizing:border-box;
-font-family:'Monserrat',sans-serif ;
+font-family:'Monserrat',sans-serif ;`
 
-div {
+
+export const Background = styled.div`
 width: 100%;
 background-image: url(${fondoGeneral});
 background-size: cover;
 height: 100vh;
-}
-`
+`;

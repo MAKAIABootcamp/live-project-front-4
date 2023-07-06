@@ -3,7 +3,6 @@ import { ContentButtonCourses, ContentCourses, ContentSelection, SearchSelection
 import Lupa from '../../../assets/lupa.png'
 import Flecha from '../../../assets/flecha-hacia-abajo.png'
 import Portada from '../../../assets/portada-selection.png'
-import { BackgroundGeneral } from '../../../router/StyleGlobal'
 
 const Selection = () => {
 
@@ -26,7 +25,6 @@ const TopicCourses = [
 
   return (
     <>
-    <BackgroundGeneral>
         <TitleSelection>Selección</TitleSelection>
         <SearchSelection>
           <input type='search' placeholder='Search...'></input>
@@ -49,7 +47,6 @@ const TopicCourses = [
 ))}
           </ContentCourses>
         </ContentSelection>
-    </BackgroundGeneral>
     </>
   )
 }

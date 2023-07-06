@@ -1,5 +1,4 @@
 import React from 'react';
-import { BackgroundGeneral } from '../../../router/StyleGlobal';
 import Lupa from '../../../assets/lupa.png'
 import { TitleAndSearch, SectionSearchFormation, CoursesFormation, StyleButtonCourse, StyleSectionCourse, StyleButtonAdd } from './FormationStyle';
 
@@ -39,7 +38,6 @@ const Formation = () => {
 
   return (
     <>
-      <BackgroundGeneral>
         <TitleAndSearch>
           <p>En formación</p>
           <SectionSearchFormation>
@@ -82,7 +80,6 @@ const Formation = () => {
             </StyleButtonAdd>
           </StyleSectionCourse>
         </CoursesFormation>
-      </BackgroundGeneral>
     </>
   );
 };

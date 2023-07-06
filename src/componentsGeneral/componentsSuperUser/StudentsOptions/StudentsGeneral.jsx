@@ -4,7 +4,6 @@ import { BackgroundPageStudents, OptionsStudents, SectionStudents, IconOption } 
 import iconGroup from '../../../assets/grupo (1).png'
 import iconFoot from '../../../assets/huellas.png'
 import iconRocket from '../../../assets/cohete.png'
-import { BackgroundGeneral } from '../../../router/StyleGlobal'
 
 const StudentsGeneral = () => {
 
@@ -43,7 +42,6 @@ const StudentsGeneral = () => {
 
   return (
     <>
-    <BackgroundGeneral>
         <SectionStudents>
           {buttonStudents.map((student) => (
             <OptionsStudents>
@@ -52,7 +50,6 @@ const StudentsGeneral = () => {
             </OptionsStudents>
           ))}
         </SectionStudents>
-    </BackgroundGeneral>
     </>
   )
 }
