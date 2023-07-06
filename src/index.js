@@ -14,6 +14,7 @@ root.render(
     {/* <Provider>
       <AppRouter/>
     </Provider> */}
-   <Selection />
+   {/* <Selection /> */}
+   <StudentsGeneral />
   </React.StrictMode>
 );

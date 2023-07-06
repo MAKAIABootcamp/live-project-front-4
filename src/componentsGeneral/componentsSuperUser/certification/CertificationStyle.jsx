@@ -1,12 +1,12 @@
 import { styled } from "styled-components"
 
-export const TitleSelection = styled.p`
-font-size: 30px;
-margin: 0 auto;
-padding-top: 20px; 
+export const TitleAndSearchCertification = styled.section`
+display: flex;
+justify-content: space-around;
+align-items: flex-end;
 `;
 
-export const SearchSelection = styled.div`
+export const SectionSearchCertification = styled.section`
 display: flex;
 width: 450px;
 justify-content: space-between;
@@ -33,41 +33,36 @@ padding-top: 20px;
 }
 `;
 
-export const ContentSelection = styled.section`
-display: flex;
-margin: 0 auto;
-width: 100%;
-align-items: center;
-justify-content: space-around;
-margin-top: 3%;
-`;
-
-export const ContentCourses = styled.div`
+export const CoursesCertified = styled.section`
+padding-top: 30px;
+width: 80%;
 display: flex;
 flex-direction: column;
-width: 25%;
-gap: 5px;
+margin: 0 auto;
+gap: 20px;
+padding-bottom: 50px;
 `;
 
-export const ContentButtonCourses = styled.button`
+export const SectionYearStyle = styled.section`
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin: 0 auto;
+gap: 10px;
+`;
+
+export const ButtonLastCourse = styled.button`
 background-color: #25ABBC;
-height: 100px;
+width: 320px;
+height: 150px;
 border: transparent;
 border-radius: 5px;
+flex-direction: column;
 display: flex;
 align-items: center;
 justify-content: center;
-gap: 10px;
 color: white;
-font-size: 25px;
+font-size: 20px;
 cursor: pointer;
 transition: 0.5s;
-
-& img{
-    filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(353deg) brightness(107%) contrast(101%);
-}
-
-&:hover{
-    background-color: #03203A;
-}
 `;

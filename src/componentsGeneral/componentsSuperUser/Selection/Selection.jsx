@@ -1,8 +1,9 @@
 import React from 'react'
-import { BackgroundPageStudents, titleSelection } from './SelectionStyle'
+import { ContentButtonCourses, ContentCourses, ContentSelection, SearchSelection, TitleSelection, barSearchSelection } from '../Selection/SelectionStyle'
 import Lupa from '../../../assets/lupa.png'
 import Flecha from '../../../assets/flecha-hacia-abajo.png'
 import Portada from '../../../assets/portada-selection.png'
+import { BackgroundGeneral } from '../../../router/StyleGlobal'
 
 const Selection = () => {
 
@@ -25,33 +26,30 @@ const TopicCourses = [
 
   return (
     <>
-    <BackgroundPageStudents>
-      <section>
-        <titleSelection>Selección</titleSelection>
-        <div>
-          <input type='search'></input>
+    <BackgroundGeneral>
+        <TitleSelection>Selección</TitleSelection>
+        <SearchSelection>
+          <input type='search' placeholder='Search...'></input>
           <button>
             <img src={Lupa} width={20}/>
           </button>
-        </div>
+        </SearchSelection>
 
-        <section>
+        <ContentSelection>
           <div>
             <img src={Portada} alt="" />
           </div>
 
-          <div>
+          <ContentCourses>
 {TopicCourses.map((topic, topicKey) => (
-  <button key={topicKey}>
+  <ContentButtonCourses key={topicKey}>
     <img src={Flecha} alt="" width={30}/>
     <p>{topic.title}</p>
-  </button>
+  </ContentButtonCourses>
 ))}
-          </div>
-        </section>
-      </section>
-
-    </BackgroundPageStudents>
+          </ContentCourses>
+        </ContentSelection>
+    </BackgroundGeneral>
     </>
   )
 }

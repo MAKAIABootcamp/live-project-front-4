@@ -1,11 +1,10 @@
 import React from 'react'
 // import { useNavigate } from 'react-router-dom'
-import { BackgroundPageStudents, OptionsStudents, SectionStudents } from './StudentsGeneralStyle'
+import { BackgroundPageStudents, OptionsStudents, SectionStudents, IconOption } from './StudentsGeneralStyle'
 import iconGroup from '../../../assets/grupo (1).png'
 import iconFoot from '../../../assets/huellas.png'
 import iconRocket from '../../../assets/cohete.png'
-
-import selection from '../Selection/Selection'
+import { BackgroundGeneral } from '../../../router/StyleGlobal'
 
 const StudentsGeneral = () => {
 
@@ -44,16 +43,16 @@ const StudentsGeneral = () => {
 
   return (
     <>
-    <BackgroundPageStudents>
+    <BackgroundGeneral>
         <SectionStudents>
           {buttonStudents.map((student) => (
             <OptionsStudents>
-              <img src={student.icon} alt="" width={60}/>
+              <IconOption src={student.icon} alt="" width={60}/>
               <p>{student.title}</p>
             </OptionsStudents>
           ))}
         </SectionStudents>
-    </BackgroundPageStudents>
+    </BackgroundGeneral>
     </>
   )
 }
