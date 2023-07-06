@@ -12,16 +12,16 @@ import {
 
 const StateStudents = () => {
   return (
-    <div>
+    <>
       <HeaderStudents />
       <ContainerStateStudents>
-        <div>
+        <section>
           <h2>Estado</h2>
-        </div>
+        </section>
         <ContainerProgress>
           <ContainerStep>
             <ContainerP>
-              <div>
+              <section>
                 <h3>Selección</h3>
                 <p>
                   ¡Felicidades! Avanzaste al emocionante proceso de entrevista,
@@ -29,15 +29,15 @@ const StateStudents = () => {
                   motivaciones con los evaluadores. Sé auténtico/a y demuestra
                   lo mejor de ti. ¡Estamos ansiosos por presenciar tus logros!
                 </p>
-              </div>
-              <div>
+              </section>
+              <section>
                 <span>1</span>
                 <hr />
-              </div>
+              </section>
             </ContainerP>
 
             <ContainerP2>
-              <div>
+              <section>
                 <h3>Admitid@</h3>
                 <p>
                   ¡Felicitaciones por tu admisión! Te damos una cálida
@@ -46,14 +46,14 @@ const StateStudents = () => {
                   hacia el crecimiento y el logro de tus metas. ¡Bienvenido/a a
                   nuestra comunidad
                 </p>
-              </div>
-              <div>
+              </section>
+              <section>
                 <span>2</span>
                 <hr />
-              </div>
+              </section>
             </ContainerP2>
             <ContainerP>
-              <div>
+              <section>
                 <h3>Formación</h3>
                 <p>
                   En la etapa de formación, adquirirás conocimientos y
@@ -62,15 +62,15 @@ const StateStudents = () => {
                   éxito. ¡Prepárate para expandir horizontes y alcanzar tu
                   máximo potencial!
                 </p>
-              </div>
-              <div>
+              </section>
+              <section>
                 <span>3</span>
                 <hr />
-              </div>
+              </section>
             </ContainerP>
 
             <ContainerP4>
-              <div>
+              <section>
                 <h3>Certificación</h3>
                 <p>
                   Felicitaciones por tu éxito y dedicación en completar
@@ -79,16 +79,16 @@ const StateStudents = () => {
                   profesión. ¡Sigue adelante y sigue alcanzando nuevas metas en
                   tu trayectoria profesional!
                 </p>
-              </div>
-              <div>
+              </section>
+              <section>
                 <span>4</span>
-              </div>
+              </section>
             </ContainerP4>
           </ContainerStep>
         </ContainerProgress>
       </ContainerStateStudents>
       <FooterStudents />
-    </div>
+    </>
   );
 };
 

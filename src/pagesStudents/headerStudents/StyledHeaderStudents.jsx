@@ -1,14 +1,12 @@
 import { styled } from "styled-components";
 
-export const ContainerHeader = styled.div`
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+export const ContainerHeader = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #03203a;
   color: white;
   height: 55px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   font-size: 14px;
 `;
