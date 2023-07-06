@@ -7,30 +7,19 @@ width:100% ;
 padding:0 ;
 margin:0 ;
 box-sizing: border-box;
-
 `
 export const DivImagen = styled.div`
+figure{
+height:100vh;
+width:700px ;
+}
 
-width:70% ;
-height:100vh ;
-padding:0 ;
-margin:0 ;
+img {
+height:100% ;
+width:100% ;
 
-figure {
-  
-    width:700px ;
-    height:100vh ;
-
-  }
-  img {
-    height:100% ;
-    width:100% ;
-    object-fit:cover ;
-    object-position:top ;
-   
-  }
-
-  `
+}
+`
 export const DivLogin = styled.div`
 margin:20px  ;
   figure {
