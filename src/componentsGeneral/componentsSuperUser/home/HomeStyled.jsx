@@ -1,11 +1,30 @@
 import styled from "styled-components";
 
-export const ImgFondo = styled.div`
-  background-image: url("../../../assets/FONDO.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 290px;
-  height: 110px;
+export const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @media (min-width: 375px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+export const DivImgEquipo = styled.div`
+margin-top:50px;
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const DivGeneral = styled.div`
@@ -13,9 +32,14 @@ export const DivGeneral = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 1rem;
+  font-family:'Monserrat',sans-serif;
 
-  /* float: right; */
+  @media (min-width: 768px) {
+    margin-top: 0;
+    margin-left: 2rem;
+    text-align: left;
+  }
 `;
 
 export const DivImg = styled.div`
@@ -26,10 +50,6 @@ export const DivImg = styled.div`
 `;
 
 export const Action = styled.div`
-  /* position: absolute; */
-  /* top: 95%; */
-  /* right: 10px; */
-  /* left: 10px; */
   button {
     color: #03203a;
     font-size: 1rem;
