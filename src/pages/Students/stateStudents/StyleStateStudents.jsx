@@ -1,15 +1,22 @@
 import { styled } from "styled-components";
+import backgroundState from "../../../assets/FONDOGENERAL.png";
 
 export const ContainerStateStudents = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 92vh;
+  background-image: url(${backgroundState});
+  padding-bottom: 30px;
   h2 {
     font-size: 30px;
     font-weight: 300;
     letter-spacing: 2px;
+  }
+  @media screen and (max-width: 376px) {
+    
+    height: 100vh;
+    padding: 100px 0px 150px 150px;
   }
 `;
 
@@ -50,6 +57,11 @@ export const ContainerP = styled.section`
   h3 {
     color: #25abbcff;
   }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row-reverse;
+    gap: 20px;
+  }
 `;
 export const ContainerP2 = styled.section`
   display: flex;
@@ -62,6 +74,10 @@ export const ContainerP2 = styled.section`
   h3 {
     color: #25abbcff;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+  }
 `;
 export const ContainerP4 = styled.section`
   display: flex;
@@ -73,5 +89,8 @@ export const ContainerP4 = styled.section`
   text-align: left;
   h3 {
     color: #25abbcff;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0px;
   }
 `;

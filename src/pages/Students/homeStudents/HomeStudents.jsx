@@ -7,8 +7,13 @@ import {
 import HeaderStudents from "../headerStudents/HeaderStudents";
 import FooterStudents from "../footerStudents/FooterStudents";
 import ImgHome from "../../../assets/imageHomeStudents.png";
+import { useNavigate } from "react-router-dom";
 
 const HomeStudents = () => {
+  const navigate = useNavigate();
+  const handlePay = () => {
+    navigate("/statestudents");
+  };
   return (
     <ContainerHomeStudents>
       <HeaderStudents />
@@ -37,7 +42,7 @@ const HomeStudents = () => {
           </div>
         </div>
         <ButtonHomeStudents>
-          <button>Ver proceso</button>
+          <button onClick={handlePay}>Ver proceso</button>
         </ButtonHomeStudents>
       </ContainerHomeStudentsCont>
       <FooterStudents />
