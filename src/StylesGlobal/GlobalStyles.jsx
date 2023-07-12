@@ -10,10 +10,10 @@ text-decoration:none;
 box-sizing:border-box;
 font-family:'Monserrat',sans-serif ;
 
-div {
+/* div {
 width: 100%;
 background-image: url(${fondoGeneral});
 background-size: cover;
 height: 100vh;
-}
+} */
 `
