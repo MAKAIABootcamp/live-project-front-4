@@ -42,8 +42,8 @@ const AppRouter = () => {
             {/* Inicia Formación */}
             <Route path="addNewCohort" element={<NewCohort/>}/>{/* CREAR UNA NUEVA COHORTE */}
             <Route path="cohortGroupTraining" element={<TrainingCohort/>}/>{/* Grupo de formación */}
-            <Route path="studentProfileBenefits" element={<StudentsBenefits/>}/>{/* perfil del estudiante con selecion de informacion */}
-            <Route path="perfilStudents" element={<RequestBenefis/>}/>{/* solicitud de beneficios */}
+            <Route path="studentProfileBenefits" element={<StudentsBenefits/>}/>{/*LISTO selecion de informacion */}
+            <Route path="perfilStudentsBenefits" element={<RequestBenefis/>}/>{/* solicitud de beneficios */}
             <Route path="benefitsReceived" element={<BenefitsReceivedStudents/>}/>{/* Beneficios recibidos */}
             <Route path="escortRoute" element={<EscortRouteStudents/>}/>{/* ruta de acompañamiento */}
           </Routes>

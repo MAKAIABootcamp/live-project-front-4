@@ -4,20 +4,6 @@ export const DivCohortGroupTraining = styled.div`
   margin-top: 100px;
 `;
 
-export const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 375px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
-
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
@@ -77,6 +63,8 @@ export const Container = styled.div`
   @media (max-width: 375px) {
     flex-wrap: wrap;
   }
+
+  
 `;
 
 export const ListContainer = styled.div`
@@ -84,6 +72,10 @@ export const ListContainer = styled.div`
   border: 1px solid #ccc;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+  }
+  @media (max-width: 375px) {
+    flex-wrap: wrap;
+    font-size:1rem;
   }
 `;
 

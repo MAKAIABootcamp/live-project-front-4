@@ -5,22 +5,22 @@ export const Div = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
 
   @media (min-width: 375px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
   }
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 `;
 
 export const DivImgEquipo = styled.div`
-margin-top:50px;
+  margin-top: 50px;
   img {
     width: 100%;
     height: auto;
@@ -32,9 +32,9 @@ export const DivGeneral = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 1rem;
-  font-family:'Monserrat',sans-serif;
-
+  p {
+    text-align: center;
+  }
   @media (min-width: 768px) {
     margin-top: 0;
     margin-left: 2rem;
@@ -44,7 +44,7 @@ export const DivGeneral = styled.div`
 
 export const DivImg = styled.div`
   img {
-    width: 100%;
+    width: 90%;
     height: auto;
   }
 `;
