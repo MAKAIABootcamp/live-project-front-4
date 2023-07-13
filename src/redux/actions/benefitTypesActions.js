@@ -16,7 +16,7 @@ export const addBenefitTypesActionAsync = (newBenefitType) => {
       const benefitType = {
         id: benefitTypeReference.id,
         label: newBenefitType,
-      }
+      };
 
       dispatch(addBenefitTypesActionSync(benefitType, false));
     } catch (error) {
