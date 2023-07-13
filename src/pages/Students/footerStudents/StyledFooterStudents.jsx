@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 
+<<<<<
 export const Footer= styled.footer`
 display:flex ;
 justify-content:space-between;
@@ -13,22 +14,15 @@ position: fixed;
 `
 
 export const SectionDerechos = styled.section`
-color:white ;
-margin-left:50px ;
-`
-
+  color: white;
+  padding-left: 40px;
+`;
 
 export const SectionIconos = styled.section`
-display:flex ;
-color:white ;
+  display: flex;
 
-figure{
+  img {
     width: 30px;
-    height:30px ;
-}
-img {
-    width:100% ;
-    height:100% ;
-}
-
-`
+    height: 30px;
+  }
+`;

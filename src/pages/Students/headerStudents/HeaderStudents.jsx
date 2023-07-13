@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  BgDiv,
   ContainerHeader,
   ContainerHeaderLinks,
   ContainerHeaderLinksUnt,
@@ -12,9 +13,16 @@ import process from "../../../assets/setting.svg";
 import perfil from "../../../assets/user.svg";
 import benefits from "../../../assets/rocket-outline gris.svg";
 import bootService from "../../../assets/robot gris.svg";
-import avatar from '../../../assets/avatar.jpg'
+import avatar from "../../../assets/avatar.jpg";
+import BurguerButton from "./BurguerButton";
+import { NavLink } from "react-router-dom";
 
 const HeaderStudents = () => {
+  const [clicked, setClicked] = useState(false);
+  const handleClick = () => {
+    setClicked(!clicked);
+  };
+
   return (
     <ContainerHeader>
       <ContainerHeaderLogo>
@@ -22,44 +30,89 @@ const HeaderStudents = () => {
           <img src={logo} alt="logo" />
         </figure>
       </ContainerHeaderLogo>
-      <ContainerHeaderLinks>
+      <ContainerHeaderLinks active={clicked}>
         <ContainerHeaderLinksUnt>
           <figure>
             <img src={house} alt="IconsHouse" />
-            <h3>Home</h3>
+            <NavLink
+              to={"/homestudents"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Home
+            </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
         <ContainerHeaderLinksUnt>
           <figure>
             <img src={process} alt="Proceso" />
-            <h3>Proceso</h3>
+            <NavLink
+              to={"/statestudents"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Proceso
+            </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
         <ContainerHeaderLinksUnt>
           <figure>
             <img src={perfil} alt="Perfil" />
-            <h3>Perfil</h3>
+            <NavLink
+              to={"/profilestudents"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Perfil
+            </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
         <ContainerHeaderLinksUnt>
           <figure>
             <img src={benefits} alt="IconsHouse" />
-            <h3>Beneficios</h3>
-          </figure>  
+            <NavLink
+              to={"/benefitsStudents"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Beneficios
+            </NavLink>
+          </figure>
         </ContainerHeaderLinksUnt>
         <ContainerHeaderLinksUnt>
           <figure>
             <img src={bootService} alt="IconsHouse" />
-            <h3>Boot Service</h3>
+            <NavLink
+              to={"/bootservice"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Boot Service
+            </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
+        <ContainerHeaderSignOff>
+          <figure>
+            <img src={avatar} alt="" />
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Cerrar sesión
+            </NavLink>
+          </figure>
+        </ContainerHeaderSignOff>
       </ContainerHeaderLinks>
-      <ContainerHeaderSignOff>
-        <figure>
-          <img src={avatar} alt="" />
-          <h3>Cerrar sesión</h3>
-        </figure>
-      </ContainerHeaderSignOff>
+      <div className="burguer">
+        <BurguerButton clicked={clicked} handleClick={handleClick} />
+      </div>
+      <BgDiv className={`initial ${clicked ? "active" : ""}`}></BgDiv>
     </ContainerHeader>
   );
 };
