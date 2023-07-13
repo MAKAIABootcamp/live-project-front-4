@@ -9,6 +9,7 @@ height:50px ;
 width:100% ;
 bottom: 0;
 margin:0 ;
+position: fixed;
 `
 
 export const SectionDerechos = styled.section`

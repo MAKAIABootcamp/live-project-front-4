@@ -7,7 +7,7 @@ const Login = () => {
    <General>
     <DivImagen>
       <figure>
-        <img src={login} alt="" />
+        <img src={login} alt="login" />
       </figure>
     </DivImagen>
        <DivLogin>
