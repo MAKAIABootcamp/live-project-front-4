@@ -11,7 +11,7 @@ import {
   DivCreate,
 } from "./EscortRouteStyled";
 import HeaderSuperUser from "../../headerSuperUser/HeaderSuperUser";
-import Equipo from "../../../../assets/equipoo.png";
+import Equipoo from "../../../../assets/equipoo.png";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Formik } from "formik";
 import { addNewTypeCourseAsync } from "../../../../redux/actions/typeCourseActions";
@@ -62,7 +62,7 @@ const EscortRoute = () => {
             labels.map((etiqueta, index) => <p key={index}>{etiqueta}</p>)}
           {/* <p>{label}</p>  */}
         </Etiquetas>
-        <Imagen src={Equipo} alt="" />
+        <Imagen src={Equipoo} alt="" />
       </ContainerDiv>
 
       <DivCreate>
