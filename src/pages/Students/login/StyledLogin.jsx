@@ -36,7 +36,7 @@ margin:20px  ;
 
 `
 
-export const SectionRegistro = styled.section`
+export const SectionRegistro = styled.form`
 display:flex ;
 flex-direction:column ;
 align-items:center ;

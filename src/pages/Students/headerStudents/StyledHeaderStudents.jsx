@@ -122,7 +122,7 @@ export const BgDiv = styled.div`
 
   &.active {
     width: 45%;
-    height: 40%;
+    height: 50%;
     z-index: 1;
     transform: translateX(-20%);
   }
@@ -131,7 +131,7 @@ export const BgDiv = styled.div`
 
     &.active {
       width: 60%;
-      height: 35%;
+      height: 45%;
     }
   }
 `;

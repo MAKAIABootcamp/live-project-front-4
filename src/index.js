@@ -1,8 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import AppRouter from './router/AppRouter';
-
+import store from './redux/store/store';
 
 
 
@@ -11,8 +11,8 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    {/* <Provider> */}
+    <Provider store ={store}>
       <AppRouter/>
-    {/* </Provider> */}
+    </Provider>
   </React.StrictMode>
 );
