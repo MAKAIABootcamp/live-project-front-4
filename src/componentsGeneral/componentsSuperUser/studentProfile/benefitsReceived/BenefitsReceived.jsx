@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import {
-  SearchContainer,
-  SearchInput,
-  SearchButton,
+  // SearchContainer,
+  // SearchInput,
+  // SearchButton,
   DivInputTraining,
   Container,
   Title,
   DivCohortGroupTraining,
-  ListContainer,
-  ListItem,
-  Box,
-  ListItemcolumn,
   Modal,
   ModalContent,
+  TableBenefits,
 } from "./BenefitsStyled";
-import { SearchOutlined } from "@ant-design/icons";
+// import { SearchOutlined } from "@ant-design/icons";
 import HeaderSuperUser from "../../headerSuperUser/HeaderSuperUser";
 import { CommentOutlined } from "@ant-design/icons";
 import styled from "styled-components";
+import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const BenefitsReceived = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [comment, setComment] = useState("");
+  const navigate = useNavigate();
 
   const CommentIcon = styled(CommentOutlined)`
     font-size: 24px;
@@ -52,6 +52,10 @@ const BenefitsReceived = () => {
     }
   };
 
+  const handleNavigateStudentProfileBenefits = () => {
+    navigate("/studentProfileBenefits");
+  };
+
   return (
     <div>
       <div>
@@ -60,40 +64,59 @@ const BenefitsReceived = () => {
       <DivCohortGroupTraining>
         <DivInputTraining>
           <Container>
+            <ArrowLeftOutlined
+              size={30}
+              onClick={handleNavigateStudentProfileBenefits}
+            />
             <Title>Beneficios recibidos</Title>
-            <SearchContainer>
+            {/* <SearchContainer>
               <SearchInput type="text" placeholder="Buscar..." />
               <SearchButton>
                 <SearchOutlined className="icon" style={{ color: "black" }} />
               </SearchButton>
-            </SearchContainer>
+            </SearchContainer> */}
           </Container>
         </DivInputTraining>
       </DivCohortGroupTraining>
       <div>
-        <ListContainer>
-          <ListItemcolumn>
-            <Box>Beneficio</Box>
-            <Box>Fecha Solicitud</Box>
-            <Box>Fecha Entrega</Box>
-            <Box>Estado</Box>
-            <Box>Comentario</Box>
-          </ListItemcolumn>
-          <ListItem>
-            <Box>Socioecónomico</Box>
-            <Box>02/05/2023</Box>
-            <Box>10/05/2023</Box>
-            <Box>
-              <select>
-                <option value="aceptado">Aceptado</option>
-                <option value="denegado">Denegado</option>
-              </select>
-            </Box>
-            <Box>
+        <TableBenefits>
+          <tr>
+            <th>Beneficio</th>
+            <th> Fecha solicitud</th>
+            <th> Fecha entrega</th>
+            <th> Estado</th>
+            <th> Comentario</th>
+          </tr>
+
+          <tr>
+            <td>Apoyo Socioecónomico</td>
+            <td>02/05/2023</td>
+            <td>10/05/2023</td>
+            <td>Aceptado</td>
+            <td>
               <CommentIcon onClick={openModal} />
-            </Box>
-          </ListItem>
-        </ListContainer>
+            </td>
+          </tr>
+          <tr>
+            <td>Prestamo de equipo</td>
+            <td>02/05/2023</td>
+            <td>10/05/2023</td>
+            <td>Denegado</td>
+            <td>
+              <CommentIcon onClick={openModal} />
+            </td>
+          </tr>
+          <tr>
+            <td>Asesoria individual</td>
+            <td>02/05/2023</td>
+            <td>10/05/2023</td>
+            <td>Aceptado</td>
+            <td>
+              <CommentIcon onClick={openModal} />
+            </td>
+          </tr>
+        </TableBenefits>
+
         {isModalOpen && (
           <Modal>
             <ModalContent>

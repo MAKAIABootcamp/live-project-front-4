@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 100px;
+  margin-top: 70px;
+  padding-top: 40px;
 `;
 
 export const GridContainer = styled.div`
@@ -13,8 +14,9 @@ export const GridContainer = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 376px) {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3px;
   }
 `;
 
@@ -26,11 +28,17 @@ export const GridItem = styled.div`
     color: white;
     text-align: center;
     font-family: "Monserrat", sans-serif;
+    @media (max-width: 376px) {
+      font-size: 12px;
+    }
   }
   p {
     color: white;
     text-align: center;
     font-family: "Monserrat", sans-serif;
+    @media (max-width: 376px) {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -49,7 +57,7 @@ export const SearchInput = styled.input`
   width: 300px;
   height: 20px;
 
-  @media (max-width: 375px) {
+  @media (max-width: 376px) {
     width: 100%;
     margin-right: 0;
   }
@@ -71,11 +79,19 @@ export const SearchButton = styled.button`
 export const DivInputTraining = styled.div`
   display: flex;
   align-items: center;
+  padding-left: 40px;
+  margin-bottom: 30px;
+  @media (max-width: 376px) {
+    padding-left: 10px;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 50px;
   font-family: "Monserrat", sans-serif;
+  color: #25abbc;
+  padding-left: 15px;
   @media (max-width: 375px) {
     text-align: left;
     margin-bottom: 10px;
@@ -86,7 +102,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,12 +116,19 @@ export const GridItemAgregate = styled.div`
   border: 1px solid #ccc;
   padding: 32px;
   text-align: center;
-
+  @media (max-width: 376px) {
+    padding: 18px;
+  }
   button {
     width: 100px;
     height: 100px;
     border-radius: 90%;
     background-color: #03203a;
     align-items: center;
+    @media (max-width: 376px) {
+      font-size: 12px;
+      width: 80px;
+      height: 80px;
+    }
   }
 `;

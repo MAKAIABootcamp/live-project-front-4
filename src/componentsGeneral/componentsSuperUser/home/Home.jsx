@@ -1,5 +1,5 @@
 import React from "react";
-import { Div, DivGeneral, DivImg, Action, DivImgEquipo } from "./HomeStyled";
+import { Div, DivGeneral, Action, DivImgEquipo, Img } from "./HomeStyled";
 import Equipo from "../../../assets/loginActualizado.png";
 import logo from "../../../assets/LOGO BOOTCAMP OSCURO.png";
 import { useNavigate } from "react-router-dom";
@@ -19,16 +19,19 @@ const Home = () => {
         </DivImgEquipo>
 
         <DivGeneral>
-          <DivImg>
+          <div>
             <img src={logo} alt="Bootcamp" />
-          </DivImg>
-          <p>¡Bienvenid@ de nuevo!</p>
+          </div>
           <p>
-            Estamos encantados de tenerte a bordo y confiamos en que tu
+            ¡Bienvenid@ de nuevo!
+            <br />
+            Estamos encantados de tenerte a bordo y confiamos en que <br /> tu
             experiencia y habilidades serán de gran valor.
+            <br />
+            Esperamos trabajar juntos y lograr grandes cosas.
+            <br />
+            ¡Adelante y gracias por ser parte de nuestro equipo!
           </p>
-          <p>Esperamos trabajar juntos y lograr grandes cosas.</p>
-          <p>¡Adelante y gracias por ser parte de nuestro equipo!</p>
           <Action>
             <button onClick={handleNavigate}>Cerrar Sesión</button>
           </Action>

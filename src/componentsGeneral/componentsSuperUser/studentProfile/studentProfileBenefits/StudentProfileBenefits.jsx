@@ -22,7 +22,7 @@ const StudentProfileBenefits = () => {
     navigate("/escortRoute");
   };
   const handleNavigatePerfilStudentsBenefits = () => {
-    navigate("/perfilStudentsBenefits");
+    navigate("/RequestBenefis");
   };
   const handleNavigateBenefitsReceived = () => {
     navigate("/benefitsReceived");

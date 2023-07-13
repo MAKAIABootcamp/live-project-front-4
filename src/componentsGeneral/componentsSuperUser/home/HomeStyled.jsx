@@ -2,28 +2,35 @@ import styled from "styled-components";
 
 export const Div = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  flex-direction: column-reverse;
+
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     text-align: center;
   }
-
-  @media (min-width: 375px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
 `;
 
 export const DivImgEquipo = styled.div`
-  margin-top: 50px;
+  margin-top: 40px;
+  text-align: center;
+  align-items: center;
   img {
-    width: 100%;
-    height: auto;
+    width: 530px;
+
+    @media screen and (max-width: 768px) {
+      width: 450px;
+    }
+
+    @media screen and (max-width: 376px) {
+      width: 350px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    margin-right: 2rem;
   }
 `;
 
@@ -32,24 +39,24 @@ export const DivGeneral = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   p {
     text-align: center;
   }
+
+  img {
+    width: 80%;
+    height: auto;
+  }
+
   @media (min-width: 768px) {
     margin-top: 0;
     margin-left: 2rem;
-    text-align: left;
-  }
-`;
-
-export const DivImg = styled.div`
-  img {
-    width: 90%;
-    height: auto;
   }
 `;
 
 export const Action = styled.div`
+  margin-top: 20px;
   button {
     color: #03203a;
     font-size: 1rem;

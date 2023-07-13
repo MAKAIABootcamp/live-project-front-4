@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 100px;
+  margin-top: 70px;
 `;
 
 export const SearchContainer = styled.div`
@@ -44,9 +44,11 @@ export const DivInputTraining = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  margin-top: 40px;
   font-family: "Monserrat", sans-serif;
   color: #25abbc;
+  padding-left: 15px;
   @media (max-width: 375px) {
     text-align: left;
     margin-bottom: 10px;
@@ -57,61 +59,18 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  padding-left: 80px;
-
-  @media (max-width: 375px) {
-    flex-wrap: wrap;
-  }
-
-  
-`;
-
-export const ListContainer = styled.div`
-  display: grid;
-  border: 1px solid #ccc;
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-  @media (max-width: 375px) {
-    flex-wrap: wrap;
-    font-size:1rem;
-  }
-`;
-
-export const ListItemcolumn = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  background-color: #e9e9e9;
-  height: 60px;
-  @media (max-width: 768px) {
-    height: auto;
-  }
-`;
-
-export const ListItem = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  background-color: #ffffff;
-`;
-
-export const Box = styled.div`
-  height: 40px;
-  align-items: center;
   text-align: center;
-  margin-top: 20px;
-  @media (max-width: 768px) {
-    margin-top: 10px;
-  }
-  select {
-    border: none;
+  padding: 10px;
+  padding-left: 59px;
+
+  @media (max-width: 375px) {
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
   }
 `;
 
 export const Modal = styled.div`
-  /* Estilos para el modal */
   position: fixed;
   top: 0;
   left: 0;
@@ -121,6 +80,10 @@ export const Modal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
+  @media screen and (max-width: 376px) {
+    margin-top: 70px;
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -152,6 +115,59 @@ export const ModalContent = styled.div`
       background-color: #eee420;
       border: none;
       margin-right: 10px;
+    }
+  }
+`;
+
+export const TableBenefits = styled.table`
+  background-color: white;
+  margin-top: 30px;
+  border-color: #e6e6e6;
+
+  th {
+    background-color: #dddddd;
+    color: #000000;
+    padding: 15px 85px;
+    font-size: 19px;
+  }
+
+  td {
+    padding: 7px 0px 7px 15px;
+    text-align: center;
+    font-size: 17px;
+  }
+  select {
+    border: none;
+    font-size: 17px;
+  }
+  @media screen and (max-width: 768px) {
+    th {
+      padding: 15px 45px;
+      font-size: 12px;
+    }
+
+    td {
+      padding: 6px 0px 6px 0px;
+      font-size: 12px;
+    }
+    select {
+      border: none;
+      font-size: 12px;
+    }
+  }
+  @media screen and (max-width: 376px) {
+    th {
+      padding: 10px;
+      font-size: 10px;
+    }
+
+    td {
+      padding: 6px 0px 6px 0px;
+      font-size: 10px;
+    }
+    select {
+      border: none;
+      font-size: 10px;
     }
   }
 `;

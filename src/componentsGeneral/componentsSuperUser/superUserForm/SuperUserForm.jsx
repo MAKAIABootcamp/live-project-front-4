@@ -69,8 +69,6 @@ const SuperUserForm = ({ saveSuperUser }) => {
         <DivTitleSearch>
           <h1>Equipo de trabajo</h1>
         </DivTitleSearch>
-
-        <h1>Formulario</h1>
         <p>Aquí puedes ingresar a tus colaboradores</p>
         <Formik
           initialValues={{

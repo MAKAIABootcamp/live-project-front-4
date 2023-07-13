@@ -1,8 +1,8 @@
 import React from "react";
 import {
-  SearchContainer,
-  SearchInput,
-  SearchButton,
+  // SearchContainer,
+  // SearchInput,
+  // SearchButton,
   GridContainer,
   GridItem,
   DivInputTraining,
@@ -11,7 +11,7 @@ import {
   GridItemAgregate,
   DivCohortGroupTraining,
 } from "./CohortGroupTrainingStyled";
-import { SearchOutlined } from "@ant-design/icons";
+// import { SearchOutlined } from "@ant-design/icons";
 import { PlusOutlined } from "@ant-design/icons";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import { useNavigate } from "react-router-dom";
@@ -32,12 +32,12 @@ const CohortGroupTraining = () => {
         <DivInputTraining>
           <Container>
             <Title>En Formación</Title>
-            <SearchContainer>
+            {/* <SearchContainer>
               <SearchInput type="text" placeholder="Buscar..." />
               <SearchButton>
                 <SearchOutlined className="icon" style={{ color: "black" }} />
               </SearchButton>
-            </SearchContainer>
+            </SearchContainer> */}
           </Container>
         </DivInputTraining>
 
