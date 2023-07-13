@@ -1,13 +1,10 @@
 import { styled } from "styled-components";
 
 export const ContainerHomeStudents = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
   display: flex;
   flex-direction: column;
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
   background-image: url(https://res.cloudinary.com/dvk0btnav/image/upload/v1688442314/backgroundLive_htg9zu.jpg);
+
 `;
 
 export const ContainerHomeStudentsCont = styled.div`
@@ -31,6 +28,26 @@ div{
 
   img {
     width: 550px;
+  }
+
+  @media screen and (max-width: 768px) {
+
+   div{
+    flex-direction: column;
+    align-items: center;
+   }
+
+  h2{
+    font-size: 38px;
+    padding: 20px 0px 0px 0px;
+  }
+
+  img{
+    width: 450px;
+  }
+  }
+  @media screen and (max-width: 376px) {
+    width: 540px;
   }
 `;
 export const ButtonHomeStudents = styled.div`

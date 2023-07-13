@@ -11,3 +11,11 @@ font-family:'Monserrat',sans-serif ;
 text-decoration: none;
 list-style: none;
 `;
+
+/* div {
+width: 100%;
+background-image: url(${fondoGeneral});
+background-size: cover;
+height: 100vh;
+} */
+`
