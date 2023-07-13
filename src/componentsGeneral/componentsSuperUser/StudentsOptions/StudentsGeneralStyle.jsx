@@ -1,11 +1,23 @@
 import { styled } from "styled-components"
 
 export const SectionStudents = styled.section`
+@media screen and (max-width: 1440px){
 width: 30%;
+height: 100vh;
+margin: 0 auto;
 display: flex;
 flex-direction: column;
-margin: auto;
+justify-content: center;
 gap: 20px;
+}
+
+@media screen and (max-width: 768px){
+background-color: purple;
+}
+
+@media screen and (max-width: 375px){
+background-color: green;
+}
 `;
 
 export const OptionsStudents = styled.button`

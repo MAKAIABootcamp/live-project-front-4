@@ -3,10 +3,12 @@ import { ImgFondo, DivGeneral, DivImg, Action } from "./HomeStyled";
 // import Fondo from "../../../assets/fondoo.jpeg"
 // import ImgBootcamp from "../../../assets/Image 2577.png";
 import logo from '../../../assets/LOGO BOOTCAMP OSCURO.png'
+import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 
 const Home = () => {
   return (
     <>
+    <HeaderSuperUser />
       <ImgFondo>
         <div>
           <DivGeneral>

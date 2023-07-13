@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { HeaderContainer, Navigation } from "./HeaderSuperUserStyled"
@@ -28,31 +28,31 @@ const HeaderSuperUser = () => {
         <ul>
           <img src={logo} alt="Bootcamp" />
           <li>
-            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/homeSuperUser">Home</StyledLink>
           </li>
           <li>
-            <StyledLink to="#">Estudiantes</StyledLink>
+            <StyledLink to="/studentSuperUser">Estudiantes</StyledLink>
 
             <ul>
               <li>
-                <StyledLinkLi to="#">Selección</StyledLinkLi>
+                <StyledLinkLi to="/selectionSuperUser">Selección</StyledLinkLi>
               </li>
               <li>
-                <StyledLinkLi to="#">Formación</StyledLinkLi>
+                <StyledLinkLi to="/formationSuperUser">Formación</StyledLinkLi>
               </li>
               <li>
-                <StyledLinkLi to="#">Certificación</StyledLinkLi>
+                <StyledLinkLi to="/certificationSuperUser">Certificación</StyledLinkLi>
               </li>
             </ul>
           </li>
           <li>
-            <StyledLink to="#">Equipo</StyledLink>
+            <StyledLink to="/teamSuperUser">Equipo</StyledLink>
           </li>
           <li>
             <StyledLink to="#">Mi Perfil</StyledLink>
             <ul>
               <li>
-                <StyledLinkLi to="#">Ver perfil</StyledLinkLi>
+                <StyledLinkLi to="/profileSuperUser">Ver perfil</StyledLinkLi>
               </li>
             </ul>
           </li>
