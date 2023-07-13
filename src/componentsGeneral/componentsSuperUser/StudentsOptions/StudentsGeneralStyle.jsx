@@ -12,11 +12,12 @@ gap: 20px;
 }
 
 @media screen and (max-width: 768px){
-background-color: purple;
+width: 60%;
 }
 
 @media screen and (max-width: 375px){
-background-color: green;
+width: 100%;
+transform: translate(30%, 15%);
 }
 `;
 

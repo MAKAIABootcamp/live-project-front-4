@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { ContentButtonCourses, ContentCourses, ContentSelection, SearchSelection, TitleSelection, barSearchSelection } from '../Selection/SelectionStyle'
+import { ContentButtonCourses, ContentCourses, ContentSelection, SearchSelection, TitleSelection, barSearchSelection, CoverSelection } from '../Selection/SelectionStyle'
 import Lupa from '../../../assets/lupa.png'
 import Flecha from '../../../assets/flecha-hacia-abajo.png'
 import Portada from '../../../assets/portada-selection.png'
 import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser'
+import { coursesReducer } from '../../../redux/reducers/coursesReducer'
+import { listCourses } from '../../../redux/actions/coursesActions'
+import { getCourses } from '../../../redux/actions/coursesActions'
 
 const Selection = () => {
 
@@ -14,23 +18,13 @@ const toBackEnd = () => {
   navigate('/profileSelectedSU')
 }
 
-//Pasar al redux
+const dispatch = useDispatch();
+const coursesData = useSelector((state) => state.courses.coursesData);
+const nameCollection = 'Cursos';
 
-const TopicCourses = [
-  {
-    title: "Back-end",
-    link: toBackEnd 
-  },
-  {
-    title: "Front-end"
-  },
-  {
-    title: "Testing"
-  },
-  {
-    title: "Análisis de datos"
-  }
-]
+useEffect(() => {
+  dispatch(getCourses(nameCollection));
+},  [dispatch, nameCollection])
 
   return (
     <>
@@ -45,15 +39,15 @@ const TopicCourses = [
 
         <ContentSelection>
           <div>
-            <img src={Portada} alt="" />
+            <CoverSelection src={Portada} alt="" />
           </div>
 
           <ContentCourses>
-{TopicCourses.map((topic, topicKey) => (
-  <ContentButtonCourses key={topicKey} onClick={topic.link}>
+{coursesData.map((topic) => (
+  <ContentButtonCourses key={topic.id} onClick={toBackEnd}>
     <div>
       <img src={Flecha} alt="" width={30}/>
-      <p>{topic.title}</p>
+      <p>{topic.type}</p>
     </div>
       
   </ContentButtonCourses>
