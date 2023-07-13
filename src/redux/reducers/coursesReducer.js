@@ -1,6 +1,6 @@
 import { courses } from "../types/userTypes";
 import { collection } from 'firebase/firestore'
-import { dataBase } from '../confiFirebase/configFirebase'
+import { dataBase } from '../../confiFirebase/configFirebase'
 
 // const nameCollection = 'Cursos';
 // const referenceCollection = collection(dataBase, nameCollection)

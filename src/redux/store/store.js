@@ -22,12 +22,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../reducers/userReducer";
 import userReducerAddLabelSuperUser from "../reducers/userReducerAddLabelSuperUser";
 import { coursesReducer } from "../reducers/coursesReducer";
-const reducer = {
-  user: userReducer,
-  courses: coursesReducer
 
 const rootReducer = {
   user: userReducer,
+  courses: coursesReducer,
   label: userReducerAddLabelSuperUser, // Renombra el reducer como etiquetas
 
 };
