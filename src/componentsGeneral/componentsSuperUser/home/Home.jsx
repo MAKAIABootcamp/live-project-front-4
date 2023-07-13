@@ -1,7 +1,8 @@
 import React from "react";
 import { ImgFondo, DivGeneral, DivImg, Action } from "./HomeStyled";
 // import Fondo from "../../../assets/fondoo.jpeg"
-import ImgBootcamp from "../../../assets/Image 2577.png";
+// import ImgBootcamp from "../../../assets/Image 2577.png";
+import logo from '../../../assets/LOGO BOOTCAMP OSCURO.png'
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
         <div>
           <DivGeneral>
             <DivImg>
-              <img src={ImgBootcamp} alt="Bootcamp" />
+              <img src={logo} alt="Bootcamp" />
             </DivImg>
             <p>¡Bienvenid@ de nuevo!</p>
             <p>
