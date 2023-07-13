@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Formik } from "formik";
-import { saveSuperUser } from "../../../redux/actions/userActions";
+// import { saveSuperUser } from "../../../redux/actions/userActions";
 import {
   Panel,
   DivInput,
@@ -13,7 +13,7 @@ import {
 } from "./SuperUserFormStyled";
 import CategoryCollaborators from "./category/CategoryCollaborators";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
-import { functions } from "../../../redux/confiFirebase/configFirebase";
+// import { functions } from "../../../redux/confiFirebase/configFirebase";
 import "firebase/functions";
 import * as Yup from "yup";
 
@@ -24,12 +24,12 @@ const SuperUserForm = ({ saveSuperUser }) => {
       saveSuperUser(values);
 
       // Enviar la contraseña al correo corporativo del usuario utilizando Firebase Functions
-      const sendPasswordEmail = functions.httpsCallable("sendPasswordEmail");
-      const password = generatePassword();
-      await sendPasswordEmail({
-        email: values.emailCorporate,
-        password,
-      });
+      // const sendPasswordEmail = functions.httpsCallable("sendPasswordEmail");
+      // const password = generatePassword();
+      // await sendPasswordEmail({
+      //   email: values.emailCorporate,
+      //   password,
+      // });
 
       // Restablecer los valores del formulario
       setSubmitting(false);
@@ -39,18 +39,18 @@ const SuperUserForm = ({ saveSuperUser }) => {
     }
   };
 
-  const generatePassword = () => {
-    // contraseña aleatoria de 8 caracteres
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let password = "";
-    for (let i = 0; i < 8; i++) {
-      password += characters.charAt(
-        Math.floor(Math.random() * characters.length)
-      );
-    }
-    return password;
-  };
+  // const generatePassword = () => {
+  //   // contraseña aleatoria de 8 caracteres
+  //   const characters =
+  //     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  //   let password = "";
+  //   for (let i = 0; i < 8; i++) {
+  //     password += characters.charAt(
+  //       Math.floor(Math.random() * characters.length)
+  //     );
+  //   }
+  //   return password;
+  // };
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Required"),
@@ -69,8 +69,6 @@ const SuperUserForm = ({ saveSuperUser }) => {
         <DivTitleSearch>
           <h1>Equipo de trabajo</h1>
         </DivTitleSearch>
-
-        <h1>Formulario</h1>
         <p>Aquí puedes ingresar a tus colaboradores</p>
         <Formik
           initialValues={{
@@ -130,13 +128,15 @@ const SuperUserForm = ({ saveSuperUser }) => {
     </div>
   );
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    saveSuperUser: (userData) => {
-      dispatch(saveSuperUser(userData));
-    },
-    // Puedes agregar más acciones de Redux para mapear a props del componente aquí
-  };
-};
 
-export default connect(mapDispatchToProps)(SuperUserForm);
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     saveSuperUser: (userData) => {
+//       dispatch(saveSuperUser(userData));
+//     },
+//     // Puedes agregar más acciones de Redux para mapear a props del componente aquí
+//   };
+// };
+
+// export default connect(mapDispatchToProps)(SuperUserForm);
+export default SuperUserForm;

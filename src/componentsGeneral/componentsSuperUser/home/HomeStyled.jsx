@@ -1,11 +1,37 @@
 import styled from "styled-components";
 
-export const ImgFondo = styled.div`
-  background-image: url("../../../assets/FONDO.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 290px;
-  height: 110px;
+export const Div = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+`;
+
+export const DivImgEquipo = styled.div`
+  margin-top: 40px;
+  text-align: center;
+  align-items: center;
+  img {
+    width: 530px;
+
+    @media screen and (max-width: 768px) {
+      width: 450px;
+    }
+
+    @media screen and (max-width: 376px) {
+      width: 350px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    margin-right: 2rem;
+  }
 `;
 
 export const DivGeneral = styled.div`
@@ -13,23 +39,24 @@ export const DivGeneral = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 5rem;
 
-  /* float: right; */
-`;
+  p {
+    text-align: center;
+  }
 
-export const DivImg = styled.div`
   img {
-    width: 100%;
+    width: 80%;
     height: auto;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    margin-left: 2rem;
   }
 `;
 
 export const Action = styled.div`
-  /* position: absolute; */
-  /* top: 95%; */
-  /* right: 10px; */
-  /* left: 10px; */
+  margin-top: 20px;
   button {
     color: #03203a;
     font-size: 1rem;

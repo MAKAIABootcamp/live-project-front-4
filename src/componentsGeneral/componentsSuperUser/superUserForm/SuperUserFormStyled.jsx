@@ -8,6 +8,7 @@ export const Panel = styled.div`
   transition: 0.5s;
   h1 {
     color: #03203a;
+    font-size: 1.6rem;
   }
   p {
     color: #03203a;
@@ -18,6 +19,7 @@ export const DivTitleSearch = styled.div`
   display: flex;
   h1 {
     color: #25abbc;
+    font-size: 1.7rem;
   }
 `;
 
@@ -28,6 +30,11 @@ export const DivInput = styled.div`
   padding: 0 10px 0 10px;
   flex-direction: column;
   position: relative;
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 376px) {
+    padding: 0 0 0 0;
+  }
   label {
     margin-bottom: 15px;
     color: #03203a;
@@ -47,6 +54,12 @@ export const Input = styled.input`
   margin-bottom: 10px;
   background-color: 1px solid rgba(0, 0, 0, 0.2);
   padding-left: 1rem;
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 376px) {
+    height: 40px;
+    width: 100%;
+  }
 `;
 
 export const Select = styled.select`
@@ -57,21 +70,41 @@ export const Select = styled.select`
   margin-bottom: 10px;
   background-color: 1px solid rgba(0, 0, 0, 0.2);
   padding-left: 1rem;
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 376px) {
+    height: 40px;
+    width: 107%;
+  }
 `;
 
 export const Form = styled.form`
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  /* align-items: center; */
   position: relative;
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 376px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Action = styled.div`
   position: absolute;
-  top: 95%;
+  top: 100%;
   right: 10px;
   left: 10px;
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    top: 100%;
+    text-align: center;
+  }
+  @media screen and (max-width: 376px) {
+    top: 105%;
+  }
   button {
     color: #03203a;
     font-size: 1rem;
