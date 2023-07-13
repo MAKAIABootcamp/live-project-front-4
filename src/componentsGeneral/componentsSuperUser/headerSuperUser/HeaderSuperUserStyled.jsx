@@ -38,7 +38,7 @@ export const Navigation = styled.nav`
       margin-right: 0;
     }
     ul {
-      display:none; /* Ocultar submenús por defecto */
+      display:block; /* Ocultar submenús por defecto */
       flex-direction:column;
       position: absolute;
       background-color: #ffffff;
@@ -53,3 +53,4 @@ export const Navigation = styled.nav`
     }
   }
 `;
+

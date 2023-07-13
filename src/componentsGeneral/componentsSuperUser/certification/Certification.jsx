@@ -1,8 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Lupa from '../../../assets/lupa.png'
-import { TitleAndSearchCertification, SectionSearchCertification, CoursesCertified, SectionYearStyle, ButtonLastCourse } from './CertificationStyle'
+import { TitleAndSearchCertification, SectionSearchCertification, CoursesCertified, SectionYearStyle, ButtonLastCourse, TypeCohorte, MoreInfoCourse } from './CertificationStyle'
+import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser'
 
 const Certification = () => {
+
+  const navigate = useNavigate();
+
+  const toListCertified = () => {
+    navigate('/listCertifiedSU')
+  }
 
   //Pasar a Redux
   const CertifiedCourses = [
@@ -13,37 +21,43 @@ const Certification = () => {
           id: 1,
           typeCohorte: "Front-end",
           numberCohorte: 4,
-          lastDate: "21/07/2023"
+          lastDate: "21/07/2023", 
+          link: toListCertified
         },
         {
           id: 2,
           typeCohorte: "Back-end",
           numberCohorte: 3,
-          lastDate: "20/08/2023"
+          lastDate: "20/08/2023",
+          link: toListCertified
         },
         {
           id: 3,
           typeCohorte: "Testing",
           numberCohorte: 1,
-          lastDate: "20/08/2023"
+          lastDate: "20/08/2023",
+          link: toListCertified
         },
         {
           id: 4,
           typeCohorte: "Análisis de datos",
           numberCohorte: 4,
-          lastDate: "21/07/2023"
+          lastDate: "21/07/2023",
+          link: toListCertified
         },
         {
           id: 5,
           typeCohorte: "Back-end",
           numberCohorte: 5,
-          lastDate: "15/09/2023"
+          lastDate: "15/09/2023",
+          link: toListCertified
         },
         {
           id: 6,
           typeCohorte: "Front-end",
           numberCohorte: 5,
-          lastDate: "30/11/2023"
+          lastDate: "30/11/2023",
+          link: toListCertified
         }
       ]
     },
@@ -54,37 +68,43 @@ const Certification = () => {
           id: 1,
           typeCohorte: "Testing",
           numberCohorte: 3,
-          lastDate: "21/07/2023"
+          lastDate: "21/07/2023",
+          link: toListCertified
         },
         {
           id: 2,
           typeCohorte: "Front-end",
           numberCohorte: 5,
-          lastDate: "20/08/2022"
+          lastDate: "20/08/2022",
+          link: toListCertified
         },
         {
           id: 3,
           typeCohorte: "Back-end",
           numberCohorte: 1,
-          lastDate: "20/08/2022"
+          lastDate: "20/08/2022",
+          link: toListCertified
         },
         {
           id: 4,
           typeCohorte: "Back-end",
           numberCohorte: 4,
-          lastDate: "21/07/2022"
+          lastDate: "21/07/2022",
+          link: toListCertified
         },
         {
           id: 5,
           typeCohorte: "Back-end",
           numberCohorte: 5,
-          lastDate: "15/09/2022"
+          lastDate: "15/09/2022",
+          link: toListCertified
         },
         {
           id: 6,
           typeCohorte: "Front-end",
           numberCohorte: 5,
-          lastDate: "30/11/2022"
+          lastDate: "30/11/2022",
+          link: toListCertified
         }
       ]
     }
@@ -92,6 +112,7 @@ const Certification = () => {
 
   return (
     <>
+    <HeaderSuperUser />
         <TitleAndSearchCertification>
           <p>Certificación</p>
           <SectionSearchCertification>
@@ -109,11 +130,11 @@ const Certification = () => {
               <SectionYearStyle key={lastCoursekey}>
                 {lastCourse.courses && lastCourse.courses.map((infoLastCourse, infolastKey) => (
                   <>
-                  <ButtonLastCourse key={infolastKey}>
+                  <ButtonLastCourse key={infolastKey} onClick={infoLastCourse.link}>
                     <div>
-                      <p>{infoLastCourse.typeCohorte}</p>
-                    <p>Cohorte {infoLastCourse.numberCohorte}</p>
-                    <p>Finalizó: {infoLastCourse.lastDate}</p>
+                      <TypeCohorte>{infoLastCourse.typeCohorte}</TypeCohorte>
+                    <MoreInfoCourse>Cohorte {infoLastCourse.numberCohorte}</MoreInfoCourse>
+                    <MoreInfoCourse>Finalizó: {infoLastCourse.lastDate}</MoreInfoCourse>
                     </div>
                   </ButtonLastCourse>
                   </>
