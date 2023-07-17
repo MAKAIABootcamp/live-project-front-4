@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Div, DivGeneral, Action, DivImgEquipo, Img } from "./HomeStyled";
+import { Div, DivGeneral, Action, DivImgEquipo} from "./HomeStyled";
 import Equipo from "../../../assets/loginActualizado.png";
 import logo from "../../../assets/LOGO BOOTCAMP OSCURO.png";
 import { useNavigate } from "react-router-dom";

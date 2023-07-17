@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 100px;
+  margin-top: 0px;
   @media (max-width: 375px) {
     text-align: center;
     margin-bottom: 10px;
@@ -89,6 +89,10 @@ export const ContainerDiv = styled.div`
 
 export const Etiquetas = styled.div`
   padding-right: 50px;
+
+  p {
+    margin-bottom: 5px;
+  }
 `;
 
 export const Imagen = styled.img`

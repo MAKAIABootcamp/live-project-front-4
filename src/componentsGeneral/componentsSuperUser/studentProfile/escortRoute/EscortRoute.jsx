@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   DivInputTraining,
@@ -14,18 +14,22 @@ import HeaderSuperUser from "../../headerSuperUser/HeaderSuperUser";
 import Equipoo from "../../../../assets/equipoo.png";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Formik } from "formik";
-import { addNewTypeCourseAsync } from "../../../../redux/actions/typeCourseActions";
+import { addBenefitTypesActionAsync } from "../../../../redux/actions/benefitTypesActions";
+import { getBenefitAction } from "../../../../redux/actions/benefitTypesActions";
 
 const EscortRoute = () => {
   const dispatch = useDispatch();
-  const labels = useSelector((state) => state.label);
+  const benefitTypes = useSelector((state) => state.benefitTypes.benefitTypes);
 
-  //  const [newLabel, setNewLabel] = useState("");
+  useEffect(() => {
+    dispatch(getBenefitAction("Beneficios"));
+    dispatch(addBenefitTypesActionAsync());
+  }, [dispatch]);
 
-  const handleCreateLabel = ({ label }) => {
+  const handleCreateLabel = (values) => {
+    const { label } = values;
     if (label.trim() !== "") {
-      console.log("esta llegando al if", label);
-      dispatch(addNewTypeCourseAsync());
+      dispatch(addBenefitTypesActionAsync(label));
     }
   };
 
@@ -39,48 +43,43 @@ const EscortRoute = () => {
           <Container>
             <ArrowLeftOutlined size={30} />
             <Title>Ruta de acompañamiento</Title>
-            {/* <SearchContainer>
-              <SearchInput type="text" placeholder="Buscar..." />
-              <SearchButton>
-                <SearchOutlined className="icon" style={{ color: "black" }} />
-              </SearchButton>
-            </SearchContainer> */}
           </Container>
         </DivInputTraining>
+
+        <ContainerDiv>
+          <Etiquetas>
+            <h1>Etiquetas:</h1>
+            {benefitTypes &&
+              benefitTypes.map((benefit) => (
+                <p key={benefit.id}>{benefit.label}</p>
+              ))}
+          </Etiquetas>
+          <Imagen src={Equipoo} alt="" />
+        </ContainerDiv>
+
+        <DivCreate>
+          <h2>Crear una nueva etiqueta:</h2>
+          <Formik
+            initialValues={{
+              label: "",
+            }}
+            onSubmit={handleCreateLabel}
+          >
+            {({ handleChange, handleSubmit, values }) => (
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Nueva Etiqueta"
+                  name="label"
+                  value={values.label}
+                  onChange={handleChange}
+                />
+                <button type="submit">Crear</button>
+              </form>
+            )}
+          </Formik>
+        </DivCreate>
       </DivCohortGroupTraining>
-
-      <ContainerDiv>
-        <Etiquetas>
-          <h1>Etiquetas:</h1>
-          <p>Apoyo Socieconómico</p>
-          <p>Apoyo de Equipo</p>
-          <p>Apoyo Psicosocial</p>
-          <p>Apoyo en Mentoría</p>
-          <p>Apoyo en Técnico</p>
-          {labels &&
-            labels.length > 0 &&
-            labels.map((etiqueta, index) => <p key={index}>{etiqueta}</p>)}
-          {/* <p>{label}</p>  */}
-        </Etiquetas>
-        <Imagen src={Equipoo} alt="" />
-      </ContainerDiv>
-
-      <DivCreate>
-        <h2>Crear una nueva etiqueta:</h2>
-        <Formik
-          initialValues={{
-            label: "",
-          }}
-          onSubmit={handleCreateLabel}
-        >
-          {({ isSubmitting }) => (
-            <form>
-              <input type="text" placeholder="Nueva Etiqueta" />
-              <button type="submit">Crear</button>
-            </form>
-          )}
-        </Formik>
-      </DivCreate>
     </div>
   );
 };

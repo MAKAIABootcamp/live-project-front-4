@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { connect } from "react-redux";
+import { addNewCohorTypestAsync } from "../../../redux/actions/newCohorteActions";
+import styled from "styled-components";
 import {
   Row,
   ErrorText,
@@ -9,40 +12,49 @@ import {
   FormContainer,
   ImageContainer,
 } from "./AddNewCohortStyled";
-import styled from "styled-components";
 import chicaCompu from "../../../assets/chicaCompu.png";
-import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
+import Swal from "sweetalert2";
 
 const initialValues = {
   cohorte: "",
   numeroCohorte: "",
   fechaInicio: "",
   fechaFinalizacion: "",
-  horarioInicio: "",
-  horarioTerminacion: "",
+  horario: "",
   instructores: "",
   otrosDetalles: "",
 };
 
 const validationSchema = Yup.object().shape({
-  cohorte: Yup.string().required("Campo requerido"),
+  cohorte: Yup.string().required("Selecciona al menos una opción"),
+  // cohorte: Yup.string().nullable().required("Campo requerido"),
   numeroCohorte: Yup.string().required("Campo requerido"),
   fechaInicio: Yup.string().required("Campo requerido"),
   fechaFinalizacion: Yup.string().required("Campo requerido"),
-  horarioInicio: Yup.string().required("Campo requerido"),
-  horarioTerminacion: Yup.string().required("Campo requerido"),
+  horario: Yup.string().required("Campo requerido"),
   instructores: Yup.string().required("Campo requerido"),
   otrosDetalles: Yup.string(),
 });
 
-const onSubmit = (values) => {
-  console.log(values);
-};
+const AddNewCohort = ({ addCohort }) => {
+  const [isSaved, setIsSaved] = useState(false);
 
-const AddNewCohort = () => {
+  const onSubmit = async (values, { resetForm }) => {
+    await addCohort(values);
+    setIsSaved(true);
+    resetForm();
+
+    // Mostrar el mensaje de SweetAlert
+    Swal.fire({
+      icon: "success",
+      title: "Guardado exitosamente",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+
   //estilo para el formulario
   const StyledForm = styled(Form)`
-    /* display: flex; */
     flex-wrap: wrap;
     max-width: 500px;
     margin: 0 auto;
@@ -69,11 +81,17 @@ const AddNewCohort = () => {
     background-color: #fcfad5;
   `;
 
+  const options = [
+    { value: "Seleccionar" },
+    { value: "Front-End" },
+    { value: "Back-End" },
+    { value: "Testing" },
+    { value: "Análisis de datos" },
+  ];
+
   return (
     <Container>
-      <div>
-        <HeaderSuperUser />
-      </div>
+      <div>{/* <HeaderSuperUser /> */}</div>
       <FormContainer>
         <Formik
           initialValues={initialValues}
@@ -86,14 +104,11 @@ const AddNewCohort = () => {
               <Row>
                 <div>
                   <label htmlFor="cohorte">Cohorte</label>
-                  <StyledField as="select" id="cohorte" name="cohorte">
-                    <option value="">Seleccionar</option>
-                    <option value="Front-end">Front-end</option>
-                    <option value="Backend">Backend</option>
-                    <option value="Testing">Testing</option>
-                    <option value="Análisis de datos">Análisis de datos</option>
-                  </StyledField>
-
+                  <Field as="select" id="cohorte" name="cohorte">
+                    {options.map((item) => (
+                      <option value={item.value}>{item.value}</option>
+                    ))}
+                  </Field>
                   <ErrorMessage name="cohorte" component={ErrorText} />
                 </div>
 
@@ -180,6 +195,7 @@ const AddNewCohort = () => {
                 Descartar
               </button>
             </ButtonRow>
+            {isSaved && <div>Guardado exitosamente.</div>}
           </StyledForm>
         </Formik>
       </FormContainer>
@@ -190,4 +206,10 @@ const AddNewCohort = () => {
   );
 };
 
-export default AddNewCohort;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addCohort: (newCohort) => dispatch(addNewCohorTypestAsync(newCohort)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AddNewCohort);

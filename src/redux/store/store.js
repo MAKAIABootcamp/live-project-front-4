@@ -20,16 +20,15 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../reducers/userReducer";
-import userReducerAddLabelSuperUser from "../reducers/userReducerAddLabelSuperUser";
+import benefitTypesReducer from "../reducers/benefitTypeReducer";
 import { coursesReducer } from "../reducers/coursesReducer";
-const reducer = {
-  user: userReducer,
-  courses: coursesReducer
+import newCohorteReducers from "../reducers/newCohorteReducers";
 
 const rootReducer = {
   user: userReducer,
-  label: userReducerAddLabelSuperUser, // Renombra el reducer como etiquetas
-
+  benefitTypes: benefitTypesReducer, // Asigna el reducer de benefitTypes a la propiedad benefitTypes
+  courses: coursesReducer,
+  cohort: newCohorteReducers,
 };
 
 const store = configureStore({

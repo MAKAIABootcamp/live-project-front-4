@@ -7,7 +7,7 @@
 //     }
 // }
 
-import { dataBase } from '../confiFirebase/configFirebase'
+import { dataBase } from '../../confiFirebase/configFirebase'
 import { collection, getDocs } from 'firebase/firestore'
 import { courses } from '../types/userTypes'
 
