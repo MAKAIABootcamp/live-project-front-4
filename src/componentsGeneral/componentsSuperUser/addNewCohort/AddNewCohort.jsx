@@ -70,10 +70,12 @@ const AddNewCohort = () => {
   `;
 
   return (
+    <>
+    <HeaderSuperUser />
     <Container>
       <div>
-        <HeaderSuperUser />
       </div>
+      <div>
       <FormContainer>
         <Formik
           initialValues={initialValues}
@@ -183,10 +185,12 @@ const AddNewCohort = () => {
           </StyledForm>
         </Formik>
       </FormContainer>
+      </div>
       <ImageContainer>
         <img src={chicaCompu} alt="" />
       </ImageContainer>
     </Container>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { getCourses } from '../../../redux/actions/coursesActions'
 import Flecha from '../../../assets/flecha-hacia-abajo.png'
 import { useNavigate } from 'react-router-dom'
 import back from '../../../assets/devolver.png'
@@ -6,6 +7,8 @@ import Lupa from '../../../assets/lupa.png'
 import avatar from '../../../assets/avatar.jpg'
 import { TitleSelection, SearchSelection, SearchAndBack, ProfileContent, SectionAvatar, AvatarData, DataInfo, MoreInfoAvatar, TitlesAvatar, ScrollInfo, AvatarPhoto, ContentListInfo, ListSelected, CourseSelected, ArrowBack, ListGeneral, InfoList, StyleStatus, CircleProfile, ArrowBackSelection, StyleSelected } from './SelectionStyle'
 import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser'
+import { useDispatch, useSelector } from 'react-redux'
+import BarSearch from '../../barSearch/BarSearch'
 
 import iconCheck from '../../../assets/mapas-y-banderas.png'
 import iconPending from '../../../assets/pending.png'
@@ -26,31 +29,13 @@ const ProfileSelected = () => {
         setAdmitido(event.target.value);
     };
 
-    //Pasar a Redux
+    const dispatch = useDispatch();
+    const coursesData = useSelector((state) => state.courses.coursesData);
+    const nameCollection = 'Selección';
 
-    const ListSelection = [
-        {
-            id: 1,
-            name: "Pepito Jaramillo",
-            status: iconCheck,
-            messageAboutStatus: "La tarea fue aprobada y realizada",
-            lastDate: "26/06/2023"
-        },
-        {
-            id: 2,
-            name: "Agnes Evil",
-            status: iconPending,
-            messageAboutStatus: "La tarea está pendiente a realizar",
-            lastDate: "20/06/2023"
-        },
-        {
-            id: 3,
-            name: "Patricia Vélez",
-            status: iconDeclined,
-            messageAboutStatus: "La tarea fue rechazada y/o no cumplió con el tiempo estipulado",
-            lastDate: "10/07/2023"
-        }
-    ]
+    useEffect(() => {
+        dispatch(getCourses(nameCollection));
+    }, [dispatch, nameCollection])
 
     const navigate = useNavigate();
 
@@ -62,17 +47,7 @@ const ProfileSelected = () => {
         <>
             <HeaderSuperUser />
             <TitleSelection>Selección</TitleSelection>
-            <SearchAndBack>
-                <SearchSelection>
-                    <input type='search' placeholder='Search...'></input>
-                    <button>
-                        <img src={Lupa} width={20} />
-                    </button>
-                </SearchSelection>
-                <ArrowBackSelection onClick={toSelection}>
-                    <img src={back} />
-                </ArrowBackSelection>
-            </SearchAndBack>
+            <BarSearch />
 
             <ContentListInfo>
                 <div>
@@ -142,14 +117,15 @@ const ProfileSelected = () => {
                             </CourseSelected>
                         </div>
                         <ListGeneral>
-                            {ListSelection.map((listSelected, keySelected) => (
-                                <InfoList key={keySelected}>
+                            {coursesData && coursesData.map((listSelected) => (
+                                <InfoList key={listSelected.id}>
+                                
                                     <CircleProfile>
-                                        <img src={avatar} width={50} />
+                                        <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689529480/LIVE/Im%C3%A1genes/PhotoProfiles/bettyPinzon_rew1j4.png" width={50} />
                                     </CircleProfile>
                                     <div>
                                         <div>
-                                            <p>{listSelected.name}</p>
+                                         <p>Nombre de la persona</p>
                                         </div>
 
                                         <StyleSelected>
@@ -169,8 +145,8 @@ const ProfileSelected = () => {
 
                                     </div>
                                     <StyleStatus>
-                                        <img src={listSelected.status} width={30} />
-                                        <p>{listSelected.lastDate}</p>
+                                        <img src="" width={30} />
+                                        <p>Aquí va la fecha del status</p>
                                     </StyleStatus>
 
                                 </InfoList>
@@ -187,4 +163,3 @@ const ProfileSelected = () => {
 }
 
 export default ProfileSelected
-

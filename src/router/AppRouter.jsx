@@ -54,13 +54,13 @@ const AppRouter = () => {
             {/*Sub ruta de Selección*/}
             <Route path="profileSelectedSU" element={<ProfileSelected />} />
 
-            <Route path="formationSuperUser" element={<Formation />} />
+            {/* <Route path="formationSuperUser" element={<Formation />} /> */}
             <Route path="certificationSuperUser" element={<Certification />} />
 
             {/*Sub ruta de Certificación*/}
             <Route path="listCertifiedSU" element={<ListCertification />} />
               
-   {/* Inicia Formación */}
+            {/* Inicia Formación */}
             <Route path="addNewCohort" element={<NewCohort />} />{/* CREAR UNA NUEVA COHORTE */}
             <Route path="cohortGroupTraining" element={<TrainingCohort />} />{/* LISTO Grupo de formación */}
             <Route path="studentProfileBenefits" element={<StudentsBenefits />} />{/*LISTO selecion de informacion */}
