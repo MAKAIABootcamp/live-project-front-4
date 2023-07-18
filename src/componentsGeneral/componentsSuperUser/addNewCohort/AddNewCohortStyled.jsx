@@ -6,7 +6,6 @@ export const Row = styled.div`
 
   label {
     color: white;
-    width: 150px;
     margin-top: 15px;
   }
 

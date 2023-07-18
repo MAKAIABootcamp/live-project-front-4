@@ -8,25 +8,32 @@ export const courses = {
 }
 //
 
-//para crear nueva eqiqueta este es el archivo userTypes
-export const ADD_ETIQUETA = "ADD_ETIQUETA";
-
 export const userTypes = {
-    USER_LOGIN: "USER_LOGIN",
-    USER_REGISTER: "USER_REGISTER",
-    USER_UPDATEPROFILE: "USER_UPDATEPROFILE" 
+  USER_LOGIN: "USER_LOGIN",
+  USER_REGISTER: "USER_REGISTER",
+  USER_UPDATEPROFILE: "USER_UPDATEPROFILE",
 };
 
 export const studentsType = {
-    GET_INFOSTUDENT: "GET_INFOSTUDENT",
-    GET_STUDENTS: "GET_STUDENTS"    
-}
-
-export const typeCourseTypes = {
-    ADD_TYPECOURSE:"ADD_TYPECOURSE"
-}
-
-export const typeBenefitTypes = {
-  ADD_BENEFITTYPE: "ADD_BENEFITTYPE", //para crear nueva eqiqueta 
+  GET_INFOSTUDENT: "GET_INFOSTUDENT",
+  GET_STUDENTS: "GET_STUDENTS",
 };
 
+export const typeCourseTypes = {
+  ADD_TYPECOURSE: "ADD_TYPECOURSE",
+};
+
+export const typeBenefitTypes = {
+  ADD_BENEFITTYPE: "ADD_BENEFITTYPE", //para crear nueva eqiqueta
+  GET_BENEFIT: "GET_BENEFIT",
+};
+
+export const typeCohort = {
+  ADD_COHORT: "ADD_COHORT", //nuevas cohortes
+  GET_COHORT: "GET_COHORT",
+};
+
+export const typeFormAdminAndStydents = {
+  ADD_FORMADMINSTUDENTS: "ADD_FORMADMINSTUDENTS", //nuevas cohortes
+  GET_FORMADMINSTUDENTS: "GET_FORMADMINSTUDENTS",
+};

@@ -1,37 +1,42 @@
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { dataBase } from "../../confiFirebase/configFirebase";
-import { typeBenefitTypes } from "../types/userTypes";
+import { typeFormAdminAndStydents } from "../types/userTypes";
 
-const nameCollection = "Beneficios";
+const nameCollection = "users";
 const referenceCollection = collection(dataBase, nameCollection);
 
-export const addBenefitTypesActionAsync = (newBenefitType) => {
+export const addAdminAndStudentsTypesActionAsync = (
+  newAdminAndStydentsType
+) => {
   return async (dispatch) => {
     try {
       const docRef = await addDoc(referenceCollection, {
-        label: newBenefitType,
+        newAdminAndStydentsType,
       });
-      const benefitType = {
+      const FormAdminAndStydents = {
         id: docRef.id,
-        label: newBenefitType,
+        newAdminAndStydentsType,
       };
-      dispatch(addBenefitTypesActionSync(benefitType, null));
+      dispatch(addAdminAndStudentsTypesActionSync(FormAdminAndStydents, null));
     } catch (error) {
       console.log(error);
       const newError = {
         code: error.code,
         message: error.message,
       };
-      dispatch(addBenefitTypesActionSync(null, newError));
+      dispatch(addAdminAndStudentsTypesActionSync(null, newError));
     }
   };
 };
 
-export const addBenefitTypesActionSync = (newBenefit, error) => {
+export const addAdminAndStudentsTypesActionSync = (
+  newAdminAndStydents,
+  error
+) => {
   return {
-    type: "ADD_BENEFITTYPE",
+    type: "ADD_FORMADMINSTUDENTS",
     payload: {
-      newBenefit,
+      newAdminAndStydents,
       error,
     },
   };
@@ -42,12 +47,14 @@ export const getBenefitAction = (nameCollection) => {
     try {
       console.log("Fetching benefits from database...");
       const getData = await getDocs(collection(dataBase, nameCollection));
-      const typeBenefitData = getData.docs.map((doc) => doc.data());
-      console.log("Fetched benefits:", typeBenefitData);
+      const typeFormAdminAndStydentsData = getData.docs.map((doc) =>
+        doc.data()
+      );
+      console.log("Fetched benefits:", typeFormAdminAndStydentsData);
 
       dispatch({
-        type: typeBenefitTypes.GET_BENEFIT,
-        payload: typeBenefitData,
+        type: typeFormAdminAndStydents.GET_FORMADMINSTUDENTS,
+        payload: typeFormAdminAndStydentsData,
       });
     } catch (error) {
       console.log(error);

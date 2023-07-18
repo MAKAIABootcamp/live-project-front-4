@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
-  // SearchContainer,
-  // SearchInput,
-  // SearchButton,
   GridContainer,
   GridItem,
   DivInputTraining,
@@ -11,13 +9,19 @@ import {
   GridItemAgregate,
   DivCohortGroupTraining,
 } from "./CohortGroupTrainingStyled";
-// import { SearchOutlined } from "@ant-design/icons";
 import { PlusOutlined } from "@ant-design/icons";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import { useNavigate } from "react-router-dom";
+import { getCohortAction } from "../../../redux/actions/newCohorteActions";
 
 const CohortGroupTraining = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const cohorts = useSelector((state) => state.cohort.cohorts);
+
+  useEffect(() => {
+    dispatch(getCohortAction());
+  }, [dispatch]);
 
   const handleNavigateAddNewCohort = () => {
     navigate("/addNewCohort");
@@ -32,45 +36,21 @@ const CohortGroupTraining = () => {
         <DivInputTraining>
           <Container>
             <Title>En Formación</Title>
-            {/* <SearchContainer>
-              <SearchInput type="text" placeholder="Buscar..." />
-              <SearchButton>
-                <SearchOutlined className="icon" style={{ color: "black" }} />
-              </SearchButton>
-            </SearchContainer> */}
           </Container>
         </DivInputTraining>
 
         <GridContainer>
-          <GridItem>
-            <h2>Front-End</h2>
-            <p>Cohorte 6</p>
-            <p>Fecha de inicio 21/07/2023</p>
-          </GridItem>
-
-          <GridItem>
-            <h2>Back-End</h2>
-            <p>Cohorte 3</p>
-            <p>Fecha de inicio 21/07/2023</p>
-          </GridItem>
-
-          <GridItem>
-            <h2>Front-End</h2>
-            <p>Cohorte 7</p>
-            <p>Fecha de inicio 21/07/2023</p>
-          </GridItem>
-
-          <GridItem>
-            <h2>Testing</h2>
-            <p>Cohorte 1</p>
-            <p>Fecha de inicio 21/07/2023</p>
-          </GridItem>
-
-          <GridItem>
-            <h2>Analisis de datos</h2>
-            <p>Cohorte 4</p>
-            <p>Fecha de inicio 21/07/2023</p>
-          </GridItem>
+          {cohorts.map((cohort) => (
+            <GridItem key={cohort.id}>
+              <h2>{cohort.cohort?.cohorte}</h2>
+              <p>Cohorte: {cohort.cohort?.numeroCohorte}</p>
+              <p>Fecha de inicio: {cohort.cohort?.fechaInicio}</p>
+              <p>Fecha de Finalización: {cohort.cohort?.fechaFinalizacion}</p>
+              <p>Horarios: {cohort.cohort?.horario}</p>
+              <p>Instructores: {cohort.cohort?.instructores}</p>
+              <p>Nota: {cohort.cohort?.otrosDetalles}</p>
+            </GridItem>
+          ))}
 
           <GridItemAgregate onClick={handleNavigateAddNewCohort}>
             <button onClick={handleNavigateAddNewCohort}>
