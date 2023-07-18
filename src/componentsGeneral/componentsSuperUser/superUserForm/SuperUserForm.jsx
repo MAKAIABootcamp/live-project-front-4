@@ -89,7 +89,7 @@ const SuperUserForm = ({ saveSuperUser }) => {
               </DivInput>
 
               <DivInput>
-                <label htmlFor="">Area</label>
+                <label htmlFor="">Área</label>
                 <Select type="text" name="area">
                   <option value="Entrenamiento">Entrenamiento</option>
                   <option value="Experiencia">Experiencia</option>
@@ -104,18 +104,18 @@ const SuperUserForm = ({ saveSuperUser }) => {
               </DivInput>
 
               <DivInput>
-                <label htmlFor="">Correo Corporativo</label>
+                <label htmlFor="">Correo corporativo</label>
                 <Input type="email" name="emailCorporate" placeholder="Email" />
               </DivInput>
 
               <DivInput>
-                <label htmlFor="">Número de Teléfono</label>
+                <label htmlFor="">Número de teléfono</label>
                 <Input type="phone" name="phone" placeholder="325 2356 458" />
               </DivInput>
 
               <Action>
                 <button type="submit" disabled={isSubmitting}>
-                  Enviar Formulario
+                  Enviar formulario
                 </button>
               </Action>
             </Form>

@@ -42,12 +42,15 @@ const CohortGroupTraining = () => {
         <GridContainer>
           {cohorts.map((cohort) => (
             <GridItem key={cohort.id}>
-              <h2>{cohort.cohort?.cohorte}</h2>
-              <p>Cohorte: {cohort.cohort?.numeroCohorte}</p>
+              <h2>{cohort.cohort?.programa}</h2>
+              <p>Cohorte: {cohort.cohort?.cohorte}</p>
               <p>Fecha de inicio: {cohort.cohort?.fechaInicio}</p>
-              <p>Fecha de Finalización: {cohort.cohort?.fechaFinalizacion}</p>
-              <p>Horarios: {cohort.cohort?.horario}</p>
-              <p>Instructores: {cohort.cohort?.instructores}</p>
+              <p>Fecha de finalización: {cohort.cohort?.fechaFinalizacion}</p>
+              <p>Horario de inicio: {cohort.cohort?.horarioInicio}</p>
+              <p>Horario de cierre: {cohort.cohort?.horarioCierre}</p>
+              <p>Formador técnico: {cohort.cohort?.formadorTecnico}</p>
+              <p>Mentor técnico: {cohort.cohort?.mentorTecnico}</p>
+              <p>Facilitador: {cohort.cohort?.facilitador}</p>
               <p>Nota: {cohort.cohort?.otrosDetalles}</p>
             </GridItem>
           ))}
