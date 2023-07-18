@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Lupa from '../../../assets/lupa.png'
-import { TitleAndSearchCertification, SectionSearchCertification, CoursesCertified, SectionYearStyle, ButtonLastCourse, TypeCohorte, MoreInfoCourse } from './CertificationStyle'
+import { TitleCertification, CoursesCertified, SectionYearStyle, ButtonLastCourse, TypeCohorte, MoreInfoCourse, BackgroundCertification, SectionBarCertification } from './CertificationStyle'
 import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser'
+import BarSearch from '../../barSearch/BarSearch'
 
 const Certification = () => {
 
@@ -113,15 +113,12 @@ const Certification = () => {
   return (
     <>
     <HeaderSuperUser />
-        <TitleAndSearchCertification>
-          <p>Certificación</p>
-          <SectionSearchCertification>
-            <input type='search' placeholder='Search...'></input>
-            <button>
-              <img src={Lupa} width={20} />
-            </button>
-          </SectionSearchCertification>
-        </TitleAndSearchCertification>
+    <BackgroundCertification>
+      
+            <TitleCertification>Certificación</TitleCertification> 
+            <SectionBarCertification>
+              <BarSearch />
+            </SectionBarCertification>
 
         <CoursesCertified>
           {CertifiedCourses.map((lastCourse, lastCoursekey) => (
@@ -143,6 +140,7 @@ const Certification = () => {
             </>
           ))}
         </CoursesCertified>
+        </BackgroundCertification>
     </>
   )
 }

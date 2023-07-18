@@ -22,6 +22,7 @@ import { dataBase } from '../../confiFirebase/configFirebase'
 
 const initialState = {
     coursesData: [],
+    pageStudentsData: [],
 };
 
 export const coursesReducer = (state = initialState, action) => {
@@ -34,5 +35,13 @@ export const coursesReducer = (state = initialState, action) => {
 
             default:
                 return state;
+
+     case courses.LIST_PAGES_STUDENTS:
+        return {
+            ...state,
+            pageStudentsData: action.payload,
+        } 
     }
+
+    
 }

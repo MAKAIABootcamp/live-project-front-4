@@ -3,8 +3,9 @@ export const SAVE_SUPER_USER = "SAVE_SUPER_USER";
 
 //Cambios de Lu
 export const courses = {
-  LIST_COURSES: "LIST_COURSES",
-};
+    LIST_COURSES: "LIST_COURSES",
+    LIST_PAGES_STUDENTS: "LIST_PAGES_STUDENTS"
+}
 //
 
 export const userTypes = {
