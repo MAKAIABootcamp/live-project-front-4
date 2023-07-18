@@ -3,6 +3,7 @@ import { Div, DivGeneral, Action, DivImgEquipo} from "./HomeStyled";
 import Equipo from "../../../assets/loginActualizado.png";
 import logo from "../../../assets/LOGO BOOTCAMP OSCURO.png";
 import { useNavigate } from "react-router-dom";
+import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Home = () => {
 
   return (
     <>
-
+<HeaderSuperUser />
       <Div>
         <DivImgEquipo>
           <img src={Equipo} alt="equipo" />

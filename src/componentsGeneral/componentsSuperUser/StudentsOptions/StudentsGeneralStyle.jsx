@@ -1,5 +1,21 @@
 import { styled } from "styled-components"
 
+export const BackgroundStudents = styled.section`
+@media screen and (max-width: 1440px) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607992/LIVE/Im%C3%A1genes/Covers/FONDO_PC_eoeuar.png')
+}
+
+@media screen and (max-width: 768px) {
+background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607556/LIVE/Im%C3%A1genes/Covers/FONDO_TABLET_knpzbw.png');
+}
+
+@media screen and (max-width: 375px) {
+background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607557/LIVE/Im%C3%A1genes/Covers/FONDO_CEL_v7opjm.png');
+}
+`;
+
 export const SectionStudents = styled.section`
 @media screen and (max-width: 1440px){
 width: 30%;
@@ -9,6 +25,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 gap: 20px;
+
 }
 
 @media screen and (max-width: 768px){
@@ -17,7 +34,7 @@ width: 60%;
 
 @media screen and (max-width: 375px){
 width: 100%;
-transform: translate(30%, 15%);
+transform: translate(15%, 10%);
 }
 `;
 

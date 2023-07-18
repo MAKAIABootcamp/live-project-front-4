@@ -14,6 +14,7 @@ import {
 } from "./AddNewCohortStyled";
 import chicaCompu from "../../../assets/chicaCompu.png";
 import Swal from "sweetalert2";
+import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 
 const initialValues = {
   cohorte: "",
@@ -111,8 +112,10 @@ const AddNewCohort = ({ addCohort }) => {
   ];
 
   return (
+    <>
+    {/* <HeaderSuperUser /> */}
     <Container>
-      <div>{/* <HeaderSuperUser /> */}</div>
+      <div><HeaderSuperUser /></div>
       <FormContainer>
         <Formik
           initialValues={initialValues}
@@ -224,6 +227,7 @@ const AddNewCohort = ({ addCohort }) => {
         <img src={chicaCompu} alt="" />
       </ImageContainer>
     </Container>
+    </>
   );
 };
 

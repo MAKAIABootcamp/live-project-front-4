@@ -1,14 +1,12 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { ContentButtonCourses, ContentCourses, ContentSelection, SearchSelection, TitleSelection, barSearchSelection, CoverSelection } from '../Selection/SelectionStyle'
-import Lupa from '../../../assets/lupa.png'
+import { ContentButtonCourses, ContentCourses, ContentSelection, TitleSelection, CoverSelection, BackgroundSelection } from '../Selection/SelectionStyle'
 import Flecha from '../../../assets/flecha-hacia-abajo.png'
 import Portada from '../../../assets/portada-selection.png'
 import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser'
-import { coursesReducer } from '../../../redux/reducers/coursesReducer'
-import { listCourses } from '../../../redux/actions/coursesActions'
 import { getCourses } from '../../../redux/actions/coursesActions'
+import BarSearch from '../../barSearch/BarSearch'
 
 const Selection = () => {
 
@@ -20,7 +18,7 @@ const toBackEnd = () => {
 
 const dispatch = useDispatch();
 const coursesData = useSelector((state) => state.courses.coursesData);
-const nameCollection = 'Cursos';
+const nameCollection = 'Selección';
 
 useEffect(() => {
   dispatch(getCourses(nameCollection));
@@ -29,17 +27,14 @@ useEffect(() => {
   return (
     <>
     <HeaderSuperUser />
+    <BackgroundSelection>
         <TitleSelection>Selección</TitleSelection>
-        <SearchSelection>
-          <input type='search' placeholder='Search...'></input>
-          <button>
-            <img src={Lupa} width={20}/>
-          </button>
-        </SearchSelection>
+
+        <BarSearch />
 
         <ContentSelection>
           <div>
-            <CoverSelection src={Portada} alt="" />
+            <CoverSelection src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689684710/LIVE/Im%C3%A1genes/Covers/PORTADA_SELECTION_ncugeo.png" alt="" />
           </div>
 
           <ContentCourses>
@@ -47,13 +42,14 @@ useEffect(() => {
   <ContentButtonCourses key={topic.id} onClick={toBackEnd}>
     <div>
       <img src={Flecha} alt="" width={30}/>
-      <p>{topic.type}</p>
+      <p>{topic.course}</p>
     </div>
       
   </ContentButtonCourses>
 ))}
           </ContentCourses>
         </ContentSelection>
+        </BackgroundSelection>
     </>
   )
 }

@@ -2,10 +2,11 @@ import React from 'react'
 import Lupa from '../../../assets/lupa.png'
 import { useNavigate } from 'react-router-dom'
 import Avatar from '../../../assets/avatar.jpg'
-import { SectionListFinal } from './CertificationStyle'
+import { BackgroundCertification, SectionBarCertification, SectionListFinal } from './CertificationStyle'
 import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser'
 import { TitleAndSearchCertification, SectionSearchCertification, ArrowBackCertification, TitleCourseFinal, Certified } from './CertificationStyle'
 import Back from '../../../assets/devolver.png'
+import BarSearch from '../../barSearch/BarSearch'
 
 const ListCertification = () => {
 
@@ -111,19 +112,19 @@ const ListCertification = () => {
   return (
     <>
 <HeaderSuperUser />
-        <TitleAndSearchCertification>
+<BackgroundCertification>
         <ArrowBackCertification src={Back} width={20} onClick={toCertification}/>
         <div>
-           <TitleCourseFinal>Front - end / Cohorte 4</TitleCourseFinal>  
-           <Certified>Certificados</Certified>
+           <TitleCourseFinal>
+            Front - end / Cohorte 4
+             <Certified><strong>Certificados</strong></Certified>
+            </TitleCourseFinal>  
+          
         </div>
-          <SectionSearchCertification>
-            <input type='search' placeholder='Search...'></input>
-            <button>
-              <img src={Lupa} width={20} />
-            </button>
-          </SectionSearchCertification>
-        </TitleAndSearchCertification>
+        <SectionBarCertification>
+           <BarSearch /> 
+        </SectionBarCertification>
+
     <SectionListFinal>
         <div>
         {ListCertified.map((listFinal, keyListFinal) => (
@@ -134,6 +135,7 @@ const ListCertification = () => {
         ))}
         </div>
     </SectionListFinal>
+    </BackgroundCertification>
     
     </>
   )

@@ -56,7 +56,7 @@ const AppRouter = () => {
             {/*Sub ruta de Selección*/}
             <Route path="profileSelectedSU" element={<ProfileSelected />} />
 
-            <Route path="formationSuperUser" element={<Formation />} />
+            {/* <Route path="formationSuperUser" element={<Formation />} /> */}
             <Route path="certificationSuperUser" element={<Certification />} />
 
             {/*Sub ruta de Certificación*/}
