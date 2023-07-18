@@ -31,3 +31,8 @@ export const typeCohort = {
   ADD_COHORT: "ADD_COHORT", //nuevas cohortes
   GET_COHORT: "GET_COHORT",
 };
+
+export const typeFormAdminAndStydents = {
+  ADD_FORMADMINSTUDENTS: "ADD_FORMADMINSTUDENTS", //nuevas cohortes
+  GET_FORMADMINSTUDENTS: "GET_FORMADMINSTUDENTS",
+};

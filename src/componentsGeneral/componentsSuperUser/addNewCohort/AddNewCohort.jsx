@@ -27,13 +27,34 @@ const initialValues = {
 
 const validationSchema = Yup.object().shape({
   cohorte: Yup.string().required("Selecciona al menos una opción"),
-  // cohorte: Yup.string().nullable().required("Campo requerido"),
-  numeroCohorte: Yup.string().required("Campo requerido"),
-  fechaInicio: Yup.string().required("Campo requerido"),
-  fechaFinalizacion: Yup.string().required("Campo requerido"),
-  horario: Yup.string().required("Campo requerido"),
-  instructores: Yup.string().required("Campo requerido"),
-  otrosDetalles: Yup.string(),
+  numeroCohorte: Yup.number()
+    .required("Campo requerido")
+    .typeError("Debe ser un número"),
+  fechaInicio: Yup.string()
+    .required("Campo requerido")
+    .matches(
+      /^(0[1-9]|1[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/,
+      "La estructura de la fecha debe tener el formato dd/mm/yyyy"
+    ),
+  fechaFinalizacion: Yup.string()
+    .required("Campo requerido")
+    .matches(
+      /^(0[1-9]|1[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/,
+      "La estructura de la fecha debe tener el formato dd/mm/yyyy"
+    ),
+  horario: Yup.string()
+    .required("Campo requerido"),
+    // .matches(
+    //   /^(0[1-9]|1[0-2]):[0-5][0-9](am|pm) - (0[1-9]|1[0-2]):[0-5][0-9](am|pm)$/,
+    //   "El campo de hora debe tener el formato 14:00pm - 18:00pm"
+    // )
+    
+  instructores: Yup.string()
+    .required("Campo requerido")
+    .matches(
+      /^[\w\s-]+$/,
+      "El campo de instructores solo debe contener nombres separados por guiones (-)"
+    ),
 });
 
 const AddNewCohort = ({ addCohort }) => {
@@ -71,7 +92,7 @@ const AddNewCohort = ({ addCohort }) => {
   const StyledField = styled(Field)`
     display: flex;
     border-radius: 4px;
-    height: 20px;
+    height: 25px;
   `;
 
   const StyledFieldOther = styled(Field)`
@@ -152,7 +173,7 @@ const AddNewCohort = ({ addCohort }) => {
 
               <Row>
                 <div>
-                  <label htmlFor="horario">Horario</label>
+                  <label htmlFor="horario">Hora inicio y finalización</label>
                   <StyledField
                     type="text"
                     id="horario"

@@ -24,6 +24,7 @@ import Formation from '../componentsGeneral/componentsSuperUser/Formation/Format
 import Certification from '../componentsGeneral/componentsSuperUser/certification/Certification'
 import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/ProfileSelected';
 import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
+import AddStudents from "../pages/SuperUser/AddStudents";
 
 const AppRouter = () => {
   return (
@@ -46,6 +47,7 @@ const AppRouter = () => {
             <Route path="homeSuperUser" element={<HomeSuperUser />} />
             <Route path="teamSuperUser" element={<FormUser />} /> {/* EQUIPO */}
             <Route path="profileSuperUser" element={<Profile />} />
+            <Route path="formToAddStudent" element={<AddStudents />} /> {/* formulario para crear estidiantes*/}
             <Route path="studentSuperUser" element={<StudentsSU />} />
               
             {/* Ruta de Selección y Certificación */}
@@ -60,13 +62,13 @@ const AppRouter = () => {
             {/*Sub ruta de Certificación*/}
             <Route path="listCertifiedSU" element={<ListCertification />} />
               
-   {/* Inicia Formación */}
-            <Route path="addNewCohort" element={<NewCohort />} />{/* CREAR UNA NUEVA COHORTE */}
-            <Route path="cohortGroupTraining" element={<TrainingCohort />} />{/* LISTO Grupo de formación */}
+            {/* Inicia Formación */}
+            <Route path="addNewCohort" element={<NewCohort />} />{/* CREAR UNA NUEVA COHORTE LISTO EN CODIGO */}
+            <Route path="cohortGroupTraining" element={<TrainingCohort />} />{/* LISTO Grupo de formación LISTO EN CODIGO  */}
             <Route path="studentProfileBenefits" element={<StudentsBenefits />} />{/*LISTO selecion de informacion */}
             <Route path="RequestBenefis" element={<RequestBenefis />}/>{/* LISTO solicitud de beneficios */}
             <Route path="benefitsReceived" element={<BenefitsReceivedStudents />}/>{/* LISTO Beneficios recibidos */}
-            <Route path="escortRoute" element={<EscortRouteStudents/>} />{/* ruta de acompañamiento */}
+            <Route path="escortRoute" element={<EscortRouteStudents/>} />{/* ruta de acompañamiento LISTO EN CODIGO  */}
           </Routes>
         </BrowserRouter>
     </GlobalStyles>
