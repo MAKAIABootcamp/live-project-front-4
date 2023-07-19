@@ -15,6 +15,20 @@ export const Row = styled.div`
   }
 `;
 
+export const RowDate = styled.div`
+  align-items: center;
+  display: flex;
+  margin-top: 15px;
+
+  label {
+    color: white;
+    margin-top: 15px;
+  }
+`;
+
+export const Div = styled.div`
+  margin-left: 15px;
+`;
 export const ButtonRow = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -51,7 +65,7 @@ export const Container = styled.div`
 
 export const FormContainer = styled.div`
   flex: 1;
-  margin-top: 100px;
+  margin-top: 30px;
   align-items: center;
 `;
 

@@ -15,11 +15,14 @@ const FormToAddStudent = () => {
   const validationSchema = Yup.object().shape({
     nombre: Yup.string()
       .required("Campo requerido")
-      .matches(/^[A-Za-záéíóúÁÉÍÓÚ\s]+$/, "Solo se permiten letras y tilde"),
+      .matches(
+        /^[A-Za-záéíóúÁÉÍÓÚ\s]+$/,
+        "No se permiten números y signos de puntuación"
+      ),
     celular: Yup.string()
       .required("Campo requerido")
       .matches(/^\d+(\.\d+)*$/, "Formato de celular inválido"),
-    curso: Yup.string().required("Campo requerido"),
+    programa: Yup.string().required("Campo requerido"),
     correo: Yup.string()
       .required("Campo requerido")
       .matches(
@@ -31,8 +34,9 @@ const FormToAddStudent = () => {
   const initialValues = {
     nombre: "",
     celular: "",
-    curso: "",
+    programa: "",
     correo: "",
+    contraseña: "",
   };
 
   const handleSubmit = (values) => {
@@ -41,6 +45,14 @@ const FormToAddStudent = () => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+
+  const options = [
+    { value: "Seleccionar" },
+    { value: "Back-End" },
+    { value: "Data Analytics" },
+    { value: "Front-End" },
+    { value: "Software QA" },
+  ];
   return (
     <div>
       <HeaderSuperUser />
@@ -65,15 +77,19 @@ const FormToAddStudent = () => {
               </FormGroup>
 
               <FormGroup>
-                <label htmlFor="curso">Curso:</label>
-                <Field type="text" id="curso" name="curso" />
-                <ErrorMessage name="curso" component={ErrorText} />
-              </FormGroup>
-
-              <FormGroup>
                 <label htmlFor="correo">Correo:</label>
                 <Field type="text" id="correo" name="correo" />
                 <ErrorMessage name="correo" component={ErrorText} />
+              </FormGroup>
+
+              <FormGroup>
+                <label htmlFor="programa">Programa:</label>
+                <Field as="select" id="programa" name="programa">
+                  {options.map((item) => (
+                    <option value={item.value}>{item.value}</option>
+                  ))}
+                </Field>
+                <ErrorMessage name="programa" component={ErrorText} />
               </FormGroup>
 
               <FormGroup>
