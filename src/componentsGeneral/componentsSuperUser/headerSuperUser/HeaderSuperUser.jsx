@@ -164,6 +164,7 @@
 
 // HeaderSuperUser.jsx
 
+// HeaderSuperUser.jsx
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -188,7 +189,7 @@ import BurguerButton from "../../../pages/Students/headerStudents/BurguerButton"
 const HeaderSuperUser = () => {
   const [deployEstudiantes, setDeployEstudiantes] = useState(false);
   const [deployPerfil, setDeployPerfil] = useState(false);
-  const [burgerOpen, setBurgerOpen] = useState(false); // Estado para controlar si el menú hamburguesa está abierto o cerrado
+  const [burgerOpen, setBurgerOpen] = useState(false);
 
   const toggleDeploy = (menu) => {
     if (menu === "estudiantes") {
@@ -212,12 +213,11 @@ const HeaderSuperUser = () => {
         </figure>
       </ContainerHeaderLogo>
 
-      {/* Agregamos el botón del menú hamburguesa */}
       <BurgerButtonWrapper>
         <BurguerButton
           handleClick={handleBurgerClick}
-          clicked={burgerOpen}>
-        </BurguerButton>
+          clicked={burgerOpen}
+        />
       </BurgerButtonWrapper>
 
       <ContainerHeaderLinks active={burgerOpen}>
@@ -241,26 +241,36 @@ const HeaderSuperUser = () => {
               </NavLink>
             </figure>
           </Item>
-
-          {/* Agregamos el SubItems aquí */}
-          <SubItems style={{ display: deployEstudiantes ? "block" : "none" }}>
+          <SubItems deploySubItems={deployEstudiantes}>
             <NavLink to={"/selectionSuperUser"}>
               <div>
-                <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531243/LIVE/Im%C3%A1genes/Icons/grupo_1_bki7qd.png" width={20} />
+                <img
+                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531243/LIVE/Im%C3%A1genes/Icons/grupo_1_bki7qd.png"
+                  width={20}
+                  alt="Selección"
+                />
                 <p>Selección</p>
               </div>
             </NavLink>
 
             <NavLink to={"/cohortGroupTraining"}>
               <div>
-                <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531248/LIVE/Im%C3%A1genes/Icons/huellas_qlv9uy.png" width={20} />
+                <img
+                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531248/LIVE/Im%C3%A1genes/Icons/huellas_qlv9uy.png"
+                  width={20}
+                  alt="Formación"
+                />
                 <p>Formación</p>
               </div>
             </NavLink>
 
             <NavLink to={"/certificationSuperUser"}>
               <div>
-                <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531233/LIVE/Im%C3%A1genes/Icons/cohete_p5wt0x.png" width={20} />
+                <img
+                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531233/LIVE/Im%C3%A1genes/Icons/cohete_p5wt0x.png"
+                  width={20}
+                  alt="Certificación"
+                />
                 <p>Certificación</p>
               </div>
             </NavLink>
@@ -276,16 +286,20 @@ const HeaderSuperUser = () => {
               </NavLink>
             </figure>
           </Item>
-          {/* Agregamos el SubItems aquí */}
-          <SubItems style={{ display: deployPerfil ? "block" : "none" }}>
+          <SubItems deploySubItems={deployPerfil}>
             <NavLink to={'/profileSuperUser'}>
               <div>
-                <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689603697/LIVE/Im%C3%A1genes/Icons/editar_x3bkx2.png" width={20} />
+                <img
+                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689603697/LIVE/Im%C3%A1genes/Icons/editar_x3bkx2.png"
+                  width={20}
+                  alt="Ver perfil"
+                />
                 <p>Ver perfil</p>
               </div>
             </NavLink>
           </SubItems>
         </ContainerHeaderLinksUnt>
+
         <ContainerHeaderLinksUnt>
           <Item>
             <figure>
@@ -296,6 +310,7 @@ const HeaderSuperUser = () => {
             </figure>
           </Item>
         </ContainerHeaderLinksUnt>
+
         <ContainerHeaderSignOff>
           <figure>
             <img src={avatar} alt="" />
@@ -305,14 +320,15 @@ const HeaderSuperUser = () => {
           </figure>
         </ContainerHeaderSignOff>
       </ContainerHeaderLinks>
-
-      <BgDiv active={deployEstudiantes || deployPerfil} onClick={() => {
-        setDeployEstudiantes(false);
-        setDeployPerfil(false);
-      }}></BgDiv>
+      <BgDiv
+        active={deployEstudiantes || deployPerfil}
+        onClick={() => {
+          setDeployEstudiantes(false);
+          setDeployPerfil(false);
+        }}
+      ></BgDiv>
     </ContainerHeader>
   );
 };
 
 export default HeaderSuperUser;
-

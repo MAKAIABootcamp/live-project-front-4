@@ -219,6 +219,9 @@
 
 // HeaderSuperUserStyled.jsx
 
+// HeaderSuperUserStyled.jsx (Estilos)
+// HeaderSuperUserStyled.jsx
+// HeaderSuperUserStyled.jsx (Estilos)
 import { styled } from "styled-components";
 
 export const ContainerHeader = styled.nav`
@@ -261,7 +264,7 @@ export const ContainerHeader = styled.nav`
     width: 100%;
     padding: 20px;
     z-index: 1;
-    background-color: #03203a; /* Añadimos un fondo para que se vea bien en pantallas pequeñas */
+    background-color: #03203a;
   }
 `;
 
@@ -281,8 +284,8 @@ export const ContainerHeaderLogo = styled.div`
 
 export const ContainerHeaderLinks = styled.div`
   display: flex;
-  position: relative; /* Añadimos posicionamiento relativo para que el submenu desplegado sea relativo a este contenedor */
-  z-index: 2; /* Aseguramos que el contenedor del submenu aparezca por encima del fondo del burger menu */
+  position: relative;
+  z-index: 2;
   align-items: center;
 
   @media screen and (max-width: 768px) {
@@ -293,7 +296,7 @@ export const ContainerHeaderLinks = styled.div`
     width: 100%;
     padding: 20px;
     z-index: 1;
-    background-color: #03203a; /* Añadimos un fondo para que se vea bien en pantallas pequeñas */
+    background-color: #03203a;
     display: ${(props) => (props.active ? "flex" : "none")};
   }
 `;
@@ -338,13 +341,10 @@ export const Item = styled.button`
 export const ContainerHeaderSignOff = styled.div`
   display: flex;
   align-items: center;
-  /* background-color: pink; */
 
   figure {
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 100%;
     gap: 10px;
 
     img {
@@ -358,7 +358,6 @@ export const ContainerHeaderSignOff = styled.div`
 export const BgDiv = styled.div`
   @media screen and (max-width: 1440px) {
     position: none;
-    /* background-color: #03203a; */
     top: 76px;
     left: 426.323px;
     border-radius: 0 0 10px 10px;
@@ -389,25 +388,17 @@ export const BgDiv = styled.div`
 
 export const SubItems = styled.span`
   width: 130px;
-  /* overflow: hidden; */
   background-color: #8ecc23;
   box-shadow: 0 0 8px 1px #a8a8a8;
   border-radius: 5px;
   position: absolute;
   z-index: 200;
-  display: flex;
+  display: ${(props) => (props.deploySubItems ? "flex" : "none")};
   flex-direction: column;
-  transform: translate(28%, 80%);
   opacity: 0;
   transition: all 0.3s ease;
 
-  &.deploySubItems {
-    opacity: 1;
-    transform: translate(0);
-  }
-
-  & div {
-    /* height: 500px; */
+  div {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -415,21 +406,21 @@ export const SubItems = styled.span`
     padding-left: 15px;
     padding-right: 20px;
 
-    & img {
+    img {
       filter: invert(0%) sepia(100%) saturate(7455%) hue-rotate(206deg) brightness(116%) contrast(112%);
     }
   }
 
-  & p {
+  p {
     color: black;
   }
 `;
 
 export const BurgerButtonWrapper = styled.div`
-  display: none; /* Ocultamos el botón del menú hamburguesa en pantallas de escritorio */
+  display: none;
 
   @media screen and (max-width: 768px) {
-    display: block; /* Mostramos el botón del menú hamburguesa en pantallas pequeñas */
+    display: flex;
     position: absolute;
     top: 20px;
     right: 20px;
