@@ -58,8 +58,7 @@ export const SectionBarCertification = styled.div`
 }
 
 @media screen and (max-width: 375px) {
-    transform: translate(10px, 10px)
-    background-color: orange;
+    transform: translate(10px, 10px);
 }
 `;
 

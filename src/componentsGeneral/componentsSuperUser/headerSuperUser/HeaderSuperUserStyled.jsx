@@ -230,7 +230,7 @@ export const ContainerHeader = styled.nav`
   background-color: #03203a;
   color: white;
   height: 70px;
-  width: 1440px;
+  width: 100%;
   overflow: hidden;
   font-size: 14px;
   margin-top: 0;

@@ -8,7 +8,7 @@ import StateStudents from "../pages/Students/stateStudents/StateStudents";
 import ProfileStudents from "../pages/Students/profileStudents/ProfileStudents";
 import BenefitsStudents from "../pages/Students/benefitsStudents/BenefitsStudents";
 import BootService from "../pages/Students/bootService/BootService";
-import { GlobalStyles } from "../StylesGlobal/GlobalStyles";
+import GlobalStyles from "../StylesGlobal/GlobalStyles";
 import HomeSuperUser from "../pages/SuperUser/HomeSuperUser";
 import FormUser from "../pages/SuperUser/FormUser";
 import Profile from "../pages/SuperUser/Profile";
@@ -28,7 +28,8 @@ import AddStudents from "../pages/SuperUser/AddStudents";
 
 const AppRouter = () => {
   return (
-    <GlobalStyles>
+    <>
+    <GlobalStyles />
         <BrowserRouter>
           <Routes>
             {/* Ruta Pública */}
@@ -71,7 +72,7 @@ const AppRouter = () => {
             <Route path="escortRoute" element={<EscortRouteStudents/>} />{/* ruta de acompañamiento LISTO EN CODIGO  */}
           </Routes>
         </BrowserRouter>
-    </GlobalStyles>
+    </>
 
   );
 };
