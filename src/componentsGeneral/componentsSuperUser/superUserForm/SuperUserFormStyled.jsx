@@ -6,6 +6,7 @@ export const Panel = styled.div`
   padding-left: 20px;
   padding-right: 10px;
   transition: 0.5s;
+  margin-top:100px;
   @media screen and (max-width: 768px) {
     padding-left: 30px;
     padding-right: 0px;

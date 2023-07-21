@@ -1,144 +1,137 @@
-import React from 'react'
-import Lupa from '../../../assets/lupa.png'
-import { useNavigate } from 'react-router-dom'
-import Avatar from '../../../assets/avatar.jpg'
-import { BackgroundCertification, SectionBarCertification, SectionListFinal } from './CertificationStyle'
-import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser'
-import { TitleAndSearchCertification, SectionSearchCertification, ArrowBackCertification, TitleCourseFinal, Certified } from './CertificationStyle'
-import Back from '../../../assets/devolver.png'
-import BarSearch from '../../barSearch/BarSearch'
+// import React, { useState } from 'react';
+// import { useNavigate, useLocation } from 'react-router-dom';
+// import { BackgroundCertification, SectionBarCertification, SectionListFinal, ArrowBackCertification } from './CertificationStyle';
+// import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser';
+// import { TitleCourseFinal, Certified } from './CertificationStyle';
+// import Back from '../../../assets/devolver.png';
+// import BarSearch from '../../barSearch/BarSearch';
+
+// const ListCertification = () => {
+//   const navigate = useNavigate();
+//   const location = useLocation();
+//   const selectedCourse = location.state.courseData;
+//   const courseTitle = location.state.courseTitle;
+
+//   const [searchTerm, setSearchTerm] = useState('');
+
+//   const handleSearch = (term) => {
+//     setSearchTerm(term);
+//   };
+
+//   const toCertification = () => {
+//     navigate('/certificationSuperUser');
+//   };
+
+//   const filterCertifiedStudents = (certifiedStudents) => {
+//     return certifiedStudents.filter((student) =>
+//       student.name.toLowerCase().includes(searchTerm.toLowerCase())
+//     );
+//   };
+
+//   return (
+//     <>
+//       <HeaderSuperUser />
+//       <BackgroundCertification>
+//         <ArrowBackCertification src={Back} width={20} onClick={toCertification} />
+//         <div>
+//           <TitleCourseFinal>
+//             {courseTitle} / Cohorte {selectedCourse.id}
+//             <Certified>
+//               <strong>Certificados</strong>
+//             </Certified>
+//           </TitleCourseFinal>
+//         </div>
+//         <SectionBarCertification>
+//           <BarSearch onSearch={handleSearch} />
+//         </SectionBarCertification>
+
+//         <SectionListFinal>
+//           <div>
+//             {selectedCourse && filterCertifiedStudents(selectedCourse.groupCertified).map((listFinal, keyListFinal) => (
+//               <button key={keyListFinal}>
+//                 <img src={listFinal.profile} width={50} alt={listFinal.name} />
+//                 <p>{listFinal.name}</p>
+//               </button>
+//             ))}
+//           </div>
+//         </SectionListFinal>
+//       </BackgroundCertification>
+//     </>
+//   );
+// };
+
+// export default ListCertification;
+
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { BackgroundCertification, SectionBarCertification, SectionListFinal, ArrowBackCertification, DivNotFoundCertified } from './CertificationStyle';
+import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser';
+import { TitleCourseFinal, Certified } from './CertificationStyle';
+import Back from '../../../assets/devolver.png';
+import BarSearch from '../../barSearch/BarSearch';
 
 const ListCertification = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const selectedCourse = location.state.courseData;
+  const courseTitle = location.state.courseTitle;
 
-    const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
 
   const toCertification = () => {
-    navigate('/certificationSuperUser')
-  }
+    navigate('/certificationSuperUser');
+  };
 
-    //Pasar a Redux
-    const ListCertified = [
-        {
-            id: 1,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 2,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 3,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 4,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 5,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 6,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 7,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 8,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 9,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 10,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 11,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 12,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 13,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 14,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 15,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 16,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 17,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        },
-        {
-            id: 18,
-            name: "Pepito Jaramillo",
-            image: Avatar
-        }
-    ]
+  const filterCertifiedStudents = (certifiedStudents) => {
+    return certifiedStudents.filter((student) =>
+      student.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
+  const filteredCertifiedStudents = filterCertifiedStudents(selectedCourse?.groupCertified || []);
+
   return (
     <>
-<HeaderSuperUser />
-<BackgroundCertification>
-        <ArrowBackCertification src={Back} width={20} onClick={toCertification}/>
+      <HeaderSuperUser />
+      <BackgroundCertification>
+        <ArrowBackCertification src={Back} width={20} onClick={toCertification} />
         <div>
-           <TitleCourseFinal>
-            Front - end / Cohorte 4
-             <Certified><strong>Certificados</strong></Certified>
-            </TitleCourseFinal>  
-          
+          <TitleCourseFinal>
+            {courseTitle} / Cohorte {selectedCourse.id}
+            <Certified>
+              <strong>Certificados</strong>
+            </Certified>
+          </TitleCourseFinal>
         </div>
         <SectionBarCertification>
-           <BarSearch /> 
+          <BarSearch onSearch={handleSearch} />
         </SectionBarCertification>
-
-    <SectionListFinal>
+        <SectionListFinal>
         <div>
-        {ListCertified.map((listFinal, keyListFinal) => (
-            <button key={keyListFinal}>
-             <img src={listFinal.image} width={50}/>
-             <p>{listFinal.name}</p>
-            </button>
-        ))}
+          {filteredCertifiedStudents.length === 0 ? (
+            <>
+            <DivNotFoundCertified>
+            <img src='https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689736902/LIVE/Im%C3%A1genes/Icons/cerebro-unscreen_rdmhx5.gif' width={200} alt="No se han encontrado resultados" />
+            <p>No se han encontrado los perfiles que buscas.</p>
+          </DivNotFoundCertified>
+          </>
+          ) : (
+            filteredCertifiedStudents.map((listFinal, keyListFinal) => (
+              <button key={keyListFinal}>
+                <img src={listFinal.profile} width={50} alt={listFinal.name} />
+                <p>{listFinal.name}</p>
+              </button>
+            ))
+          )}
         </div>
-    </SectionListFinal>
-    </BackgroundCertification>
-    
+      </SectionListFinal>
+      </BackgroundCertification>
     </>
-  )
-}
+  );
+};
 
-export default ListCertification
+export default ListCertification;
