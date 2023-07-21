@@ -14,6 +14,7 @@ import Profile from '../pages/SuperUser/Profile'
 import StudentsSU from '../pages/SuperUser/StudentsSU';
 
 const AppRouter = () => {
+  
   return (
     
       <GlobalStyles>

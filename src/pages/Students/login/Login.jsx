@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { loginActionAsync } from "../../../redux/actions/userActions";
+import { Link, useNavigate,  } from "react-router-dom";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -22,10 +23,13 @@ const initialValues = {
 
 const Login = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  
   const logIn = (dataForm) => {
+    navigate("/formStudents")
     console.log(dataForm);
     dispatch(loginActionAsync(dataForm.email, dataForm.password));
+
   };
 
   return (
@@ -46,7 +50,7 @@ const Login = () => {
         >
           {(formik) => (
             <SectionRegistro onSubmit={formik.handleSubmit}>
-              <label htmlFor="email">CORREO</label>
+              <label htmlFor="email">Correo electrónico </label>
               <input
                 type="text"
                 id="email"
@@ -57,7 +61,7 @@ const Login = () => {
                 <div>{formik.errors.email}</div>
               )}
 
-              <label htmlFor="password">CONTRASEÑA</label>
+              <label htmlFor="password">Contraseña</label>
               <Field
                 type="password"
                 id="password"
@@ -67,10 +71,11 @@ const Login = () => {
               {formik.touched.password && formik.errors.password && (
                 <div>{formik.errors.password}</div>
               )}
-
-              <button type="submit" disabled={formik.isSubmitting}>
-                Entrar
-              </button>
+             
+                <button type="submit" >
+                  Entrar
+                </button>
+           
             </SectionRegistro>
           )}
         </Formik>
