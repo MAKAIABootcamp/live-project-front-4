@@ -29,13 +29,13 @@ const FormStudents = () => {
             </select>
           </section>
           <section>
-            <label htmlFor="">Numero Documento Identidad</label>
+            <label htmlFor="">Número Documento Identidad</label>
             <input type="text" />
           </section>
         </SectionInput>
         <SectionInput>
           <section>
-            <label htmlFor="">Genero</label>
+            <label htmlFor="">Género</label>
            <select name="" id="">
             <option value="">Selecciona una respuesta</option>
             <option value="Mujer">Mujer</option>
@@ -48,13 +48,13 @@ const FormStudents = () => {
             <input type="text" />
           </section>
           <section>
-            <label htmlFor="">Numero de celular</label>
+            <label htmlFor="">Número de celular</label>
             <input type="text" />
           </section>
         </SectionInput>
         <SectionInput>
           <section>
-            <label htmlFor="">Correo electronico</label>
+            <label htmlFor="">Correo electrónico</label>
             <input type="text" />
           </section>
           <section>
@@ -67,7 +67,7 @@ const FormStudents = () => {
             </select>
           </section>
           <section>
-            <label htmlFor="">Departemento en que vives</label>
+            <label htmlFor="">Departamento en que vives</label>
             <input type="text" />
           </section>
         </SectionInput>
@@ -77,11 +77,11 @@ const FormStudents = () => {
             <input type="text" />
           </section>
           <section>
-            <label htmlFor="">Direccion de Residencia</label>
+            <label htmlFor="">Dirección de Residencia</label>
             <input type="text" />
           </section>
           <section>
-            <label htmlFor="">Ocupacion Actual</label>
+            <label htmlFor="">Ocupación Actual</label>
           <select name="" id="">
           <option value="">Selecciona una respuesta</option>
             <option value="No estudio ni trabajo">No estudio ni trabajo</option>
@@ -93,7 +93,7 @@ const FormStudents = () => {
         </SectionInput>
         <SectionInput>
           <section>
-            <label htmlFor="">Cual es tu Nivel Educativo Alcanzado</label>
+            <label htmlFor=""> Nivel Educativo Alcanzado</label>
            <select name="" id="">
            <option value="">Selecciona una respuesta</option>
            <option value="Primaria">Primaria</option>
@@ -105,11 +105,11 @@ const FormStudents = () => {
            </select>
           </section>
           <section>
-            <label htmlFor="">Tienes Acseso A</label>
+            <label htmlFor="">Tienes Acceso A</label>
             <input type="text" />
           </section>
           <section>
-            <label htmlFor="">Segun tu recibo cual es tu  estracto socieconomico</label>
+            <label htmlFor="">Según tu recibo cuál es tu estrato socioeconómico</label>
           <select name="" id="">
           <option value="">Selecciona una respuesta</option>
           <option value="Estrato 1">Estrato 1</option>

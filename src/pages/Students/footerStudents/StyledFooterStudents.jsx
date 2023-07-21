@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-<<<<<
+
 export const Footer= styled.footer`
 display:flex ;
 justify-content:space-between;
@@ -10,7 +10,7 @@ height:50px ;
 width:100% ;
 bottom: 0;
 margin:0 ;
-position: fixed;
+/* position: fixed; */
 `
 
 export const SectionDerechos = styled.section`

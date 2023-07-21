@@ -1,5 +1,10 @@
 import { styled } from "styled-components";
-import backgroundState from "../../../assets/FONDOGENERAL.png";
+import fondoGeneral from "../../../assets/FONDOGENERAL.png";
+
+export const ContainerBenefitBackg = styled.div`
+  background-image: url(${fondoGeneral});
+`
+
 
 export const ContainerBenefitStudents = styled.div`
   display: flex;
@@ -7,14 +12,21 @@ export const ContainerBenefitStudents = styled.div`
   height: 80vh;
   padding: 90px 0px;
   color: #03203a;
-  background-image: url(${backgroundState});
+
+  @media screen and (max-width: 1286px){
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    height: 100vh;
+  }
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 40px;
-    height: 140vh;
+    height: 110vh;
   }
 
   @media screen and (max-width: 376px) {

@@ -1,8 +1,25 @@
-import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Login from "../pages/Students/login/Login";
 
-const PublicRouter = ({ isAutentication }) => {
-  return <div>{isAutentication ? <Navigate to="" /> : <Outlet />}</div>;
+const PublicRouter = ({ isAuthentication, userType }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthentication && userType === "estudiante") {
+      navigate("/homestudents");
+    }
+
+    if (isAuthentication && userType === "administrador") {
+      navigate("/homeSuperUser");
+    }
+  }, [isAuthentication, userType, navigate]);
+
+  return (
+    <Routes>
+      <Route path="*" element={<Login />} />
+    </Routes>
+  );
 };
 
 export default PublicRouter;

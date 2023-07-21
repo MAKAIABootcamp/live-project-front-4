@@ -14,8 +14,7 @@ export const ContainerStateStudents = styled.div`
     letter-spacing: 2px;
   }
   @media screen and (max-width: 376px) {
-    
-    height: 100vh;
+    height: 90vh;
     padding: 100px 0px 150px 150px;
   }
 `;
@@ -38,7 +37,6 @@ export const ContainerStep = styled.section`
   }
 
   hr {
-    background-color: transparent;
     height: 105px;
     width: 1px;
     border: none;
@@ -49,13 +47,29 @@ export const ContainerStep = styled.section`
   }
 `;
 export const ContainerP = styled.section`
+  display: ${(props) => (props.active ? "flex" : "none")};
   display: flex;
   width: 460px;
   height: 160px;
-  text-align: left;
+  text-align: right;
 
   h3 {
     color: #25abbcff;
+    text-align: right;
+    padding-right: 10px;
+  }
+
+  hr,
+  span {
+    background-color: ${(props) => (props.active ? "#eee420" : "transparent")};
+    color: ${(props) => (props.active ? "transparent" : "#999")};
+    border-color: ${(props) => (props.active ? "transparent" : "#e0e0e0")};
+  }
+
+  img {
+    display: ${(props) => (props.active ? "flex" : "none")};
+    width: 30px;
+    margin-left: -13px;
   }
 
   @media screen and (max-width: 768px) {
@@ -71,8 +85,21 @@ export const ContainerP2 = styled.section`
   width: 460px;
   height: 160px;
   text-align: left;
+
   h3 {
     color: #25abbcff;
+  }
+  hr,
+  span {
+    background-color: ${(props) => (props.active ? "#eee420" : "transparent")};
+    color: ${(props) => (props.active ? "transparent" : "#999")};
+    border-color: ${(props) => (props.active ? "transparent" : "#e0e0e0")};
+  }
+
+  img {
+    display: ${(props) => (props.active ? "flex" : "none")};
+    width: 30px;
+    margin-left: -13px;
   }
 
   @media screen and (max-width: 768px) {
@@ -87,9 +114,24 @@ export const ContainerP4 = styled.section`
   width: 460px;
   height: 160px;
   text-align: left;
+
   h3 {
     color: #25abbcff;
   }
+
+  hr,
+  span {
+    background-color: ${(props) => (props.active ? "#eee420" : "transparent")};
+    color: ${(props) => (props.active ? "transparent" : "#999")};
+    border-color: ${(props) => (props.active ? "transparent" : "#e0e0e0")};
+  }
+
+  img {
+    display: ${(props) => (props.active ? "flex" : "none")};
+    width: 30px;
+    margin-left: -13px;
+  }
+
   @media screen and (max-width: 768px) {
     padding: 0px;
   }
