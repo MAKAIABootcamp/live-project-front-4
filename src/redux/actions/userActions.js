@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth, db } from "../confiFirebase/configFirebase";
+import { auth, dataBase } from "../../confiFirebase/configFirebase";
 import { userTypes } from "../types/userTypes";
 import { addDoc, collection } from "firebase/firestore";
 import Swal from "sweetalert2";
@@ -100,7 +100,7 @@ export const registerActionAsync = (
 ) => {
   return async (dispatch) => {
     try {
-      await addDoc(collection(db, "Estudiantes"),
+      await addDoc(collection(dataBase, "Estudiantes"),
               {
           idUsuario: uid,
           nombreCompleto,
