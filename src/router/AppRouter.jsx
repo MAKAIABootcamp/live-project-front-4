@@ -25,6 +25,7 @@ import Certification from '../componentsGeneral/componentsSuperUser/certificatio
 import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/ProfileSelected';
 import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
 import AddStudents from "../pages/SuperUser/AddStudents";
+import NotFoundPages from "../pages/NotFoundPages";
 
 const AppRouter = () => {
   return (
@@ -69,6 +70,7 @@ const AppRouter = () => {
             <Route path="RequestBenefis" element={<RequestBenefis />}/>{/* LISTO solicitud de beneficios */}
             <Route path="benefitsReceived" element={<BenefitsReceivedStudents />}/>{/* LISTO Beneficios recibidos */}
             <Route path="escortRoute" element={<EscortRouteStudents/>} />{/* ruta de acompañamiento LISTO EN CODIGO  */}
+            <Route path="NotFoundPages" element={<NotFoundPages/>} />{/* lista  */}
           </Routes>
         </BrowserRouter>
     </GlobalStyles>

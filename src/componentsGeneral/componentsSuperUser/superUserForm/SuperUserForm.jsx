@@ -13,33 +13,54 @@ import CategoryCollaborators from "./category/CategoryCollaborators";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import * as Yup from "yup";
 import { addAdminAndStudentsTypesActionAsync } from "../../../redux/actions/addAdminAndStudentsActions";
+import { init } from "emailjs-com";
+import emailjs from "emailjs-com";
 
-const SuperUserForm = ({ addAdminAndStudentsTypesActionAsync }) => {
-  const handleSubmit = async (values, { setSubmitting }) => {
+const SuperUserForm = ({ addAdminAndStudents }) => {
+  const handleSubmit = async (values) => {
+    const { nombre, area, cargo, email, telefono } = values;
+    const password = generateRandomPassword(8); // Generar contraseña aleatoria de 8 caracteres
+    const userData = {
+      nombre,
+      area,
+      cargo,
+      email,
+      telefono,
+      contraseña: password,
+      userType: "administrador",
+    };
+
     try {
-      // Guardar el usuario en Redux
-      addAdminAndStudentsTypesActionAsync(values);
+      // Agregar el usuario a Firestore usando la acción addAdminAndStudentsTypesActionAsync
+      await addAdminAndStudents(userData);
+      console.log("Usuario agregado correctamente a Firestore.");
+      const { email, contraseña } = userData;
 
-      //Enviar la contraseña al correo corporativo del usuario utilizando
-      const sendPasswordEmail = "sendPasswordEmail";
-      const password = generatePassword();
-      await sendPasswordEmail({
-        email: values.emailCorporate,
-        password,
-      });
+      // Configurar emailjs-com con los detalles de tu cuenta
+      init("HG4_QlSaoJ-f9recA");
 
-      // Restablecer los valores del formulario
-      setSubmitting(false);
+      // Datos para el correo
+      const templateParams = {
+        to_email: email,
+        password: contraseña,
+      };
+
+      // Enviar el correo
+      const response = await emailjs.send(
+        "template_hg3t809",
+        "service_p1kix9s",
+        templateParams
+      );
+
+      console.log("Correo enviado:", response);
     } catch (error) {
-      console.log("Error al enviar la contraseña por correo:", error);
-      // Manejar el error apropiadamente
+      console.error("Error al agregar el usuario a Firestore:", error);
     }
   };
-
-  const generatePassword = () => {
+  const generateRandomPassword = () => {
     // contraseña aleatoria de 8 caracteres
     const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
     let password = "";
     for (let i = 0; i < 8; i++) {
       password += characters.charAt(
@@ -143,12 +164,10 @@ const SuperUserForm = ({ addAdminAndStudentsTypesActionAsync }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    newAdminAndStydentsType: (userData) => {
-      dispatch(addAdminAndStudentsTypesActionAsync(userData));
-    },
-
+    addAdminAndStudents: (userData) =>
+      dispatch(addAdminAndStudentsTypesActionAsync(userData)),
   };
 };
 
-export default connect(mapDispatchToProps)(SuperUserForm);
+export default connect(null, mapDispatchToProps)(SuperUserForm);
 // export default SuperUserForm;

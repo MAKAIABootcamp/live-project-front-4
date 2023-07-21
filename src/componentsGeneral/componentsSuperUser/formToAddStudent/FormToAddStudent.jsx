@@ -6,28 +6,49 @@ import {
   FormGroup,
   SubmitButton,
   ErrorText,
+  FormGroupSelect,
 } from "./FormToAddStudentStyled";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import * as Yup from "yup";
 import { addAdminAndStudentsTypesActionAsync } from "../../../redux/actions/addAdminAndStudentsActions";
+import { init } from "emailjs-com";
+import emailjs from "emailjs-com";
 
 const FormToAddStudent = ({ addAdminAndStudents }) => {
   const handleSubmit = async (values) => {
-    const { nombre, celular, programa, correo } = values;
-    const password = generateRandomPassword(8); // Generar contraseña aleatoria de 8 caracteres
+    const { nombre, celular, programa, email } = values;
+    const password = generateRandomPassword(8);
     const userData = {
       nombre,
       celular,
       programa,
-      correo,
+      email,
       contraseña: password,
       userType: "estudiante",
     };
 
     try {
-      // Agregar el usuario a Firestore usando la acción addAdminAndStudentsTypesActionAsync
       await addAdminAndStudents(userData);
       console.log("Usuario agregado correctamente a Firestore.");
+      const { email, contraseña } = userData;
+
+      // Configurar emailjs-com con los detalles de tu cuenta
+      init("HG4_QlSaoJ-f9recA");
+
+      // Datos para el correo
+      const templateParams = {
+        to_email: email,
+        password: contraseña,
+      };
+
+      // Enviar el correo
+      const response = await emailjs.send(
+        "template_hg3t809",
+        "service_p1kix9s",
+        templateParams
+      );
+
+      console.log("Correo enviado:", response);
     } catch (error) {
       console.error("Error al agregar el usuario a Firestore:", error);
     }
@@ -44,7 +65,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
       .required("Campo requerido")
       .matches(/^\d+(\.\d+)*$/, "Formato de celular inválido"),
     programa: Yup.string().required("Campo requerido"),
-    correo: Yup.string()
+    email: Yup.string()
       .required("Campo requerido")
       .matches(
         /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i,
@@ -67,7 +88,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
     nombre: "",
     celular: "",
     programa: "",
-    correo: "",
+    email: "",
     userType: "estudiante",
     contraseña: "",
   };
@@ -103,12 +124,12 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
               </FormGroup>
 
               <FormGroup>
-                <label htmlFor="correo">Correo:</label>
-                <Field type="text" id="correo" name="correo" />
-                <ErrorMessage name="correo" component={ErrorText} />
+                <label htmlFor="email">Correo:</label>
+                <Field type="text" id="email" name="email" />
+                <ErrorMessage name="email" component={ErrorText} />
               </FormGroup>
 
-              <FormGroup>
+              <FormGroupSelect>
                 <label htmlFor="programa">Programa:</label>
                 <Field as="select" id="programa" name="programa">
                   {options.map((item) => (
@@ -116,7 +137,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
                   ))}
                 </Field>
                 <ErrorMessage name="programa" component={ErrorText} />
-              </FormGroup>
+              </FormGroupSelect>
 
               <SubmitButton type="submit">Enviar</SubmitButton>
             </FormContainer>
