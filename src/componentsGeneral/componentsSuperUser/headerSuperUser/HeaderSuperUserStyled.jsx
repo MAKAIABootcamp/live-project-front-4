@@ -248,7 +248,8 @@ export const ContainerHeader = styled.nav`
 
   @media screen and (max-width: 376px) {
     font-size: 10px;
-    width: 376px;
+    width: 440px;
+    z-index: 210;
   }
 
   &.active .links {

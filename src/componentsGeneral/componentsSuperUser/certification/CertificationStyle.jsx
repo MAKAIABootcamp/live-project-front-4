@@ -12,6 +12,9 @@ background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v168960
 }
 
 @media screen and (max-width: 375px) {
+    object-fit: cover;
+    width: 430px;
+    height: 1000px;
 background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607557/LIVE/Im%C3%A1genes/Covers/FONDO_CEL_v7opjm.png');
 }
 `;
@@ -24,7 +27,7 @@ margin: 0 auto;
 display: flex;
 justify-content: center;
 font-weight: bold;
-padding-top: 100px; 
+padding-top: 150px; 
 padding-bottom: 20px;  
 transform: translate(-35%, -20%);
 }
@@ -55,7 +58,8 @@ export const SectionBarCertification = styled.div`
 }
 
 @media screen and (max-width: 375px) {
-    transform: translate(10px, 0)
+    transform: translate(10px, 10px)
+    background-color: orange;
 }
 `;
 
@@ -79,11 +83,11 @@ font-size: 20px;
 }
 
 @media screen and (max-width: 375px) {
-    transform: translateX(14%);
-    width: 100%;
+    margin: 0 auto;
 
     & p{
         text-align: center;
+        width: 350px;
     }
 }
 `;
@@ -116,7 +120,7 @@ transition: 0.5s;
 }
 
 @media screen and (max-width: 375px) {
-    width: 360px;
+    width: 350px;
 }
 `;
 
@@ -199,7 +203,7 @@ transform: translate(40px, 140px);
 
 @media screen and (max-width: 375px) {
     transform: translate(20px, 50px);
-    padding: 10px;
+    padding-top: 50px;
 }
 
 `;
@@ -225,7 +229,7 @@ transform: translate(-30%, 6%);
 
 @media screen and (max-width: 375px) {
     width: 50%;
-    transform: translate(-43%, 10px);
+    transform: translate(-43%, 50px);
     font-size: 16px;
 }
 `;
