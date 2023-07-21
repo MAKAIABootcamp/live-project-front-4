@@ -2,19 +2,23 @@ import { styled } from "styled-components"
 
 export const BackgroundSelection = styled.section`
 background-repeat: no-repeat;
+width: 1440px;
+height: auto;
 background-size: cover;
 background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607992/LIVE/Im%C3%A1genes/Covers/FONDO_PC_eoeuar.png');
 
 @media screen and (max-width: 768px) {
-    background-repeat: no-repeat;
+width: 100%;
+background-repeat: no-repeat;
 background-size: cover;
-    background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607556/LIVE/Im%C3%A1genes/Covers/FONDO_TABLET_knpzbw.png');
+background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607556/LIVE/Im%C3%A1genes/Covers/FONDO_TABLET_knpzbw.png');
 }
 
 @media screen and (max-width: 375px) {
-    background-repeat: no-repeat;
+width: 100%;
+background-repeat: no-repeat;
 background-size: cover;
-    background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607557/LIVE/Im%C3%A1genes/Covers/FONDO_CEL_v7opjm.png');
+background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607557/LIVE/Im%C3%A1genes/Covers/FONDO_CEL_v7opjm.png');
 }
 `;
 
@@ -124,9 +128,11 @@ padding-bottom: 80px;
 `;
 
 export const CoverSelection = styled.img`
-width: 70%;
+@media screen and (max-width: 1440px) {
+width: 700px;
 margin-top: 50px;
-transform: translateX(10%);
+transform: translate(10px);   
+}
 
 @media screen and (max-width: 768px) {
     transform: translateX(0%);
@@ -139,6 +145,28 @@ transform: translateX(10%);
     width: 300px;
 }
 `;
+
+export const CoverSelectionDetails = styled.img`
+@media screen and (max-width: 1440px) {
+width: 700px;
+margin-top: 50px;
+margin-right: 110px;
+position: block;
+transform: translate(50px, 40px);   
+}
+
+@media screen and (max-width: 768px) {
+    transform: translateX(0%);
+    margin-top: -10px;
+    width: 500px;
+}
+
+@media screen and (max-width: 375px) {
+    transform: translateX(20%);
+    width: 300px;
+}
+`;
+
 
 export const ContentCourses = styled.div`
 @media screen and (max-width: 1440px) {
@@ -230,8 +258,10 @@ margin: 0 auto;
 
 export const ProfileContent = styled.section`
 @media screen and (max-width: 1440px) {
-width: 90%;
-margin-top: 20px;    
+width: 800px;
+margin-top: 20px;   
+overflow: hidden;
+/* background-color: olive;  */
 }
 
 @media screen and (max-width: 768px) {
@@ -240,16 +270,32 @@ margin-top: 20px;
 
 `;
 
-export const AvatarPhoto = styled.figure`
-@media screen and (width: 1440px) {
+export const AvatarPhoto = styled.div`
 overflow: hidden;
+background-color: orange;
 border-radius: 200px;
-border: 2px solid black;
-width: 180px;
-height: 180px;
+width: 200px;
+height: 200px;
 
 & img{
- transform: translateX(-5px);
+    width: 100%;
+    object-fit: cover;
+}
+@media screen and (width: 1440px) {
+overflow: hidden;
+background-color: orange;
+border-radius: 200px;
+border: 2px solid black;
+width: 200px;
+height: 200px;
+object-fit: cover;
+background-size: cover;
+
+& img{
+overflow: hidden;
+width: 100%;
+object-fit: cover;
+/* transform: translateX(-20%); */
 }  
 }
 
@@ -292,7 +338,8 @@ flex-direction: column;
 
 export const MoreInfoAvatar = styled.div`
 text-align: justify;
-width: 95%;
+width: 100%;
+margin-top: 20px;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -318,7 +365,7 @@ font-weight: bold;
 export const ScrollInfo = styled.section`
 overflow: hidden;
 overflow: scroll;
-height: 250px; 
+height: 300px; 
 `;
 
 export const ContentListInfo = styled.section`
@@ -349,9 +396,12 @@ flex-direction: column;
 
 export const CourseSelected = styled.button`
 @media screen and (max-width: 1440px) {
-   background-color: #03203A;
-height: 100px;
+background-color: #03203A;
+height: 110px;
+overflow: hidden;
 border: transparent;
+position: absolute;
+z-index: 20;
 border-radius: 5px;
 display: flex;
 align-items: center;
@@ -361,7 +411,19 @@ color: white;
 font-size: 20px;
 cursor: pointer;
 transition: 0.5s;
-width: 350px;
+width: 400px;
+/* transform: translate(-20%, 20%); */
+animation: deployList 1.5s forwards;
+
+@keyframes deployList {
+0%{
+    transform: translate(80px, 250px)
+}
+
+100%{
+    transform: translate(80px, 100px);
+}
+}
 
 & div{
     display: flex;
@@ -399,16 +461,52 @@ filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(121deg) brightness(106%) 
 `;
 
 export const ListGeneral = styled.div`
-background-color: #ffffff; //Listado
+@media screen and (max-width: 1440px) {
 overflow: hidden;
-height: 370px;
-padding-top: 10px;
+width: 400px;
+display: flex;
+height: 0px;
+flex-direction: column;
+padding-top: 10px; 
+transform: translate(80px, 220px);
+/* opacity: 0;  */
+animation: 2.5s deployStudentsSelection forwards;
+
+@keyframes deployStudentsSelection {
+
+    0%{
+        height: 0px;
+        opacity: 0;
+    }
+/* 
+    20%{
+        height: 0px;
+    } */
+
+    100%{
+        height: 370px;
+        opacity: 1;
+    }
+}
+}
+
 `;
 
 export const InfoList = styled.section`
+@media screen and (max-width: 1440px) {
+width: 100%;
 display: flex;
 justify-content: space-between;
+/* flex-direction: column; */
 align-items: center;
+background-color: white;
+border: transparent;
+
+& div{
+    flex-direction: column;
+}  
+}
+
 `;
 
 export const StyleStatus = styled.div`
@@ -457,4 +555,19 @@ transition: 0.3s;
 & :hover{
     border: 1px solid yellow;
 }
+`;
+
+export const DivNotFound = styled.div`
+@media screen and (max-width: 1440px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+}
+`;
+
+export const DataHV = styled.section`
+display: flex;
+justify-content: space-between;
 `;

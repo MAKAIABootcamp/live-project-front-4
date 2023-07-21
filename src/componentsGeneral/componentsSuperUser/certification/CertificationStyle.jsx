@@ -61,14 +61,18 @@ export const SectionBarCertification = styled.div`
 
 
 export const CoursesCertified = styled.section`
+@media screen and (max-width: 1440px) {
 padding-top: 30px;
 width: 80%;
 display: flex;
+flex-wrap: wrap;
 flex-direction: column;
+justify-content: space-between;
 margin: 0 auto;
 gap: 20px;
 padding-bottom: 50px;
-font-size: 20px;
+font-size: 20px;  
+}
 
 @media screen and (max-width: 768px) {
     flex-wrap: wrap;
@@ -230,4 +234,15 @@ export const Certified = styled.p`
 font-weight: 400;
 transform: translateY(-10px);
 color: black;
+`;
+
+export const DivNotFoundCertified = styled.div`
+@media screen and (max-width: 1440px) {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+}
 `;

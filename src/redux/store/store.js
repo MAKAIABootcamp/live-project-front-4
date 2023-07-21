@@ -29,8 +29,6 @@ const rootReducer = {
   benefitTypes: benefitTypesReducer, // Asigna el reducer de benefitTypes a la propiedad benefitTypes
   courses: coursesReducer,
   cohort: newCohorteReducers,
-  courses: coursesReducer,
-
 };
 
 const store = configureStore({
