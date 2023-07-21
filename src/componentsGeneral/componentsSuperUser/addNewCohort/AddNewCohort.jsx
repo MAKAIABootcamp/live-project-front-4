@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { addNewCohorTypestAsync } from "../../../redux/actions/newCohorteActions";
 import styled from "styled-components";
+import es from "date-fns/locale/es";
+
 import {
   Row,
   ErrorText,
@@ -344,6 +346,7 @@ const AddNewCohort = ({ addCohort }) => {
                       id="fechaInicio"
                       name="fechaInicio"
                       placeholder="Selecciona una fecha"
+                      locale={es}
                     />
                     <ErrorMessage name="fechaInicio" component={ErrorText} />
                   </div>
@@ -360,6 +363,7 @@ const AddNewCohort = ({ addCohort }) => {
                       id="fechaFinalizacion"
                       name="fechaFinalizacion"
                       placeholder="Selecciona una fecha"
+                      locale={es}
                     />
                     <ErrorMessage
                       name="fechaFinalizacion"
@@ -372,10 +376,10 @@ const AddNewCohort = ({ addCohort }) => {
                   <div>
                     <label htmlFor="horarioInicio">Hora de inicio</label>
                     <StyledField
-                      type="text"
+                      type="time"
                       id="horarioInicio"
                       name="horarioInicio"
-                      placeholder="14:00pm - 18:00pm"
+                      placeholder="14:00pm"
                     />
                     <ErrorMessage name="horarioInicio" component={ErrorText} />
                   </div>
@@ -385,7 +389,7 @@ const AddNewCohort = ({ addCohort }) => {
                   <div>
                     <label htmlFor="horarioCierre">Hora de cierre</label>
                     <StyledField
-                      type="text"
+                      type="time"
                       id="horarioCierre"
                       name="horarioCierre"
                       placeholder="14:00pm - 18:00pm"

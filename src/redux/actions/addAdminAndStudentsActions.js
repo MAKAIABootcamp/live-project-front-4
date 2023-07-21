@@ -5,17 +5,13 @@ import { typeFormAdminAndStydents } from "../types/userTypes";
 const nameCollection = "users";
 const referenceCollection = collection(dataBase, nameCollection);
 
-export const addAdminAndStudentsTypesActionAsync = (
-  newAdminAndStydentsType
-) => {
+export const addAdminAndStudentsTypesActionAsync = (userData) => {
   return async (dispatch) => {
     try {
-      const docRef = await addDoc(referenceCollection, {
-        newAdminAndStydentsType,
-      });
+      const docRef = await addDoc(referenceCollection, userData);
       const FormAdminAndStydents = {
         id: docRef.id,
-        newAdminAndStydentsType,
+        ...userData,
       };
       dispatch(addAdminAndStudentsTypesActionSync(FormAdminAndStydents, null));
     } catch (error) {
@@ -34,7 +30,7 @@ export const addAdminAndStudentsTypesActionSync = (
   error
 ) => {
   return {
-    type: "ADD_FORMADMINSTUDENTS",
+    type: typeFormAdminAndStydents.ADD_FORMADMINSTUDENTS,
     payload: {
       newAdminAndStydents,
       error,
@@ -42,7 +38,7 @@ export const addAdminAndStudentsTypesActionSync = (
   };
 };
 
-export const getBenefitAction = (nameCollection) => {
+export const getAdminAndStudents = (nameCollection) => {
   return async (dispatch) => {
     try {
       console.log("Fetching benefits from database...");

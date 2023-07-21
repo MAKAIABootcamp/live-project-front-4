@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
   FormContainer,
@@ -8,9 +9,29 @@ import {
 } from "./FormToAddStudentStyled";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import * as Yup from "yup";
+import { addAdminAndStudentsTypesActionAsync } from "../../../redux/actions/addAdminAndStudentsActions";
 
-const FormToAddStudent = () => {
-  const [isChecked, setIsChecked] = useState(false);
+const FormToAddStudent = ({ addAdminAndStudents }) => {
+  const handleSubmit = async (values) => {
+    const { nombre, celular, programa, correo } = values;
+    const password = generateRandomPassword(8); // Generar contraseña aleatoria de 8 caracteres
+    const userData = {
+      nombre,
+      celular,
+      programa,
+      correo,
+      contraseña: password,
+      userType: "estudiante",
+    };
+
+    try {
+      // Agregar el usuario a Firestore usando la acción addAdminAndStudentsTypesActionAsync
+      await addAdminAndStudents(userData);
+      console.log("Usuario agregado correctamente a Firestore.");
+    } catch (error) {
+      console.error("Error al agregar el usuario a Firestore:", error);
+    }
+  };
 
   const validationSchema = Yup.object().shape({
     nombre: Yup.string()
@@ -31,19 +52,24 @@ const FormToAddStudent = () => {
       ),
   });
 
+  const generateRandomPassword = (length) => {
+    const charset =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      password += charset.charAt(randomIndex);
+    }
+    return password;
+  };
+
   const initialValues = {
     nombre: "",
     celular: "",
     programa: "",
     correo: "",
+    userType: "estudiante",
     contraseña: "",
-  };
-
-  const handleSubmit = (values) => {
-    console.log(values);
-  };
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
   };
 
   const options = [
@@ -92,19 +118,6 @@ const FormToAddStudent = () => {
                 <ErrorMessage name="programa" component={ErrorText} />
               </FormGroup>
 
-              <FormGroup>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={handleCheckboxChange}
-                  />
-                  Estudiante
-                </label>
-                {isChecked}
-                <ErrorMessage name="correo" component={ErrorText} />
-              </FormGroup>
-
               <SubmitButton type="submit">Enviar</SubmitButton>
             </FormContainer>
           </Form>
@@ -114,4 +127,12 @@ const FormToAddStudent = () => {
   );
 };
 
-export default FormToAddStudent;
+// export default FormToAddStudent;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addAdminAndStudents: (userData) =>
+      dispatch(addAdminAndStudentsTypesActionAsync(userData)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(FormToAddStudent);

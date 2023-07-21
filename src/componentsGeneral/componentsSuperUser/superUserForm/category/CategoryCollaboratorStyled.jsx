@@ -1,27 +1,28 @@
 import styled from "styled-components";
 
 export const DivGeneral = styled.div`
-  margin-top: 30px;
   display: flex;
-  padding-left: 30px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   @media screen and (max-width: 768px) {
     display: flex;
-    flex-direction: column;
   }
   @media screen and (max-width: 376px) {
     display: flex;
-    flex-direction: column;
     padding-left: 0;
-    margin-top: 70px;
   }
-  h2 {
-    color: #25abbc;
-    @media screen and (max-width: 768px) {
-      text-align: center;
-    }
-    @media screen and (max-width: 376px) {
-      text-align: center;
-    }
+`;
+
+export const H2 = styled.h2`
+  color: #25abbc;
+  text-align: center;
+  margin-top: 70px;
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
+  @media screen and (max-width: 376px) {
+    text-align: center;
   }
 `;
 
@@ -41,53 +42,72 @@ export const Figure = styled.div`
   }
   @media screen and (max-width: 376px) {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 20px;
     img {
-      width: 100%;
+      width: 200px;
       max-width: 300px;
     }
   }
 `;
 
 export const DivButton = styled.div`
-  margin-top: 30px;
   display: flex;
-  flex-direction: column;
-  width: 20%;
-  button {
-    height: 50px;
-    border: none;
-    /* cursor: pointer;
-    transition: background-color 0.3s;
-    :hover {
-      background-color: yellow;
-    } */
-    div {
-      display: flex;
-      align-items: center;
-    }
-    p {
-      margin-left: 10px;
-      font-size: 15px;
-    }
-  }
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
   @media screen and (max-width: 768px) {
     width: 100%;
+    max-width: 768px;
+  }
+  @media screen and (max-width: 376px) {
+    display: flex;
+    flex-wrap: none;
+    justify-content: center;
+  }
+  button {
+    flex: 1; /* Hace que los botones ocupen el mismo ancho */
+    max-width: 200px;
+    height: 50px;
+    border: none;
+    margin-left: 20px;
+    margin-right: 10px;
+    background-color: #03203a;
+    color: white;
+    @media screen and (max-width: 768px) {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    @media screen and (max-width: 376px) {
+      max-width: 200px;
+      height: 50px;
+      border: none;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+  div {
+    display: flex;
+    align-items: center;
+  }
+  p {
+    margin-left: 10px;
+    font-size: 15px;
+    @media screen and (max-width: 376px) {
+      font-size: 12px;
+    }
   }
 `;
 
 export const TableBenefits = styled.table`
   background-color: white;
-  margin-top: 80px;
+  /* margin-top: 80px; */
   margin-left: 70px;
 
   th {
-    background-color: #dddddd;
     color: #000000;
-    padding: 15px 65px;
+    padding: 10px 30px;
     font-size: 15px;
   }
 
@@ -100,7 +120,6 @@ export const TableBenefits = styled.table`
   @media screen and (max-width: 768px) {
     margin-left: 40px;
     th {
-      padding: 15px 100px;
       font-size: 15px;
     }
 
@@ -110,6 +129,8 @@ export const TableBenefits = styled.table`
     }
   }
   @media screen and (max-width: 376px) {
+    margin-left: 0px;
+
     th {
       padding: 23px;
       font-size: 12px;
@@ -122,6 +143,12 @@ export const TableBenefits = styled.table`
   }
 `;
 
+export const Th = styled.th`
+  color: #000000;
+  padding: 10px 30px;
+  font-size: 15px;
+`;
+
 export const Modal = styled.div`
   position: fixed;
   top: 0;
@@ -132,7 +159,7 @@ export const Modal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   @media screen and (max-width: 376px) {
     margin-top: 70px;
   }

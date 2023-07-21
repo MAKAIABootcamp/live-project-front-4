@@ -1,35 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Formik } from "formik";
-// import { saveSuperUser } from "../../../redux/actions/userActions";
 import {
   Panel,
   DivInput,
   Input,
   Form,
   Action,
-  DivTitleSearch,
   Select,
 } from "./SuperUserFormStyled";
 import CategoryCollaborators from "./category/CategoryCollaborators";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
-// import { functions } from "../../../redux/confiFirebase/configFirebase";
-import "firebase/functions";
 import * as Yup from "yup";
+import { addAdminAndStudentsTypesActionAsync } from "../../../redux/actions/addAdminAndStudentsActions";
 
-const SuperUserForm = ({ saveSuperUser }) => {
+const SuperUserForm = ({ addAdminAndStudentsTypesActionAsync }) => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       // Guardar el usuario en Redux
-      saveSuperUser(values);
+      addAdminAndStudentsTypesActionAsync(values);
 
-      // Enviar la contraseña al correo corporativo del usuario utilizando Firebase Functions
-      // const sendPasswordEmail = functions.httpsCallable("sendPasswordEmail");
-      // const password = generatePassword();
-      // await sendPasswordEmail({
-      //   email: values.emailCorporate,
-      //   password,
-      // });
+      //Enviar la contraseña al correo corporativo del usuario utilizando
+      const sendPasswordEmail = "sendPasswordEmail";
+      const password = generatePassword();
+      await sendPasswordEmail({
+        email: values.emailCorporate,
+        password,
+      });
 
       // Restablecer los valores del formulario
       setSubmitting(false);
@@ -39,18 +36,18 @@ const SuperUserForm = ({ saveSuperUser }) => {
     }
   };
 
-  // const generatePassword = () => {
-  //   // contraseña aleatoria de 8 caracteres
-  //   const characters =
-  //     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  //   let password = "";
-  //   for (let i = 0; i < 8; i++) {
-  //     password += characters.charAt(
-  //       Math.floor(Math.random() * characters.length)
-  //     );
-  //   }
-  //   return password;
-  // };
+  const generatePassword = () => {
+    // contraseña aleatoria de 8 caracteres
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let password = "";
+    for (let i = 0; i < 8; i++) {
+      password += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+    return password;
+  };
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Required"),
@@ -60,23 +57,31 @@ const SuperUserForm = ({ saveSuperUser }) => {
     phone: Yup.string().required("Required"),
   });
 
+  const options = [
+    { value: "Seleccionar" },
+    { value: "Entrenamiento" },
+    { value: "Experiencia" },
+    { value: "Empleabilidad" },
+    { value: "Comercial" },
+  ];
+
   return (
     <div>
       <div>
         <HeaderSuperUser />
       </div>
       <Panel>
-        <DivTitleSearch>
-          <h1>Equipo de trabajo</h1>
-        </DivTitleSearch>
+        <h1>Equipo de trabajo</h1>
         <p>Aquí puedes ingresar a tus colaboradores</p>
         <Formik
           initialValues={{
-            name: "",
+            nombre: "",
             area: "",
-            post: "",
-            emailCorporate: "",
-            phone: "",
+            cargo: "",
+            email: "",
+            telefono: "",
+            contraseña: "",
+            userType: "administrador",
           }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
@@ -85,32 +90,39 @@ const SuperUserForm = ({ saveSuperUser }) => {
             <Form>
               <DivInput>
                 <label htmlFor="">Nombre del colaborador</label>
-                <Input type="text" name="name" placeholder="Nombre Completo" />
+                <Input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre Completo"
+                />
               </DivInput>
 
               <DivInput>
                 <label htmlFor="">Área</label>
-                <Select type="text" name="area">
-                  <option value="Entrenamiento">Entrenamiento</option>
-                  <option value="Experiencia">Experiencia</option>
-                  <option value="Empleabilidad">Empleabilidad</option>
-                  <option value="Comercial">Comercial</option>
+                <Select as="select" id=" area" name=" area">
+                  {options.map((item) => (
+                    <option value={item.value}>{item.value}</option>
+                  ))}
                 </Select>
               </DivInput>
 
               <DivInput>
                 <label htmlFor="">Cargo</label>
-                <Input type="text" name="post" placeholder="Cargo" />
+                <Input type="text" name="cargo" placeholder="Cargo" />
               </DivInput>
 
               <DivInput>
                 <label htmlFor="">Correo corporativo</label>
-                <Input type="email" name="emailCorporate" placeholder="Email" />
+                <Input type="email" name="email" placeholder="Email" />
               </DivInput>
 
               <DivInput>
                 <label htmlFor="">Número de teléfono</label>
-                <Input type="phone" name="phone" placeholder="325 2356 458" />
+                <Input
+                  type="telefono"
+                  name="telefono"
+                  placeholder="325 2356 458"
+                />
               </DivInput>
 
               <Action>
@@ -129,14 +141,14 @@ const SuperUserForm = ({ saveSuperUser }) => {
   );
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     saveSuperUser: (userData) => {
-//       dispatch(saveSuperUser(userData));
-//     },
-//     // Puedes agregar más acciones de Redux para mapear a props del componente aquí
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    newAdminAndStydentsType: (userData) => {
+      dispatch(addAdminAndStudentsTypesActionAsync(userData));
+    },
 
-// export default connect(mapDispatchToProps)(SuperUserForm);
-export default SuperUserForm;
+  };
+};
+
+export default connect(mapDispatchToProps)(SuperUserForm);
+// export default SuperUserForm;

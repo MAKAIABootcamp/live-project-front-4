@@ -10,15 +10,18 @@ const addAdminAndStudentsReducer = (state = initialState, action) => {
     case typeFormAdminAndStydents.ADD_FORMADMINSTUDENTS:
       return {
         ...state,
-        newAdminAndStydentsType: action.payload.newBenefit
-          ? [...state.newAdminAndStydentsType, action.payload.newBenefit]
+        newAdminAndStydentsType: action.payload.newAdminAndStydents
+          ? [
+              ...state.newAdminAndStydentsType,
+              action.payload.newAdminAndStydents,
+            ]
           : state.newAdminAndStydentsType,
         error: action.payload.error,
       };
     case typeFormAdminAndStydents.GET_FORMADMINSTUDENTS:
       return {
         ...state,
-        newAdminAndStydentsType: action.payload, 
+        newAdminAndStydentsType: action.payload,
       };
     default:
       return state;

@@ -14,21 +14,20 @@ const Home = () => {
 
   return (
     <>
-<HeaderSuperUser />
+      <HeaderSuperUser />
       <Div>
         <DivImgEquipo>
           <img src={Equipo} alt="equipo" />
         </DivImgEquipo>
-
         <DivGeneral>
-          <div>
-            <img src={logo} alt="Bootcamp" />
-          </div>
+          <img src={logo} alt="Bootcamp" />
           <p>
             ¡Bienvenid@ de nuevo!
             <br />
-            Estamos encantados de tenerte a bordo y cumplir nuestro propósito{" "}
-            <br /> de potenciar personas con experiencia de valor <br /> .
+            <br />
+            Estamos encantados de tenerte a bordo <br /> y cumplir nuestro
+            propósito de potenciar personas <br /> con experiencia de valor.
+            <br />
             <br />
             Esperamos trabajar juntos y lograr grandes cosas.
             <br />
