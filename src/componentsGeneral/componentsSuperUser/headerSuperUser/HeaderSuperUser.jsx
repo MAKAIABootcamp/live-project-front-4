@@ -243,7 +243,7 @@ const HeaderSuperUser = () => {
           </Item>
 
           {/* Agregamos el SubItems aquí */}
-          <SubItems className={`SubItems ${deployEstudiantes ? "deploySubItems" : ""}`}>
+          <SubItems style={{ display: deployEstudiantes ? "block" : "none" }}>
             <NavLink to={"/selectionSuperUser"}>
               <div>
                 <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531243/LIVE/Im%C3%A1genes/Icons/grupo_1_bki7qd.png" width={20} />
@@ -276,7 +276,8 @@ const HeaderSuperUser = () => {
               </NavLink>
             </figure>
           </Item>
-          <SubItems className={`SubItems ${deployPerfil ? "deploySubItems" : ""}`}>
+          {/* Agregamos el SubItems aquí */}
+          <SubItems style={{ display: deployPerfil ? "block" : "none" }}>
             <NavLink to={'/profileSuperUser'}>
               <div>
                 <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689603697/LIVE/Im%C3%A1genes/Icons/editar_x3bkx2.png" width={20} />
@@ -314,3 +315,4 @@ const HeaderSuperUser = () => {
 };
 
 export default HeaderSuperUser;
+

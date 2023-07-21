@@ -15,9 +15,11 @@ background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v168960
 }
 
 @media screen and (max-width: 375px) {
-width: 100%;
+width: 435px;
+height: 1000px;
 background-repeat: no-repeat;
 background-size: cover;
+object-fit: cover;
 background-image: url('https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607557/LIVE/Im%C3%A1genes/Covers/FONDO_CEL_v7opjm.png');
 }
 `;
@@ -31,7 +33,7 @@ margin: 0 auto;
 display: flex;
 justify-content: center;
 font-weight: bold;
-padding-top: 100px; 
+padding-top: 150px; 
 padding-bottom: 20px;  
 transform: translateX(0 auto) 
 }
@@ -162,7 +164,7 @@ transform: translate(50px, 40px);
 }
 
 @media screen and (max-width: 375px) {
-    transform: translateX(20%);
+    transform: translate(20%, 65%);
     width: 300px;
 }
 `;
@@ -178,7 +180,7 @@ transform: translateX(-20%)
 }
 
 @media screen and (max-width: 768px) {
-    transform: translateX(0);
+    transform: translateX(-4px);
     width: 700px;
     height: auto;
    overflow: hidden;
@@ -242,7 +244,7 @@ justify-content: space-between;
 }
 
 @media screen and (max-width: 376px) {
-    width: 220px;
+    width: 215px;
 }
 
 `;
@@ -385,7 +387,7 @@ padding-right: 50px;
 @media screen and (max-width: 375px) {
 display: flex;
 flex-direction: column-reverse;
-width: 460px;
+width: 440px;
 }
 `;
 
@@ -439,7 +441,33 @@ animation: deployList 1.5s forwards;
 }
 
 @media screen and (max-width: 768px) {
-    width: 100%
+    width: 98%;
+    animation: deployListablet 1.5s forwards;
+
+@keyframes deployListablet {
+0%{
+    transform: translate(0px, 250px)
+}
+
+100%{
+    transform: translate(0px, 100px);
+}
+}
+}
+
+@media screen and (max-width: 376px) {
+    width: 430px;
+    animation: deployListablet 1.5s forwards;
+
+@keyframes deployListablet {
+0%{
+    transform: translate(0px, 250px)
+}
+
+100%{
+    transform: translate(0px, 100px);
+}
+}
 }
 
 `;
@@ -469,7 +497,6 @@ height: 0px;
 flex-direction: column;
 padding-top: 10px; 
 transform: translate(80px, 220px);
-/* opacity: 0;  */
 animation: 2.5s deployStudentsSelection forwards;
 
 @keyframes deployStudentsSelection {
@@ -478,10 +505,24 @@ animation: 2.5s deployStudentsSelection forwards;
         height: 0px;
         opacity: 0;
     }
-/* 
-    20%{
+
+    100%{
+        height: 370px;
+        opacity: 1;
+    }
+}
+}
+
+@media screen and (max-width: 768px) {
+transform: translate(0px, 220px);
+animation: 2.5s deployStudentsSelection forwards;
+
+@keyframes deployStudentsSelection {
+
+    0%{
         height: 0px;
-    } */
+        opacity: 0;
+    }
 
     100%{
         height: 370px;
