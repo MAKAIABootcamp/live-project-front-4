@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderStudents from "../headerStudents/HeaderStudents";
 import FooterStudents from "../footerStudents/FooterStudents";
 import {
@@ -9,67 +9,39 @@ import {
   ContainerStateStudents,
   ContainerStep,
 } from "./StyleStateStudents";
+import cohete from "../../../assets/rocket-outline.svg";
 
 const StateStudents = () => {
+  const [selectedStates, setSelectedStates] = useState([]);
+
+  const handleStateChange = (event) => {
+    const newState = event.target.value;
+
+    if (!selectedStates.includes(newState)) {
+      setSelectedStates([...selectedStates, newState]);
+    }
+  };
+
   return (
     <>
       <HeaderStudents />
       <ContainerStateStudents>
         <section>
           <h2>Estado</h2>
+          <form action="">
+            <label htmlFor="">Estado estudiante</label>
+            <select name="" id="" onChange={handleStateChange}>
+              <option value="Selecciona un estado">Selecciona un estado</option>
+              <option value="Selección">Selección</option>
+              <option value="Admitid@">Admitid@</option>
+              <option value="Formación">Formación</option>
+              <option value="Certificación">Certificación</option>
+            </select>
+          </form>
         </section>
         <ContainerProgress>
           <ContainerStep>
-            <ContainerP>
-              <section>
-                <h3>Selección</h3>
-                <p>
-                  ¡Felicidades! Avanzaste al emocionante proceso de entrevista,
-                  donde podrás compartir tus experiencias, habilidades y
-                  motivaciones con los evaluadores. Sé auténtico/a y demuestra
-                  lo mejor de ti. ¡Estamos ansiosos por presenciar tus logros!
-                </p>
-              </section>
-              <section>
-                <span>1</span>
-                <hr />
-              </section>
-            </ContainerP>
-
-            <ContainerP2>
-              <section>
-                <h3>Admitid@</h3>
-                <p>
-                  ¡Felicitaciones por tu admisión! Te damos una cálida
-                  bienvenida a nuestro programa. Esperamos que aproveches al
-                  máximo esta oportunidad y te deseamos mucho éxito en tu camino
-                  hacia el crecimiento y el logro de tus metas. ¡Bienvenido/a a
-                  nuestra comunidad
-                </p>
-              </section>
-              <section>
-                <span>2</span>
-                <hr />
-              </section>
-            </ContainerP2>
-            <ContainerP>
-              <section>
-                <h3>Formación</h3>
-                <p>
-                  En la etapa de formación, adquirirás conocimientos y
-                  habilidades para tu crecimiento personal. Estaremos aquí para
-                  apoyarte y proporcionarte las herramientas necesarias para tu
-                  éxito. ¡Prepárate para expandir horizontes y alcanzar tu
-                  máximo potencial!
-                </p>
-              </section>
-              <section>
-                <span>3</span>
-                <hr />
-              </section>
-            </ContainerP>
-
-            <ContainerP4>
+            <ContainerP active={selectedStates.includes("Certificación")}>
               <section>
                 <h3>Certificación</h3>
                 <p>
@@ -81,7 +53,58 @@ const StateStudents = () => {
                 </p>
               </section>
               <section>
-                <span>4</span>
+                <span>4 <img src={cohete} alt="" /></span>
+                <hr />
+              </section>
+            </ContainerP>
+
+            <ContainerP2 active={selectedStates.includes("Formación")}>
+              <section>
+                <h3>Formación</h3>
+                <p>
+                  En la etapa de formación, adquirirás conocimientos y
+                  habilidades para tu crecimiento personal. Estaremos aquí para
+                  apoyarte y proporcionarte las herramientas necesarias para tu
+                  éxito. ¡Prepárate para expandir horizontes y alcanzar tu
+                  máximo potencial!
+                </p>
+              </section>
+              <section>
+                <span>3 <img src={cohete} alt="" /></span>
+                <hr />
+              </section>
+            </ContainerP2>
+            <ContainerP active={selectedStates.includes("Admitid@")}>
+              <section>
+                <h3>Admitid@</h3>
+                <p>
+                  ¡Felicitaciones por tu admisión! Te damos una cálida
+                  bienvenida a nuestro programa. Esperamos que aproveches al
+                  máximo esta oportunidad y te deseamos mucho éxito en tu camino
+                  hacia el crecimiento y el logro de tus metas. ¡Bienvenido/a a
+                  nuestra comunidad!
+                </p>
+              </section>
+              <section>
+                <span>2<img src={cohete} alt="" /></span>
+                <hr />
+              </section>
+            </ContainerP>
+
+            <ContainerP4 active={selectedStates.includes("Selección")}>
+              <section>
+                <h3>Selección</h3>
+                <p>
+                  ¡Felicidades! Avanzaste al emocionante proceso de entrevista,
+                  donde podrás compartir tus experiencias, habilidades y
+                  motivaciones con los evaluadores. Sé auténtico/a y demuestra
+                  lo mejor de ti. ¡Estamos ansiosos por presenciar tus logros!
+                </p>
+              </section>
+              <section>
+                <span>1<img src={cohete} alt="" /></span>
+                
+                
               </section>
             </ContainerP4>
           </ContainerStep>
@@ -93,3 +116,5 @@ const StateStudents = () => {
 };
 
 export default StateStudents;
+
+

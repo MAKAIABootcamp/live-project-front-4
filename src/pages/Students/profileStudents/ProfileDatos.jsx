@@ -21,7 +21,7 @@ const ProfileDatos = () => {
                 <h4> 29 Años</h4>
             </SectionInformacion>
             <SectionTelefono>
-                <h4>Telefono</h4>
+                <h4>Teléfono</h4>
                 <input type="text" />
                 <img src={editar} alt="" />
             </SectionTelefono>
@@ -35,7 +35,7 @@ const ProfileDatos = () => {
                 <input type="text" />
             </SectionDatos> 
             <SectionDatos>
-                <h4>Direccion</h4>
+                <h4>Dirección</h4>
                 <input type="text" />
             </SectionDatos>
             <SectionDatos>
@@ -44,11 +44,11 @@ const ProfileDatos = () => {
                 <img src={editar} alt="" />
             </SectionDatos>
             <SectionDatos>
-                <h4>Estrato Socieconomico</h4>
+                <h4>Estrato Socioeconómico</h4>
                 <input type="text" />
             </SectionDatos>
             <SectionDatos>
-                <h4>Ocupacion Actual</h4>
+                <h4>Ocupación Actual</h4>
                 <input type="text" />
             </SectionDatos>
             

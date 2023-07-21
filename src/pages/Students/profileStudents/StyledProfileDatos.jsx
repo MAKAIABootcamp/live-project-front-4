@@ -5,6 +5,7 @@ display:flex ;
 flex-direction:column ;
 align-items:center ;
 margin-top:5px ;
+height: 90vh;
 `
 export const SectionImagen = styled.section`
 display:flex ;

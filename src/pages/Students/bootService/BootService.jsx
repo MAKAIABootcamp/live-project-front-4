@@ -48,7 +48,7 @@ const BootService = () => {
         </section>
         <section>
           <h2>Apoyo Psicosocial</h2>
-          <p>Situaciones que estas viviendo y que pudiesen afectar tu rendimiento o participacion</p>
+          <p>Situaciones que estás viviendo y que pudiesen afectar tu rendimiento o participación.</p>
           <button onClick={handleOpenModal}>Solicitar</button>
         </section>
         {isModalOpen && (
@@ -64,8 +64,8 @@ const BootService = () => {
       </SectionPsicosocial>
       <SectionTecnico>
       <section>
-          <h2>Apoyo Tecnico</h2>
-          <p>Preguntas que necesitas resolver en el marco del proceso formativo</p>
+          <h2>Apoyo Técnico</h2>
+          <p>Preguntas que necesitas resolver en el marco del proceso formativo.</p>
           <button onClick={handleOpenModal}>Solicitar</button>
         </section>
         <section>
@@ -91,7 +91,7 @@ const BootService = () => {
         </section>
         <section>
           <h2>Reporte de Inasistencia</h2>
-          <p>Si conoces con anterioridad que no podras estar en alguna sesion informa aca</p>
+          <p>Si conoces con anterioridad que no podrás estar en alguna sesión, informa acá.</p>
           <button onClick={handleOpenModal}>Solicitar</button>
         </section>
         {isModalOpen && (

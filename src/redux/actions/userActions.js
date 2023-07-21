@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword, signOut} from "firebase/auth";
-import { auth } from "../confiFirebase/configFirebase";
+import { auth } from "../../confiFirebase/configFirebase";
 import { userTypes } from "../types/userTypes";
 
 
@@ -44,12 +44,12 @@ export const loginActionAsync = (email, password) => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-      const { displayName, accessToken } = user.auth.currentUser;
+      // const { displayName, accessToken } = user.auth.currentUser;
 
       const userLogged = {
         email,
-        name: displayName,
-        accessToken,
+        name: user.displayName,
+        accessToken: user.accessToken,
       };
 
       dispatch(loginActionSync(userLogged));
@@ -60,6 +60,7 @@ export const loginActionAsync = (email, password) => {
 };
 
 export const loginActionSync = (user) => {
+  console.log("Datos del usuario:", user);
   return {
     type: userTypes.LOGGIN_USER,
     payload: user,

@@ -13,7 +13,7 @@ import {
 } from "./SuperUserFormStyled";
 import CategoryCollaborators from "./category/CategoryCollaborators";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
-import { functions } from "../../../redux/confiFirebase/configFirebase";
+import { functions } from "../../../confiFirebase/configFirebase";
 import "firebase/functions";
 import * as Yup from "yup";
 

@@ -39,7 +39,7 @@ export const ContainerHeader = styled.nav`
   }
 
   .burguer {
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 769px) {
       display: none;
     }
   }
@@ -60,10 +60,9 @@ export const ContainerHeaderLinks = styled.div`
     flex-direction: column;
     position: absolute;
     margin-top: 318px;
-    margin-left: 412px;
+    margin-left: 550px;
     /* background-color: #03203a; */
     z-index: 100;
-    width: 250px;
     display: ${(props) => (props.active ? "flex" : "none")};
   }
 
@@ -113,25 +112,29 @@ export const ContainerHeaderSignOff = styled.div`
 `;
 
 export const BgDiv = styled.div`
+display: none;
   position: absolute;
   background-color: #03203a;
   top: 76px;
-  left: 426.323px;
-  border-radius: 0 0 0 50%;
+  left: 576px;
+  border-radius: 0 0 0 80px;
   transition: all 0.6s ease;
 
-  &.active {
-    width: 45%;
-    height: 50%;
+  &.actives {
+    width: 30%;
+    height: 38%;
     z-index: 1;
     transform: translateX(-20%);
   }
+  @media screen and (max-width: 769px){
+    display: flex;
+  }
   @media screen and (max-width: 376px) {
-    left: 379px;
+    left: 393.2px;
 
-    &.active {
-      width: 60%;
-      height: 45%;
+    &.actives {
+      width: 55%;
+      height: 25%;
     }
   }
 `;
