@@ -47,7 +47,7 @@ const CategoryCollaborators = () => {
     <>
       <DivGeneral>
         <div>
-          <h2>Categorias por área</h2>
+          <h2>Categorías por área</h2>
           <DivButton>
             <button>
               <div>
@@ -79,7 +79,7 @@ const CategoryCollaborators = () => {
         <div>
           <TableBenefits>
             <tr>
-              <th>Colaborador</th> <th> Editar o Eliminar </th>
+              <th>Colaborador</th> <th> Editar o eliminar </th>
             </tr>
 
             <tr>
@@ -148,7 +148,7 @@ const CategoryCollaborators = () => {
                     style={{ textAlign: "top" }}
                   />
 
-                  <label htmlFor="">Crago</label>
+                  <label htmlFor="">Cargo</label>
                   <input
                     type="text"
                     id="commentInput"

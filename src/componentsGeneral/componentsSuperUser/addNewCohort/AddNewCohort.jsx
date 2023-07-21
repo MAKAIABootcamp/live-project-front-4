@@ -16,19 +16,23 @@ import chicaCompu from "../../../assets/chicaCompu.png";
 import Swal from "sweetalert2";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 
+
 const initialValues = {
+  programa: "",
   cohorte: "",
-  numeroCohorte: "",
   fechaInicio: "",
   fechaFinalizacion: "",
-  horario: "",
-  instructores: "",
+  horarioInicio: "",
+  horarioCierre: "",
+  formadorTecnico: "",
+  mentorTecnico: "",
+  facilitador: "",
   otrosDetalles: "",
 };
 
 const validationSchema = Yup.object().shape({
-  cohorte: Yup.string().required("Selecciona al menos una opción"),
-  numeroCohorte: Yup.number()
+  programa: Yup.string().required("Selecciona al menos una opción"),
+  cohorte: Yup.number()
     .required("Campo requerido")
     .typeError("Debe ser un número"),
   fechaInicio: Yup.string()
@@ -43,13 +47,7 @@ const validationSchema = Yup.object().shape({
       /^(0[1-9]|1[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/,
       "La estructura de la fecha debe tener el formato dd/mm/yyyy"
     ),
-  horario: Yup.string()
-    .required("Campo requerido"),
-    // .matches(
-    //   /^(0[1-9]|1[0-2]):[0-5][0-9](am|pm) - (0[1-9]|1[0-2]):[0-5][0-9](am|pm)$/,
-    //   "El campo de hora debe tener el formato 14:00pm - 18:00pm"
-    // )
-    
+  horario: Yup.string().required("Campo requerido"),
   instructores: Yup.string()
     .required("Campo requerido")
     .matches(
@@ -127,29 +125,25 @@ const AddNewCohort = ({ addCohort }) => {
             <div>
               <Row>
                 <div>
-                  <label htmlFor="cohorte">Cohorte</label>
-                  <Field as="select" id="cohorte" name="cohorte">
+                  <label htmlFor="programa">Programa</label>
+                  <Field as="select" id="programa" name="programa">
                     {options.map((item) => (
                       <option value={item.value}>{item.value}</option>
                     ))}
                   </Field>
-                  <ErrorMessage name="cohorte" component={ErrorText} />
+                  <ErrorMessage name="programa" component={ErrorText} />
                 </div>
 
                 <div>
-                  <label htmlFor="numeroCohorte">Número de Cohorte</label>
-                  <StyledField
-                    type="text"
-                    id="numeroCohorte"
-                    name="numeroCohorte"
-                  />
-                  <ErrorMessage name="numeroCohorte" component={ErrorText} />
+                  <label htmlFor="cohorte">Cohorte</label>
+                  <StyledField type="text" id="cohorte" name="cohorte" />
+                  <ErrorMessage name="cohorte" component={ErrorText} />
                 </div>
               </Row>
 
               <Row>
                 <div>
-                  <label htmlFor="fechaInicio">Fecha Inicio</label>
+                  <label htmlFor="fechaInicio">Fecha de inicio</label>
                   <StyledField
                     type="text"
                     id="fechaInicio"
@@ -160,7 +154,9 @@ const AddNewCohort = ({ addCohort }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="fechaFinalizacion">Fecha Finalización</label>
+                  <label htmlFor="fechaFinalizacion">
+                    Fecha de finalización
+                  </label>
                   <StyledField
                     type="text"
                     id="fechaFinalizacion"
@@ -176,27 +172,66 @@ const AddNewCohort = ({ addCohort }) => {
 
               <Row>
                 <div>
-                  <label htmlFor="horario">Hora inicio y finalización</label>
+                  <label htmlFor="horarioInicio">Hora de inicio</label>
                   <StyledField
                     type="text"
-                    id="horario"
-                    name="horario"
+                    id="horarioInicio"
+                    name="horarioInicio"
                     placeholder="14:00pm - 18:00pm"
                   />
-                  <ErrorMessage name="horario" component={ErrorText} />
+                  <ErrorMessage name="horarioInicio" component={ErrorText} />
                 </div>
               </Row>
 
               <Row>
                 <div>
-                  <label htmlFor="instructores">Instructores</label>
+                  <label htmlFor="horarioCierre">Hora de cierre</label>
                   <StyledField
                     type="text"
-                    id="instructores"
-                    name="instructores"
+                    id="horarioCierre"
+                    name="horarioCierre"
+                    placeholder="14:00pm - 18:00pm"
+                  />
+                  <ErrorMessage name="horarioCierre" component={ErrorText} />
+                </div>
+              </Row>
+
+              <Row>
+                <div>
+                  <label htmlFor="formadorTecnico">Formador técnico</label>
+                  <StyledField
+                    type="text"
+                    id="formadorTecnico"
+                    name="formadorTecnico"
                     placeholder="Nombre"
                   />
-                  <ErrorMessage name="instructores" component={ErrorText} />
+                  <ErrorMessage name="formadorTecnico" component={ErrorText} />
+                </div>
+              </Row>
+
+              <Row>
+                <div>
+                  <label htmlFor="mentorTecnico">Mentor técnico</label>
+                  <StyledField
+                    type="text"
+                    id="mentorTecnico"
+                    name="mentorTecnico"
+                    placeholder="Nombre"
+                  />
+                  <ErrorMessage name="mentorTecnico" component={ErrorText} />
+                </div>
+              </Row>
+
+              <Row>
+                <div>
+                  <label htmlFor="facilitador">Facilitador</label>
+                  <StyledField
+                    type="text"
+                    id="facilitador"
+                    name="facilitador"
+                    placeholder="Nombre"
+                  />
+                  <ErrorMessage name="facilitador" component={ErrorText} />
                 </div>
               </Row>
 
