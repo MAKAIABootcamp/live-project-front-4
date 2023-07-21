@@ -1,11 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../reducers/userReducer";
+import benefitsReducer from "../reducers/benefitsReducer";
+
 const reducer = {
   user: userReducer,
+  benefits: benefitsReducer,
 };
 const store = configureStore({
   reducer,
-  devTool: process.env.NODE_ENV !== "production",
+  devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

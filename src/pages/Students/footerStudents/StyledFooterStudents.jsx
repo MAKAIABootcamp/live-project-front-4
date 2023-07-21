@@ -10,11 +10,7 @@ height:50px ;
 width:100% ;
 bottom: 0;
 margin:0 ;
-position: fixed;
- }
- @media screen and (max-width: 376px) {
-  position: relative;
-  
+/* position: fixed; */
  }
 `
 

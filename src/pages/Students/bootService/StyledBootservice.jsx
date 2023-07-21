@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
-import fondoGeneral from '../../../assets/FONDOGENERAL.png'
+import fondoGeneral from "../../../assets/FONDOGENERAL.png";
 
 export const DivBootserviceGeneral = styled.div`
-background-image: url(${fondoGeneral});
+  background-image: url(${fondoGeneral});
   background-size: cover;
   background-position: center;
   width:100% ;

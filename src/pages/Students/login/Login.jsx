@@ -7,6 +7,8 @@ import { Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { loginActionAsync } from "../../../redux/actions/userActions";
 import { Link, useNavigate,  } from "react-router-dom";
+import Swal from "sweetalert2";
+// import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -25,11 +27,19 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
+  // const navigate = useNavigate();
+
   const logIn = (dataForm) => {
     navigate("/formStudents")
     console.log(dataForm);
     dispatch(loginActionAsync(dataForm.email, dataForm.password));
 
+    // navigate("/formstudents");
+    Swal.fire(
+      'Inicio sesión exitoso!',
+      '¡Bienvenid@!',
+      'success'
+    )
   };
 
   return (
