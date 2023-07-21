@@ -2,35 +2,44 @@ import styled from "styled-components";
 
 export const Div = styled.div`
   display: flex;
-  flex-direction: column-reverse;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+  }
+  @media screen and (max-width: 376px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
 export const DivImgEquipo = styled.div`
-  margin-top: 40px;
+  margin-top: 50px;
   text-align: center;
   align-items: center;
-  img {
-    width: 530px;
-
-    @media screen and (max-width: 768px) {
-      width: 450px;
-    }
-
-    @media screen and (max-width: 376px) {
-      width: 350px;
-    }
-  }
+  margin-right: 20px;
+  margin-left: 50px;
 
   @media (min-width: 768px) {
     margin-top: 0;
-    margin-right: 2rem;
+  }
+  @media screen and (max-width: 376px) {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 5px;
+  }
+
+  img {
+    width: 345px;
+    padding-top: 3px;
+
+    @media screen and (max-width: 768px) {
+      width: 310px;
+      padding-top: 20px;
+    }
+    @media screen and (max-width: 376px) {
+      width: 250px;
+      padding-top: 0px;
+    }
   }
 `;
 
@@ -40,18 +49,25 @@ export const DivGeneral = styled.div`
   align-items: center;
   text-align: center;
 
+  @media (min-width: 768px) {
+    padding-top: 20px;
+  }
+
   p {
     text-align: center;
+    font-size: 1.3rem;
+    @media screen and (max-width: 768px) {
+      font-size: 18px;
+    }
+    @media screen and (max-width: 376px) {
+      font-size: 12px;
+    }
   }
 
   img {
-    width: 80%;
+    width: 50%;
     height: auto;
-  }
-
-  @media (min-width: 768px) {
-    margin-top: 0;
-    margin-left: 2rem;
+    padding-top: 20px;
   }
 `;
 

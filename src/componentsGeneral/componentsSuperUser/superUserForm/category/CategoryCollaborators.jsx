@@ -6,6 +6,8 @@ import {
   Figure,
   Modal,
   ModalContent,
+  H2,
+  Th,
 } from "./CategoryCollaboratorStyled";
 import { CloseOutlined } from "@ant-design/icons";
 import { EditOutlined } from "@ant-design/icons";
@@ -45,49 +47,47 @@ const CategoryCollaborators = () => {
   };
   return (
     <>
-      <DivGeneral>
-        <div>
-          <h2>Categorías por área</h2>
-          <DivButton>
-            <button>
-              <div>
-                <CarryOutOutlined style={{ fontSize: "24px" }} />{" "}
-                <p>Entrenamiento</p>
-              </div>
-            </button>
-            <button>
-              <div>
-                <RocketOutlined style={{ fontSize: "24px" }} />
-                <p>Experiencia</p>
-              </div>
-            </button>
-            <button>
-              <div>
-                <BankOutlined style={{ fontSize: "24px" }} />
-                <p>Empleabilidad</p>
-              </div>
-            </button>
-            <button>
-              <div>
-                <ShoppingCartOutlined style={{ fontSize: "24px" }} />
-                <p>Comercial</p>
-              </div>
-            </button>
-          </DivButton>
-        </div>
+      <H2>Categorías por área</H2>
+      <DivButton>
+        <button>
+          <div>
+            <CarryOutOutlined style={{ fontSize: "24px" }} />{" "}
+            <p>Entrenamiento</p>
+          </div>
+        </button>
+        <button>
+          <div>
+            <RocketOutlined style={{ fontSize: "24px" }} />
+            <p>Experiencia</p>
+          </div>
+        </button>
+        <button>
+          <div>
+            <BankOutlined style={{ fontSize: "24px" }} />
+            <p>Empleabilidad</p>
+          </div>
+        </button>
+        <button>
+          <div>
+            <ShoppingCartOutlined style={{ fontSize: "24px" }} />
+            <p>Comercial</p>
+          </div>
+        </button>
+      </DivButton>
 
+      <DivGeneral>
         <div>
           <TableBenefits>
             <tr>
-              <th>Colaborador</th> <th> Editar o eliminar </th>
+              <Th>Colaborador</Th>
             </tr>
 
             <tr>
               <td>Luisa Lafaurie</td>
               <td>
-                <CloseOutlined style={{ color: "red", fontSize: "20px" }} />
+                <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
                 <EditOutlined
-                  style={{ color: "blue", fontSize: "20px" }}
+                  style={{ color: "blue", fontSize: "18px" }}
                   onClick={openModal}
                 />
               </td>
@@ -95,29 +95,29 @@ const CategoryCollaborators = () => {
             <tr>
               <td>Laura Ospina</td>
               <td>
-                <CloseOutlined style={{ color: "red", fontSize: "20px" }} />
+                <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
                 <EditOutlined
-                  style={{ color: "blue", fontSize: "20px" }}
+                  style={{ color: "blue", fontSize: "18px" }}
                   onClick={openModal}
                 />
               </td>
             </tr>
             <tr>
-              <td>Carlos Hernandez</td>
+              <td>Carlos Pablo Hernandez</td>
               <td>
-                <CloseOutlined style={{ color: "red", fontSize: "20px" }} />
+                <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
                 <EditOutlined
-                  style={{ color: "blue", fontSize: "20px" }}
+                  style={{ color: "blue", fontSize: "18px" }}
                   onClick={openModal}
                 />
               </td>
             </tr>
             <tr>
-              <td>Luisa Lafaurie</td>
+              <td>Lizeth Yomaira Montoya Garcia</td>
               <td>
-                <CloseOutlined style={{ color: "red", fontSize: "20px" }} />
+                <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
                 <EditOutlined
-                  style={{ color: "blue", fontSize: "20px" }}
+                  style={{ color: "blue", fontSize: "18px" }}
                   onClick={openModal}
                 />
               </td>

@@ -14,31 +14,34 @@ const Home = () => {
 
   return (
     <>
-<HeaderSuperUser />
-      <Div>
-        <DivImgEquipo>
-          <img src={Equipo} alt="equipo" />
-        </DivImgEquipo>
-
-        <DivGeneral>
-          <div>
+      <div>
+        <HeaderSuperUser />
+      </div>
+      <div>
+        <Div>
+          <DivImgEquipo>
+            <img src={Equipo} alt="equipo" />
+          </DivImgEquipo>
+          <DivGeneral>
             <img src={logo} alt="Bootcamp" />
-          </div>
-          <p>
-            ¡Bienvenid@ de nuevo!
-            <br />
-            Estamos encantados de tenerte a bordo y cumplir nuestro propósito{" "}
-            <br /> de potenciar personas con experiencia de valor <br /> .
-            <br />
-            Esperamos trabajar juntos y lograr grandes cosas.
-            <br />
-            ¡Adelante y gracias por ser parte de nuestro equipo!
-          </p>
-          <Action>
-            <button onClick={handleNavigate}>Cerrar sesión</button>
-          </Action>
-        </DivGeneral>
-      </Div>
+            <p>
+              ¡Bienvenid@ de nuevo!
+              <br />
+              <br />
+              Estamos encantados de tenerte a bordo <br /> y cumplir nuestro
+              propósito de potenciar personas <br /> con experiencia de valor.
+              <br />
+              <br />
+              Esperamos trabajar juntos y lograr grandes cosas.
+              <br />
+              ¡Adelante y gracias por ser parte de nuestro equipo!
+            </p>
+            <Action>
+              <button onClick={handleNavigate}>Cerrar sesión</button>
+            </Action>
+          </DivGeneral>
+        </Div>
+      </div>
     </>
   );
 };

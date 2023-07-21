@@ -29,6 +29,15 @@ export const FormGroup = styled.div`
   }
 `;
 
+export const FormGroupSelect = styled.div`
+  margin-bottom: 20px;
+
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+`;
+
 export const SubmitButton = styled.button`
   padding: 10px 20px;
   background-color: #eee420;

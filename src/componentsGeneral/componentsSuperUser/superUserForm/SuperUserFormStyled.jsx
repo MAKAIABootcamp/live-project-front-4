@@ -1,25 +1,29 @@
 import styled from "styled-components";
 
 export const Panel = styled.div`
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 10px;
   transition: 0.5s;
-  h1 {
-    color: #03203a;
-    font-size: 1.6rem;
+  @media screen and (max-width: 768px) {
+    padding-left: 30px;
+    padding-right: 0px;
   }
-  p {
-    color: #03203a;
+  @media screen and (max-width: 376px) {
+    padding-left: 20px;
+    padding-right: 20px;
   }
-`;
-
-export const DivTitleSearch = styled.div`
-  display: flex;
   h1 {
     color: #25abbc;
     font-size: 1.7rem;
+    align-items: center;
+    text-align: center;
+  }
+  p {
+    font-size: 1.1rem;
+    align-items: center;
+    text-align: center;
   }
 `;
 
@@ -38,11 +42,6 @@ export const DivInput = styled.div`
   label {
     margin-bottom: 15px;
     color: #03203a;
-  }
-  p {
-    margin-bottom: 50px;
-    margin-top: -20px;
-    font-size: 14px;
   }
 `;
 
@@ -79,10 +78,8 @@ export const Select = styled.select`
 `;
 
 export const Form = styled.form`
-  padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  /* align-items: center; */
   position: relative;
   @media screen and (max-width: 768px) {
   }
@@ -99,7 +96,7 @@ export const Action = styled.div`
   left: 10px;
   text-align: center;
   @media screen and (max-width: 768px) {
-    top: 100%;
+    top: 103%;
     text-align: center;
   }
   @media screen and (max-width: 376px) {

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 70px;
-  padding-top: 40px;
+  margin-top: 0px;
+  padding-top: 30px;
 `;
 
 export const GridContainer = styled.div`
@@ -24,12 +24,17 @@ export const GridItem = styled.div`
   border: 1px solid #ccc;
   padding: 10px;
   background-color: #03203a;
+  cursor: pointer;
+  &:hover {
+    background-color: #25abbc;
+  }
+
   h2 {
     color: white;
     text-align: center;
     font-family: "Monserrat", sans-serif;
     @media (max-width: 376px) {
-      font-size: 12px;
+      font-size: 18px;
     }
   }
   p {
@@ -37,7 +42,7 @@ export const GridItem = styled.div`
     text-align: center;
     font-family: "Monserrat", sans-serif;
     @media (max-width: 376px) {
-      font-size: 12px;
+      font-size: 13px;
     }
   }
 `;
@@ -114,10 +119,11 @@ export const Container = styled.div`
 export const GridItemAgregate = styled.div`
   background-color: #eee420;
   border: 1px solid #ccc;
-  padding: 32px;
+  padding: 45px;
   text-align: center;
+  align-items: center;
   @media (max-width: 376px) {
-    padding: 18px;
+    padding: 35px;
   }
   button {
     width: 100px;

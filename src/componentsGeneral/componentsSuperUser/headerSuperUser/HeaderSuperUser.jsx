@@ -17,7 +17,6 @@ ContainerHeaderSignOff,
 SubItems,
 Item } from "../../componentsSuperUser/headerSuperUser/HeaderSuperUserStyled";
 
-
 const HeaderSuperUser = () => {
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
@@ -160,3 +159,4 @@ const HeaderSuperUser = () => {
 };
 
 export default HeaderSuperUser;
+
