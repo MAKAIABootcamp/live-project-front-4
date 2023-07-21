@@ -1,116 +1,104 @@
 import React, { useState } from 'react';
 import HeaderStudents from '../headerStudents/HeaderStudents'
 import FooterStudents from '../footerStudents/FooterStudents'
-import { DivBootservices, DivBootserviceGeneral, SectionInasistencia, SectionInformacion, SectionPsicosocial, SectionTecnico, SectionRobot, ModalBackground, ModalContent, CloseButton } from './StyledBootservice'
+import { DivBootservices, DivBootserviceGeneral, SectionRobot, SectionServicios } from './StyledBootservice'
 import robot from '../../../assets/robotColor.png'
 import psicosocial from '../../../assets/psicosocial.png'
 import tecnico from '../../../assets/tecnico.png'
 import inasistencia from '../../../assets/inasistencia.png'
+import { ChakraProvider } from '@chakra-ui/react';
+import ModalPsicosocial from './ModalPsicosocial';
+import ModalTecnico from './ModalTecnico';
+import ModalInasistencia from './ModalInasistencia';
+
 
 
 const BootService = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpenTecnico, setModalOpenTecnico] = useState(false);
+  const [isModalOpenInasistencia, setModalOpenInasistencia] = useState(false);
+
 
   const handleOpenModal = () => {
     setModalOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleModalClose = () => {
     setModalOpen(false);
   };
 
+  const handleOpenModalTecnico = () => {
+    setModalOpenTecnico(true);
+  };
+
+  const handleCloseModalTecnico = () => {
+    setModalOpenTecnico(false);
+  };
+
+
+  const handleOpenModalInasistencia = () => {
+    setModalOpenInasistencia(true);
+  };
+
+  const handleCloseModalInasistencia = () => {
+    setModalOpenInasistencia(false);
+  };
+
+
+
+
   return (
-    
-    <DivBootserviceGeneral>
-    <HeaderStudents/>
-    <DivBootservices>
-      <SectionInformacion>
+    <ChakraProvider>
+      <DivBootserviceGeneral>
+        <HeaderStudents />
         <SectionRobot>
           <figure>
-            <img src={robot}alt="" />
+            <img src={robot} alt="" />
           </figure>
           <h1>Bootservice</h1>
         </SectionRobot>
-        <section>
-          <h3>Lina Gutierrez</h3>
-          <h3>cohorte 6 FrontEnd</h3>
-        </section>
-        <section>
-        <h3>lina.vaquero2017@gmail.com</h3>
-        <h3>3105499704</h3>
-        </section>
-      </SectionInformacion>
-      <SectionPsicosocial>
-        <section>
-        <figure>
-            <img src={psicosocial}alt="" />
-          </figure>
-        </section>
-        <section>
-          <h2>Apoyo Psicosocial</h2>
-          <p>Situaciones que estás viviendo y que pudiesen afectar tu rendimiento o participación.</p>
-          <button onClick={handleOpenModal}>Solicitar</button>
-        </section>
-        {isModalOpen && (
-        <ModalBackground>
-          <ModalContent>
-          <HeaderStudents/>
-            <h3>Contenido del modal</h3>
-            <p>Aquí puedes agregar el contenido del modal que deseas mostrar.</p>
-            <CloseButton onClick={handleCloseModal}>Cerrar</CloseButton>
-          </ModalContent>
-        </ModalBackground>
-      )}
-      </SectionPsicosocial>
-      <SectionTecnico>
-      <section>
-          <h2>Apoyo Técnico</h2>
-          <p>Preguntas que necesitas resolver en el marco del proceso formativo.</p>
-          <button onClick={handleOpenModal}>Solicitar</button>
-        </section>
-        <section>
-        <figure>
-            <img src={tecnico}alt="" />
-          </figure>
-        </section>
-        {isModalOpen && (
-        <ModalBackground>
-          <ModalContent>
-            <h3>Contenido del modal</h3>
-            <p>Aquí puedes agregar el contenido del modal que deseas mostrar.</p>
-            <CloseButton onClick={handleCloseModal}>Cerrar</CloseButton>
-          </ModalContent>
-        </ModalBackground>
-      )}
-      </SectionTecnico>
-      <SectionInasistencia>
-      <section>
-        <figure>
-            <img src={inasistencia}alt="" />
-          </figure>
-        </section>
-        <section>
-          <h2>Reporte de Inasistencia</h2>
-          <p>Si conoces con anterioridad que no podrás estar en alguna sesión, informa acá.</p>
-          <button onClick={handleOpenModal}>Solicitar</button>
-        </section>
-        {isModalOpen && (
-          
-        <ModalBackground>
-     
-          <ModalContent>
-        
-            <h3>Contenido del modal</h3>
-            <p>Aquí puedes agregar el contenido del modal que deseas mostrar.</p>
-            <CloseButton onClick={handleCloseModal}>Cerrar</CloseButton>
-          </ModalContent>
-        </ModalBackground>
-      )}
-      </SectionInasistencia>
-    </DivBootservices>
-       <FooterStudents/>
-    </DivBootserviceGeneral>
-    
+        <DivBootservices>
+          <SectionServicios>
+            <img src={psicosocial} alt="" />
+            <h2>Apoyo Psicosocial</h2>
+            <p>Situaciones que estás viviendo y que pudiesen afectar tu rendimiento o participación</p>
+            <button onClick={handleOpenModal}>Solicitar</button>
+            <ModalPsicosocial
+              isModalOpen={isModalOpen}
+              handleModalClose={handleModalClose}
+            />
+          </SectionServicios>
+          { }
+
+          <SectionServicios>
+
+            <img src={tecnico} alt="" />
+
+            <h2>Apoyo Técnico</h2>
+            <p>Realiza preguntas que necesitas resolver en el marco del proceso formativo y aclara tus dudas</p>
+            <button onClick={handleOpenModalTecnico}>Solicitar</button>
+            <ModalTecnico
+            isModalOpen={isModalOpenTecnico}
+            handleModalClose={handleCloseModalTecnico}
+            />
+          </SectionServicios>
+
+          <SectionServicios>
+
+            <img src={inasistencia} alt="" />
+
+            <h2>Reporte de Inasistencia</h2>
+            <p>Si conoces con anterioridad que no podrás estar en alguna sesion informa por este medio</p>
+            <button onClick={handleOpenModalInasistencia}>Solicitar</button>
+            <ModalInasistencia
+            isModalOpen={isModalOpenInasistencia}
+            handleModalClose={handleCloseModalInasistencia}
+            />
+          </SectionServicios>
+
+        </DivBootservices>
+      </DivBootserviceGeneral>
+    </ChakraProvider>
   )
 }
 

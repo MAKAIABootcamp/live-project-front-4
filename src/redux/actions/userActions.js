@@ -1,6 +1,9 @@
-import { signInWithEmailAndPassword, signOut} from "firebase/auth";
-import { auth } from "../../confiFirebase/configFirebase";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth, dataBase } from "../../confiFirebase/configFirebase";
 import { userTypes } from "../types/userTypes";
+import { addDoc, collection } from "firebase/firestore";
+import Swal from "sweetalert2";
+
 
 
 
@@ -44,17 +47,18 @@ export const loginActionAsync = (email, password) => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-      // const { displayName, accessToken } = user.auth.currentUser;
+      const { displayName, uid, accessToken } = user.auth.currentUser;
 
       const userLogged = {
+        uid,
         email,
         name: user.displayName,
         accessToken: user.accessToken,
       };
-
       dispatch(loginActionSync(userLogged));
     } catch (error) {
       console.log(error);
+
     }
   };
 };
@@ -64,5 +68,77 @@ export const loginActionSync = (user) => {
   return {
     type: userTypes.LOGGIN_USER,
     payload: user,
+  };
+};
+
+export const registerActionAsync = (
+  uid,
+  nombreCompleto,
+  tipoDocumento,
+  numeroDocumento,
+  sexo,
+  edad,
+  celular,
+  correo,
+  nacionalidad,
+  departamento,
+  ciudad,
+  direccion,
+  estrato,
+  raza,
+  contacto,
+  correoContacto,
+  telefonoContacto,
+  poblacion,
+  ocupacion,
+  nivelEducativo,
+  conocimiento,
+  equipos,
+  motivacion,
+  tiempoLibre,
+  hobbie,
+) => {
+  return async (dispatch) => {
+    try {
+      await addDoc(collection(dataBase, "Estudiantes"),
+              {
+          idUsuario: uid,
+          nombreCompleto,
+          tipoDocumento,
+          numeroDocumento,
+          sexo,
+          edad,
+          celular,
+          correo,
+          nacionalidad,
+          departamento,
+          ciudad,
+          direccion,
+          estrato,
+          raza,
+          contacto,
+          correoContacto,
+          telefonoContacto,
+          poblacion,
+          ocupacion,
+          nivelEducativo,
+          conocimiento,
+          equipos,
+          motivacion,
+          tiempoLibre,
+          hobbie
+        });
+        Swal.fire(
+          'OK!',
+          'Sus datos se han registrado exitosamente',
+          'success'
+        )
+    } catch (error) {
+      Swal.fire(
+        'Error!',
+        'Error al registrar sus datos',
+        'danger'
+      )
+    }
   };
 };

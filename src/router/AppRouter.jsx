@@ -22,6 +22,7 @@ import StudentsSU from "../pages/SuperUser/StudentsSU";
 import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
 
 const AppRouter = () => {
+  
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [loading, setLoading] = useState(true);
 

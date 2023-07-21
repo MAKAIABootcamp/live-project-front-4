@@ -10,7 +10,7 @@ const ProfileStudents = () => {
     <DivProfileGeneral>
     <HeaderStudents/>
     <ProfileDatos/>
-    <FooterStudents/>
+   
     </DivProfileGeneral>
     </>
   )
