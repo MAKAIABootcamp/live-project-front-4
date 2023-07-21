@@ -15,6 +15,7 @@ import {
 import { setBenefits } from "../../../redux/actions/benefitsActions";
 import { dataBase } from "../../../confiFirebase/configFirebase";
 import { addDoc, collection } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 const BenefitsStudents = () => {
   const [benefit, setBenefit] = useState("");
@@ -50,8 +51,10 @@ const BenefitsStudents = () => {
       // Realiza alguna acción después de enviar los datos
       // Por ejemplo, puedes mostrar un mensaje de éxito o limpiar el formulario
       console.log(
-        "Solicitud enviada exitosamente. ID del documento:",
-        docRef.id
+        Swal.fire(
+          'Solicitud enviada exitosamente. ID del documento:',
+          docRef.id
+        )
       );
       setBenefit("");
       setNotes("");

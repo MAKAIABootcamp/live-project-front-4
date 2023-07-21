@@ -52,8 +52,8 @@ export const loginActionAsync = (email, password) => {
       const userLogged = {
         uid,
         email,
-        name: user.displayName,
-        accessToken: user.accessToken,
+        name: displayName,
+        accessToken: accessToken,
       };
       dispatch(loginActionSync(userLogged));
     } catch (error) {
@@ -66,7 +66,7 @@ export const loginActionAsync = (email, password) => {
 export const loginActionSync = (user) => {
   console.log("Datos del usuario:", user);
   return {
-    type: userTypes.LOGGIN_USER,
+    type: userTypes.USER_LOGIN,
     payload: user,
   };
 };

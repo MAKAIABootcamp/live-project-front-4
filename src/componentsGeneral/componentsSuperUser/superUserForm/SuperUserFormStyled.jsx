@@ -1,23 +1,29 @@
 import styled from "styled-components";
 
 export const Panel = styled.div`
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 10px;
   transition: 0.5s;
-  h1 {
-    color: #03203a;
+  @media screen and (max-width: 768px) {
+    padding-left: 30px;
+    padding-right: 0px;
   }
-  p {
-    color: #03203a;
+  @media screen and (max-width: 376px) {
+    padding-left: 20px;
+    padding-right: 20px;
   }
-`;
-
-export const DivTitleSearch = styled.div`
-  display: flex;
   h1 {
     color: #25abbc;
+    font-size: 1.7rem;
+    align-items: center;
+    text-align: center;
+  }
+  p {
+    font-size: 1.1rem;
+    align-items: center;
+    text-align: center;
   }
 `;
 
@@ -28,14 +34,14 @@ export const DivInput = styled.div`
   padding: 0 10px 0 10px;
   flex-direction: column;
   position: relative;
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 376px) {
+    padding: 0 0 0 0;
+  }
   label {
     margin-bottom: 15px;
     color: #03203a;
-  }
-  p {
-    margin-bottom: 50px;
-    margin-top: -20px;
-    font-size: 14px;
   }
 `;
 
@@ -47,6 +53,12 @@ export const Input = styled.input`
   margin-bottom: 10px;
   background-color: 1px solid rgba(0, 0, 0, 0.2);
   padding-left: 1rem;
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 376px) {
+    height: 40px;
+    width: 100%;
+  }
 `;
 
 export const Select = styled.select`
@@ -57,21 +69,39 @@ export const Select = styled.select`
   margin-bottom: 10px;
   background-color: 1px solid rgba(0, 0, 0, 0.2);
   padding-left: 1rem;
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 376px) {
+    height: 40px;
+    width: 107%;
+  }
 `;
 
 export const Form = styled.form`
-  padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   position: relative;
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 376px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Action = styled.div`
   position: absolute;
-  top: 95%;
+  top: 100%;
   right: 10px;
   left: 10px;
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    top: 103%;
+    text-align: center;
+  }
+  @media screen and (max-width: 376px) {
+    top: 105%;
+  }
   button {
     color: #03203a;
     font-size: 1rem;

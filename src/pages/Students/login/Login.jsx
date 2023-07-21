@@ -6,7 +6,7 @@ import * as yup from "yup";
 import { Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { loginActionAsync } from "../../../redux/actions/userActions";
-import { Link, useNavigate,  } from "react-router-dom";
+// import { useNavigate,  } from "react-router-dom";
 import Swal from "sweetalert2";
 // import { useNavigate } from "react-router-dom";
 
@@ -25,12 +25,12 @@ const initialValues = {
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   
   // const navigate = useNavigate();
 
   const logIn = (dataForm) => {
-    navigate("/formStudents")
+    // navigate("/formStudents")
     console.log(dataForm);
     dispatch(loginActionAsync(dataForm.email, dataForm.password));
 
