@@ -30,22 +30,23 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
     try {
       await addAdminAndStudents(userData);
       console.log("Usuario agregado correctamente a Firestore.");
-      const { email, contraseña } = userData;
+      const { email, contraseña,nombre } = userData;
 
       // Configurar emailjs-com con los detalles de tu cuenta
       init("HG4_QlSaoJ-f9recA");
 
       // Datos para el correo
       const templateParams = {
-        to_email: email,
+        nombre: nombre,
+        email: email,
         password: contraseña,
       };
 
       // Enviar el correo
       const response = await emailjs.send(
+        "service_ewi3quf",
         "template_hg3t809",
-        "service_p1kix9s",
-        templateParams
+        templateParams,"aNjV2AvY_XWC4wve6"
       );
 
       console.log("Correo enviado:", response);
