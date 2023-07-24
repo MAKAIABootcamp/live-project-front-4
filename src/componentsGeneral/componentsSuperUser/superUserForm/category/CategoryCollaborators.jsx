@@ -19,6 +19,8 @@ import { BankOutlined } from "@ant-design/icons";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { getAdminAndStudents } from "../../../../redux/actions/addAdminAndStudentsActions";
 import { updateAdminAndStudentsAction } from "../../../../redux/actions/addAdminAndStudentsActions";
+import { dataBase } from "../../../../confiFirebase/configFirebase";
+import "firebase/firestore";
 
 const CategoryCollaborators = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,7 @@ const CategoryCollaborators = () => {
     dispatch(getAdminAndStudents())
       .then((data) => {
         setAdminAndStudentsData(data);
+        console.log("esto es data", data)
       })
       .catch((error) => {
         console.error("Error al obtener los datos:", error);
@@ -44,7 +47,7 @@ const CategoryCollaborators = () => {
   useEffect(() => {
     setFilteredCollaborators(
       adminAndStudentsData.filter(
-        (collaborator) => collaborator.area === selectedCategory
+        (collaborator) => collaborator.info.area === selectedCategory
       )
     );
   }, [adminAndStudentsData, selectedCategory]);
@@ -69,7 +72,7 @@ const CategoryCollaborators = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!selectedAdminAndStudentsData || editedField === "") {
+    if (!selectedAdminAndStudentsData.info || editedField === "") {
       console.error("No se ha seleccionado un colaborador para editar.");
       return;
     }
@@ -149,8 +152,8 @@ const CategoryCollaborators = () => {
             </tr>
             {/* Mapear la información de los colaboradores filtrados */}
             {filteredCollaborators.map((collaborator) => (
-              <tr key={collaborator.nombre}>
-                <td>{collaborator.nombre}</td>
+              <tr key={collaborator.info.nombre}>
+                <td>{collaborator.info.nombre}</td>
                 <td>
                   <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
                   <EditOutlined
@@ -167,7 +170,7 @@ const CategoryCollaborators = () => {
                 <h3>Editar información del colaborador</h3>
 
                 <form
-                  key={selectedAdminAndStudentsData.nombre}
+                  key={selectedAdminAndStudentsData.info.nombre}
                   onSubmit={handleSubmit}
                 >
                   <label htmlFor="">Nombre del colaborador</label>
@@ -178,7 +181,7 @@ const CategoryCollaborators = () => {
                     value={
                       editedField === "nombre"
                         ? comment
-                        : selectedAdminAndStudentsData.nombre
+                        : selectedAdminAndStudentsData.info.nombre
                     }
                     onChange={handleCommentChange}
                     onKeyDown={handleKeyDown}
@@ -193,7 +196,7 @@ const CategoryCollaborators = () => {
                     value={
                       editedField === "area"
                         ? comment
-                        : selectedAdminAndStudentsData.area
+                        : selectedAdminAndStudentsData.info.area
                     }
                   >
                     {options.map((item) => (
@@ -209,7 +212,7 @@ const CategoryCollaborators = () => {
                     value={
                       editedField === "cargo"
                         ? comment
-                        : selectedAdminAndStudentsData.cargo
+                        : selectedAdminAndStudentsData.info.cargo
                     }
                     onChange={handleCommentChange}
                     onKeyDown={handleKeyDown}
@@ -224,7 +227,7 @@ const CategoryCollaborators = () => {
                     value={
                       editedField === "email"
                         ? comment
-                        : selectedAdminAndStudentsData.email
+                        : selectedAdminAndStudentsData.info.email
                     }
                     onChange={handleCommentChange}
                     onKeyDown={handleKeyDown}
@@ -239,7 +242,7 @@ const CategoryCollaborators = () => {
                     value={
                       editedField === "telefono"
                         ? comment
-                        : selectedAdminAndStudentsData.telefono
+                        : selectedAdminAndStudentsData.info.telefono
                     }
                     onChange={handleCommentChange}
                     onKeyDown={handleKeyDown}

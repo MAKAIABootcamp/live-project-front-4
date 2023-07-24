@@ -10,7 +10,7 @@ export const Panel = styled.div`
     padding-left: 30px;
     padding-right: 0px;
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -36,7 +36,7 @@ export const DivInput = styled.div`
   position: relative;
   @media screen and (max-width: 768px) {
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     padding: 0 0 0 0;
   }
   label {
@@ -44,8 +44,11 @@ export const DivInput = styled.div`
     color: #03203a;
     display: block;
     margin-bottom: 5px;
-
     font-weight: bold;
+    margin-top: 5px;
+    @media screen and (max-width: 414px) {
+      margin-top: 5px;
+    }
   }
   input {
     width: 95%;
@@ -54,20 +57,30 @@ export const DivInput = styled.div`
     border-radius: 4px;
     margin-right: 10px;
   }
+
+  select {
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    @media screen and (max-width: 768px) {
+      width: 98%;
+    }
+  }
 `;
 
 export const Action = styled.div`
-  position: absolute;
-  top: 85%;
+  margin-top: 2%;
   right: 10px;
   left: 10px;
   text-align: center;
   @media screen and (max-width: 768px) {
-    top: 103%;
+    margin-top: 5%;
     text-align: center;
   }
-  @media screen and (max-width: 376px) {
-    top: 105%;
+  @media screen and (max-width: 414px) {
+    margin-top: 10%;
   }
   button {
     color: #03203a;

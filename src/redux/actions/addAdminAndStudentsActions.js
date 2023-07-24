@@ -1,4 +1,10 @@
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { dataBase } from "../../confiFirebase/configFirebase";
 import { typeFormAdminAndStydents } from "../types/userTypes";
 
@@ -43,12 +49,13 @@ export const getAdminAndStudents = () => {
     try {
       // Realiza la consulta a Firestore y obtiene los datos
       const snapshot = await getDocs(referenceCollection); // Elimina ".collection" aquí
-      const data = snapshot.docs.map((doc) => doc.data());
-
+      console.log("llllllllll", snapshot) 
+      const data = snapshot.docs.map((doc) => ({id:doc.id, info:doc.data()}));
+      console.log("data getstudents", snapshot) 
       // Dispatch la acción para almacenar los datos en el estado
       dispatch({ type: "GET_FORMADMINSTUDENTS", payload: data });
 
-      return data; // Opcional: puedes devolver los datos si los necesitas en el componente
+      return data;
     } catch (error) {
       // Manejo de errores si es necesario
       console.error("Error al obtener los datos:", error);
@@ -57,22 +64,37 @@ export const getAdminAndStudents = () => {
   };
 };
 
-export const updateAdminAndStudentsAction = (AdminAndStudentsData) => {
+// export const updateAdminAndStudentsAction = (AdminAndStudentsData) => {
+//   return async (dispatch) => {
+//     try {
+//       // Actualiza los datos del colaborador en Firestore
+//       await dataBase
+//         .firestore()
+//         .collection("colaboradores")
+//         .doc(AdminAndStudentsData.id)
+//         .update(AdminAndStudentsData);
+
+//       // Dispatch la acción para actualizar el estado con los nuevos datos
+//       dispatch({
+//         type: "UPDATE_FORMADMINSTUDENTS",
+//         payload: AdminAndStudentsData,
+//       });
+
+//       console.log("Datos del colaborador actualizados correctamente.");
+//     } catch (error) {
+//       console.error("Error al actualizar los datos del colaborador:", error);
+//     }
+//   };
+// };
+
+export const updateAdminAndStudentsAction = (updateData) => {
   return async (dispatch) => {
     try {
       // Actualiza los datos del colaborador en Firestore
-      await dataBase
-        .firestore()
-        .collection("colaboradores")
-        .doc(AdminAndStudentsData.id)
-        .update(AdminAndStudentsData);
-
-      // Dispatch la acción para actualizar el estado con los nuevos datos
-      dispatch({
-        type: "UPDATE_FORMADMINSTUDENTS",
-        payload: AdminAndStudentsData,
-      });
-
+      console.log(updateData,"estamos mirando que pasa")
+      const docRef = doc(dataBase, nameCollection, updateData.id);
+      
+      await updateDoc(docRef, updateData);
       console.log("Datos del colaborador actualizados correctamente.");
     } catch (error) {
       console.error("Error al actualizar los datos del colaborador:", error);
