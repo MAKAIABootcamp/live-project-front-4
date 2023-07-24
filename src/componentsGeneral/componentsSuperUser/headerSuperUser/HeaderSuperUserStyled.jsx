@@ -2,12 +2,15 @@ import { styled } from "styled-components";
 
 export const ContainerHeader = styled.nav`
   display: flex;
+  width: 1440px;
+  z-index: 310;
   justify-content: space-around;
   align-items: center;
   background-color: #03203a;
   color: white;
   height: 70px;
   overflow: hidden;
+  position: fixed;
   font-size: 14px;
 
   a {
