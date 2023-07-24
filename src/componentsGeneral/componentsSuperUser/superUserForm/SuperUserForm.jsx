@@ -28,46 +28,47 @@ const SuperUserForm = ({ addAdminAndStudents }) => {
     };
     try {
       //creando la autenticacion y tomando el uid
-  
-    
-          // Agregar el usuario a Firestore usando la acción addAdminAndStudentsTypesActionAsync
-
-          console.log("Usuario agregado correctamente a Firestore.");
-  
-        createUserWithMailAndPassword(values.email, password,userData);
-
-     
+      // Agregar el usuario a Firestore usando la acción addAdminAndStudentsTypesActionAsync
+      console.log("Usuario agregado correctamente a Firestore.");
+      createLoginAndSaveUserInFireStore(values.email, password, userData);
     } catch (error) {
-      console.error("Error al agregar el usuario a Firestore:", error);
+      console.error("Error en la creación de cuenta ", error);
+
+      Swal.fire({
+        icon: "error",
+        title: "¡Error creando cuenta!",
+        text: "Ocurrio un error creando y/o registrando el usuario::".concat(error),
+      });
     }
   };
 
-  const createUserWithMailAndPassword = (email, password, userData) => {
-    console.log("email es", email);
-    console.log("password es", password);
+  const createLoginAndSaveUserInFireStore = (email, password, userData) => {
     const auth = getAuth();
+   //creando autenticacion
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         //logueado
         const user = userCredential.user;
         console.log("Usuario creado", user);
-        userData.uid =userCredential.user.uid;
+        userData.uid = userCredential.user.uid;
+
+        //añadir datos a firestore
         addAdminAndStudents(userData);
-        // Datos para el correo
+        
+        // Datos para enviar en el correo
         const { email, contraseña, nombre } = userData;
         const templateParams = {
           nombre: nombre,
           email: email,
           password: contraseña,
         };
-        //enviar mail
+
+        //enviando el mail
         sendMailWelcome(templateParams);
-        return user;
+      
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        return "ERROR_CREANDO_USUARIO";
+        console.error("ERROR_CREANDO_USUARIO ", error);
       });
   };
 

@@ -18,6 +18,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
   const handleSubmit = async (values) => {
     const { nombre, celular, programa, email } = values;
     const password = generateRandomPassword(8);
+    
     const userData = {
       nombre,
       celular,
@@ -25,9 +26,13 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
       email,
       contraseña: password,
       userType: "estudiante",
+      uid: "",
+
     };
 
     try {
+
+      
       await addAdminAndStudents(userData);
       console.log("Usuario agregado correctamente a Firestore.");
       const { email, contraseña, nombre } = userData;
