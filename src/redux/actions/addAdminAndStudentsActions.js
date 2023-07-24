@@ -49,9 +49,9 @@ export const getAdminAndStudents = () => {
     try {
       // Realiza la consulta a Firestore y obtiene los datos
       const snapshot = await getDocs(referenceCollection); // Elimina ".collection" aquí
-      console.log("llllllllll", snapshot) 
+      // console.log("llllllllll", snapshot) 
       const data = snapshot.docs.map((doc) => ({id:doc.id, info:doc.data()}));
-      console.log("data getstudents", snapshot) 
+      // console.log("data getstudents", snapshot) 
       // Dispatch la acción para almacenar los datos en el estado
       dispatch({ type: "GET_FORMADMINSTUDENTS", payload: data });
 
@@ -63,35 +63,13 @@ export const getAdminAndStudents = () => {
     }
   };
 };
-
-// export const updateAdminAndStudentsAction = (AdminAndStudentsData) => {
-//   return async (dispatch) => {
-//     try {
-//       // Actualiza los datos del colaborador en Firestore
-//       await dataBase
-//         .firestore()
-//         .collection("colaboradores")
-//         .doc(AdminAndStudentsData.id)
-//         .update(AdminAndStudentsData);
-
-//       // Dispatch la acción para actualizar el estado con los nuevos datos
-//       dispatch({
-//         type: "UPDATE_FORMADMINSTUDENTS",
-//         payload: AdminAndStudentsData,
-//       });
-
-//       console.log("Datos del colaborador actualizados correctamente.");
-//     } catch (error) {
-//       console.error("Error al actualizar los datos del colaborador:", error);
-//     }
-//   };
-// };
+;
 
 export const updateAdminAndStudentsAction = (updateData) => {
   return async (dispatch) => {
     try {
       // Actualiza los datos del colaborador en Firestore
-      console.log(updateData,"estamos mirando que pasa")
+      // console.log(updateData,"estamos mirando que pasa")
       const docRef = doc(dataBase, nameCollection, updateData.id);
       
       await updateDoc(docRef, updateData);

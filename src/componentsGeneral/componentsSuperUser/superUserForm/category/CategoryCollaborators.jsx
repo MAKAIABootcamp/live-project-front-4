@@ -19,7 +19,6 @@ import { BankOutlined } from "@ant-design/icons";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { getAdminAndStudents } from "../../../../redux/actions/addAdminAndStudentsActions";
 import { updateAdminAndStudentsAction } from "../../../../redux/actions/addAdminAndStudentsActions";
-import { dataBase } from "../../../../confiFirebase/configFirebase";
 import "firebase/firestore";
 
 const CategoryCollaborators = () => {
@@ -37,7 +36,7 @@ const CategoryCollaborators = () => {
     dispatch(getAdminAndStudents())
       .then((data) => {
         setAdminAndStudentsData(data);
-        console.log("esto es data", data)
+        // console.log("esto es data", data);
       })
       .catch((error) => {
         console.error("Error al obtener los datos:", error);
@@ -52,10 +51,6 @@ const CategoryCollaborators = () => {
     );
   }, [adminAndStudentsData, selectedCategory]);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -65,7 +60,10 @@ const CategoryCollaborators = () => {
     setComment(value);
     setSelectedCollaborator((prevData) => ({
       ...prevData,
-      [name]: value,
+      info: {
+        ...prevData.info,
+        [name]: value,
+      },
     }));
   };
 
@@ -87,7 +85,6 @@ const CategoryCollaborators = () => {
       // Actualiza solo el campo editado
       [editedField]: comment,
     };
-
     // Actualiza los datos del colaborador en Firestore a través de la acción de Redux
     dispatch(updateAdminAndStudentsAction(updateAdminAndStudentsData));
     closeModal();
@@ -104,7 +101,7 @@ const CategoryCollaborators = () => {
     setSelectedCollaborator(collaborator);
     setEditedField(field);
     setComment(""); // Limpiamos el campo de comentario cada vez que se abre el modal
-    openModal();
+    setIsModalOpen(true); // Asegurarse de que isModalOpen sea true
   };
 
   const options = [
@@ -173,21 +170,6 @@ const CategoryCollaborators = () => {
                   key={selectedAdminAndStudentsData.info.nombre}
                   onSubmit={handleSubmit}
                 >
-                  <label htmlFor="">Nombre del colaborador</label>
-                  <input
-                    type="text"
-                    name="nombre"
-                    id="nombre"
-                    value={
-                      editedField === "nombre"
-                        ? comment
-                        : selectedAdminAndStudentsData.info.nombre
-                    }
-                    onChange={handleCommentChange}
-                    onKeyDown={handleKeyDown}
-                    style={{ textAlign: "top" }}
-                  />
-
                   <label htmlFor="">Área</label>
                   <select
                     as="select"
@@ -198,6 +180,7 @@ const CategoryCollaborators = () => {
                         ? comment
                         : selectedAdminAndStudentsData.info.area
                     }
+                    onChange={handleCommentChange}
                   >
                     {options.map((item) => (
                       <option value={item.value}>{item.value}</option>

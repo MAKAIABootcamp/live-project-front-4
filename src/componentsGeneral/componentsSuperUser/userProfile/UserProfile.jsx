@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import {
   DivInput,
   Input,
@@ -9,41 +10,145 @@ import {
   DivDiv,
 } from "./UserProfileStyled";
 import { Formik } from "formik";
-// import azul from "../../../assets/azul.jpg";
+import { EditOutlined } from "@ant-design/icons";
+import {
+  getAdminAndStudents,
+  updateAdminAndStudentsAction,
+} from "../../../redux/actions/addAdminAndStudentsActions";
 import robot from "../../../assets/avatar.jpg";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
-import { EditOutlined } from "@ant-design/icons";
 
 const UserProfile = () => {
+  const dispatch = useDispatch();
+  const [adminAndStudentsData, setAdminAndStudentsData] = useState([]);
+  const [selectedAdminAndStudentsData, setSelectedAdminAndStudentsData] =
+    useState({});
+  const [editedField, setEditedField] = useState("");
+  const [filteredCollaborators, setFilteredCollaborators] = useState([]);
+
+  useEffect(() => {
+    dispatch(getAdminAndStudents())
+      .then((data) => {
+        setAdminAndStudentsData(data);
+        // Assuming you have a selected user (e.g., first user) for editing.
+        setSelectedAdminAndStudentsData(data[0]);
+      })
+      .catch((error) => {
+        console.error("Error al obtener los datos:", error);
+      });
+  }, [dispatch]);
+
+  const handleFieldEdit = (field) => {
+    setEditedField(field);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setSelectedAdminAndStudentsData((prevData) => ({
+      ...prevData,
+      info: {
+        ...prevData.info,
+        [name]: value,
+      },
+    }));
+  };
+
+  const handleSubmit = () => {
+    // Dispatch la acción para actualizar los datos en Firestore
+    dispatch(
+      updateAdminAndStudentsAction({
+        id: selectedAdminAndStudentsData.id,
+        info: selectedAdminAndStudentsData.info,
+      })
+    )
+      .then(() => {
+        // Data updated successfully, you can display a success message or perform other actions.
+        setEditedField(""); // Reset editedField after successful update
+      })
+      .catch((error) => {
+        console.error("Error updating data in Firestore:", error);
+      });
+  };
+
+  const telefono = selectedAdminAndStudentsData.info
+    ? selectedAdminAndStudentsData.info.telefono
+    : "";
+  const cargo = selectedAdminAndStudentsData.info
+    ? selectedAdminAndStudentsData.info.cargo
+    : "";
+  const email = selectedAdminAndStudentsData.info
+    ? selectedAdminAndStudentsData.info.email
+    : "";
+  const contraseña = selectedAdminAndStudentsData.info
+    ? selectedAdminAndStudentsData.info.contraseña
+    : "";
+
   return (
     <DivDiv>
       <HeaderSuperUser />
+
       <DivProfile>
-        <Div>
-          <img src={robot} alt="" />
-          <p>Luisa Lafaure</p>
-        </Div>
+        {filteredCollaborators.map((collaborator) => (
+          <Div key={collaborator.info.nombre}>
+            <img src={robot} alt="" />
+            <p>{collaborator.info.nombre}</p>
+          </Div>
+        ))}
         <div>
           <Formik initialValues={{}}>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <DivInput>
                 <label htmlFor="">Teléfono</label>
-                <Input type="text" name="telephone" /> <EditOutlined />
+                {editedField === "telefono" ? (
+                  <Input
+                    type="text"
+                    name="telefono"
+                    value={telefono}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  <Input
+                    type="text"
+                    name="telefono"
+                    value={telefono}
+                    readOnly
+                  />
+                )}
+                {editedField !== "telefono" && (
+                  <EditOutlined onClick={() => handleFieldEdit("telefono")} />
+                )}
               </DivInput>
 
               <DivInput>
                 <label htmlFor="">Cargo</label>
-                <Input type="text" name="cargo" />
+                <Input type="text" name="cargo" value={cargo} readOnly />
               </DivInput>
 
               <DivInput>
                 <label htmlFor="">Correo</label>
-                <Input type="text" name="correo" />
+                <Input type="text" name="email" value={email} readOnly />
               </DivInput>
 
               <DivInput>
                 <label htmlFor="">Contraseña</label>
-                <Input type="text" name="password" /> <EditOutlined />
+                {editedField === "contraseña" ? (
+                  <Input
+                    type="text"
+                    name="contraseña"
+                    value={contraseña}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  <Input
+                    type="contraseña"
+                    name="contraseña"
+                    value={contraseña}
+                    readOnly
+                  />
+                )}
+                {editedField !== "contraseña" && (
+                  <EditOutlined onClick={() => handleFieldEdit("contraseña")} />
+                )}
               </DivInput>
 
               <Action>
@@ -58,111 +163,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
-
-// import React, { useEffect } from "react";
-// import {
-//   DivInput,
-//   Input,
-//   Form,
-//   Action,
-//   Div,
-//   DivProfile,
-//   DivDiv,
-// } from "./UserProfileStyled";
-// import { Formik } from "formik";
-// // import azul from "../../../assets/azul.jpg";
-// import robot from "../../../assets/avatar.jpg";
-// import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
-// import { EditOutlined } from "@ant-design/icons";
-// import { useSelector, useDispatch } from "react-redux";
-// import {
-//   getAdminAndStudents,
-//   updateAdminAndStudentsAction,
-// } from "../../../redux/actions/addAdminAndStudentsActions";
-
-// const UserProfile = () => {
-//   const dispatch = useDispatch();
-
-//   // Obtenemos la información del usuario desde el estado de Redux
-//   const userInfo = useSelector(
-//     (state) => state.newAdminAndStydentsType.newAdminAndStydentsType[0]
-//   );
-
-//   // Utilizamos useEffect para obtener los datos del usuario cuando el componente se monta
-//   useEffect(() => {
-//     // Llamamos a la acción para obtener la información del usuario
-//     dispatch(getAdminAndStudents());
-//   }, [dispatch]);
-
-//   const handleFormSubmit = (values) => {
-//     // Aquí puedes realizar el manejo de envío y actualización de los datos en Firestore si es necesario.
-//     // Por ejemplo, puedes llamar a la acción updateAdminAndStudentsAction para actualizar los datos del usuario.
-//     dispatch(updateAdminAndStudentsAction(values));
-//   };
-
-//   return (
-//     <DivDiv>
-//       <HeaderSuperUser />
-//       <DivProfile>
-//         <Div>
-//           <img src={robot} alt="" />
-//           <p>Luisa Lafaure</p>
-//         </Div>
-//         <div>
-//           <Formik initialValues={{ ...userInfo }} onSubmit={handleFormSubmit}>
-//             <Form>
-//               <DivInput>
-//                 <label htmlFor="telefono">Teléfono</label>
-//                 <Input
-//                   type="telefono"
-//                   name="telefono"
-//                   id="telefono"
-//                   value={userInfo.telefono || ""} // Mostrará el valor si existe o cadena vacía si es nulo
-//                 />
-//                 <EditOutlined />
-//               </DivInput>
-
-//               <DivInput>
-//                 <label htmlFor="cargo">Cargo</label>
-//                 <Input
-//                   type="text"
-//                   name="cargo"
-//                   id="cargo"
-//                   value={userInfo.cargo || ""} // Mostrará el valor si existe o cadena vacía si es nulo
-//                 />
-//               </DivInput>
-
-//               <DivInput>
-//                 <label htmlFor="email">Correo</label>
-//                 <Input
-//                   type="text"
-//                   name="email"
-//                   id="email"
-//                   value={userInfo.email || ""} // Mostrará el valor si existe o cadena vacía si es nulo
-//                 />
-//               </DivInput>
-
-//               <DivInput>
-//                 <label htmlFor="contraseña">Contraseña</label>
-//                 <Input
-//                   type="text"
-//                   name="contraseña"
-//                   id="contraseña"
-//                   value={userInfo.contraseña || ""} // Mostrará el valor si existe o cadena vacía si es nulo
-//                 />
-//                 <EditOutlined />
-//               </DivInput>
-
-//               <Action>
-//                 <button type="submit">Guardar</button>
-//               </Action>
-//             </Form>
-//           </Formik>
-//         </div>
-//       </DivProfile>
-//     </DivDiv>
-//   );
-// };
-
-// export default UserProfile;
