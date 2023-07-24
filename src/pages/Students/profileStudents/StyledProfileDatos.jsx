@@ -5,7 +5,7 @@ export const DivAvatar = styled.div`
 display:flex ;
 flex-direction:column ;
 align-items:center ;
-margin-top:-15px;
+margin:0 ;
  }
  @media screen and (max-width: 376px) {
     justify-content:center ;

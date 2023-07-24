@@ -9,8 +9,9 @@ background:#03203A  ;
 height:50px ;
 width:100% ;
 bottom: 0;
-margin:0 ;
-/* position: fixed; */
+margin:0;
+position:fixed ;
+ 
  }
 `
 

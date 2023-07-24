@@ -62,6 +62,7 @@ const FormStudents = () => {
     hobbie: '',
   }
   const registro = (dataForm) => {
+    console.log(user.uid);
     dispatch(registerActionAsync(
       user.uid,
       dataForm.nombreCompleto,

@@ -8,9 +8,9 @@ const ProfileStudents = () => {
   return (
     <>
     <DivProfileGeneral>
-    <HeaderStudents/>
+   <HeaderStudents/>
     <ProfileDatos/>
-   
+   <FooterStudents/>
     </DivProfileGeneral>
     </>
   )
