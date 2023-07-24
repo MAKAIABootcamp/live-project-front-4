@@ -350,7 +350,7 @@ import {
 } from './SelectionStyle';
 import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser';
 import BarSearch from '../../barSearch/BarSearch';
-import CopyCommentsPopup from './CopyCommentsPopup';
+import CopyCommentsPopup from "./CopyCommentsPopup"
 
 // const CopyCommentsPopup = ({ comments, onClose }) => {
 //   const copyComments = () => {
