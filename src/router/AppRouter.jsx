@@ -40,10 +40,11 @@ const AppRouter = () => {
             email: userLogged.auth.currentUser.email,
             nombre: userLogged.auth.currentUser.displayName,
             accessToken: userLogged.auth.currentUser.accessToken,
+            uid:userLogged.auth.currentUser.uid,
           };
 
           const usersRef = collection(db, "users");
-          console.log(usersRef);
+          
           const q = query(usersRef, where("uid", "==", userLogged.uid));
           getDocs(q)
             .then((querySnapshot) => {

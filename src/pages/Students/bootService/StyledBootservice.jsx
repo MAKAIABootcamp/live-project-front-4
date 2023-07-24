@@ -7,13 +7,14 @@ export const DivBootserviceGeneral = styled.div`
   background-position: center;
   width:100% ;
 height:100vh;
+margin:0px 0px 30px 0px ;
 `
 
 
 export const SectionRobot= styled.section`
  @media screen and (max-width: 1440px) {
  display:flex ;
- margin:0;
+ margin:5px 0 0 20px;
 figure{
  width:5%;
 height:5%; 
@@ -24,10 +25,10 @@ height:100% ;
 object-fit:contain;
 }
 h1 {
-    font-size:40px ;
+    font-size:30px ;
     font-weight:bold ;
     color:#03203A  ;
-    margin-top:28px ;
+    margin-top:15px ;
 }
  }
  @media screen and (max-width: 376px) {
@@ -57,26 +58,29 @@ export const SectionServicios= styled.section`
 padding:20px ;
 
  @media screen and (max-width: 1440px) {
-    height:250px ;
+    height:200px ;
     flex: 1;
+
   
 img{
-width:100%;
+width:80%;
 object-fit:contain;
 border-radius:10px;
 }
 h2{
   
     color:#03203A  ;
-    font-size:30px ;
+    font-size:25px ;
     font-weight:bold ;
+    display: inline;
 
     
 }
 p{
     color:#03203A  ;
     font-size:18px ;
-    margin-top:-10px ;
+    line-height: 1;
+    margin-top:5px ;
    
 }
 button{
@@ -88,6 +92,8 @@ button{
     color:#03203A  ;
     font-weight:bold ;
     font-size:16px ;
+    margin-top:15px ;
+
 
 }
  }

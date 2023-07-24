@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import fondoForm from '../../../assets/bg-form.png'
+import fondoGeneral from '../../../assets/FONDOGENERAL.png'
 
 export const DivFormulario = styled.div`
 
@@ -7,7 +7,9 @@ export const DivFormulario = styled.div`
   width: 100%;
   height: 100vh;
  margin-top:5px ;
- background-image: url(${fondoForm});
+ background-image: url(${fondoGeneral});
+ background-size: cover;
+  background-position: center;
 
   
 }
@@ -136,7 +138,8 @@ button {
 `
 
 export const ErrorFormik = styled.p`
-color:red ;
+color: #25ABBC;
 font-size:10px ;
+border-color:#03203a ;
 
 `
