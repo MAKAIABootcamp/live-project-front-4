@@ -38,22 +38,44 @@ export const addAdminAndStudentsTypesActionSync = (
   };
 };
 
-export const getAdminAndStudents = (nameCollection) => {
+export const getAdminAndStudents = () => {
   return async (dispatch) => {
     try {
-      console.log("Fetching benefits from database...");
-      const getData = await getDocs(collection(dataBase, nameCollection));
-      const typeFormAdminAndStydentsData = getData.docs.map((doc) =>
-        doc.data()
-      );
-      console.log("Fetched benefits:", typeFormAdminAndStydentsData);
+      // Realiza la consulta a Firestore y obtiene los datos
+      const snapshot = await getDocs(referenceCollection); // Elimina ".collection" aquí
+      const data = snapshot.docs.map((doc) => doc.data());
 
-      dispatch({
-        type: typeFormAdminAndStydents.GET_FORMADMINSTUDENTS,
-        payload: typeFormAdminAndStydentsData,
-      });
+      // Dispatch la acción para almacenar los datos en el estado
+      dispatch({ type: "GET_FORMADMINSTUDENTS", payload: data });
+
+      return data; // Opcional: puedes devolver los datos si los necesitas en el componente
     } catch (error) {
-      console.log(error);
+      // Manejo de errores si es necesario
+      console.error("Error al obtener los datos:", error);
+      throw error;
+    }
+  };
+};
+
+export const updateAdminAndStudentsAction = (AdminAndStudentsData) => {
+  return async (dispatch) => {
+    try {
+      // Actualiza los datos del colaborador en Firestore
+      await dataBase
+        .firestore()
+        .collection("colaboradores")
+        .doc(AdminAndStudentsData.id)
+        .update(AdminAndStudentsData);
+
+      // Dispatch la acción para actualizar el estado con los nuevos datos
+      dispatch({
+        type: "UPDATE_FORMADMINSTUDENTS",
+        payload: AdminAndStudentsData,
+      });
+
+      console.log("Datos del colaborador actualizados correctamente.");
+    } catch (error) {
+      console.error("Error al actualizar los datos del colaborador:", error);
     }
   };
 };

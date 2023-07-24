@@ -42,56 +42,23 @@ export const DivInput = styled.div`
   label {
     margin-bottom: 15px;
     color: #03203a;
-  }
-`;
+    display: block;
+    margin-bottom: 5px;
 
-export const Input = styled.input`
-  height: 40px;
-  width: 80%;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
-  background-color: 1px solid rgba(0, 0, 0, 0.2);
-  padding-left: 1rem;
-  @media screen and (max-width: 768px) {
+    font-weight: bold;
   }
-  @media screen and (max-width: 376px) {
-    height: 40px;
-    width: 100%;
-  }
-`;
-
-export const Select = styled.select`
-  height: 40px;
-  width: 85%;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
-  background-color: 1px solid rgba(0, 0, 0, 0.2);
-  padding-left: 1rem;
-  @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 376px) {
-    height: 40px;
-    width: 107%;
-  }
-`;
-
-export const Form = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  @media screen and (max-width: 768px) {
-  }
-  @media screen and (max-width: 376px) {
-    display: flex;
-    flex-direction: column;
+  input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
   }
 `;
 
 export const Action = styled.div`
   position: absolute;
-  top: 100%;
+  top: 85%;
   right: 10px;
   left: 10px;
   text-align: center;
@@ -111,4 +78,10 @@ export const Action = styled.div`
     height: 35px;
     width: 180px;
   }
+`;
+
+export const ErrorText = styled.div`
+  color: #03203a;
+  font-size: 1rem;
+  margin-top: 0.2rem;
 `;

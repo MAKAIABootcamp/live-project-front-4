@@ -184,6 +184,13 @@ export const ModalContent = styled.div`
     font-size: 1rem;
   }
 
+  select {
+    width: 270px;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
   label {
     color: white;
   }

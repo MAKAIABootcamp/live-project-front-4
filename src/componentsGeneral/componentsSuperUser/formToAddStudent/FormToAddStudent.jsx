@@ -30,7 +30,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
     try {
       await addAdminAndStudents(userData);
       console.log("Usuario agregado correctamente a Firestore.");
-      const { email, contraseña,nombre } = userData;
+      const { email, contraseña, nombre } = userData;
 
       // Configurar emailjs-com con los detalles de tu cuenta
       init("HG4_QlSaoJ-f9recA");
@@ -46,13 +46,25 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
       const response = await emailjs.send(
         "service_ewi3quf",
         "template_hg3t809",
-        templateParams,"aNjV2AvY_XWC4wve6"
+        templateParams,
+        "aNjV2AvY_XWC4wve6"
       );
 
       console.log("Correo enviado:", response);
     } catch (error) {
       console.error("Error al agregar el usuario a Firestore:", error);
     }
+  };
+
+  const generateRandomPassword = (length) => {
+    const charset =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      password += charset.charAt(randomIndex);
+    }
+    return password;
   };
 
   const validationSchema = Yup.object().shape({
@@ -73,17 +85,6 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
         "Correo inválido (ejemplo@gmail.com)"
       ),
   });
-
-  const generateRandomPassword = (length) => {
-    const charset =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-    let password = "";
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * charset.length);
-      password += charset.charAt(randomIndex);
-    }
-    return password;
-  };
 
   const initialValues = {
     nombre: "",
