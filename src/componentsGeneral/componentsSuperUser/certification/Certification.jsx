@@ -42,6 +42,10 @@ const Certification = () => {
         <SectionBarCertification>
           <BarSearch onSearch={handleSearch} />
         </SectionBarCertification>
+        {/* <section>
+          <button>resultado 1</button>
+          <button>resultado 2</button>
+          </section> */}
         <CoursesCertified>
           {coursesDataCertification.map((studentsCertified) => (
             <React.Fragment key={studentsCertified.id}>
@@ -75,3 +79,5 @@ const Certification = () => {
 };
 
 export default Certification;
+
+
