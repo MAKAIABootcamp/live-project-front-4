@@ -13,12 +13,14 @@ import * as Yup from "yup";
 import { addAdminAndStudentsTypesActionAsync } from "../../../redux/actions/addAdminAndStudentsActions";
 import { init } from "emailjs-com";
 import emailjs from "emailjs-com";
+import Swal from "sweetalert2";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const FormToAddStudent = ({ addAdminAndStudents }) => {
   const handleSubmit = async (values) => {
     const { nombre, celular, programa, email } = values;
     const password = generateRandomPassword(8);
-    
+
     const userData = {
       nombre,
       celular,
@@ -27,38 +29,73 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
       contraseña: password,
       userType: "estudiante",
       uid: "",
-
     };
 
     try {
-
-      
-      await addAdminAndStudents(userData);
+      //creando la autenticacion y tomando el uid
+      // Agregar el usuario a Firestore usando la acción addAdminAndStudentsTypesActionAsync
       console.log("Usuario agregado correctamente a Firestore.");
-      const { email, contraseña, nombre } = userData;
-
-      // Configurar emailjs-com con los detalles de tu cuenta
-      init("HG4_QlSaoJ-f9recA");
-
-      // Datos para el correo
-      const templateParams = {
-        nombre: nombre,
-        email: email,
-        password: contraseña,
-      };
-
-      // Enviar el correo
-      const response = await emailjs.send(
-        "service_ewi3quf",
-        "template_hg3t809",
-        templateParams,
-        "aNjV2AvY_XWC4wve6"
-      );
-
-      console.log("Correo enviado:", response);
+      createLoginAndSaveUserInFireStore(values.email, password, userData);
     } catch (error) {
-      console.error("Error al agregar el usuario a Firestore:", error);
+      console.error("Error en la creación de cuenta ", error);
+
+      Swal.fire({
+        icon: "error",
+        title: "¡Error creando cuenta!",
+        text: "Ocurrio un error creando y/o registrando el usuario::".concat(
+          error
+        ),
+      });
     }
+  };
+
+  const createLoginAndSaveUserInFireStore = (email, password, userData) => {
+    const auth = getAuth();
+    //creando autenticacion
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        //logueado
+        const user = userCredential.user;
+        console.log("Usuario creado", user);
+        userData.uid = userCredential.user.uid;
+
+        //añadir datos a firestore
+        addAdminAndStudents(userData);
+
+        // Datos para enviar en el correo
+        const { email, contraseña, nombre } = userData;
+        const templateParams = {
+          nombre: nombre,
+          email: email,
+          password: contraseña,
+        };
+
+        //enviando el mail
+        sendMailWelcome(templateParams);
+      })
+      .catch((error) => {
+        console.error("ERROR_CREANDO_USUARIO ", error);
+      });
+  };
+
+  const sendMailWelcome = async (templateParams) => {
+    // Configurar emailjs-com con los detalles de tu cuenta
+    init("HG4_QlSaoJ-f9recA");
+    // Enviar el correo
+    const response = await emailjs.send(
+      "service_ewi3quf",
+      "template_hg3t809",
+      templateParams,
+      "aNjV2AvY_XWC4wve6"
+    );
+
+    Swal.fire({
+      icon: "success",
+      title: "¡Formulario enviado exitosamente!",
+      text: "El formulario ha sido enviado y el usuario ha sido agregado correctamente.",
+    });
+
+    console.log("Correo enviado:", response);
   };
 
   const generateRandomPassword = (length) => {
