@@ -9,7 +9,7 @@ export const ContainerHeader = styled.nav`
   background-color: #03203a;
   color: white;
   height: 70px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: fixed;
   font-size: 14px;
 
@@ -19,12 +19,13 @@ export const ContainerHeader = styled.nav`
   }
 
   @media screen and (max-width: 768px) {
+    width: 770px;
     font-size: 12px;
     justify-content: space-between;
   }
 
-  @media screen and (max-width: 376px) {
-    width: 460px;
+  @media screen and (max-width: 414px) {
+    width: 560px;
   }
 
   .links {
@@ -69,7 +70,7 @@ export const ContainerHeaderLinks = styled.div`
     position: absolute;
     margin-top: 318px;
     margin-left: 412px;
-    /* background-color: #03203a; */
+    background-color: #03203a;
     z-index: 100;
     width: 250px;
     transform: translateX(27%);
@@ -141,9 +142,16 @@ export const ContainerHeaderSignOff = styled.div`
 `;
 
 export const BgDiv = styled.div`
-  @media screen and (max-width: 1440px) {
+width: 500px;
+height: 500px;
+background-color: orange;
+transform: translateY(250px);
+position: absolute;
+/* display: none; */
+  @media screen and (max-width: 768px) {
     position: absolute;
-    background-color: #03203a;
+    display: block;
+    background-color: #1fca35;
     top: 76px;
     left: 426.323px;
     border-radius: 0 0 10px 10px;
@@ -157,7 +165,7 @@ export const BgDiv = styled.div`
     }
   }
 
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     left: 379px;
 
     &.active {
