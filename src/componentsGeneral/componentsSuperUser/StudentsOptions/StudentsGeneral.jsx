@@ -9,36 +9,7 @@ import { collection, doc } from 'firebase/firestore'
 import { dataBase } from '../../../confiFirebase/configFirebase'
 
 const StudentsGeneral = () => {
-
-  const navigate = useNavigate();
-
-  const toSelection = () => {
-    navigate('/selectionSuperUser')
-  }
-
-  const toFormation = () => {
-    navigate('/cohortGroupTraining')
-  }
-
-  const toCertification = () => {
-    navigate('/certificationSuperUser')
-  }
-/////////////
-  // const ColeccionRef = dataBase.collection('PáginaDeEstudiantes');
-  // const DocumentRef = ColeccionRef.doc('DSloxJJJJMSV02PPuHUG');
-
-  // DocumentRef.get().then((doc) => {
-  //   if (doc.exists) {
-  //     const data = doc.data();
-
-  //     const link = '/selectionSuperUser';
-  //     navigate(link)
-  //   } else {
-  //     console.log("El documento no existe")
-  //   }
-  // })
-/////////////
-
+const navigate = useNavigate();
 const dispatch = useDispatch();
 const pagesData = useSelector((state) => state.courses.pageStudentsData);
 const nameCollection = 'PáginaDeEstudiantes';
@@ -55,7 +26,7 @@ useEffect(() => {
 <BackgroundStudents>
         <SectionStudents>
           {pagesData.map((student) => (
-            <OptionsStudents key={student.id}>
+            <OptionsStudents key={student.id} onClick={() => navigate(`/${student.link}`)}>
               <IconOption src={student.icon} alt="" width={60}/>
               <p>{student.title}</p>
             </OptionsStudents>

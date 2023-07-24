@@ -26,6 +26,7 @@ import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/
 import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
+import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/profileCertified";
 
 const AppRouter = () => {
   return (
@@ -63,6 +64,7 @@ const AppRouter = () => {
 
             {/*Sub ruta de Certificación*/}
             <Route path="listCertifiedSU" element={<ListCertification />} />
+            <Route path="detailsProfileCertification" element={<ProfileCertified />}/>
               
             {/* Inicia Formación */}
             <Route path="addNewCohort" element={<NewCohort />} />{/* CREAR UNA NUEVA COHORTE LISTO EN CODIGO */}

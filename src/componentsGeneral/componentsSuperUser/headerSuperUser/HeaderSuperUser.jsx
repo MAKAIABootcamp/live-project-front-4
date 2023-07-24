@@ -100,29 +100,6 @@ const HeaderSuperUser = () => {
         </ContainerHeaderLinksUnt>
 
         <ContainerHeaderLinksUnt>
-          <Item onClick={() => toggleDeploy("perfil")}>
-            <figure>
-              <img src={perfil} alt="Perfil" />
-              <NavLink
-                to={"/profileSuperUser"}
-                className={({ isActive, isPending }) =>
-                  isPending ? "navlink" : isActive ? "navlink active" : "navlink"
-                }
-              >
-                Perfil
-              </NavLink>
-            </figure>
-          </Item>
-          <SubItems className={`SubItems ${deployPerfil ? "deploySubItems" : ""}`}>
-<NavLink to={'/profileSuperUser'}>
-<div>
-  <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689603697/LIVE/Im%C3%A1genes/Icons/editar_x3bkx2.png" width={20}/>
-  <p>Ver perfil</p>
-</div>
-</NavLink>
-          </SubItems>
-        </ContainerHeaderLinksUnt>
-        <ContainerHeaderLinksUnt>
           <Item>
             <figure>
               <img src={benefits} alt="IconsHouse" />
@@ -139,7 +116,10 @@ const HeaderSuperUser = () => {
         </ContainerHeaderLinksUnt>
         <ContainerHeaderSignOff>
           <figure>
-            <img src={avatar} alt="" />
+            <NavLink to={"/profileSuperUser"}>
+              <img src={avatar} alt="" />
+            </NavLink>
+          
             <NavLink
               className={({ isActive, isPending }) =>
                 isPending ? "navlink" : isActive ? "navlink active" : "navlink"
