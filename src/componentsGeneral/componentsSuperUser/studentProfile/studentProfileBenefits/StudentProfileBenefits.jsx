@@ -9,6 +9,7 @@ import {
   DivInformation,
   P,
   DivTitle,
+  DivDiv,
 } from "./StudentProfileBenefitsStyled";
 import perfil from "../../../../assets/avatar.jpg";
 import HeaderSuperUser from "../../headerSuperUser/HeaderSuperUser";
@@ -33,9 +34,7 @@ const StudentProfileBenefits = () => {
 
   return (
     <div>
-      <div>
-        <HeaderSuperUser />
-      </div>
+      <div>{/* <HeaderSuperUser /> */}</div>
       <DivGeneral>
         <DivTitle>
           <ArrowLeftOutlined onClick={handleNavigateHome} size={30} />
@@ -46,24 +45,23 @@ const StudentProfileBenefits = () => {
             <img src={perfil} alt="" />
             <div>
               <p>Pepito Jaramillo</p>
-              <p>Tipo de Ingreso</p>
+              <p>Cedula: 25.638.632</p>
               <p>Financiado por Confama</p>
-              <select name="" id="">
-                <option value="">Estado</option>
-                <option value="">Fundamentos</option>
-                <option value="">Profundización</option>
-                <option value="">Certificado</option>
-                <option value="">Reasignado</option>
-                <option value="">Retiro Voluntario</option>
-                <option value="">Decersión</option>
-              </select>
+              <P>Apoyo socioeconómico</P>
             </div>
           </Div>
 
           <DivInfo>
-            <P>Apoyo socioeconómico</P>
             <p>Correo: pepito@gmail.com </p>
-            <p>Cedula: 25.638.632</p>
+            <select name="" id="">
+              <option value="">Estado</option>
+              <option value="">Fundamentos</option>
+              <option value="">Profundización</option>
+              <option value="">Certificado</option>
+              <option value="">Reasignado</option>
+              <option value="">Retiro Voluntario</option>
+              <option value="">Decersión</option>
+            </select>
           </DivInfo>
         </DivGeneralInformation>
 
@@ -76,7 +74,7 @@ const StudentProfileBenefits = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
-            <h2>Información academica y Personal</h2>
+            <h2>Información academica</h2>
             <p>
               ""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

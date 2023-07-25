@@ -71,8 +71,8 @@ export const updateAdminAndStudentsAction = (updateData) => {
       // Actualiza los datos del colaborador en Firestore
       // console.log(updateData,"estamos mirando que pasa")
       const docRef = doc(dataBase, nameCollection, updateData.id);
-      
-      await updateDoc(docRef, updateData);
+      console.log("este es el doc", docRef )
+      await updateDoc(docRef, updateData.info);
       console.log("Datos del colaborador actualizados correctamente.");
     } catch (error) {
       console.error("Error al actualizar los datos del colaborador:", error);

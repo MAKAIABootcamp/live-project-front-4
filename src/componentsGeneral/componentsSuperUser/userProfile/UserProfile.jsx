@@ -29,8 +29,8 @@ const UserProfile = () => {
   useEffect(() => {
     dispatch(getAdminAndStudents())
       .then((data) => {
+        console.log("este es data", data)
         setAdminAndStudentsData(data);
-        // Assuming you have a selected user (e.g., first user) for editing.
         setSelectedAdminAndStudentsData(data[0]);
       })
       .catch((error) => {
@@ -62,8 +62,8 @@ const UserProfile = () => {
       })
     )
       .then(() => {
-        // Data updated successfully, you can display a success message or perform other actions.
-        setEditedField(""); // Reset editedField after successful update
+        // Los datos se actualizaron correctamente, puede mostrar un mensaje de éxito o realizar otras acciones.
+        setEditedField(""); //Restablecer campo editado después de una actualización exitosa
       })
       .catch((error) => {
         console.error("Error updating data in Firestore:", error);
@@ -85,15 +85,16 @@ const UserProfile = () => {
 
   return (
     <DivDiv>
-      <HeaderSuperUser />
+      {/* <HeaderSuperUser /> */}
 
       <DivProfile>
-        {filteredCollaborators.map((collaborator) => (
-          <Div key={collaborator.info.nombre}>
-            <img src={robot} alt="" />
-            <p>{collaborator.info.nombre}</p>
-          </Div>
-        ))}
+        {/* {filteredCollaborators.map((collaborator) => ( */}
+        {/* <Div key={collaborator.info.nombre}> */}
+        <Div>
+          <img src={robot} alt="" />
+          {/* <p>{collaborator.info.nombre}</p> */}
+        </Div>
+        {/* ))} */}
         <div>
           <Formik initialValues={{}}>
             <Form onSubmit={handleSubmit}>
