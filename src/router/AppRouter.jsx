@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { onAuthStateChanged } from "firebase/auth";
-import { GlobalStyles } from "../StylesGlobal/GlobalStyles";
-import PrivateRouter from "./PrivateRouter";
-import PublicRouter from "./PublicRouter";
-import { loginActionSync } from "../redux/actions/userActions";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { dataBase as db, auth } from "../confiFirebase/configFirebase";
+
 import Login from "../pages/Students/login/Login";
 import HomeStudents from "../pages/Students/homeStudents/HomeStudents";
 import FormStudents from "../pages/Students/formStudents/FormStudents";
@@ -19,7 +12,28 @@ import HomeSuperUser from "../pages/SuperUser/HomeSuperUser";
 import FormUser from "../pages/SuperUser/FormUser";
 import Profile from "../pages/SuperUser/Profile";
 import StudentsSU from "../pages/SuperUser/StudentsSU";
-import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
+import NewCohort from "../pages/SuperUser/NewCohort";
+import TrainingCohort from "../pages/SuperUser/TrainingCohort";
+import RequestBenefis from "../pages/SuperUser/RequestBenefis";
+import BenefitsReceivedStudents from "../pages/SuperUser/BenefitsReceivedStudents";
+import EscortRouteStudents from "../pages/SuperUser/EscortRouteStudents";
+import StudentsBenefits from "../pages/SuperUser/StudentsBenefits";
+import Selection from '../componentsGeneral/componentsSuperUser/Selection/Selection'
+//import Formation from '../componentsGeneral/componentsSuperUser/Formation/Formation'
+import Certification from '../componentsGeneral/componentsSuperUser/certification/Certification'
+import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/ProfileSelected';
+import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
+import AddStudents from "../pages/SuperUser/AddStudents";
+import NotFoundPages from "../pages/NotFoundPages";
+import { useDispatch, useSelector } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { GlobalStyles } from "../StylesGlobal/GlobalStyles";
+import PrivateRouter from "./PrivateRouter";
+import PublicRouter from "./PublicRouter";
+import { loginActionSync } from "../redux/actions/userActions";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { dataBase as db, auth } from "../confiFirebase/configFirebase";
+//import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
 
 const AppRouter = () => {
   
@@ -54,6 +68,7 @@ const AppRouter = () => {
                 console.log("User Type:", userData.userType);
               });
               dispatch(loginActionSync(logged));
+              console.log(logged);
             })
             .catch((error) => {
               console.log(
@@ -79,7 +94,8 @@ const AppRouter = () => {
   }
 
   return (
-    <GlobalStyles>
+    <>
+   <GlobalStyles/>
       <BrowserRouter>
         <Routes>
           <Route
@@ -114,18 +130,44 @@ const AppRouter = () => {
             )}
             {user?.userType === "administrador" && (
               <>
-                <Route path="homeSuperUser" element={<HomeSuperUser />} />
-                <Route path="teamSuperUser" element={<FormUser />} />
-                <Route path="profileSuperUser" element={<Profile />} />
-                <Route path="studentSuperUser" element={<StudentsSU />} />
-                <Route path="progressStudent" element={<ProgressStudent />} />
+                {/* Ruta del Admin */}
+            <Route path="homeSuperUser" element={<HomeSuperUser />} />
+            <Route path="teamSuperUser" element={<FormUser />} /> {/* EQUIPO */}
+            <Route path="profileSuperUser" element={<Profile />} />
+            <Route path="formToAddStudent" element={<AddStudents />} /> {/* formulario para crear estidiantes*/}
+            <Route path="studentSuperUser" element={<StudentsSU />} />
+              
+            {/* Ruta de Selección y Certificación */}
+            <Route path="selectionSuperUser" element={<Selection />} />
+
+            {/*Sub ruta de Selección*/}
+            <Route path="profileSelectedSU" element={<ProfileSelected />} />
+
+            {/* <Route path="formationSuperUser" element={<Formation />} /> */}
+            <Route path="certificationSuperUser" element={<Certification />} />
+
+            {/*Sub ruta de Certificación*/}
+            <Route path="listCertifiedSU" element={<ListCertification />} />
+              
+            {/* Inicia Formación */}
+            <Route path="addNewCohort" element={<NewCohort />} />{/* CREAR UNA NUEVA COHORTE LISTO EN CODIGO */}
+            <Route path="cohortGroupTraining" element={<TrainingCohort />} />{/* LISTO Grupo de formación LISTO EN CODIGO  */}
+            <Route path="studentProfileBenefits" element={<StudentsBenefits />} />{/*LISTO selecion de informacion */}
+            <Route path="RequestBenefis" element={<RequestBenefis />}/>{/* LISTO solicitud de beneficios */}
+            <Route path="benefitsReceived" element={<BenefitsReceivedStudents />}/>{/* LISTO Beneficios recibidos */}
+            <Route path="escortRoute" element={<EscortRouteStudents/>} />{/* ruta de acompañamiento LISTO EN CODIGO  */}
+            <Route path="NotFoundPages" element={<NotFoundPages/>} />{/* lista  */}
               </>
             )}
           </Route>
         </Routes>
       </BrowserRouter>
-    </GlobalStyles>
+      </>
   );
 };
 
+
 export default AppRouter;
+    
+
+

@@ -1,31 +1,47 @@
 import React from "react";
-import { ImgFondo, DivGeneral, DivImg, Action } from "./HomeStyled";
-// import Fondo from "../../../assets/fondoo.jpeg"
-// import ImgBootcamp from "../../../assets/Image 2577.png";
-import logo from '../../../assets/LOGO BOOTCAMP OSCURO.png'
+import { Div, DivGeneral, Action, DivImgEquipo } from "./HomeStyled";
+import Equipo from "../../../assets/loginActualizado.png";
+import logo from "../../../assets/LOGO BOOTCAMP OSCURO.png";
+import { useNavigate } from "react-router-dom";
+import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/");
+  };
+
   return (
     <>
-      <ImgFondo>
-        <div>
+      <div>
+        <HeaderSuperUser />
+      </div>
+      <div>
+        <Div>
+          <DivImgEquipo>
+            <img src={Equipo} alt="equipo" />
+          </DivImgEquipo>
           <DivGeneral>
-            <DivImg>
-              <img src={logo} alt="Bootcamp" />
-            </DivImg>
-            <p>¡Bienvenid@ de nuevo!</p>
+            <img src={logo} alt="Bootcamp" />
             <p>
-              Estamos encantados de tenerte a bordo y confiamos en que tu
-              experiencia y habilidades serán de gran valor.
+              ¡Bienvenid@ de nuevo!
+              <br />
+              <br />
+              Estamos encantados de tenerte a bordo <br /> y cumplir nuestro
+              propósito de potenciar personas <br /> con experiencia de valor.
+              <br />
+              <br />
+              Esperamos trabajar juntos y lograr grandes cosas.
+              <br />
+              ¡Adelante y gracias por ser parte de nuestro equipo!
             </p>
-            <p>Esperamos trabajar juntos y lograr grandes cosas.</p>
-            <p>¡Adelante y gracias por ser parte de nuestro equipo!</p>
             <Action>
-              <button>Cerrar Sesión</button>
+              <button onClick={handleNavigate}>Cerrar sesión</button>
             </Action>
           </DivGeneral>
-        </div>
-      </ImgFondo>
+        </Div>
+      </div>
     </>
   );
 };

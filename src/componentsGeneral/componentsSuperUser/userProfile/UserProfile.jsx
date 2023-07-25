@@ -6,27 +6,22 @@ import {
   Action,
   Div,
   DivProfile,
+  DivDiv,
 } from "./UserProfileStyled";
 import { Formik } from "formik";
 // import azul from "../../../assets/azul.jpg";
-import robot from '../../../assets/robot gris.svg'
+import robot from "../../../assets/avatar.jpg";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import { EditOutlined } from "@ant-design/icons";
 
 const UserProfile = () => {
   return (
-    <div>
+    <DivDiv>
       <HeaderSuperUser />
       <DivProfile>
         <Div>
           <img src={robot} alt="" />
-
-          <p>
-            Luisa Lafaure <EditOutlined />
-          </p>
-          <p>
-            18 años <EditOutlined />
-          </p>
+          <p>Luisa Lafaure</p>
         </Div>
         <div>
           <Formik initialValues={{}}>
@@ -37,13 +32,13 @@ const UserProfile = () => {
               </DivInput>
 
               <DivInput>
-                <label htmlFor="">Cuidad</label>
-                <Input type="text" name="city" />
+                <label htmlFor="">Cargo</label>
+                <Input type="text" name="cargo" />
               </DivInput>
 
               <DivInput>
-                <label htmlFor="">Dirección</label>
-                <Input type="text" name="adress" />
+                <label htmlFor="">Correo</label>
+                <Input type="text" name="correo" />
               </DivInput>
 
               <DivInput>
@@ -58,7 +53,7 @@ const UserProfile = () => {
           </Formik>
         </div>
       </DivProfile>
-    </div>
+    </DivDiv>
   );
 };
 

@@ -1,129 +1,77 @@
-import React from 'react'
-import Lupa from '../../../assets/lupa.png'
-import { TitleAndSearchCertification, SectionSearchCertification, CoursesCertified, SectionYearStyle, ButtonLastCourse } from './CertificationStyle'
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { TitleCertification, CoursesCertified, SectionYearStyle, ButtonLastCourse, TypeCohorte, MoreInfoCourse, BackgroundCertification, SectionBarCertification } from './CertificationStyle';
+import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser';
+import BarSearch from '../../barSearch/BarSearch';
+import { getCoursesCertification } from '../../../redux/actions/coursesActions';
+import { DivNotFound } from '../Selection/SelectionStyle';
 
 const Certification = () => {
+  const [searchTerm, setSearchTerm] = useState('');
 
-  //Pasar a Redux
-  const CertifiedCourses = [
-    {
-      year: "2023",
-      courses: [
-        {
-          id: 1,
-          typeCohorte: "Front-end",
-          numberCohorte: 4,
-          lastDate: "21/07/2023"
-        },
-        {
-          id: 2,
-          typeCohorte: "Back-end",
-          numberCohorte: 3,
-          lastDate: "20/08/2023"
-        },
-        {
-          id: 3,
-          typeCohorte: "Testing",
-          numberCohorte: 1,
-          lastDate: "20/08/2023"
-        },
-        {
-          id: 4,
-          typeCohorte: "Análisis de datos",
-          numberCohorte: 4,
-          lastDate: "21/07/2023"
-        },
-        {
-          id: 5,
-          typeCohorte: "Back-end",
-          numberCohorte: 5,
-          lastDate: "15/09/2023"
-        },
-        {
-          id: 6,
-          typeCohorte: "Front-end",
-          numberCohorte: 5,
-          lastDate: "30/11/2023"
-        }
-      ]
-    },
-    {
-      year: "2022",
-      courses: [
-        {
-          id: 1,
-          typeCohorte: "Testing",
-          numberCohorte: 3,
-          lastDate: "21/07/2023"
-        },
-        {
-          id: 2,
-          typeCohorte: "Front-end",
-          numberCohorte: 5,
-          lastDate: "20/08/2022"
-        },
-        {
-          id: 3,
-          typeCohorte: "Back-end",
-          numberCohorte: 1,
-          lastDate: "20/08/2022"
-        },
-        {
-          id: 4,
-          typeCohorte: "Back-end",
-          numberCohorte: 4,
-          lastDate: "21/07/2022"
-        },
-        {
-          id: 5,
-          typeCohorte: "Back-end",
-          numberCohorte: 5,
-          lastDate: "15/09/2022"
-        },
-        {
-          id: 6,
-          typeCohorte: "Front-end",
-          numberCohorte: 5,
-          lastDate: "30/11/2022"
-        }
-      ]
-    }
-  ]
+  const handleSearch = (term) => {
+    console.log('Search Term:', term);
+    setSearchTerm(term);
+  };
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCoursesCertification('Certificacion'));
+  }, [dispatch]);
+
+  const coursesDataCertification = useSelector((state) => state.courses.coursesDataCertification);
+
+  const filterCoursesBySearchTerm = (courses) => {
+    return courses.filter((course) => course.title.toLowerCase().includes(searchTerm.toLowerCase()));
+  };
+
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const toCertification = (courseData) => {
+    navigate('/listCertifiedSU', { state: { courseData, courseTitle: courseData.title } });
+  };
 
   return (
     <>
-        <TitleAndSearchCertification>
-          <p>Certificación</p>
-          <SectionSearchCertification>
-            <input type='search' placeholder='Search...'></input>
-            <button>
-              <img src={Lupa} width={20} />
-            </button>
-          </SectionSearchCertification>
-        </TitleAndSearchCertification>
-
+      <HeaderSuperUser />
+      <BackgroundCertification>
+        <TitleCertification>Certificación</TitleCertification>
+        <SectionBarCertification>
+          <BarSearch onSearch={handleSearch} />
+        </SectionBarCertification>
         <CoursesCertified>
-          {CertifiedCourses.map((lastCourse, lastCoursekey) => (
-            <>
-              <p>{lastCourse.year}</p>
-              <SectionYearStyle key={lastCoursekey}>
-                {lastCourse.courses && lastCourse.courses.map((infoLastCourse, infolastKey) => (
-                  <>
-                  <ButtonLastCourse key={infolastKey}>
-                    <div>
-                      <p>{infoLastCourse.typeCohorte}</p>
-                    <p>Cohorte {infoLastCourse.numberCohorte}</p>
-                    <p>Finalizó: {infoLastCourse.lastDate}</p>
-                    </div>
-                  </ButtonLastCourse>
-                  </>
-                ))}
+          {coursesDataCertification.map((studentsCertified) => (
+            <React.Fragment key={studentsCertified.id}>
+              <p>{studentsCertified.year}</p>
+              <SectionYearStyle>
+              {studentsCertified.courses && filterCoursesBySearchTerm(studentsCertified.courses).length === 0 ? (
+                <DivNotFound>
+                  <img src='https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689736902/LIVE/Im%C3%A1genes/Icons/cerebro-unscreen_rdmhx5.gif' width={200} alt="No se han encontrado resultados" />
+                  <p>No se han encontrado los cursos que buscas.</p>
+                </DivNotFound>
+              ) : (
+                filterCoursesBySearchTerm(studentsCertified.courses).map((course) => (
+                  <React.Fragment key={course.id}>
+                    <ButtonLastCourse onClick={() => toCertification(course)}>
+                      <div>
+                        <TypeCohorte>{course.title}</TypeCohorte>
+                        <MoreInfoCourse>Cohorte {course.id}</MoreInfoCourse>
+                        <MoreInfoCourse>Finalizó: {course.lastDate}</MoreInfoCourse>
+                      </div>
+                    </ButtonLastCourse>
+                  </React.Fragment>
+                ))
+              )}
               </SectionYearStyle>
-            </>
+            </React.Fragment>
           ))}
         </CoursesCertified>
+      </BackgroundCertification>
     </>
-  )
-}
+  );
+};
 
-export default Certification
+export default Certification;

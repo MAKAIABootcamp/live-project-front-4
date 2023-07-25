@@ -11,6 +11,7 @@ import BenefitsStudents from "../pages/Students/benefitsStudents/BenefitsStudent
 import BootService from "../pages/Students/bootService/BootService";
 import HomeSuperUser from "../pages/SuperUser/HomeSuperUser";
 import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
+import Selection from "../componentsGeneral/componentsSuperUser/Selection/Selection";
 
 const PrivateRouter = (props) => {
   const { isAuthentication, userType } = props;
@@ -35,6 +36,7 @@ const PrivateRouter = (props) => {
       { path: "profileSuperUser", element: <Profile /> },
       { path: "studentSuperUser", element: <StudentsSU /> },
       { path: "progressStudent", element: <ProgressStudent /> },
+      {path: "selectionSuperUser", element: <Selection />}
     ],
   };
 

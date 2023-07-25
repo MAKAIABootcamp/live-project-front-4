@@ -6,8 +6,8 @@ import * as yup from "yup";
 import { Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { loginActionAsync } from "../../../redux/actions/userActions";
+import { useNavigate,  } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -16,18 +16,18 @@ const validationSchema = yup.object().shape({
     .required("Este campo es obligatorio"),
   password: yup.string().required("Este campo es obligatorio"),
 });
-
 const initialValues = {
   email: "",
   password: "",
 };
-
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
 
+  // const navigate = useNavigate();
   const logIn = (dataForm) => {
+    navigate("/")
+    console.log(dataForm);
     dispatch(loginActionAsync(dataForm.email, dataForm.password));
 
     Swal.fire(
@@ -38,7 +38,6 @@ const Login = () => {
 
     navigate("/formStudents")
   };
-
   return (
     <General>
       <DivImagen>
@@ -67,7 +66,6 @@ const Login = () => {
               {formik.touched.email && formik.errors.email && (
                 <div>{formik.errors.email}</div>
               )}
-
               <label htmlFor="password">Contraseña</label>
               <Field
                 type="password"
@@ -90,7 +88,6 @@ const Login = () => {
     </General>
   );
 };
-
 export default Login;
 
 

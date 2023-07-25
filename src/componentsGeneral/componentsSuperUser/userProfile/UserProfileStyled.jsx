@@ -1,21 +1,30 @@
 import styled from "styled-components";
 
+export const DivDiv = styled.div``;
+
 export const DivProfile = styled.div`
   text-align: center;
-  margin-top: 100px;
+  margin-top: 10px;
 `;
 
 export const Div = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 130px; /* Asegúrate de que el contenedor tenga el mismo ancho que la imagen */
+  height: auto;
+  border-radius: 100rem;
+
   img {
-    /* width: 13%; */
-    width: 150px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     border-radius: 100rem;
+    transition: opacity 0.3s ease-in-out;
   }
 `;
 
 export const DivInput = styled.div`
   text-align: center;
+  align-items: center;
   vertical-align: middle;
   label {
     color: #03203a;
@@ -43,11 +52,7 @@ export const Input = styled.input`
   vertical-align: middle;
 `;
 
-export const Form = styled.form`
-  padding: 10px;
-  /* align-items: center;
-  text-align: center; */
-`;
+export const Form = styled.form``;
 
 export const Action = styled.div`
   button {
@@ -58,6 +63,6 @@ export const Action = styled.div`
     border-radius: 1em;
     height: 35px;
     width: 180px;
-    margin-top: 15px;
+    margin-top: 10px;
   }
 `;
