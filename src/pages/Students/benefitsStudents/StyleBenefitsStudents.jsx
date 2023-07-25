@@ -9,16 +9,16 @@ export const ContainerBenefitBackg = styled.div`
 export const ContainerBenefitStudents = styled.div`
   display: flex;
   justify-content: space-around;
-  height: 80vh;
-  padding: 90px 0px;
+  height: 100vh;
+  padding: 60px 0px;
   color: #03203a;
 
   @media screen and (max-width: 1286px){
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 40px;
-    height: 100vh;
+    gap: 80px;
+    height: 140vh;
   }
 
   @media screen and (max-width: 768px) {

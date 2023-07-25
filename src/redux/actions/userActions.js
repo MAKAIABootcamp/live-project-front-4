@@ -99,45 +99,48 @@ export const registerActionAsync = (
   hobbie,
 ) => {
   return async (dispatch) => {
+    console.log(uid);
     try {
-      await addDoc(collection(dataBase, "Estudiantes"),
-              {
-          idUsuario: uid,
-          nombreCompleto,
-          tipoDocumento,
-          numeroDocumento,
-          sexo,
-          edad,
-          celular,
-          correo,
-          nacionalidad,
-          departamento,
-          ciudad,
-          direccion,
-          estrato,
-          raza,
-          contacto,
-          correoContacto,
-          telefonoContacto,
-          poblacion,
-          ocupacion,
-          nivelEducativo,
-          conocimiento,
-          equipos,
-          motivacion,
-          tiempoLibre,
-          hobbie
-        });
+      const student = {
+        idUsuario: uid,
+        nombreCompleto,
+        tipoDocumento,
+        numeroDocumento,
+        sexo,
+        edad,
+        celular,
+        correo,
+        nacionalidad,
+        departamento,
+        ciudad,
+        direccion,
+        estrato,
+        raza,
+        contacto,
+        correoContacto,
+        telefonoContacto,
+        poblacion,
+        ocupacion,
+        nivelEducativo,
+        conocimiento,
+        equipos,
+        motivacion,
+        tiempoLibre,
+        hobbie
+      };
+      const studentInfo = await addDoc(collection(dataBase, "Estudiantes"), student);
+      console.log(studentInfo.id);
         Swal.fire(
           'OK!',
           'Sus datos se han registrado exitosamente',
           'success'
         )
     } catch (error) {
+      console.log(error);
       Swal.fire(
-        'Error!',
-        'Error al registrar sus datos',
-        'danger'
+        'Oops ha ocurrido un error!',
+        'los datos no han sido guardado!',
+        'error'
       )
     }
   };

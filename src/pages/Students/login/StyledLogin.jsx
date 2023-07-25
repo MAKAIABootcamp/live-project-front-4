@@ -1,6 +1,7 @@
 import { styled, keyframes } from "styled-components";
 import fondoGeneral from "../../../assets/FONDOGENERAL.png";
 
+
 export const appearAnimation = keyframes`
    0% {
     transform: scale(0);

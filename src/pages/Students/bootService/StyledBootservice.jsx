@@ -9,27 +9,28 @@ export const DivBootserviceGeneral = styled.div`
   height: 100vh;
 `;
 
-export const SectionRobot = styled.section`
-  @media screen and (max-width: 1440px) {
-    display: flex;
-    margin: 0;
-    figure {
-      width: 5%;
-      height: 5%;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    h1 {
-      font-size: 40px;
-      font-weight: bold;
-      color: #03203a;
-      margin-top: 28px;
-    }
-  }
-  @media screen and (max-width: 376px) {
+export const SectionRobot= styled.section`
+ @media screen and (max-width: 1440px) {
+ display:flex ;
+ margin:5px 0 0 20px;
+figure{
+ width:5%;
+height:5%; 
+}
+img {
+width:100%;
+height:100% ;
+object-fit:contain;
+}
+h1 {
+    font-size:30px ;
+    font-weight:bold ;
+    color:#03203A  ;
+    margin-top:15px ;
+}
+ }
+ @media screen and (max-width: 376px) {
+
     figure {
       width: 15%;
       height: 15%;
@@ -53,9 +54,44 @@ export const DivBootservices = styled.div`
 export const SectionServicios = styled.section`
   padding: 20px;
 
-  @media screen and (max-width: 1440px) {
-    height: 250px;
+ @media screen and (max-width: 1440px) {
+    height:200px ;
     flex: 1;
+
+  
+img{
+width:80%;
+object-fit:contain;
+border-radius:10px;
+}
+h2{
+  
+    color:#03203A  ;
+    font-size:25px ;
+    font-weight:bold ;
+    display: inline;
+
+    
+}
+p{
+    color:#03203A  ;
+    font-size:18px ;
+    line-height: 1;
+    margin-top:5px ;
+   
+}
+button{
+    background:#EEE420 ;
+    border:none;
+    width:40%;
+    height:25px ;
+    border-radius: 25px;
+    color:#03203A  ;
+    font-weight:bold ;
+    font-size:16px ;
+    margin-top:15px ;
+
+
 
     img {
       width: 100%;
