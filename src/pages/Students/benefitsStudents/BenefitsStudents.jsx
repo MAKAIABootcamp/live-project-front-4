@@ -50,12 +50,12 @@ const BenefitsStudents = () => {
 
       // Realiza alguna acción después de enviar los datos
       // Por ejemplo, puedes mostrar un mensaje de éxito o limpiar el formulario
-      console.log(
+      console.log(docRef.id);
         Swal.fire(
-          'Solicitud enviada exitosamente. ID del documento:',
-          docRef.id
+          'Solicitud enviada exitosamente',
+          // 
         )
-      );
+      
       setBenefit("");
       setNotes("");
     } catch (error) {
