@@ -26,7 +26,7 @@ import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/
 import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
-import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/ProfileCertified";
+import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/profileCertified";
 
 const AppRouter = () => {
   return (
