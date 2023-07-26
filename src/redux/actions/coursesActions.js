@@ -44,6 +44,8 @@ export const getByCollectionName = (nameCollection) => {
     }
   };
 };
+
+
 export const getStudents = (nameCollection) => {
   return async (dispatch) => {
     try {
@@ -64,11 +66,18 @@ export const getStudents = (nameCollection) => {
 
 
 
-
 const getCoursesSelectionSync = (estudiantes) => {
   return {
     type: courses.LIST_COURSES_SELECTION,
     payload: estudiantes,
+  };
+};
+
+////NUEVA PRUEBA AGREGADA
+export const selectCourse = (course) => {
+  return {
+    type: courses.SELECT_COURSE,
+    payload: course,
   };
 };
 

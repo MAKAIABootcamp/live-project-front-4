@@ -6,6 +6,7 @@ export const courses = {
   LIST_PAGES_STUDENTS: "LIST_PAGES_STUDENTS", //Falta que naveguen a las otras páginas
   LIST_COURSES_SELECTION: "LIST_COURSES_SELECTION", //Falta guardar los datos
   LIST_COURSES_CERTIFICATION: "LIST_COURSES_CERTIFICATION",
+  SELECT_COURSE: "SELECT_COURSE",
 };
 //
 
