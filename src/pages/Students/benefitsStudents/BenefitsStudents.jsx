@@ -101,7 +101,7 @@ const BenefitsStudents = () => {
     <ContainerBenefitBackg>
       <HeaderStudents />
       <ContainerBenefitStudents>
-      <ApplicationForBenefits>
+        <ApplicationForBenefits>
           <div>
             <h2>Solicitud de beneficios</h2>
           </div>
@@ -126,7 +126,11 @@ const BenefitsStudents = () => {
                     </option>
                   ))}
                 </Field>
-                <ErrorMessage name="benefit" component="section" className="error" />
+                <ErrorMessage
+                  name="benefit"
+                  component="section"
+                  className="error"
+                />
                 <br />
                 <InputTextArea>
                   <label htmlFor="notes">Notas</label> <br />
@@ -138,7 +142,11 @@ const BenefitsStudents = () => {
                     rows="10"
                   />
                 </InputTextArea>
-                <ErrorMessage name="notes" component="section" className="error" />
+                <ErrorMessage
+                  name="notes"
+                  component="section"
+                  className="error"
+                />
                 <br />
                 <ButtonBenefits>
                   <button type="submit">Solicitar</button>
@@ -173,7 +181,11 @@ const BenefitsStudents = () => {
                   </td>
                   <td>{benefitData.estado}</td>
                   <td>
-                    <img src={coment} alt="" onClick={() => handleOpenModal(benefitData)}/>
+                    <img
+                      src={coment}
+                      alt=""
+                      onClick={() => handleOpenModal(benefitData)}
+                    />
                   </td>
                 </tr>
               ))}
