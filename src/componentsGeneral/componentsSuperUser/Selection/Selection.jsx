@@ -16,7 +16,8 @@ import { useNavigate } from "react-router-dom";
 const Selection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCourse, setSelectedCourse] = useState(null);
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   
   useEffect(() => {
@@ -25,7 +26,7 @@ const Selection = () => {
 
 
 
-  const filteredCourses = (coursesSelected && coursesSelected.length) ? coursesSelected.filter((topic) =>
+  const filteredCourses = (selectedCourse && selectedCourse.length) ? selectedCourse.filter((topic) =>
     topic.course.toLowerCase().includes(searchTerm.toLowerCase())
   ):[];
 
