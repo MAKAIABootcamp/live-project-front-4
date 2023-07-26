@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, dataBase } from "../../confiFirebase/configFirebase";
 import { userTypes } from "../types/userTypes";
-import { addDoc, collection, doc, getDoc} from "firebase/firestore";
+import { doc, getDoc} from "firebase/firestore";
 
 
 
@@ -78,18 +78,5 @@ export const loginActionSync = (user) => {
   };
 };
 
-export const registerActionAsync = async (uid, studentData) => {
-  try {
-    const student = {
-      idUsuario: uid,
-      ...studentData,
-    };
-    const studentInfo = await addDoc(collection(dataBase, "Estudiantes"), student);
-    console.log(studentInfo.id);
-    return studentInfo; // Devolver la información del estudiante registrado
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
+
 
