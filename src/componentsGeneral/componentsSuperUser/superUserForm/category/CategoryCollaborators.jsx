@@ -152,7 +152,7 @@ const CategoryCollaborators = () => {
               <tr key={collaborator.info.nombre}>
                 <td>{collaborator.info.nombre}</td>
                 <td>
-                  <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
+                  {/* <CloseOutlined style={{ color: "red", fontSize: "18px" }} /> */}
                   <EditOutlined
                     style={{ color: "blue", fontSize: "18px" }}
                     onClick={() => handleEditClick(collaborator)}

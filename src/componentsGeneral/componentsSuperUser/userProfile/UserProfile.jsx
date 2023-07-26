@@ -17,19 +17,19 @@ import {
 } from "../../../redux/actions/addAdminAndStudentsActions";
 import robot from "../../../assets/avatar.jpg";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
-
+import { getAuth, updatePassword } from "firebase/auth";
+import Swal from "sweetalert2";
 const UserProfile = () => {
   const dispatch = useDispatch();
   const [adminAndStudentsData, setAdminAndStudentsData] = useState([]);
   const [selectedAdminAndStudentsData, setSelectedAdminAndStudentsData] =
     useState({});
   const [editedField, setEditedField] = useState("");
-  const [filteredCollaborators, setFilteredCollaborators] = useState([]);
 
   useEffect(() => {
     dispatch(getAdminAndStudents())
       .then((data) => {
-        console.log("este es data", data)
+        console.log("este es data", data);
         setAdminAndStudentsData(data);
         setSelectedAdminAndStudentsData(data[0]);
       })
@@ -53,7 +53,20 @@ const UserProfile = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const updatePasswordUser = async (newPassword) => {
+    const auth = getAuth();
+    console.log("el auth", auth);
+    const user = auth.currentUser;
+    console.log("usere", user);
+    console.log("Le pass", newPassword);
+
+    await updatePassword(user, newPassword).then(() => {});
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //validar si el campo se edito
+
+    dispatch(updatePasswordUser(selectedAdminAndStudentsData.info.contraseña));
     // Dispatch la acción para actualizar los datos en Firestore
     dispatch(
       updateAdminAndStudentsAction({
@@ -62,6 +75,11 @@ const UserProfile = () => {
       })
     )
       .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "¡Formulario enviado exitosamente!",
+          text: "El formulario ha sido enviado correctamente.",
+        });
         // Los datos se actualizaron correctamente, puede mostrar un mensaje de éxito o realizar otras acciones.
         setEditedField(""); //Restablecer campo editado después de una actualización exitosa
       })
@@ -85,8 +103,7 @@ const UserProfile = () => {
 
   return (
     <DivDiv>
-      {/* <HeaderSuperUser /> */}
-
+      <HeaderSuperUser />
       <DivProfile>
         {/* {filteredCollaborators.map((collaborator) => ( */}
         {/* <Div key={collaborator.info.nombre}> */}
@@ -116,7 +133,10 @@ const UserProfile = () => {
                   />
                 )}
                 {editedField !== "telefono" && (
-                  <EditOutlined onClick={() => handleFieldEdit("telefono")} />
+                  <EditOutlined
+                    onClick={() => handleFieldEdit("telefono")}
+                    style={{ color: "blue", fontSize: "18px" }}
+                  />
                 )}
               </DivInput>
 
@@ -141,19 +161,24 @@ const UserProfile = () => {
                   />
                 ) : (
                   <Input
-                    type="contraseña"
+                    type="text"
                     name="contraseña"
                     value={contraseña}
                     readOnly
                   />
                 )}
                 {editedField !== "contraseña" && (
-                  <EditOutlined onClick={() => handleFieldEdit("contraseña")} />
+                  <EditOutlined
+                    onClick={() => handleFieldEdit("contraseña")}
+                    style={{ color: "blue", fontSize: "18px" }}
+                  />
                 )}
               </DivInput>
 
               <Action>
-                <button type="submit">Guardar</button>
+                <button type="submit" onClick={handleSubmit}>
+                  Guardar
+                </button>
               </Action>
             </Form>
           </Formik>

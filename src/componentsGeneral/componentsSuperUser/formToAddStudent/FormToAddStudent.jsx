@@ -29,16 +29,13 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
       contraseña: password,
       userType: "estudiante",
       uid: "",
+      formularioLlenado: "false",
     };
 
     try {
       //creando la autenticacion y tomando el uid
-      // Agregar el usuario a Firestore usando la acción addAdminAndStudentsTypesActionAsync
-      console.log("Usuario agregado correctamente a Firestore.");
       createLoginAndSaveUserInFireStore(values.email, password, userData);
     } catch (error) {
-      console.error("Error en la creación de cuenta ", error);
-
       Swal.fire({
         icon: "error",
         title: "¡Error creando cuenta!",
@@ -74,10 +71,9 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
         sendMailWelcome(templateParams);
       })
       .catch((error) => {
-        console.error("ERROR_CREANDO_USUARIO ", error);
+        // console.error("ERROR_CREANDO_USUARIO ", error);
       });
   };
-
   const sendMailWelcome = async (templateParams) => {
     // Configurar emailjs-com con los detalles de tu cuenta
     init("HG4_QlSaoJ-f9recA");
@@ -88,7 +84,6 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
       templateParams,
       "aNjV2AvY_XWC4wve6"
     );
-
     Swal.fire({
       icon: "success",
       title: "¡Formulario enviado exitosamente!",
@@ -135,6 +130,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
     email: "",
     userType: "estudiante",
     contraseña: "",
+    formularioLlenado: "false",
   };
 
   const options = [
