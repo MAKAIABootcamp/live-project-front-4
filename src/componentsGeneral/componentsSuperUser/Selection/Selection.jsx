@@ -16,10 +16,11 @@ import { useNavigate } from "react-router-dom";
 const Selection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [courseSelected, setCourseSelected] = useState("")
 
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getByCollectionName("Selección"));
   }, [dispatch]);

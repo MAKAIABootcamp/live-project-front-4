@@ -27,6 +27,37 @@ const CohortGroupTraining = () => {
     navigate("/addNewCohort");
   };
 
+  // Función para verificar si un estudiante puede unirse a una cohorte
+  const canJoinCohort = (cohort) => {
+    const maxStudentsPerCohort = 40;
+    return cohort.estudiantes.length < maxStudentsPerCohort;
+  };
+
+  // Función para unir al estudiante a una cohorte
+  const joinCohort = (cohort) => {
+    cohort.estudiantes.push(/* Código para agregar al estudiante aquí */);
+    // Código para actualizar la información del estudiante en Firestore aquí
+  };
+
+  const handleJoinCohort = (cohort) => {
+    if (canJoinCohort(cohort)) {
+      joinCohort(cohort);
+    } else {
+      // Encuentra la siguiente cohorte disponible con el mismo programa y únete a ella
+      const nextCohort = cohorts.find(
+        (c) => c.cohort.programa === cohort.cohort.programa && canJoinCohort(c)
+      );
+      if (nextCohort) {
+        joinCohort(nextCohort);
+      } else {
+        // No hay más cohortes disponibles para este programa
+        alert(
+          "No hay más cupos disponibles para este programa en ninguna cohorte."
+        );
+      }
+    }
+  };
+
   return (
     <div>
       <div>
@@ -46,6 +77,7 @@ const CohortGroupTraining = () => {
               <p>Cohorte: {cohort.cohort?.cohorte}</p>
               <p>Fecha de inicio: {cohort.cohort?.fechaInicio}</p>
               <p>Fecha de cierre: {cohort.cohort?.fechaFinalizacion}</p>
+              <button onClick={() => handleJoinCohort(cohort)}>Unirse</button>
             </GridItem>
           ))}
 
