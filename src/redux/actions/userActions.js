@@ -1,11 +1,8 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, dataBase } from "../../confiFirebase/configFirebase";
 import { userTypes } from "../types/userTypes";
-import { doc, getDoc} from "firebase/firestore";
-
-
-
-
+import { doc, getDoc } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 //para el formulario del super usuario
 export const saveSuperUser = (superUser) => {
@@ -14,8 +11,6 @@ export const saveSuperUser = (superUser) => {
     payload: superUser,
   };
 };
-
-
 
 export const logoutActionAsync = () => {
   return async (dispatch) => {
@@ -47,9 +42,8 @@ export const loginActionAsync = (email, password) => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-      const { uid, accessToken,  } = user.auth.currentUser;
+      const { uid, accessToken } = user.auth.currentUser;
       const userRef = doc(dataBase, "users", uid);
-      console.log(uid);
       const userDoc = await getDoc(userRef);
 
       if (userDoc.exists()) {
@@ -62,11 +56,17 @@ export const loginActionAsync = (email, password) => {
           nombre,
           accessToken: accessToken,
         };
+
         dispatch(loginActionSync(userLogged));
-        
-      } 
+      }
+      Swal.fire("Inicio sesión exitoso!", "¡Bienvenid@!", "success");
     } catch (error) {
       console.log(error);
+      Swal.fire(
+        "Error al iniciar sesión!",
+        "Contraseña o usuario no coinciden",
+        "error"
+      );
     }
   };
 };
@@ -77,6 +77,3 @@ export const loginActionSync = (user) => {
     payload: user,
   };
 };
-
-
-

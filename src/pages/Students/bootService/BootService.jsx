@@ -44,14 +44,8 @@ const BootService = () => {
     setModalOpenInasistencia(false);
   };
 
-
-
-
   return (
-
-
-
-    
+  
         <DivBootserviceGeneral>
           <HeaderStudents/>
           <SectionRobot>

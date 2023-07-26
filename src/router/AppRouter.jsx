@@ -33,9 +33,8 @@ import ProfileSelected from "../componentsGeneral/componentsSuperUser/Selection/
 import ListCertification from "../componentsGeneral/componentsSuperUser/certification/ListCertification";
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
-import ResetPassword from "../pages/Students/login/ResetPassword";
-
 //import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
+
 const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -130,7 +129,6 @@ const AppRouter = () => {
             }
           >
             <Route index element={<Login />} />
-           
           </Route>
 
           {/* Rutas Privadas */}
