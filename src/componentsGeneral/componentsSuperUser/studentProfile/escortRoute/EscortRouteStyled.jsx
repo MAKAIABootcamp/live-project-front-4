@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 0px;
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     text-align: center;
     margin-bottom: 10px;
   }
@@ -22,7 +21,7 @@ export const SearchInput = styled.input`
   width: 300px;
   height: 20px;
 
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     width: 100%;
     margin-right: 0;
   }
@@ -50,7 +49,7 @@ export const Title = styled.h1`
   font-family: "Monserrat", sans-serif;
   color: #25abbc;
   padding-left: 15px;
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     text-align: center;
     margin-bottom: 10px;
   }
@@ -63,10 +62,12 @@ export const Container = styled.div`
   padding: 10px;
   padding-left: 59px;
 
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     flex-wrap: wrap;
     align-items: center;
     text-align: center;
+    padding: 0px;
+    padding-left: 0px;
   }
 `;
 
@@ -79,11 +80,10 @@ export const ContainerDiv = styled.div`
     justify-content: space-between;
     padding-left: 50px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-left: 10px;
   }
 `;
 
@@ -96,25 +96,26 @@ export const Etiquetas = styled.div`
 `;
 
 export const Imagen = styled.img`
-  width: 70%;
+  width: 50%;
   height: auto;
   /* margin-right: 50px; */
   padding-left: 100px;
-  @media (max-width: 375px) {
+  @media (max-width: 768px) {
+    width: 80%;
+    padding-left: 0;
+  }
+  @media (max-width: 414px) {
     width: 100%;
     height: auto;
     margin-right: 50px;
   }
-  @media (max-width: 768px) {
-    padding-left: 0;
-  }
 `;
 
 export const DivCreate = styled.div`
-  margin-bottom: 80px;
   margin-left: 50px;
+  text-align: center;
 
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     text-align: center;
     margin-bottom: 10px;
     margin-left: 0px;

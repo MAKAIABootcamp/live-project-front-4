@@ -7,7 +7,6 @@ import {
   ApplicationForBenefits,
   BenefitsReceived,
   ButtonBenefits,
-  ContainerBenefitBackg,
   ContainerBenefitStudents,
   InputTextArea,
   TableBenefits,
@@ -26,8 +25,6 @@ const BenefitsSchema = Yup.object().shape({
 });
 
 const BenefitsStudents = () => {
-  const [benefit, setBenefit] = useState("");
-  const [notes, setNotes] = useState("");
   const [userBenefits, setUserBenefits] = useState([]);
   const benefitsList = useSelector((state) => state.benefits.benefitsList);
   const { student } = useSelector((store) => store.student);
@@ -68,37 +65,30 @@ const BenefitsStudents = () => {
     fetchUserBenefits();
   }, [dispatch, student.uid]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async (values) => {
     const formData = {
-      benefit: benefit,
-      notes: notes,
+      benefit: values.benefit,
+      notes: values.notes,
       uid: student.uid,
       date: new Date(),
       estado: "en Proceso",
     };
-
+  
     try {
       const docRef = await addDoc(
         collection(dataBase, "BeneficiosSolicitados"),
         formData
       );
-
+  
       console.log(docRef.id);
-      Swal.fire(
-        "Solicitud enviada exitosamente"
-        //
-      );
-      setBenefit("");
-      setNotes("");
+      Swal.fire("Solicitud enviada exitosamente");
     } catch (error) {
       console.error("Error al enviar la solicitud:", error);
     }
   };
 
   return (
-    <ContainerBenefitBackg>
+    <>
       <HeaderStudents />
       <ContainerBenefitStudents>
         <ApplicationForBenefits>
@@ -201,7 +191,7 @@ const BenefitsStudents = () => {
           selectedBenefit={selectedBenefit}
         />
       )}
-    </ContainerBenefitBackg>
+    </>
   );
 };
 

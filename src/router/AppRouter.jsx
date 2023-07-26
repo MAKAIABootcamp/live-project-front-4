@@ -19,7 +19,6 @@ import HomeSuperUser from "../pages/SuperUser/HomeSuperUser";
 import FormUser from "../pages/SuperUser/FormUser";
 import Profile from "../pages/SuperUser/Profile";
 import StudentsSU from "../pages/SuperUser/StudentsSU";
-// import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
 import { registerActionSync } from "../redux/actions/studentAction";
 import NewCohort from "../pages/SuperUser/NewCohort";
 import TrainingCohort from "../pages/SuperUser/TrainingCohort";
@@ -33,7 +32,8 @@ import ProfileSelected from "../componentsGeneral/componentsSuperUser/Selection/
 import ListCertification from "../componentsGeneral/componentsSuperUser/certification/ListCertification";
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
-//import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
+import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/profileCertified";
+import GroupListStudenst from "../componentsGeneral/componentsSuperUser/groupListStudents/GroupListStudenst";
 
 const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -156,36 +156,28 @@ const AppRouter = () => {
             {/* Rutas específicas para tipo de usuario 'administrador' */}
             {user?.userType === "administrador" && (
               <>
-                {/* Ruta del Admin */}
                 <Route path="homeSuperUser" element={<HomeSuperUser />} />
                 <Route path="teamSuperUser" element={<FormUser />} />
                 <Route path="profileSuperUser" element={<Profile />} />
                 <Route path="formToAddStudent" element={<AddStudents />} />
                 <Route path="studentSuperUser" element={<StudentsSU />} />
-
-                {/* Ruta de Selección y Certificación */}
                 <Route path="selectionSuperUser" element={<Selection />} />
-
-                {/*Sub ruta de Selección*/}
+                {/* Sub ruta de Selección */}
                 <Route path="profileSelectedSU" element={<ProfileSelected />} />
-
-                {/* <Route path="formationSuperUser" element={<Formation />} /> */}
+                {/* <Route path="formationSuperUser" element={<Formation />} />  */}
                 <Route
                   path="certificationSuperUser"
                   element={<Certification />}
                 />
-
-                {/*Sub ruta de Certificación*/}
+                {/* Sub ruta de Certificación */}
                 <Route path="listCertifiedSU" element={<ListCertification />} />
-
-                {/* Inicia Formación */}
                 <Route path="addNewCohort" element={<NewCohort />} />
                 <Route
                   path="cohortGroupTraining"
                   element={<TrainingCohort />}
                 />
                 <Route
-                  path="studentProfileBenefits"
+                  path="studentProfileBenefits/:document"
                   element={<StudentsBenefits />}
                 />
                 <Route path="RequestBenefis" element={<RequestBenefis />} />
@@ -194,9 +186,17 @@ const AppRouter = () => {
                   element={<BenefitsReceivedStudents />}
                 />
                 <Route path="escortRoute" element={<EscortRouteStudents />} />
-                <Route path="NotFoundPages" element={<NotFoundPages />} />
+                <Route
+                  path="detailsProfileCertification"
+                  element={<ProfileCertified />}
+                />
+                <Route
+                  path="groupListStudents"
+                  element={<GroupListStudenst />}
+                />
               </>
             )}
+            <Route path="NotFoundPages" element={<NotFoundPages />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -43,7 +43,9 @@ background-color: #25ABBC;
 border: transparent;
 border-radius: 6px;
 display: flex;
-justify-content: space-evenly;
+justify-content: space-between;
+padding-left: 50px;
+padding-right: 50px;
 align-items: center;
 width: 100%;
 height: 120px;
@@ -59,5 +61,5 @@ transition: 0.4s;
 `;
 
 export const IconOption = styled.img`
-filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(353deg) brightness(107%) contrast(101%);
+/* filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(353deg) brightness(107%) contrast(101%); */
 `;

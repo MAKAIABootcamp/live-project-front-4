@@ -542,6 +542,7 @@ justify-content: space-between;
 align-items: center;
 background-color: white;
 border: transparent;
+cursor: pointer;
 
 & div{
     flex-direction: column;
@@ -611,4 +612,73 @@ export const DivNotFound = styled.div`
 export const DataHV = styled.section`
 display: flex;
 justify-content: space-between;
+`;
+
+
+
+// Ventana emergente
+
+export const SectionModalStatus = styled.section`
+background-color: #0000005c;
+width: 1440px;
+height: 880px;
+position: absolute;
+z-index: 300;
+margin-top: -800px;
+display: flex;
+
+& h2{
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+& .popup{
+    background-color: #03203A;
+    border-radius: 10px;
+    margin: auto;
+    width: 30%;
+    height: 280px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+& textarea {
+    height: 100px;
+    font-size: 20px;
+    border: transparent;
+    text-align: left;
+    vertical-align: top;
+}
+
+& .divButtonsModalStatus{
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+
+    & button{
+        width: 100px;
+        height: 30px;
+        border-radius: 3px;
+        border: transparent;
+        font-size: 15px;
+        color: white;
+        cursor: pointer;
+        background-color: #25ABBC;
+        transition: 0.3s;
+        font-weight: 600;
+
+        &:hover {
+           background-color: #EEE420;
+           color: #03203A;
+        }
+    }
+    }
 `;

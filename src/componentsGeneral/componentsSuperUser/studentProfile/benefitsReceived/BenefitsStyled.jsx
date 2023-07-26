@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 70px;
+
 `;
 
 export const SearchContainer = styled.div`
@@ -19,7 +19,7 @@ export const SearchInput = styled.input`
   width: 300px;
   height: 20px;
 
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     width: 100%;
     margin-right: 0;
   }
@@ -49,7 +49,7 @@ export const Title = styled.h2`
   font-family: "Monserrat", sans-serif;
   color: #25abbc;
   padding-left: 15px;
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     text-align: left;
     margin-bottom: 10px;
   }
@@ -63,7 +63,7 @@ export const Container = styled.div`
   padding: 10px;
   padding-left: 59px;
 
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     flex-wrap: wrap;
     align-items: center;
     text-align: center;
@@ -81,7 +81,7 @@ export const Modal = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     margin-top: 70px;
   }
 `;
@@ -155,7 +155,7 @@ export const TableBenefits = styled.table`
       font-size: 12px;
     }
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     th {
       padding: 10px;
       font-size: 10px;

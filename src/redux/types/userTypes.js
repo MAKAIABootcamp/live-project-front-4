@@ -5,9 +5,8 @@ export const SAVE_SUPER_USER = "SAVE_SUPER_USER";
 export const courses = {
   LIST_PAGES_STUDENTS: "LIST_PAGES_STUDENTS", //Falta que naveguen a las otras páginas
   LIST_COURSES_SELECTION: "LIST_COURSES_SELECTION", //Falta guardar los datos
-  // FILTERED_COURSES_SELECTION: "FILTERED_COURSES_SELECTION",
   LIST_COURSES_CERTIFICATION: "LIST_COURSES_CERTIFICATION",
-}
+};
 //
 
 export const userTypes = {
@@ -37,6 +36,16 @@ export const typeCohort = {
 };
 
 export const typeFormAdminAndStydents = {
-  ADD_FORMADMINSTUDENTS: "ADD_FORMADMINSTUDENTS", //nuevas cohortes
+  ADD_FORMADMINSTUDENTS: "ADD_FORMADMINSTUDENTS", //nuevos users
   GET_FORMADMINSTUDENTS: "GET_FORMADMINSTUDENTS",
+  UPDATE_FORMADMINSTUDENTS: "UPDATE_FORMADMINSTUDENTS",
+};
+
+export const typeStudents = {
+  GET_DATA_STUDENTS: "GET_DATA_STUDENTS", //Nuevo agregado
+  GET_ESTUDIANTES_SUCCESS: "GET_ESTUDIANTES_SUCCESS",
+};
+
+export const typeBenefitSolicitTypes = {
+  GET_BENEFIT_SOLICIT_TYPES: "GET_BENEFIT_SOLICIT_TYPES",
 };

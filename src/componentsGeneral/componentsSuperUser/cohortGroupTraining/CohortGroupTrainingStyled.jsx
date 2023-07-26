@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 0px;
-  padding-top: 30px;
+  padding-top: 80px;
 `;
 
 export const GridContainer = styled.div`
@@ -14,7 +13,7 @@ export const GridContainer = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 376px) {
+  @media (max-width: 414px) {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 3px;
   }
@@ -33,7 +32,7 @@ export const GridItem = styled.div`
     color: white;
     text-align: center;
     font-family: "Monserrat", sans-serif;
-    @media (max-width: 376px) {
+    @media (max-width: 414px) {
       font-size: 18px;
     }
   }
@@ -41,7 +40,7 @@ export const GridItem = styled.div`
     color: white;
     text-align: center;
     font-family: "Monserrat", sans-serif;
-    @media (max-width: 376px) {
+    @media (max-width: 414px) {
       font-size: 13px;
     }
   }
@@ -62,7 +61,7 @@ export const SearchInput = styled.input`
   width: 300px;
   height: 20px;
 
-  @media (max-width: 376px) {
+  @media (max-width: 414px) {
     width: 100%;
     margin-right: 0;
   }
@@ -122,7 +121,7 @@ export const GridItemAgregate = styled.div`
   padding: 45px;
   text-align: center;
   align-items: center;
-  @media (max-width: 376px) {
+  @media (max-width: 414px) {
     padding: 35px;
   }
   button {
@@ -131,7 +130,7 @@ export const GridItemAgregate = styled.div`
     border-radius: 90%;
     background-color: #03203a;
     align-items: center;
-    @media (max-width: 376px) {
+    @media (max-width: 414px) {
       font-size: 12px;
       width: 80px;
       height: 80px;

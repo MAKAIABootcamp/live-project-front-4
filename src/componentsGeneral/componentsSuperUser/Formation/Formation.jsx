@@ -75,7 +75,7 @@ const Formation = () => {
             ))}
             <StyleButtonAdd>
               <div>
-                <h1>+</h1>
+                <h2>hola mundo</h2>
               </div>
             </StyleButtonAdd>
           </StyleSectionCourse>
