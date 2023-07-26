@@ -41,5 +41,6 @@ export const typeFormAdminAndStydents = {
 };
 
 export const typeStudents = {
+  GET_DATA_STUDENTS: "GET_DATA_STUDENTS", //Nuevo agregado
   GET_ESTUDIANTES_SUCCESS: "GET_ESTUDIANTES_SUCCESS",
 };

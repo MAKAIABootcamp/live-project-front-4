@@ -30,6 +30,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
       userType: "estudiante",
       uid: "",
       formularioLlenado: "false",
+      img: "https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690344748/LIVE/Im%C3%A1genes/PhotoProfiles/photo-1494790108377-be9c29b29330_mobc0t.jpg",
     };
 
     try {
@@ -94,8 +95,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
   };
 
   const generateRandomPassword = (length) => {
-    const charset =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     let password = "";
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * charset.length);
@@ -131,6 +131,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
     userType: "estudiante",
     contraseña: "",
     formularioLlenado: "false",
+    img: "https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690344748/LIVE/Im%C3%A1genes/PhotoProfiles/photo-1494790108377-be9c29b29330_mobc0t.jpg",
   };
 
   const options = [

@@ -25,6 +25,7 @@ const SuperUserForm = ({ addAdminAndStudents }) => {
       contraseña: password,
       userType: "administrador",
       uid: "",
+      img: "https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690344748/LIVE/Im%C3%A1genes/PhotoProfiles/photo-1494790108377-be9c29b29330_mobc0t.jpg",
     };
     try {
       //creando la autenticacion y tomando el uid
@@ -37,14 +38,16 @@ const SuperUserForm = ({ addAdminAndStudents }) => {
       Swal.fire({
         icon: "error",
         title: "¡Error creando cuenta!",
-        text: "Ocurrio un error creando y/o registrando el usuario::".concat(error),
+        text: "Ocurrio un error creando y/o registrando el usuario::".concat(
+          error
+        ),
       });
     }
   };
 
   const createLoginAndSaveUserInFireStore = (email, password, userData) => {
     const auth = getAuth();
-   //creando autenticacion
+    //creando autenticacion
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         //logueado
@@ -54,7 +57,7 @@ const SuperUserForm = ({ addAdminAndStudents }) => {
 
         //añadir datos a firestore
         addAdminAndStudents(userData);
-        
+
         // Datos para enviar en el correo
         const { email, contraseña, nombre } = userData;
         const templateParams = {
@@ -65,7 +68,6 @@ const SuperUserForm = ({ addAdminAndStudents }) => {
 
         //enviando el mail
         sendMailWelcome(templateParams);
-      
       })
       .catch((error) => {
         console.error("ERROR_CREANDO_USUARIO ", error);
@@ -94,8 +96,7 @@ const SuperUserForm = ({ addAdminAndStudents }) => {
 
   const generateRandomPassword = () => {
     // contraseña aleatoria de 8 caracteres
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     let password = "";
     for (let i = 0; i < 8; i++) {
       password += characters.charAt(
@@ -135,6 +136,7 @@ const SuperUserForm = ({ addAdminAndStudents }) => {
             email: "",
             telefono: "",
             userType: "administrador",
+            img: "https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690344748/LIVE/Im%C3%A1genes/PhotoProfiles/photo-1494790108377-be9c29b29330_mobc0t.jpg",
           }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}

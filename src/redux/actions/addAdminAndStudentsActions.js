@@ -63,7 +63,7 @@ export const getAdminAndStudents = () => {
     }
   };
 };
-;
+
 
 export const updateAdminAndStudentsAction = (updateData) => {
   return async (dispatch) => {
@@ -72,7 +72,7 @@ export const updateAdminAndStudentsAction = (updateData) => {
       // console.log(updateData,"estamos mirando que pasa")
       const docRef = doc(dataBase, nameCollection, updateData.id);
       await updateDoc(docRef, updateData.info);
-      console.log("Datos del colaborador actualizados correctamente.");
+      // console.log("Datos del colaborador actualizados correctamente.");
     } catch (error) {
       console.error("Error al actualizar los datos del colaborador:", error);
     }
