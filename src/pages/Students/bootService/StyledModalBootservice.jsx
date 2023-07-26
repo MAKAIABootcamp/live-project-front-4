@@ -64,12 +64,17 @@ export const ButtonModalCancelar = styled.button`
 `;
 
 export const BodyModal = styled.section`
+display: flex;
+flex-direction: column ;
 p {
   font-size: 20px;
 font-weight:900 ;
 color:#25ABBC;
 padding: 20px 20px 5px 50px;
 }
+label{
+  color:#25ABBC;
+ }
 `
 export const ModalHeader = styled.section`
  display: flex;
@@ -86,6 +91,7 @@ color:#25ABBC;
 font-weight:900 ;
 color:red;
  }
+
 `
 export const ListItem = styled.li`
   color: #25ABBC; 

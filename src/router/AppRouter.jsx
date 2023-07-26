@@ -33,6 +33,7 @@ import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/
 import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
+import ResetPassword from "../pages/Students/login/ResetPassword";
 
 //import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
 const AppRouter = () => {
@@ -79,7 +80,7 @@ const AppRouter = () => {
 
           // dispatch(loginActionSync(logged));
           const studentRef =collection(db,"Estudiantes")
-          const qStudent = query(studentRef, where("idUsuario", "==", userLogged.uid));
+          const qStudent = query(studentRef, where("uid", "==", userLogged.uid));
           getDocs(qStudent)
             .then((querySnapshot) => {
               querySnapshot.forEach((doc) => {
@@ -116,6 +117,7 @@ const AppRouter = () => {
           {/* Rutas Públicas */}
           <Route path="*" element={<PublicRouter isAuthentication={isLoggedIn} userType={user?.userType} />}>
             <Route index element={<Login />} />
+           
           </Route>
 
           {/* Rutas Privadas */}

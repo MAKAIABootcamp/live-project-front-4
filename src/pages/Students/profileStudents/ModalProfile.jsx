@@ -13,9 +13,10 @@ const validationSchema = Yup.object().shape({
   telefono: Yup.string()
     .required('La respuesta es requerida'),
   correo: Yup.string()
+    .email("Debe ingresar un email")
     .required('La respuesta es requerida'),
 });
-const ListOl= styled.ol`
+const ListOl = styled.ol`
     input{
         height:30px ;
     }
@@ -38,18 +39,18 @@ const ModalProfile = ({ isModalOpen, handleModalClose, telefono, correo, imagen 
             {/*Contenindo modela */}
             <Formik
               initialValues={{
-                telefono:""||telefono,
-                correo:""||correo,
-                imagen:""||imagen,
+                telefono: "" || telefono,
+                correo: "" || correo,
+                imagen: "" || imagen,
               }}
               validationSchema={validationSchema}
-              onSubmit={(values, { resetForm })=> {
+              onSubmit={(values, { resetForm }) => {
 
-                dispatch(updataActionAsync( values.telefono, values.correo, values.imagen,user.uid))
-                .then(() => {
-                  resetForm();
-                  handleModalClose()
-                })
+                dispatch(updataActionAsync(values.telefono, values.correo, values.imagen, user.uid))
+                  .then(() => {
+                    resetForm();
+                    handleModalClose()
+                  })
               }}
             >
               {({ errors, touched }) => (
@@ -58,17 +59,17 @@ const ModalProfile = ({ isModalOpen, handleModalClose, telefono, correo, imagen 
                   <ListOl>
                     <ListItem>
                       <label htmlFor="telefono">Télefono celular</label>
-                      <Field name="telefono" type="text" placeholder='Escriba su télefono'/>
+                      <Field name="telefono" type="text" placeholder='Escriba su télefono' />
                       <ErrorMessage name="telefono" />
                     </ListItem>
                     <ListItem>
                       <label htmlFor="correo">Correo electrónico</label>
-                      <Field name="correo" placeholder='Escriba su correo'/>
+                      <Field name="correo" placeholder='Escriba su correo' />
                       <ErrorMessage name="correo" />
                     </ListItem>
                     <ListItem>
                       <label htmlFor="imagen">Imagen de perfil</label>
-                      <Field name="imagen" type="file"/>
+                      <Field name="imagen" type="file" />
                       <ErrorMessage name="imagen" />
                     </ListItem>
 
