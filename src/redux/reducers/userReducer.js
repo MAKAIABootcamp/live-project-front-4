@@ -9,27 +9,27 @@ const initialValue = {
 
 const userReducer = (state = initialValue, action) => {
 switch (action.type) {
+  case userTypes.LOGOUT_USER:
+    return {
+      ...state,
+      user: null,
+      error: action.payload,
+    };
 
-      case userTypes.LOGOUT_USER:
-        return {
-            ...state,
-            user: null,
-            error: action.payload
-        }
+  case userTypes.USER_LOGIN:
+    return {
+      ...state,
+      user: {
+        ...action.payload,
+      },
+    };
 
-        case userTypes.LOGGIN_USER:
-            return {
-                ...state,
-                user: {
-                    ...action.payload
-                }
-            }
-
-    default:
-        return {
-            ...state
-        }
+  default:
+    return {
+      ...state,
+    };
 }
 }
 
 export default userReducer;
+

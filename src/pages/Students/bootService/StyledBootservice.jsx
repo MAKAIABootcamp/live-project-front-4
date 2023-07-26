@@ -15,8 +15,6 @@ margin:0;
     height:80vh ;
 }
 `
-
-
 export const SectionRobot= styled.section`
  @media screen and (max-width: 1440px) {
  display:flex ;
@@ -37,20 +35,24 @@ h1 {
     margin-top:35px ;
 }
  }
+
  @media screen and (max-width: 414px) {
     figure {
-        width:15%;
-height:15%;   
+      width: 15%;
+      height: 15%;
     }
     h1 {
+
         margin-top:30px ; 
         font-size:38px ;
+
+      margin-top: 20px;
+
     }
   }
-  
-`
+`;
 export const DivBootservices = styled.div`
- @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1440px) {
     display: flex;
   width: 100%;
    margin:0;
@@ -99,28 +101,32 @@ button{
     color:#03203A  ;
     font-weight:bold ;
     font-size:16px ;
- 
-   ;
-
-
 }
  }
  @media screen and (max-width: 414px) {
     height:100px ;
     margin-top:15px ;
-    h2 {
-        margin-top:10px;
-    }
-    p{
-        margin-top:10px;
-    }
+
     button {
         display:flex ;
         justify-content:center ;
         align-items:center ;
         width:90% ;
         height:35px ;
-  
     }
- }
-`
+    h2 {
+      margin-top: 10px;
+    }
+    p {
+      margin-top: 10px;
+    }
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 35px;
+      
+    }
+  }
+`;
