@@ -5,6 +5,7 @@ import { coursesReducer } from "../reducers/coursesReducer";
 import newCohorteReducers from "../reducers/newCohorteReducers";
 import addAdminAndStudentsReducer from "../reducers/addAdminAndStudentsReducer";
 import getStudentsProfileBenefit from "../reducers/getStudentsProfileBenefitsReducers";
+import getBenefitSoliciReducers from "../reducers/getBenefitSolicitReducers";
 
 const rootReducer = {
   user: userReducer,
@@ -13,6 +14,7 @@ const rootReducer = {
   cohort: newCohorteReducers,
   newAdminAndStydentsType: addAdminAndStudentsReducer,
   studentReducer: getStudentsProfileBenefit,
+  BeneficiosSolicitados: getBenefitSoliciReducers,
 };
 
 const store = configureStore({

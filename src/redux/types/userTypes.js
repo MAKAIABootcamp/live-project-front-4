@@ -44,3 +44,7 @@ export const typeStudents = {
   GET_DATA_STUDENTS: "GET_DATA_STUDENTS", //Nuevo agregado
   GET_ESTUDIANTES_SUCCESS: "GET_ESTUDIANTES_SUCCESS",
 };
+
+export const typeBenefitSolicitTypes = {
+  GET_BENEFIT_SOLICIT_TYPES: "GET_BENEFIT_SOLICIT_TYPES",
+};

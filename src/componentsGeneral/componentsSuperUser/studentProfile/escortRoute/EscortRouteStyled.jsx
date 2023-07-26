@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 0px;
   @media (max-width: 414px) {
     text-align: center;
     margin-bottom: 10px;
@@ -104,7 +103,6 @@ export const Imagen = styled.img`
   @media (max-width: 768px) {
     width: 80%;
     padding-left: 0;
-    margin-top: 50px;
   }
   @media (max-width: 414px) {
     width: 100%;
