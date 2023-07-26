@@ -64,84 +64,9 @@ export const loginActionAsync = (email, password) => {
 };
 
 export const loginActionSync = (user) => {
-  console.log("Datos del usuario:", user);
   return {
     type: userTypes.USER_LOGIN,
     payload: user,
   };
 };
 
-export const registerActionAsync = (
-  uid,
-  nombreCompleto,
-  tipoDocumento,
-  numeroDocumento,
-  sexo,
-  edad,
-  celular,
-  correo,
-  nacionalidad,
-  departamento,
-  ciudad,
-  direccion,
-  estrato,
-  raza,
-  contacto,
-  correoContacto,
-  telefonoContacto,
-  poblacion,
-  ocupacion,
-  nivelEducativo,
-  conocimiento,
-  equipos,
-  motivacion,
-  tiempoLibre,
-  hobbie,
-) => {
-  return async (dispatch) => {
-    console.log(uid);
-    try {
-      const student = {
-        idUsuario: uid,
-        nombreCompleto,
-        tipoDocumento,
-        numeroDocumento,
-        sexo,
-        edad,
-        celular,
-        correo,
-        nacionalidad,
-        departamento,
-        ciudad,
-        direccion,
-        estrato,
-        raza,
-        contacto,
-        correoContacto,
-        telefonoContacto,
-        poblacion,
-        ocupacion,
-        nivelEducativo,
-        conocimiento,
-        equipos,
-        motivacion,
-        tiempoLibre,
-        hobbie
-      };
-      const studentInfo = await addDoc(collection(dataBase, "Estudiantes"), student);
-      console.log(studentInfo.id);
-        Swal.fire(
-          'OK!',
-          'Sus datos se han registrado exitosamente',
-          'success'
-        )
-    } catch (error) {
-      console.log(error);
-      Swal.fire(
-        'Oops ha ocurrido un error!',
-        'los datos no han sido guardado!',
-        'error'
-      )
-    }
-  };
-};

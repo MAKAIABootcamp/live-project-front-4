@@ -28,8 +28,8 @@ export const General = styled.div`
     position: absolute;
   }
 
-  @media screen and (max-width: 376px) {
-    margin: 0;
+  @media screen and (max-width: 414px) {
+    margin:0 ;
   }
 `;
 export const DivImagen = styled.div`
@@ -59,10 +59,11 @@ export const DivImagen = styled.div`
       object-fit: contain;
     }
   }
-  @media screen and (max-width: 376px) {
-    display: none;
-    figure {
-      display: none;
+  @media screen and (max-width: 414px) {
+    display:none ;
+    figure{
+      display:none ;
+
     }
   }
 `;
@@ -88,10 +89,11 @@ export const DivLogin = styled.div`
       height: 120px;
     }
   }
-  @media screen and (max-width: 376px) {
-    margin: 30px 0px 0px 0px;
-    figure {
-      margin: 0;
+
+  @media screen and (max-width: 414px)  {
+  margin:30px 0px 0px 0px ;
+    figure{
+      margin:0 ;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -134,17 +136,18 @@ export const SectionRegistro = styled.form`
       margin-top: 20px;
     }
   }
-  @media screen and (max-width: 376px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 60px;
-    input {
-      width: 80%;
-    }
-    button {
-      margin-top: 40px;
-      width: 80%;
+
+@media screen and (max-width: 414px)  {
+  display:flex ;
+flex-direction:column ;
+align-items:center ;
+margin-top:60px ;
+  input {
+    width:80% ;
+  }
+  button {
+    margin-top:40px ;
+    width:80%;
     }
   }
 `;

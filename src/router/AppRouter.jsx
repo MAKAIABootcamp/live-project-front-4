@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Login from "../pages/Students/login/Login";
 import HomeStudents from "../pages/Students/homeStudents/HomeStudents";
 import FormStudents from "../pages/Students/formStudents/FormStudents";
@@ -12,6 +11,8 @@ import HomeSuperUser from "../pages/SuperUser/HomeSuperUser";
 import FormUser from "../pages/SuperUser/FormUser";
 import Profile from "../pages/SuperUser/Profile";
 import StudentsSU from "../pages/SuperUser/StudentsSU";
+import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
+import { registerActionSync } from "../redux/actions/studentAction";
 import NewCohort from "../pages/SuperUser/NewCohort";
 import TrainingCohort from "../pages/SuperUser/TrainingCohort";
 import RequestBenefis from "../pages/SuperUser/RequestBenefis";
@@ -34,7 +35,6 @@ import { loginActionSync } from "../redux/actions/userActions";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { dataBase as db, auth } from "../confiFirebase/configFirebase";
 //import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
-
 const AppRouter = () => {
   
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -50,6 +50,7 @@ const AppRouter = () => {
 
         if (!Object.entries(user).length) {
           console.log("No hay info");
+
           const logged = {
             email: userLogged.auth.currentUser.email,
             nombre: userLogged.auth.currentUser.displayName,
@@ -78,6 +79,22 @@ const AppRouter = () => {
             });
 
           dispatch(loginActionSync(logged));
+          const studentRef =collection(db,"Estudiantes")
+          const qStudent = query(studentRef, where("idUsuario", "==", userLogged.uid));
+          getDocs(qStudent)
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                const studentData = doc.data();
+               dispatch(registerActionSync(studentData))
+              });
+              dispatch(loginActionSync(logged));
+            })
+            .catch((error) => {
+              console.log(
+                "Error al obtener la información del usuario:",
+                error
+              );
+            });
         }
         console.log(userLogged);
         console.log("Tipo de usuario:", user?.userType || "No definido");
