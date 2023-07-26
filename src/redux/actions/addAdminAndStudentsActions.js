@@ -1,4 +1,10 @@
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { dataBase } from "../../confiFirebase/configFirebase";
 import { typeFormAdminAndStydents } from "../types/userTypes";
 
@@ -38,22 +44,37 @@ export const addAdminAndStudentsTypesActionSync = (
   };
 };
 
-export const getAdminAndStudents = (nameCollection) => {
+export const getAdminAndStudents = () => {
   return async (dispatch) => {
     try {
-      console.log("Fetching benefits from database...");
-      const getData = await getDocs(collection(dataBase, nameCollection));
-      const typeFormAdminAndStydentsData = getData.docs.map((doc) =>
-        doc.data()
-      );
-      console.log("Fetched benefits:", typeFormAdminAndStydentsData);
+      // Realiza la consulta a Firestore y obtiene los datos
+      const snapshot = await getDocs(referenceCollection); // Elimina ".collection" aquí
+      // console.log("llllllllll", snapshot) 
+      const data = snapshot.docs.map((doc) => ({id:doc.id, info:doc.data()}));
+      // console.log("data getstudents", snapshot) 
+      // Dispatch la acción para almacenar los datos en el estado
+      dispatch({ type: "GET_FORMADMINSTUDENTS", payload: data });
 
-      dispatch({
-        type: typeFormAdminAndStydents.GET_FORMADMINSTUDENTS,
-        payload: typeFormAdminAndStydentsData,
-      });
+      return data;
     } catch (error) {
-      console.log(error);
+      // Manejo de errores si es necesario
+      console.error("Error al obtener los datos:", error);
+      throw error;
+    }
+  };
+};
+
+
+export const updateAdminAndStudentsAction = (updateData) => {
+  return async (dispatch) => {
+    try {
+      // Actualiza los datos del colaborador en Firestore
+      // console.log(updateData,"estamos mirando que pasa")
+      const docRef = doc(dataBase, nameCollection, updateData.id);
+      await updateDoc(docRef, updateData.info);
+      // console.log("Datos del colaborador actualizados correctamente.");
+    } catch (error) {
+      console.error("Error al actualizar los datos del colaborador:", error);
     }
   };
 };

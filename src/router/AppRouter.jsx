@@ -27,6 +27,9 @@ import ListCertification from '../componentsGeneral/componentsSuperUser/certific
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
 import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/profileCertified";
+import Prueba from '../componentsGeneral/componentsSuperUser/Selection/Prueba'
+
+import GroupListStudenst from "../componentsGeneral/componentsSuperUser/groupListStudents/GroupListStudenst";
 
 const AppRouter = () => {
   return (
@@ -59,6 +62,8 @@ const AppRouter = () => {
             {/*Sub ruta de Selección*/}
             <Route path="profileSelectedSU" element={<ProfileSelected />} />
 
+            <Route path="pruebaCambioDoc" element={<Prueba />} />
+
             {/* <Route path="formationSuperUser" element={<Formation />} /> */}
             <Route path="certificationSuperUser" element={<Certification />} />
 
@@ -69,7 +74,8 @@ const AppRouter = () => {
             {/* Inicia Formación */}
             <Route path="addNewCohort" element={<NewCohort />} />{/* CREAR UNA NUEVA COHORTE LISTO EN CODIGO */}
             <Route path="cohortGroupTraining" element={<TrainingCohort />} />{/* LISTO Grupo de formación LISTO EN CODIGO  */}
-            <Route path="studentProfileBenefits" element={<StudentsBenefits />} />{/*LISTO selecion de informacion */}
+            <Route path="groupListStudents" element={<GroupListStudenst />} />{/* LISTO Grupo de formación LISTO EN CODIGO  */}
+            <Route path="studentProfileBenefits/:document" element={<StudentsBenefits />} />{/*LISTO selecion de informacion */}
             <Route path="RequestBenefis" element={<RequestBenefis />}/>{/* LISTO solicitud de beneficios */}
             <Route path="benefitsReceived" element={<BenefitsReceivedStudents />}/>{/* LISTO Beneficios recibidos */}
             <Route path="escortRoute" element={<EscortRouteStudents/>} />{/* ruta de acompañamiento LISTO EN CODIGO  */}

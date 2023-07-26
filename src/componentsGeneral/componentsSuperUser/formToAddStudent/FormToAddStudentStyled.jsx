@@ -16,7 +16,6 @@ export const FormGroup = styled.div`
   label {
     display: block;
     margin-bottom: 5px;
-
     font-weight: bold;
   }
 

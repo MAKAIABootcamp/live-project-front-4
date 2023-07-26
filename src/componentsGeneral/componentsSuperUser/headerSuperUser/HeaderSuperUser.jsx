@@ -205,7 +205,11 @@ const HeaderSuperUser = () => {
               <NavLink
                 to={"/homeSuperUser"}
                 className={({ isActive, isPending }) =>
-                  isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+                  isPending
+                    ? "navlink"
+                    : isActive
+                    ? "navlink active"
+                    : "navlink"
                 }
               >
                 Home
@@ -221,7 +225,11 @@ const HeaderSuperUser = () => {
               <NavLink
                 to={"/studentSuperUser"}
                 className={({ isActive, isPending }) =>
-                  isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+                  isPending
+                    ? "navlink"
+                    : isActive
+                    ? "navlink active"
+                    : "navlink"
                 }
               >
                 Estudiantes
@@ -229,7 +237,9 @@ const HeaderSuperUser = () => {
             </figure>
           </Item>
 
-          <SubItems className={`SubItems ${deployEstudiantes ? "deploySubItems" : ""}`}>
+          <SubItems
+            className={`SubItems ${deployEstudiantes ? "deploySubItems" : ""}`}
+          >
             <NavLink to={"/selectionSuperUser"}>
               <div>
                 <img
@@ -279,7 +289,11 @@ const HeaderSuperUser = () => {
               <NavLink
                 to={"/teamSuperUser"}
                 className={({ isActive, isPending }) =>
-                  isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+                  isPending
+                    ? "navlink"
+                    : isActive
+                    ? "navlink active"
+                    : "navlink"
                 }
               >
                 Equipo
@@ -292,7 +306,7 @@ const HeaderSuperUser = () => {
             <NavLink to={"/profileSuperUser"}>
               <img src={avatar} alt="" />
             </NavLink>
-          
+
             <NavLink
               className={({ isActive, isPending }) =>
                 isPending ? "navlink" : isActive ? "navlink active" : "navlink"
