@@ -27,17 +27,13 @@ const Login = () => {
 
   // const navigate = useNavigate();
   const logIn = (dataForm) => {
-    navigate("/")
+    navigate("/");
     console.log(dataForm);
     dispatch(loginActionAsync(dataForm.email, dataForm.password));
 
-    Swal.fire(
-      'Inicio sesión exitoso!',
-      '¡Bienvenid@!',
-      'success'
-    )
+    Swal.fire("Inicio sesión exitoso!", "¡Bienvenid@!", "success");
 
-    navigate("/formStudents")
+    navigate("/formStudents");
   };
   return (
     <General>
@@ -77,7 +73,7 @@ const Login = () => {
               {formik.touched.password && formik.errors.password && (
                 <div>{formik.errors.password}</div>
               )}
-             
+              <button type="submit">Entrar</button>   
                 <button type="submit" >
                   Entrar
                 </button>
@@ -94,5 +90,3 @@ const Login = () => {
   );
 };
 export default Login;
-
-

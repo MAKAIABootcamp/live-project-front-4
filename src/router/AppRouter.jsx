@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, query, where, getDocs} from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import { loginActionSync } from "../redux/actions/userActions";
 import { dataBase as db, auth } from "../confiFirebase/configFirebase";
@@ -27,10 +27,10 @@ import RequestBenefis from "../pages/SuperUser/RequestBenefis";
 import BenefitsReceivedStudents from "../pages/SuperUser/BenefitsReceivedStudents";
 import EscortRouteStudents from "../pages/SuperUser/EscortRouteStudents";
 import StudentsBenefits from "../pages/SuperUser/StudentsBenefits";
-import Selection from '../componentsGeneral/componentsSuperUser/Selection/Selection'
-import Certification from '../componentsGeneral/componentsSuperUser/certification/Certification'
-import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/ProfileSelected';
-import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
+import Selection from "../componentsGeneral/componentsSuperUser/Selection/Selection";
+import Certification from "../componentsGeneral/componentsSuperUser/certification/Certification";
+import ProfileSelected from "../componentsGeneral/componentsSuperUser/Selection/ProfileSelected";
+import ListCertification from "../componentsGeneral/componentsSuperUser/certification/ListCertification";
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
 import ResetPassword from "../pages/Students/login/ResetPassword";
@@ -41,7 +41,6 @@ const AppRouter = () => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
- 
 
   useEffect(() => {
     onAuthStateChanged(auth, (userLogged) => {
@@ -65,27 +64,34 @@ const AppRouter = () => {
               if (!querySnapshot.empty) {
                 const userData = querySnapshot.docs[0].data();
                 logged.userType = userData.userType;
-                logged.nombre = userData.nombre; 
+                logged.nombre = userData.nombre;
                 logged.formularioLlenado = userData.formularioLlenado;
                 console.log("User Type:", userData.userType);
-                console.log('name:',userData.nombre);
-                console.log('formularioLlenado:', userData.formularioLlenado);
+                console.log("name:", userData.nombre);
+                console.log("formularioLlenado:", userData.formularioLlenado);
               }
               dispatch(loginActionSync(logged));
               console.log(logged);
             })
             .catch((error) => {
-              console.log("Error al obtener la información del usuario:", error);
+              console.log(
+                "Error al obtener la información del usuario:",
+                error
+              );
             });
 
           // dispatch(loginActionSync(logged));
-          const studentRef =collection(db,"Estudiantes")
-          const qStudent = query(studentRef, where("uid", "==", userLogged.uid));
+
+          const studentRef = collection(db, "Estudiantes");
+          const qStudent = query(
+            studentRef,
+            where("uid", "==", userLogged.uid)
+          );
           getDocs(qStudent)
             .then((querySnapshot) => {
               querySnapshot.forEach((doc) => {
                 const studentData = doc.data();
-               dispatch(registerActionSync(studentData))
+                dispatch(registerActionSync(studentData));
               });
               dispatch(loginActionSync(logged));
             })
@@ -95,7 +101,6 @@ const AppRouter = () => {
                 error
               );
             });
-
         }
       } else {
         setIsLoggedIn(false);
@@ -115,13 +120,29 @@ const AppRouter = () => {
       <BrowserRouter>
         <Routes>
           {/* Rutas Públicas */}
-          <Route path="*" element={<PublicRouter isAuthentication={isLoggedIn} userType={user?.userType} />}>
+          <Route
+            path="*"
+            element={
+              <PublicRouter
+                isAuthentication={isLoggedIn}
+                userType={user?.userType}
+              />
+            }
+          >
             <Route index element={<Login />} />
            
           </Route>
 
           {/* Rutas Privadas */}
-          <Route path="*" element={<PrivateRouter isAuthentication={isLoggedIn} userType={user?.userType} />}>
+          <Route
+            path="*"
+            element={
+              <PrivateRouter
+                isAuthentication={isLoggedIn}
+                userType={user?.userType}
+              />
+            }
+          >
             {/* Rutas específicas para tipo de usuario 'estudiante' */}
             {user?.userType === "estudiante" && (
               <>
@@ -151,17 +172,29 @@ const AppRouter = () => {
                 <Route path="profileSelectedSU" element={<ProfileSelected />} />
 
                 {/* <Route path="formationSuperUser" element={<Formation />} /> */}
-                <Route path="certificationSuperUser" element={<Certification />} />
+                <Route
+                  path="certificationSuperUser"
+                  element={<Certification />}
+                />
 
                 {/*Sub ruta de Certificación*/}
                 <Route path="listCertifiedSU" element={<ListCertification />} />
 
                 {/* Inicia Formación */}
                 <Route path="addNewCohort" element={<NewCohort />} />
-                <Route path="cohortGroupTraining" element={<TrainingCohort />} />
-                <Route path="studentProfileBenefits" element={<StudentsBenefits />} />
+                <Route
+                  path="cohortGroupTraining"
+                  element={<TrainingCohort />}
+                />
+                <Route
+                  path="studentProfileBenefits"
+                  element={<StudentsBenefits />}
+                />
                 <Route path="RequestBenefis" element={<RequestBenefis />} />
-                <Route path="benefitsReceived" element={<BenefitsReceivedStudents />} />
+                <Route
+                  path="benefitsReceived"
+                  element={<BenefitsReceivedStudents />}
+                />
                 <Route path="escortRoute" element={<EscortRouteStudents />} />
                 <Route path="NotFoundPages" element={<NotFoundPages />} />
               </>
@@ -174,4 +207,3 @@ const AppRouter = () => {
 };
 
 export default AppRouter;
-
