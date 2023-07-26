@@ -7,6 +7,7 @@ import {
   SubmitButton,
   ErrorText,
   FormGroupSelect,
+  DivDiv,
 } from "./FormToAddStudentStyled";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import * as Yup from "yup";
@@ -143,8 +144,11 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
   ];
   return (
     <div>
-      <HeaderSuperUser />
       <div>
+        <HeaderSuperUser />
+      </div>
+
+      <DivDiv>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -154,19 +158,34 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
             <FormContainer>
               <FormGroup>
                 <label htmlFor="nombre">Nombre del estudiante:</label>
-                <Field type="text" id="nombre" name="nombre" />
+                <Field
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Nombre Completo"
+                />
                 <ErrorMessage name="nombre" component={ErrorText} />
               </FormGroup>
 
               <FormGroup>
                 <label htmlFor="celular">Número de Celular:</label>
-                <Field type="text" id="celular" name="celular" />
+                <Field
+                  type="text"
+                  id="celular"
+                  name="celular"
+                  placeholder="Número de Celular"
+                />
                 <ErrorMessage name="celular" component={ErrorText} />
               </FormGroup>
 
               <FormGroup>
                 <label htmlFor="email">Correo:</label>
-                <Field type="text" id="email" name="email" />
+                <Field
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="Correo"
+                />
                 <ErrorMessage name="email" component={ErrorText} />
               </FormGroup>
 
@@ -184,7 +203,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
             </FormContainer>
           </Form>
         </Formik>
-      </div>
+      </DivDiv>
     </div>
   );
 };

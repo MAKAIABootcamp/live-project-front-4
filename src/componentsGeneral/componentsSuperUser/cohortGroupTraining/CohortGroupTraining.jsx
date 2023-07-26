@@ -77,7 +77,7 @@ const CohortGroupTraining = () => {
               <p>Cohorte: {cohort.cohort?.cohorte}</p>
               <p>Fecha de inicio: {cohort.cohort?.fechaInicio}</p>
               <p>Fecha de cierre: {cohort.cohort?.fechaFinalizacion}</p>
-              <button onClick={() => handleJoinCohort(cohort)}>Unirse</button>
+              {/* <button onClick={() => handleJoinCohort(cohort)}>Unirse</button> */}
             </GridItem>
           ))}
 

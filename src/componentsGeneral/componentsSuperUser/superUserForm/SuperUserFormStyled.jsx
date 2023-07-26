@@ -5,6 +5,7 @@ export const Panel = styled.div`
   flex-direction: column;
   padding-left: 20px;
   padding-right: 10px;
+  padding-top: 80px;
   transition: 0.5s;
   @media screen and (max-width: 768px) {
     padding-left: 30px;

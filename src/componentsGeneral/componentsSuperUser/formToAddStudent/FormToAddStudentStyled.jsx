@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const DivDiv = styled.div`
+  padding-top: 150px;
+`;
+
 export const FormContainer = styled.div`
   max-width: 500px;
   margin: 0 auto;
@@ -7,7 +11,6 @@ export const FormContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #25abbc;
-  margin-top: 30px;
 `;
 
 export const FormGroup = styled.div`

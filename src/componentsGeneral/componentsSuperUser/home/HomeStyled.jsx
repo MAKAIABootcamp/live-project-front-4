@@ -4,8 +4,10 @@ export const Div = styled.div`
   display: flex;
 
   @media (min-width: 768px) {
+    padding-top: 80px;
   }
   @media screen and (max-width: 414px) {
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
   }
@@ -69,9 +71,14 @@ export const DivGeneral = styled.div`
   img {
     width: 50%;
     height: auto;
-    padding-top: 20px;
+
+    @media screen and (max-width: 768px) {
+      width: 70%;
+      padding-top: 80px;
+    }
     @media screen and (max-width: 414px) {
       width: 70%;
+      padding-top: 0;
     }
   }
 `;
