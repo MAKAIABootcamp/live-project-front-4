@@ -17,17 +17,18 @@ const Selection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCourse, setSelectedCourse] = useState(null);
 
+  const navigate = useNavigate();
 
-  
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getByCollectionName("Selección"));
   }, [dispatch]);
 
+  const coursesData = useSelector((state) => state.courses.coursesData);
 
-
-  const filteredCourses = (coursesSelected && coursesSelected.length) ? coursesSelected.filter((topic) =>
+  const filteredCourses = coursesData.filter((topic) =>
     topic.course.toLowerCase().includes(searchTerm.toLowerCase())
-  ):[];
+  );
 
   const handleCourseSelection = (course) => {
     setSelectedCourse(course);

@@ -1,4 +1,4 @@
-import { courses } from "../types/userTypes";
+import { courses, typeStudents } from "../types/userTypes";
 import { collection } from 'firebase/firestore'
 import { dataBase } from '../../confiFirebase/configFirebase'
 
@@ -10,7 +10,7 @@ const initialState = {
 
   export const coursesReducer = (state = initialState, action) => {
     switch (action.type) {
-      case courses.LIST_COURSES_SELECTION:
+      case typeStudents.GET_DATA_STUDENTS:
         return {
           ...state,
           coursesSelected: action.payload,
