@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, dataBase } from "../../confiFirebase/configFirebase";
 import { userTypes } from "../types/userTypes";
-import { addDoc, collection } from "firebase/firestore";
-import Swal from "sweetalert2";
+import { addDoc, collection, doc, getDoc} from "firebase/firestore";
+
 
 
 
@@ -47,18 +47,26 @@ export const loginActionAsync = (email, password) => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-      const { displayName, uid, accessToken } = user.auth.currentUser;
+      const { uid, accessToken,  } = user.auth.currentUser;
+      const userRef = doc(dataBase, "users", uid);
+      console.log(uid);
+      const userDoc = await getDoc(userRef);
 
-      const userLogged = {
-        uid,
-        email,
-        name: displayName,
-        accessToken: accessToken,
-      };
-      dispatch(loginActionSync(userLogged));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const { nombre } = userData;
+
+        const userLogged = {
+          uid,
+          email,
+          nombre,
+          accessToken: accessToken,
+        };
+        dispatch(loginActionSync(userLogged));
+        
+      } 
     } catch (error) {
       console.log(error);
-
     }
   };
 };
@@ -68,5 +76,20 @@ export const loginActionSync = (user) => {
     type: userTypes.USER_LOGIN,
     payload: user,
   };
+};
+
+export const registerActionAsync = async (uid, studentData) => {
+  try {
+    const student = {
+      idUsuario: uid,
+      ...studentData,
+    };
+    const studentInfo = await addDoc(collection(dataBase, "Estudiantes"), student);
+    console.log(studentInfo.id);
+    return studentInfo; // Devolver la información del estudiante registrado
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
 

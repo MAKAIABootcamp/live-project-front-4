@@ -114,6 +114,7 @@ button{
         width:90% ;
         height:35px ;
     }
+
     h2 {
       margin-top: 10px;
     }
