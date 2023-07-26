@@ -64,7 +64,7 @@ const BootService = () => {
             <SectionServicios>
               <img src={psicosocial} alt="" />
               <h2>Apoyo Psicosocial</h2>
-              <p>Situaciones que estás viviendo y que pudiesen afectar tu rendimiento o participación</p>
+              <p>Situaciones que estás viviendo y que pudiesen afectar tu rendimiento o participación.</p>
               <button onClick={handleOpenModal}>Solicitar</button>
               <ModalPsicosocial
                 isModalOpen={isModalOpen}
@@ -78,7 +78,7 @@ const BootService = () => {
               <img src={tecnico} alt="" />
 
               <h2>Apoyo Técnico</h2>
-              <p>Realiza preguntas que necesitas resolver en el marco del proceso formativo y aclara tus dudas</p>
+              <p>Realiza preguntas que necesitas resolver en el marco del proceso formativo y aclara tus dudas.</p>
               <button onClick={handleOpenModalTecnico}>Solicitar</button>
               <ModalTecnico
                 isModalOpen={isModalOpenTecnico}
@@ -91,7 +91,7 @@ const BootService = () => {
               <img src={inasistencia} alt="" />
 
               <h2>Reporte Inasistencia</h2>
-              <p>Si conoces con anterioridad que no podrás estar en alguna sesion informa por este medio</p>
+              <p>Si conoces con anterioridad que no podrás estar en alguna sesion informa por este medio.</p>
               <button onClick={handleOpenModalInasistencia}>Solicitar</button>
               <ModalInasistencia
                 isModalOpen={isModalOpenInasistencia}

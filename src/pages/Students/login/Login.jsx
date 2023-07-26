@@ -6,7 +6,7 @@ import * as yup from "yup";
 import { Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { loginActionAsync } from "../../../redux/actions/userActions";
-import { useNavigate,  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const validationSchema = yup.object().shape({
@@ -26,17 +26,13 @@ const Login = () => {
 
   // const navigate = useNavigate();
   const logIn = (dataForm) => {
-    navigate("/")
+    navigate("/");
     console.log(dataForm);
     dispatch(loginActionAsync(dataForm.email, dataForm.password));
 
-    Swal.fire(
-      'Inicio sesión exitoso!',
-      '¡Bienvenid@!',
-      'success'
-    )
+    Swal.fire("Inicio sesión exitoso!", "¡Bienvenid@!", "success");
 
-    navigate("/formStudents")
+    navigate("/formStudents");
   };
   return (
     <General>
@@ -76,11 +72,8 @@ const Login = () => {
               {formik.touched.password && formik.errors.password && (
                 <div>{formik.errors.password}</div>
               )}
-             
-                <button type="submit" >
-                  Entrar
-                </button>
-           
+
+              <button type="submit">Entrar</button>
             </SectionRegistro>
           )}
         </Formik>
@@ -89,5 +82,3 @@ const Login = () => {
   );
 };
 export default Login;
-
-
