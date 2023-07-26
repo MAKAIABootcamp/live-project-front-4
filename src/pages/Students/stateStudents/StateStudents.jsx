@@ -103,8 +103,8 @@ const StateStudents = () => {
               </section>
               <section>
                 <span>1<img src={cohete} alt="" /></span>
-                
-                
+
+
               </section>
             </ContainerP4>
           </ContainerStep>
@@ -116,5 +116,4 @@ const StateStudents = () => {
 };
 
 export default StateStudents;
-
 

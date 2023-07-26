@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import {
   DivGeneral,
   DivButton,
@@ -16,26 +17,76 @@ import { CarryOutOutlined } from "@ant-design/icons";
 import { RocketOutlined } from "@ant-design/icons";
 import { BankOutlined } from "@ant-design/icons";
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import { getAdminAndStudents } from "../../../../redux/actions/addAdminAndStudentsActions";
+import { updateAdminAndStudentsAction } from "../../../../redux/actions/addAdminAndStudentsActions";
+import "firebase/firestore";
 
 const CategoryCollaborators = () => {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [comment, setComment] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [adminAndStudentsData, setAdminAndStudentsData] = useState([]);
+  const [filteredCollaborators, setFilteredCollaborators] = useState([]);
+  const [selectedAdminAndStudentsData, setSelectedCollaborator] =
+    useState(null);
+  const [editedField, setEditedField] = useState("");
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  useEffect(() => {
+    dispatch(getAdminAndStudents())
+      .then((data) => {
+        setAdminAndStudentsData(data);
+        // console.log("esto es data", data);
+      })
+      .catch((error) => {
+        console.error("Error al obtener los datos:", error);
+      });
+  }, [dispatch]);
+
+  useEffect(() => {
+    setFilteredCollaborators(
+      adminAndStudentsData.filter(
+        (collaborator) => collaborator.info.area === selectedCategory
+      )
+    );
+  }, [adminAndStudentsData, selectedCategory]);
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
   const handleCommentChange = (e) => {
-    setComment(e.target.value);
+    const { name, value } = e.target;
+    setComment(value);
+    setSelectedCollaborator((prevData) => ({
+      ...prevData,
+      info: {
+        ...prevData.info,
+        [name]: value,
+      },
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Comentario:", comment);
+
+    if (!selectedAdminAndStudentsData.info || editedField === "") {
+      console.error("No se ha seleccionado un colaborador para editar.");
+      return;
+    }
+
+    if (comment === "") {
+      closeModal();
+      return;
+    }
+
+    const updateAdminAndStudentsData = {
+      ...selectedAdminAndStudentsData,
+      // Actualiza solo el campo editado
+      [editedField]: comment,
+    };
+    // Actualiza los datos del colaborador en Firestore a través de la acción de Redux
+    dispatch(updateAdminAndStudentsAction(updateAdminAndStudentsData));
     closeModal();
   };
 
@@ -45,29 +96,44 @@ const CategoryCollaborators = () => {
       handleSubmit(e);
     }
   };
+
+  const handleEditClick = (collaborator, field) => {
+    setSelectedCollaborator(collaborator);
+    setEditedField(field);
+    setComment(""); // Limpiamos el campo de comentario cada vez que se abre el modal
+    setIsModalOpen(true); // Asegurarse de que isModalOpen sea true
+  };
+
+  const options = [
+    { value: "Seleccionar" },
+    { value: "Entrenamiento" },
+    { value: "Experiencia" },
+    { value: "Empleabilidad" },
+    { value: "Comercial" },
+  ];
   return (
     <>
       <H2>Categorías por área</H2>
       <DivButton>
-        <button>
+        <button onClick={() => setSelectedCategory("Entrenamiento")}>
           <div>
             <CarryOutOutlined style={{ fontSize: "24px" }} />{" "}
             <p>Entrenamiento</p>
           </div>
         </button>
-        <button>
+        <button onClick={() => setSelectedCategory("Experiencia")}>
           <div>
             <RocketOutlined style={{ fontSize: "24px" }} />
             <p>Experiencia</p>
           </div>
         </button>
-        <button>
+        <button onClick={() => setSelectedCategory("Empleabilidad")}>
           <div>
             <BankOutlined style={{ fontSize: "24px" }} />
             <p>Empleabilidad</p>
           </div>
         </button>
-        <button>
+        <button onClick={() => setSelectedCategory("Comercial")}>
           <div>
             <ShoppingCartOutlined style={{ fontSize: "24px" }} />
             <p>Comercial</p>
@@ -79,80 +145,58 @@ const CategoryCollaborators = () => {
         <div>
           <TableBenefits>
             <tr>
-              <Th>Colaborador</Th>
+              <Th>Colaboradores</Th>
             </tr>
-
-            <tr>
-              <td>Luisa Lafaurie</td>
-              <td>
-                <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
-                <EditOutlined
-                  style={{ color: "blue", fontSize: "18px" }}
-                  onClick={openModal}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Laura Ospina</td>
-              <td>
-                <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
-                <EditOutlined
-                  style={{ color: "blue", fontSize: "18px" }}
-                  onClick={openModal}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Carlos Pablo Hernandez</td>
-              <td>
-                <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
-                <EditOutlined
-                  style={{ color: "blue", fontSize: "18px" }}
-                  onClick={openModal}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Lizeth Yomaira Montoya Garcia</td>
-              <td>
-                <CloseOutlined style={{ color: "red", fontSize: "18px" }} />
-                <EditOutlined
-                  style={{ color: "blue", fontSize: "18px" }}
-                  onClick={openModal}
-                />
-              </td>
-            </tr>
+            {/* Mapear la información de los colaboradores filtrados */}
+            {filteredCollaborators.map((collaborator) => (
+              <tr key={collaborator.info.nombre}>
+                <td>{collaborator.info.nombre}</td>
+                <td>
+                  {/* <CloseOutlined style={{ color: "red", fontSize: "18px" }} /> */}
+                  <EditOutlined
+                    style={{ color: "blue", fontSize: "18px" }}
+                    onClick={() => handleEditClick(collaborator)}
+                  />
+                </td>
+              </tr>
+            ))}
           </TableBenefits>
           {isModalOpen && (
             <Modal>
               <ModalContent>
                 <h3>Editar información del colaborador</h3>
-                <form>
-                  <label htmlFor="">Nombre del colaborador</label>
-                  <input
-                    type="text"
-                    id="commentInput"
-                    value={comment}
-                    onChange={handleCommentChange}
-                    onKeyDown={handleKeyDown}
-                    style={{ textAlign: "top" }}
-                  />
 
+                <form
+                  key={selectedAdminAndStudentsData.info.nombre}
+                  onSubmit={handleSubmit}
+                >
                   <label htmlFor="">Área</label>
-                  <input
-                    type="text"
-                    id="commentInput"
-                    value={comment}
+                  <select
+                    as="select"
+                    id="area"
+                    name="area"
+                    value={
+                      editedField === "area"
+                        ? comment
+                        : selectedAdminAndStudentsData.info.area
+                    }
                     onChange={handleCommentChange}
-                    onKeyDown={handleKeyDown}
-                    style={{ textAlign: "top" }}
-                  />
+                  >
+                    {options.map((item) => (
+                      <option value={item.value}>{item.value}</option>
+                    ))}
+                  </select>
 
                   <label htmlFor="">Cargo</label>
                   <input
                     type="text"
-                    id="commentInput"
-                    value={comment}
+                    name="cargo"
+                    id="cargo"
+                    value={
+                      editedField === "cargo"
+                        ? comment
+                        : selectedAdminAndStudentsData.info.cargo
+                    }
                     onChange={handleCommentChange}
                     onKeyDown={handleKeyDown}
                     style={{ textAlign: "top" }}
@@ -160,9 +204,14 @@ const CategoryCollaborators = () => {
 
                   <label htmlFor="">Correo corporativo</label>
                   <input
-                    type="text"
-                    id="commentInput"
-                    value={comment}
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={
+                      editedField === "email"
+                        ? comment
+                        : selectedAdminAndStudentsData.info.email
+                    }
                     onChange={handleCommentChange}
                     onKeyDown={handleKeyDown}
                     style={{ textAlign: "top" }}
@@ -170,9 +219,14 @@ const CategoryCollaborators = () => {
 
                   <label htmlFor="">Teléfono</label>
                   <input
-                    type="text"
-                    id="commentInput"
-                    value={comment}
+                    type="telefono"
+                    name="telefono"
+                    id="telefono"
+                    value={
+                      editedField === "telefono"
+                        ? comment
+                        : selectedAdminAndStudentsData.info.telefono
+                    }
                     onChange={handleCommentChange}
                     onKeyDown={handleKeyDown}
                     style={{ textAlign: "top" }}

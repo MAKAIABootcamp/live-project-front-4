@@ -1,10 +1,4 @@
 import { styled } from "styled-components";
-import fondoGeneral from "../../../assets/FONDOGENERAL.png";
-
-export const ContainerBenefitBackg = styled.div`
-  background-image: url(${fondoGeneral});
-`
-
 
 export const ContainerBenefitStudents = styled.div`
   display: flex;
@@ -26,7 +20,7 @@ export const ContainerBenefitStudents = styled.div`
     align-items: center;
     justify-content: flex-start;
     gap: 40px;
-    height: 110vh;
+    height: 140vh;
   }
 
   @media screen and (max-width: 376px) {

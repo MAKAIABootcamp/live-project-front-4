@@ -4,8 +4,10 @@ export const Div = styled.div`
   display: flex;
 
   @media (min-width: 768px) {
+    padding-top: 80px;
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
   }
@@ -21,7 +23,7 @@ export const DivImgEquipo = styled.div`
   @media (min-width: 768px) {
     margin-top: 0;
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     margin-top: 0px;
     margin-right: 0px;
     margin-left: 0px;
@@ -36,7 +38,7 @@ export const DivImgEquipo = styled.div`
       width: 310px;
       padding-top: 20px;
     }
-    @media screen and (max-width: 376px) {
+    @media screen and (max-width: 414px) {
       width: 250px;
       padding-top: 0px;
     }
@@ -59,15 +61,25 @@ export const DivGeneral = styled.div`
     @media screen and (max-width: 768px) {
       font-size: 18px;
     }
-    @media screen and (max-width: 376px) {
-      font-size: 12px;
+    @media screen and (max-width: 414px) {
+      font-size: 15px;
+      margin-left: 8px;
+      margin-right: 8px;
     }
   }
 
   img {
     width: 50%;
     height: auto;
-    padding-top: 20px;
+
+    @media screen and (max-width: 768px) {
+      width: 70%;
+      padding-top: 80px;
+    }
+    @media screen and (max-width: 414px) {
+      width: 70%;
+      padding-top: 0;
+    }
   }
 `;
 

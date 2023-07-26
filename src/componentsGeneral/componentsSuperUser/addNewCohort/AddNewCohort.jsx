@@ -91,6 +91,12 @@ const AddNewCohort = ({ addCohort }) => {
     background-color: #03203a;
     /* background-color: #1b7c8c; */
     border-radius: 8px;
+    @media (min-width: 768px) {
+      max-width: 410px;
+    }
+    @media screen and (max-width: 414px) {
+      max-width: 340px;
+    }
 
     h1 {
       color: #1b7c8c;
@@ -113,6 +119,13 @@ const AddNewCohort = ({ addCohort }) => {
     border-radius: 4px;
     height: 25px;
     width: 235px;
+    @media (min-width: 768px) {
+      width: 170px;
+    }
+    @media screen and (max-width: 414px) {
+      width: 155px;
+      margin-right: 5px;
+    }
 
     .react-datepicker__header {
       background-color: #03203a;
@@ -205,6 +218,12 @@ const AddNewCohort = ({ addCohort }) => {
     border-radius: 4px;
     height: 25px;
     width: 240px;
+    @media (min-width: 768px) {
+      width: 170px;
+    }
+    @media screen and (max-width: 414px) {
+      width: 155px;
+    }
 
     .react-datepicker__header {
       background-color: #03203a;
@@ -337,7 +356,9 @@ const AddNewCohort = ({ addCohort }) => {
 
                 <RowDate>
                   <div>
-                    <label htmlFor="fechaInicio">Fecha de inicio</label>
+                    <label htmlFor="fechaInicio">
+                      Fecha de inicio <span></span>
+                    </label>
                     <StyledDatePicker
                       selected={startDate}
                       onChange={handleStartDateChange}

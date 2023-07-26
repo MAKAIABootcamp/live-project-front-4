@@ -249,3 +249,68 @@ export const DivNotFoundCertified = styled.div`
     font-size: 20px;
 }
 `;
+
+export const DataProfileCertification = styled.section`
+background-color: yellow;
+display: flex;
+width: 600px;
+font-size: 20px;
+justify-content: space-between;
+`;
+
+export const PhotoProfileCertification = styled.figure`
+width: 300px;
+height: 300px;
+overflow: hidden;
+object-fit: cover;
+border-radius: 50%;
+
+& img{
+    width: 100%;
+    object-fit: cover;
+}
+`;
+
+export const ListInfoGeneral = styled.section`
+@media screen and (max-width: 1440px) {
+    background-image: url("https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607992/LIVE/Im%C3%A1genes/Covers/FONDO_PC_eoeuar.png");
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+    background-image: url("https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607556/LIVE/Im%C3%A1genes/Covers/FONDO_TABLET_knpzbw.png");
+}
+
+@media screen and (max-width: 375px) {
+    background-image: url("https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689607557/LIVE/Im%C3%A1genes/Covers/FONDO_CEL_v7opjm.png");
+}
+`;
+
+export const ContentInfoCertified = styled.section`
+background-color: green;
+width: 80%;
+display: flex;
+justify-content: space-between;
+margin: 0 auto;
+align-items: center;
+`;
+
+export const MoreInfoAvatarCertified = styled.section`
+width: 80%;
+margin: 0 auto;
+
+& h2{
+    font-size: 30px;
+    text-align: center;
+}
+`;
+
+export const DataHVCertified = styled.div`
+background-color: yellow;
+width: 100%;
+display: flex;
+justify-content: space-between;
+font-size: 20px;
+`;

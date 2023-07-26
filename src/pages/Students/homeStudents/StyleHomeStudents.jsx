@@ -1,18 +1,15 @@
 import { styled } from "styled-components";
-import fondoGeneral from "../../../assets/FONDOGENERAL.png";
 
 export const ContainerHomeStudents = styled.div`
   display: flex;
   flex-direction: column;
-  
-  height: 100vh;
+  background-image: url(https://res.cloudinary.com/dvk0btnav/image/upload/v1688442314/backgroundLive_htg9zu.jpg);
+
 `;
 
 export const ContainerHomeStudentsCont = styled.div`
   display: flex;
   flex-direction: column;
-  height: 150vh;
-  background-image: url(${fondoGeneral});
   
 div{
     display: flex;

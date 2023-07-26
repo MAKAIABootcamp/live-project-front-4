@@ -10,8 +10,19 @@ import ProfileStudents from "../pages/Students/profileStudents/ProfileStudents";
 import BenefitsStudents from "../pages/Students/benefitsStudents/BenefitsStudents";
 import BootService from "../pages/Students/bootService/BootService";
 import HomeSuperUser from "../pages/SuperUser/HomeSuperUser";
-import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
+import AddStudents from "../pages/SuperUser/AddStudents";
 import Selection from "../componentsGeneral/componentsSuperUser/Selection/Selection";
+import ProfileSelected from "../componentsGeneral/componentsSuperUser/Selection/ProfileSelected";
+import Certification from "../componentsGeneral/componentsSuperUser/certification/Certification";
+import ListCertification from "../componentsGeneral/componentsSuperUser/certification/ListCertification";
+import TrainingCohort from "../pages/SuperUser/TrainingCohort";
+import StudentsBenefits from "../pages/SuperUser/StudentsBenefits";
+import RequestBenefis from "../pages/SuperUser/RequestBenefis";
+import BenefitsReceivedStudents from "../pages/SuperUser/BenefitsReceivedStudents";
+import EscortRouteStudents from "../pages/SuperUser/EscortRouteStudents";
+import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/profileCertified";
+import GroupListStudenst from "../componentsGeneral/componentsSuperUser/groupListStudents/GroupListStudenst";
+
 
 const PrivateRouter = (props) => {
   const { isAuthentication, userType } = props;
@@ -35,8 +46,18 @@ const PrivateRouter = (props) => {
       { path: "teamSuperUser", element: <FormUser /> },
       { path: "profileSuperUser", element: <Profile /> },
       { path: "studentSuperUser", element: <StudentsSU /> },
-      { path: "progressStudent", element: <ProgressStudent /> },
-      {path: "selectionSuperUser", element: <Selection />}
+      { path: "formToAddStudent", element: <AddStudents /> },
+      { path: "selectionSuperUser", element: <Selection /> },
+      { path: "profileSelectedSU", element: <ProfileSelected /> },
+      { path: "certificationSuperUser", element: <Certification /> },
+      { path: "listCertifiedSU", element: <ListCertification /> },
+      { path: "cohortGroupTraining", element: <TrainingCohort/> },
+      { path: "studentProfileBenefits/:document", element: <StudentsBenefits/> },
+      { path: "RequestBenefis", element: <RequestBenefis/> },
+      { path: "benefitsReceived", element: <BenefitsReceivedStudents/> },
+      { path: "escortRoute", element: <EscortRouteStudents/> },
+      { path: "detailsProfileCertification", element: <ProfileCertified/> },
+      { path: "groupListStudents", element: <GroupListStudenst/> },
     ],
   };
 
