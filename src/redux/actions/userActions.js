@@ -72,7 +72,6 @@ export const loginActionAsync = (email, password) => {
 };
 
 export const loginActionSync = (user) => {
-  console.log("Datos del usuario:", user);
   return {
     type: userTypes.USER_LOGIN,
     payload: user,
@@ -93,3 +92,4 @@ export const registerActionAsync = async (uid, studentData) => {
     throw error;
   }
 };
+

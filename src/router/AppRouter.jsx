@@ -19,6 +19,8 @@ import HomeSuperUser from "../pages/SuperUser/HomeSuperUser";
 import FormUser from "../pages/SuperUser/FormUser";
 import Profile from "../pages/SuperUser/Profile";
 import StudentsSU from "../pages/SuperUser/StudentsSU";
+import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
+import { registerActionSync } from "../redux/actions/studentAction";
 import NewCohort from "../pages/SuperUser/NewCohort";
 import TrainingCohort from "../pages/SuperUser/TrainingCohort";
 import RequestBenefis from "../pages/SuperUser/RequestBenefis";
@@ -31,7 +33,13 @@ import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/
 import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
-
+import { GlobalStyles } from "../StylesGlobal/GlobalStyles";
+import PrivateRouter from "./PrivateRouter";
+import PublicRouter from "./PublicRouter";
+import { loginActionSync } from "../redux/actions/userActions";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { dataBase as db, auth } from "../confiFirebase/configFirebase";
+//import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
 const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -46,6 +54,7 @@ const AppRouter = () => {
 
         if (!Object.entries(user).length) {
           console.log("No hay info");
+
           const logged = {
             email: userLogged.auth.currentUser.email,
             nombre: userLogged.auth.currentUser.displayName,
@@ -72,6 +81,25 @@ const AppRouter = () => {
             .catch((error) => {
               console.log("Error al obtener la información del usuario:", error);
             });
+
+          dispatch(loginActionSync(logged));
+          const studentRef =collection(db,"Estudiantes")
+          const qStudent = query(studentRef, where("idUsuario", "==", userLogged.uid));
+          getDocs(qStudent)
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                const studentData = doc.data();
+               dispatch(registerActionSync(studentData))
+              });
+              dispatch(loginActionSync(logged));
+            })
+            .catch((error) => {
+              console.log(
+                "Error al obtener la información del usuario:",
+                error
+              );
+            });
+
         }
       } else {
         setIsLoggedIn(false);

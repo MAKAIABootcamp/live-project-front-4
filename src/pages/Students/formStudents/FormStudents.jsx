@@ -2,13 +2,16 @@ import React from 'react'
 import { DivFormulario, ErrorFormik, SectionForm, SectionLogo } from './StyledFormStudents'
 import logo from '../../../assets/LOGOBOOTCAMOSCURO.png'
 import * as Yup from "yup";
-import { Formik} from 'formik';
-import { useSelector } from 'react-redux';
 import { registerActionAsync } from '../../../redux/actions/userActions';
 import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { dataBase } from '../../../confiFirebase/configFirebase';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Formik, useFormikContext } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerActionAsync } from '../../../redux/actions/studentAction';
+
+
 const validationSchema = Yup.object().shape({
   nombreCompleto: Yup.string().required('Este campo es requerido'),
   tipoDocumento: Yup.string().required('Este campo es requerido'),
@@ -67,6 +70,7 @@ const FormStudents = () => {
     tiempoLibre: '',
     hobbie: '',
   }
+
   const registro = async (dataForm) => {
     try {
       const { uid } = user;
@@ -116,6 +120,38 @@ const FormStudents = () => {
       });
     }
   };
+
+  const registro = (dataForm) => {
+    dispatch(registerActionAsync(
+      user.uid,
+      dataForm.nombreCompleto,
+      dataForm.tipoDocumento,
+      dataForm.numeroDocumento,
+      dataForm.sexo,
+      dataForm.edad,
+      dataForm.celular,
+      dataForm.correo,
+      dataForm.nacionalidad,
+      dataForm.departamento,
+      dataForm.ciudad,
+      dataForm.direccion,
+      dataForm.estrato,
+      dataForm.raza,
+      dataForm.contacto,
+      dataForm.correoContacto,
+      dataForm.telefonoContacto,
+      dataForm.poblacion,
+      dataForm.ocupacion,
+      dataForm.nivelEducativo,
+      dataForm.conocimiento,
+      dataForm.equipos,
+      dataForm.motivacion,
+      dataForm.tiempoLibre,
+       dataForm.hobbie,
+    ));
+   
+      formik.resetForm();
+
   
   return (
     <>

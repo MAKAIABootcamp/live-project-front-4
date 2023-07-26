@@ -11,7 +11,10 @@ width:100% ;
 bottom: 0;
 margin:0;
 position:fixed ;
- 
+@media screen and (max-width: 414px) {
+  position: relative;
+  justify-content:flex-start ;
+}
  }
 `
 
@@ -20,7 +23,7 @@ export const SectionDerechos = styled.section`
   color: white;
   padding-left: 40px;
  }
- @media screen and (max-width: 376px) {
+ @media screen and (max-width: 414px) {
   padding-left: 20px;
   
  }
@@ -39,11 +42,11 @@ figure {
     height: 100%;
   }
 }
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 414px) {
   
   figure {
-    width: 5px;
-    height: 5px;
+    width: 15px;
+    height: 15px;
   }
  }
 `;
