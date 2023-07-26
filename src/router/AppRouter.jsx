@@ -33,6 +33,7 @@ import ProfileSelected from "../componentsGeneral/componentsSuperUser/Selection/
 import ListCertification from "../componentsGeneral/componentsSuperUser/certification/ListCertification";
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
+import ResetPassword from "../pages/Students/login/ResetPassword";
 
 //import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
 const AppRouter = () => {
@@ -80,6 +81,7 @@ const AppRouter = () => {
             });
 
           // dispatch(loginActionSync(logged));
+
           const studentRef = collection(db, "Estudiantes");
           const qStudent = query(
             studentRef,
@@ -128,6 +130,7 @@ const AppRouter = () => {
             }
           >
             <Route index element={<Login />} />
+           
           </Route>
 
           {/* Rutas Privadas */}
