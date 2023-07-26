@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Row = styled.div`
   align-items: center;
   flex-basis: 50%;
-
   label {
     color: white;
     margin-top: 15px;
@@ -19,6 +18,8 @@ export const RowDate = styled.div`
   align-items: center;
   display: flex;
   margin-top: 15px;
+  @media screen and (max-width: 414px) {
+  }
 
   label {
     color: white;
@@ -34,6 +35,14 @@ export const ButtonRow = styled.div`
   justify-content: flex-end;
   gap: 1rem;
   margin-top: 1rem;
+  @media (min-width: 768px) {
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (max-width: 414px) {
+    align-items: center;
+    justify-content: center;
+  }
 
   button {
     border-radius: 4px;
@@ -44,6 +53,14 @@ export const ButtonRow = styled.div`
     cursor: pointer;
     &:hover {
       background-color: #1b7c8c;
+    }
+    @media (min-width: 768px) {
+      width: 150px;
+      height: 30px;
+    }
+    @media screen and (max-width: 414px) {
+      width: 130px;
+      height: 30px;
     }
   }
 `;
@@ -60,6 +77,12 @@ export const Container = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (max-width: 414px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 

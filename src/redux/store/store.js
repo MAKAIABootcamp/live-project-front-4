@@ -27,6 +27,7 @@ import { coursesReducer } from "../reducers/coursesReducer";
 import newCohorteReducers from "../reducers/newCohorteReducers";
 import addAdminAndStudentsReducer from "../reducers/addAdminAndStudentsReducer";
 import { getCoursesSelection } from "../actions/coursesActions"; // Importa la acción getCoursesSelection para actualizar la lista de cursos seleccionados en Redux
+import getStudentsProfileBenefit from "../reducers/getStudentsProfileBenefitsReducers";
 
 const rootReducer = {
   user: userReducer,
@@ -34,6 +35,7 @@ const rootReducer = {
   courses: coursesReducer,
   cohort: newCohorteReducers,
   newAdminAndStydentsType: addAdminAndStudentsReducer,
+  studentReducer: getStudentsProfileBenefit,
 };
 
 const store = configureStore({

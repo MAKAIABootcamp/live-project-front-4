@@ -72,18 +72,23 @@
 
 // export default ListCertification;
 
-
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { BackgroundCertification, SectionBarCertification, SectionListFinal, ArrowBackCertification, DivNotFoundCertified } from './CertificationStyle';
-import HeaderSuperUser from '../headerSuperUser/HeaderSuperUser';
-import { TitleCourseFinal, Certified } from './CertificationStyle';
-import Back from '../../../assets/devolver.png';
-import BarSearch from '../../barSearch/BarSearch';
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  BackgroundCertification,
+  SectionBarCertification,
+  SectionListFinal,
+  ArrowBackCertification,
+  DivNotFoundCertified,
+} from "./CertificationStyle";
+import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
+import { TitleCourseFinal, Certified } from "./CertificationStyle";
+import Back from "../../../assets/devolver.png";
+import BarSearch from "../../barSearch/BarSearch";
 
 const ListCertification = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  
+  const [searchTerm, setSearchTerm] = useState("");
+
   const navigate = useNavigate();
   const location = useLocation();
   const courseData = location.state?.courseData;
@@ -100,32 +105,38 @@ const ListCertification = () => {
     );
   };
 
-  const filteredCertifiedStudents = filterCertifiedStudents(courseData?.groupCertified || []);
+  const filteredCertifiedStudents = filterCertifiedStudents(
+    courseData?.groupCertified || []
+  );
 
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
   const toProfileCertified = (selectedPerson) => {
-    navigate('/detailsProfileCertification', { 
-      state: { 
+    navigate("/detailsProfileCertification", {
+      state: {
         selectedPerson,
         infoPersonal: selectedPerson.infoPersonal, // Assuming infoPersonal is available within selectedPerson
         courseData, // Pass the courseData and courseTitle directly
-        courseTitle 
-      } 
+        courseTitle,
+      },
     });
   };
-  
+
   const toCertification = () => {
-    navigate('/certificationSuperUser');
+    navigate("/certificationSuperUser");
   };
 
   return (
     <>
       <HeaderSuperUser />
       <BackgroundCertification>
-        <ArrowBackCertification src={Back} width={20} onClick={toCertification} />
+        <ArrowBackCertification
+          src={Back}
+          width={20}
+          onClick={toCertification}
+        />
         <div>
           <TitleCourseFinal>
             {courseTitle} / Cohorte {courseData.id}
@@ -142,14 +153,25 @@ const ListCertification = () => {
             {filteredCertifiedStudents.length === 0 ? (
               <>
                 <DivNotFoundCertified>
-                  <img src='https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689736902/LIVE/Im%C3%A1genes/Icons/cerebro-unscreen_rdmhx5.gif' width={200} alt="No se han encontrado resultados" />
+                  <img
+                    src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689736902/LIVE/Im%C3%A1genes/Icons/cerebro-unscreen_rdmhx5.gif"
+                    width={200}
+                    alt="No se han encontrado resultados"
+                  />
                   <p>No se han encontrado los perfiles que buscas.</p>
                 </DivNotFoundCertified>
               </>
             ) : (
               filteredCertifiedStudents.map((listFinal, keyListFinal) => (
-                <button key={keyListFinal} onClick={() => toProfileCertified(listFinal)}>
-                  <img src={listFinal.profile} width={50} alt={listFinal.name} />
+                <button
+                  key={keyListFinal}
+                  onClick={() => toProfileCertified(listFinal)}
+                >
+                  <img
+                    src={listFinal.profile}
+                    width={50}
+                    alt={listFinal.name}
+                  />
                   <p>{listFinal.name}</p>
                 </button>
               ))
