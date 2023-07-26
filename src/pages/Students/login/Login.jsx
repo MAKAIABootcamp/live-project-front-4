@@ -1,13 +1,14 @@
 import React from "react";
-import { DivImagen, DivLogin, General, SectionRegistro } from "./StyledLogin";
+import { DivImagen, DivLogin, General, ResetPassword, SectionRegistro } from "./StyledLogin";
 import logo from "../../../assets/LOGOBOOTCAMOSCURO.png";
 import login from "../../../assets/loginActualizado.png";
 import * as yup from "yup";
 import { Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { loginActionAsync } from "../../../redux/actions/userActions";
-import { useNavigate,  } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
+
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -80,11 +81,15 @@ const Login = () => {
                 <button type="submit" >
                   Entrar
                 </button>
-           
+                <Link to="/resetPassword">
+              <ResetPassword htmlFor="">Olvide mi Contraseña</ResetPassword>
+            </Link>
             </SectionRegistro>
+
           )}
         </Formik>
       </DivLogin>
+      
     </General>
   );
 };

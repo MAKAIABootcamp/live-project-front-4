@@ -134,6 +134,7 @@ export const SectionRegistro = styled.form`
       font-weight: bold;
       font-size: 25px;
       margin-top: 20px;
+      margin-bottom:10px ;
     }
   }
 
@@ -148,6 +149,10 @@ margin-top:60px ;
   button {
     margin-top:40px ;
     width:80%;
+  
     }
   }
 `;
+export const ResetPassword = styled.label`
+font-size: 12px !important;
+`

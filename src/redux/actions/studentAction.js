@@ -46,7 +46,7 @@ export const updataActionAsync = (telefono, correo, imagen, uid) => {
       // Crear una consulta (query) con la cláusula "where" para filtrar por el UID
       const q = query(
         collection(dataBase, "Estudiantes"),
-        where("idUsuario", "==", uid)
+        where("uid", "==", uid)
       );
 
       // Ejecutar la consulta para obtener los documentos que coinciden con el filtro
