@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { collection, query, where, getDocs} from "firebase/firestore";
+import { useDispatch, useSelector } from "react-redux";
+import { loginActionSync } from "../redux/actions/userActions";
+import { dataBase as db, auth } from "../confiFirebase/configFirebase";
+import { GlobalStyles } from "../StylesGlobal/GlobalStyles";
+import PrivateRouter from "./PrivateRouter";
+import PublicRouter from "./PublicRouter";
 import Login from "../pages/Students/login/Login";
 import HomeStudents from "../pages/Students/homeStudents/HomeStudents";
 import FormStudents from "../pages/Students/formStudents/FormStudents";
@@ -19,29 +26,18 @@ import BenefitsReceivedStudents from "../pages/SuperUser/BenefitsReceivedStudent
 import EscortRouteStudents from "../pages/SuperUser/EscortRouteStudents";
 import StudentsBenefits from "../pages/SuperUser/StudentsBenefits";
 import Selection from '../componentsGeneral/componentsSuperUser/Selection/Selection'
-//import Formation from '../componentsGeneral/componentsSuperUser/Formation/Formation'
 import Certification from '../componentsGeneral/componentsSuperUser/certification/Certification'
 import ProfileSelected from '../componentsGeneral/componentsSuperUser/Selection/ProfileSelected';
 import ListCertification from '../componentsGeneral/componentsSuperUser/certification/ListCertification';
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
-import { useDispatch, useSelector } from "react-redux";
-import { onAuthStateChanged } from "firebase/auth";
-import { GlobalStyles } from "../StylesGlobal/GlobalStyles";
-import PrivateRouter from "./PrivateRouter";
-import PublicRouter from "./PublicRouter";
-import { loginActionSync } from "../redux/actions/userActions";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { dataBase as db, auth } from "../confiFirebase/configFirebase";
-//import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
 
 const AppRouter = () => {
-  
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [loading, setLoading] = useState(true);
-
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
+ 
 
   useEffect(() => {
     onAuthStateChanged(auth, (userLogged) => {
@@ -54,40 +50,36 @@ const AppRouter = () => {
             email: userLogged.auth.currentUser.email,
             nombre: userLogged.auth.currentUser.displayName,
             accessToken: userLogged.auth.currentUser.accessToken,
-            uid:userLogged.auth.currentUser.uid,
+            uid: userLogged.auth.currentUser.uid,
           };
 
           const usersRef = collection(db, "users");
-          
           const q = query(usersRef, where("uid", "==", userLogged.uid));
           getDocs(q)
             .then((querySnapshot) => {
-              querySnapshot.forEach((doc) => {
-                const userData = doc.data();
+              if (!querySnapshot.empty) {
+                const userData = querySnapshot.docs[0].data();
                 logged.userType = userData.userType;
+                logged.nombre = userData.nombre; 
+                logged.formularioLlenado = userData.formularioLlenado;
                 console.log("User Type:", userData.userType);
-              });
+                console.log('name:',userData.nombre);
+                console.log('formularioLlenado:', userData.formularioLlenado);
+              }
               dispatch(loginActionSync(logged));
               console.log(logged);
             })
             .catch((error) => {
-              console.log(
-                "Error al obtener la información del usuario:",
-                error
-              );
+              console.log("Error al obtener la información del usuario:", error);
             });
-
-          dispatch(loginActionSync(logged));
         }
-        console.log(userLogged);
-        console.log("Tipo de usuario:", user?.userType || "No definido");
       } else {
         setIsLoggedIn(false);
       }
 
       setLoading(false);
     });
-  }, [user, dispatch]);
+  }, [dispatch, user]);
 
   if (loading) {
     return <h1>Cargando...</h1>;
@@ -95,29 +87,17 @@ const AppRouter = () => {
 
   return (
     <>
-   <GlobalStyles/>
+      <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route
-            path="*"
-            element={
-              <PublicRouter
-                isAuthentication={isLoggedIn}
-                userType={user?.userType}
-              />
-            }
-          >
+          {/* Rutas Públicas */}
+          <Route path="*" element={<PublicRouter isAuthentication={isLoggedIn} userType={user?.userType} />}>
             <Route index element={<Login />} />
           </Route>
-          <Route
-            path="*"
-            element={
-              <PrivateRouter
-                isAuthentication={isLoggedIn}
-                userType={user?.userType}
-              />
-            }
-          >
+
+          {/* Rutas Privadas */}
+          <Route path="*" element={<PrivateRouter isAuthentication={isLoggedIn} userType={user?.userType} />}>
+            {/* Rutas específicas para tipo de usuario 'estudiante' */}
             {user?.userType === "estudiante" && (
               <>
                 <Route path="homestudents" element={<HomeStudents />} />
@@ -128,46 +108,45 @@ const AppRouter = () => {
                 <Route path="bootservice" element={<BootService />} />
               </>
             )}
+
+            {/* Rutas específicas para tipo de usuario 'administrador' */}
             {user?.userType === "administrador" && (
               <>
                 {/* Ruta del Admin */}
-            <Route path="homeSuperUser" element={<HomeSuperUser />} />
-            <Route path="teamSuperUser" element={<FormUser />} /> {/* EQUIPO */}
-            <Route path="profileSuperUser" element={<Profile />} />
-            <Route path="formToAddStudent" element={<AddStudents />} /> {/* formulario para crear estidiantes*/}
-            <Route path="studentSuperUser" element={<StudentsSU />} />
-              
-            {/* Ruta de Selección y Certificación */}
-            <Route path="selectionSuperUser" element={<Selection />} />
+                <Route path="homeSuperUser" element={<HomeSuperUser />} />
+                <Route path="teamSuperUser" element={<FormUser />} />
+                <Route path="profileSuperUser" element={<Profile />} />
+                <Route path="formToAddStudent" element={<AddStudents />} />
+                <Route path="studentSuperUser" element={<StudentsSU />} />
 
-            {/*Sub ruta de Selección*/}
-            <Route path="profileSelectedSU" element={<ProfileSelected />} />
+                {/* Ruta de Selección y Certificación */}
+                <Route path="selectionSuperUser" element={<Selection />} />
 
-            {/* <Route path="formationSuperUser" element={<Formation />} /> */}
-            <Route path="certificationSuperUser" element={<Certification />} />
+                {/*Sub ruta de Selección*/}
+                <Route path="profileSelectedSU" element={<ProfileSelected />} />
 
-            {/*Sub ruta de Certificación*/}
-            <Route path="listCertifiedSU" element={<ListCertification />} />
-              
-            {/* Inicia Formación */}
-            <Route path="addNewCohort" element={<NewCohort />} />{/* CREAR UNA NUEVA COHORTE LISTO EN CODIGO */}
-            <Route path="cohortGroupTraining" element={<TrainingCohort />} />{/* LISTO Grupo de formación LISTO EN CODIGO  */}
-            <Route path="studentProfileBenefits" element={<StudentsBenefits />} />{/*LISTO selecion de informacion */}
-            <Route path="RequestBenefis" element={<RequestBenefis />}/>{/* LISTO solicitud de beneficios */}
-            <Route path="benefitsReceived" element={<BenefitsReceivedStudents />}/>{/* LISTO Beneficios recibidos */}
-            <Route path="escortRoute" element={<EscortRouteStudents/>} />{/* ruta de acompañamiento LISTO EN CODIGO  */}
-            <Route path="NotFoundPages" element={<NotFoundPages/>} />{/* lista  */}
+                {/* <Route path="formationSuperUser" element={<Formation />} /> */}
+                <Route path="certificationSuperUser" element={<Certification />} />
+
+                {/*Sub ruta de Certificación*/}
+                <Route path="listCertifiedSU" element={<ListCertification />} />
+
+                {/* Inicia Formación */}
+                <Route path="addNewCohort" element={<NewCohort />} />
+                <Route path="cohortGroupTraining" element={<TrainingCohort />} />
+                <Route path="studentProfileBenefits" element={<StudentsBenefits />} />
+                <Route path="RequestBenefis" element={<RequestBenefis />} />
+                <Route path="benefitsReceived" element={<BenefitsReceivedStudents />} />
+                <Route path="escortRoute" element={<EscortRouteStudents />} />
+                <Route path="NotFoundPages" element={<NotFoundPages />} />
               </>
             )}
           </Route>
         </Routes>
       </BrowserRouter>
-      </>
+    </>
   );
 };
 
-
 export default AppRouter;
-    
-
 

@@ -2,9 +2,13 @@ import React from 'react'
 import { DivFormulario, ErrorFormik, SectionForm, SectionLogo } from './StyledFormStudents'
 import logo from '../../../assets/LOGOBOOTCAMOSCURO.png'
 import * as Yup from "yup";
-import { Formik, useFormikContext } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { Formik} from 'formik';
+import { useSelector } from 'react-redux';
 import { registerActionAsync } from '../../../redux/actions/userActions';
+import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { dataBase } from '../../../confiFirebase/configFirebase';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const validationSchema = Yup.object().shape({
   nombreCompleto: Yup.string().required('Este campo es requerido'),
   tipoDocumento: Yup.string().required('Este campo es requerido'),
@@ -31,18 +35,20 @@ const validationSchema = Yup.object().shape({
   tiempoLibre: Yup.string().required('Este campo es requerido'),
   hobbie: Yup.string().required('Este campo es requerido'),
 });
+
 const FormStudents = () => {
   const { user } = useSelector((store) => store.user);
-  const dispatch = useDispatch();
-  const formik = useFormikContext();
+  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const initialValues = {
-    nombreCompleto: '',
+    nombreCompleto: user.nombre || '',
     tipoDocumento: '',
     numeroDocumento: '',
     sexo: '',
     edad: '',
     celular: '',
-    correo: '',
+    correo: user.email || '',
     nacionalidad: '',
     departamento: '',
     ciudad: '',
@@ -61,39 +67,56 @@ const FormStudents = () => {
     tiempoLibre: '',
     hobbie: '',
   }
-  const registro = (dataForm) => {
-    console.log(user.uid);
-    dispatch(registerActionAsync(
-      user.uid,
-      dataForm.nombreCompleto,
-      dataForm.tipoDocumento,
-      dataForm.numeroDocumento,
-      dataForm.sexo,
-      dataForm.edad,
-      dataForm.celular,
-      dataForm.correo,
-      dataForm.nacionalidad,
-      dataForm.departamento,
-      dataForm.ciudad,
-      dataForm.direccion,
-      dataForm.estrato,
-      dataForm.raza,
-      dataForm.contacto,
-      dataForm.correoContacto,
-      dataForm.telefonoContacto,
-      dataForm.poblacion,
-      dataForm.ocupacion,
-      dataForm.nivelEducativo,
-      dataForm.conocimiento,
-      dataForm.equipos,
-      dataForm.motivacion,
-      dataForm.tiempoLibre,
-       dataForm.hobbie,
-    ));
-   
-      formik.resetForm();
+  const registro = async (dataForm) => {
+    try {
+      const { uid } = user;
+      if (!uid) {
+        console.error("El UID del usuario no está disponible.");
+        return;
+      }
+
+      // Llamar a la acción `registerActionAsync` para registrar el estudiante
+      const studentInfo = await registerActionAsync(uid, dataForm);
+      console.log(studentInfo);
+
+      // Actualizar el campo 'formularioLlenado' en la colección 'users'
+      const usersRef = collection(dataBase, "users");
+      const usersQuery = query(usersRef, where("uid", "==", uid));
+      const usersSnapshot = await getDocs(usersQuery);
+
+      if (usersSnapshot.empty) {
+        console.error("No se encontró un documento con el UID del usuario.");
+        return;
+      }
+
+      const userDoc = usersSnapshot.docs[0];
+      const userRef = doc(usersRef, userDoc.id);
+      await updateDoc(userRef, {
+        formularioLlenado: true,
+      });
+
+      console.log("Campo 'formularioLlenado' actualizado a true.");
+
+      // Redireccionar a la página de inicio de los estudiantes
+      navigate("/homeStudents");
+      Swal.fire({
+        icon: 'success',
+        title: 'Éxito',
+        text: '¡El formulario se ha enviado exitosamente!',
+        confirmButtonText: 'Ok',
+      });
+    } catch (error) {
+      console.error("Error al actualizar el campo 'formularioLlenado':", error);
+    
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ha ocurrido un error. Los datos no han sido guardados.',
+        confirmButtonText: 'Ok',
+      });
+    }
+  };
   
-  }
   return (
     <>
 
@@ -116,6 +139,7 @@ const FormStudents = () => {
                   type="text"
                   name='nombreCompleto'
                   {...formik.getFieldProps("nombreCompleto")}
+                  readOnly
                 />
                 {formik.touched.nombreCompleto && formik.errors.nombreCompleto && (
                   <ErrorFormik>{formik.errors.nombreCompleto}</ErrorFormik>
@@ -151,7 +175,7 @@ const FormStudents = () => {
                 <select name="sexo" id="" {...formik.getFieldProps("sexo")}>
                   <option value="">Selecciona una respuesta</option>
                   <option value="Mujer">Mujer</option>
-                  <option value="Hombre<">Hombre</option>
+                  <option value="Hombre">Hombre</option>
                   <option value="Otro">Otro</option>
                 </select>
                 {formik.touched.sexo && formik.errors.sexo && (
@@ -186,6 +210,7 @@ const FormStudents = () => {
                 type="text" 
                 name='correo' 
                 {...formik.getFieldProps("correo")}
+                readOnly
                 />
                 {formik.touched.correo && formik.errors.correo && (
                   <ErrorFormik>{formik.errors.correo}</ErrorFormik>

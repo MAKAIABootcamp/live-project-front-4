@@ -119,6 +119,7 @@ button{
       font-size: 16px;
     }
   }
+}
   @media screen and (max-width: 376px) {
     height: 100px;
     margin-top: -20px;

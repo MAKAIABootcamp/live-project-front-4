@@ -21,35 +21,32 @@ const BenefitsStudents = () => {
   const [benefit, setBenefit] = useState("");
   const [notes, setNotes] = useState("");
 
-  // Utiliza useSelector para acceder al estado de los beneficios desde el store
   const benefitsList = useSelector((state) => state.benefits.benefitsList);
 
-  // Utiliza useDispatch para obtener la función dispatch
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Llama a la acción para obtener los beneficios desde Firestore y almacenarlos en el estado de Redux
+    
     dispatch(setBenefits());
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Crea un objeto con los datos del formulario
+  
     const formData = {
       benefit: benefit,
       notes: notes,
     };
 
     try {
-      // Envía el objeto a Firebase y crea un nuevo documento en la colección "beneficiosSolicitados"
+     
       const docRef = await addDoc(
         collection(dataBase, "BeneficiosSolicitados"),
         formData
       );
 
-      // Realiza alguna acción después de enviar los datos
-      // Por ejemplo, puedes mostrar un mensaje de éxito o limpiar el formulario
+     
       console.log(docRef.id);
         Swal.fire(
           'Solicitud enviada exitosamente',
@@ -59,7 +56,7 @@ const BenefitsStudents = () => {
       setBenefit("");
       setNotes("");
     } catch (error) {
-      // Maneja los errores en caso de que algo salga mal
+     
       console.error("Error al enviar la solicitud:", error);
     }
   };
