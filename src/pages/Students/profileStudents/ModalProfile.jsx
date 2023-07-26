@@ -1,19 +1,26 @@
 
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from "yup";
-import { CleseContainer, ModalContainer, CloseButton, ModalContent, ModalHeader, BodyModal, ListItem, ButtonContainer, ButtonModal, ButtonModalCancelar } from './StyledModalBootservice';
+import { CleseContainer, ModalContainer, CloseButton, ModalContent, ModalHeader, BodyModal, ListItem, ButtonContainer, ButtonModal, ButtonModalCancelar } from '../bootService/StyledModalBootservice';
 import { useDispatch, useSelector } from 'react-redux';
 import { bootserviceActionAsync } from '../../../redux/actions/bootserviceAction';
+import styled from 'styled-components';
+import { updataActionAsync } from '../../../redux/actions/studentAction';
 
 // Estilos para el contenedor del modal
 
 const validationSchema = Yup.object().shape({
-  diasInasistecias: Yup.string()
+  telefono: Yup.string()
     .required('La respuesta es requerida'),
-  argumento: Yup.string()
+  correo: Yup.string()
     .required('La respuesta es requerida'),
 });
-const ModalInasistencia = ({ isModalOpen, handleModalClose }) => {
+const ListOl= styled.ol`
+    input{
+        height:30px ;
+    }
+`
+const ModalProfile = ({ isModalOpen, handleModalClose, telefono, correo, imagen }) => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   return (
@@ -24,48 +31,51 @@ const ModalInasistencia = ({ isModalOpen, handleModalClose }) => {
             <CloseButton onClick={handleModalClose}>X</CloseButton>
           </CleseContainer>
           <ModalHeader>
-            <p>Reporte de inasistencia</p>
-            <p>Obligatorio<span>*</span></p>
+            <p>Actualizar datos</p>
           </ModalHeader>
 
           <BodyModal>
             {/*Contenindo modela */}
             <Formik
-              initialValues={{ diasInasistecias: "", argumento: "" }}
+              initialValues={{
+                telefono:""||telefono,
+                correo:""||correo,
+                imagen:""||imagen,
+              }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm })=> {
-                const data = {
-                  nameService: "Reporte de inasistencia",
-                  descripcion: values.diasInasistecias,
-                  argumento: values.argumento,
-                  uid: user.uid
-                }
-                dispatch(bootserviceActionAsync(data))
+
+                dispatch(updataActionAsync( values.telefono, values.correo, values.imagen,user.uid))
                 .then(() => {
                   resetForm();
+                  handleModalClose()
                 })
               }}
             >
               {({ errors, touched }) => (
                 <Form>
 
-                  <ol>
+                  <ListOl>
                     <ListItem>
-
-                      <label htmlFor="diasInasistecias">1. Escribe el día o los días en los que no podrás conectarte <span>*</span></label>
-                      <Field name="diasInasistecias" type="text" placeholder='Escriba su respuesta ' as="textarea" cols="15" rows="5" />
-                      <ErrorMessage name="diasInasistecias" />
+                      <label htmlFor="telefono">Télefono celular</label>
+                      <Field name="telefono" type="text" placeholder='Escriba su télefono'/>
+                      <ErrorMessage name="telefono" />
                     </ListItem>
                     <ListItem>
-                      <label htmlFor="">2. Argumenta <span>*</span></label>
-                      <Field name="argumento" placeholder='Escriba su respuesta' as="textarea" cols="15" rows="5" />
-                      <ErrorMessage name="argumento" />
+                      <label htmlFor="correo">Correo electrónico</label>
+                      <Field name="correo" placeholder='Escriba su correo'/>
+                      <ErrorMessage name="correo" />
+                    </ListItem>
+                    <ListItem>
+                      <label htmlFor="imagen">Imagen de perfil</label>
+                      <Field name="imagen" type="file"/>
+                      <ErrorMessage name="imagen" />
                     </ListItem>
 
-                  </ol>
+                  </ListOl>
                   <ButtonContainer>
                     <ButtonModal type='submit'>
-                      Guardar
+                      Actualizar
                     </ButtonModal>
                     <ButtonModalCancelar onClick={handleModalClose}>Cancelar</ButtonModalCancelar>
                   </ButtonContainer>
@@ -81,4 +91,4 @@ const ModalInasistencia = ({ isModalOpen, handleModalClose }) => {
     )
   );
 };
-export default ModalInasistencia;
+export default ModalProfile;

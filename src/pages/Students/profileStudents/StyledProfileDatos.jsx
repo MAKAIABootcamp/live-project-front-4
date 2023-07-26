@@ -35,7 +35,7 @@ border-radius:50%;
 export const FigureIcon = styled.figure`
  @media screen and (max-width: 1440px) {
 height:5%;
-    width:5%;
+    width:10%;
     margin-left:-40px;
 
     figure{
@@ -61,9 +61,12 @@ margin-top:-55px ;
 
 
 h4{
-    font-size:16px ;
-    margin-top:35px ;
-    margin-bottom:-35px ;
+    margin-top:30px ;
+    margin-bottom:-25px ;
+    color:#03203A  ;
+    font-size:18px ;
+    line-height: 1;
+    font-weight:700 ;
 }
  }
 `
@@ -79,7 +82,7 @@ padding-left:10px ;
       width: calc(50% - 20px);
     }
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     section {
       width: 100%;
     }
@@ -92,16 +95,20 @@ export const SectionDatos = styled.section`
     width: calc(33.33% - 20px);
   
 h4 {
-    font-size:16px ;
+ 
+    font-size:18px ;
+    font-weight:700 ;
+    color:#25ABBC ;
 }
 input {
   border: none;
   background: transparent;
   outline: none;
-  height:5px ;
   width:280px ;
-  font-size:10px ;
-  border-bottom: 1px solid black;
+  font-size:16px ;
+  border-bottom: 3px solid #EEE420 ;
+  color:#03203A  ;
+  font-weight:600 ;
 }
 img{
 height:20px ;

@@ -12,6 +12,7 @@ import HeaderStudents from '../headerStudents/HeaderStudents';
 
 
 
+
 const BootService = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isModalOpenTecnico, setModalOpenTecnico] = useState(false);
@@ -97,13 +98,11 @@ const BootService = () => {
                 handleModalClose={handleCloseModalInasistencia}
               />
             </SectionServicios>
-
+            
           </DivBootservices>
+    
           <FooterStudents />
         </DivBootserviceGeneral>
-   
-
-
   )
 }
 

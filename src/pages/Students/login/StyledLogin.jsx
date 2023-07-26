@@ -30,7 +30,7 @@ background-image: url(${fondoGeneral});
     position:absolute ;
   }
 
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     margin:0 ;
   }
   
@@ -67,7 +67,7 @@ object-fit:contain;
 }
     
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     display:none ;
     figure{
       display:none ;
@@ -98,7 +98,7 @@ height:120px;
 }
     
   }
-  @media screen and (max-width: 376px)  {
+  @media screen and (max-width: 414px)  {
   margin:30px 0px 0px 0px ;
     figure{
       margin:0 ;
@@ -149,7 +149,7 @@ align-items:center ;
     margin-top:20px ;
   } 
 }
-@media screen and (max-width: 376px)  {
+@media screen and (max-width: 414px)  {
   display:flex ;
 flex-direction:column ;
 align-items:center ;

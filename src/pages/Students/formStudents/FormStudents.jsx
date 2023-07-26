@@ -4,7 +4,8 @@ import logo from '../../../assets/LOGOBOOTCAMOSCURO.png'
 import * as Yup from "yup";
 import { Formik, useFormikContext } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerActionAsync } from '../../../redux/actions/userActions';
+import { registerActionAsync } from '../../../redux/actions/studentAction';
+
 const validationSchema = Yup.object().shape({
   nombreCompleto: Yup.string().required('Este campo es requerido'),
   tipoDocumento: Yup.string().required('Este campo es requerido'),
@@ -62,7 +63,6 @@ const FormStudents = () => {
     hobbie: '',
   }
   const registro = (dataForm) => {
-    console.log(user.uid);
     dispatch(registerActionAsync(
       user.uid,
       dataForm.nombreCompleto,

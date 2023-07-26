@@ -1,98 +1,85 @@
 import React from 'react'
-import { Button,  Flex, FormControl, FormErrorMessage, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text } from '@chakra-ui/react';
-import { Field, Form, Formik } from 'formik';
-import styled from 'styled-components';
-
-const ListItem = styled.li`
-  
-  color: #25ABBC; 
-  font-size: 20px; 
-  font-weight:900 ;
- 
-`;
-
-const ModalPsicosocial = (
-  {
-    isModalOpen,
-    handleModalClose
-  
-  }
-) => {
-
-  const validateName = (value) => {
-    let error
-    if (!value) {
-      error = 'La respuesta es requerida'
-    }
-    
-    return error
-  }
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { CleseContainer, ModalContainer, CloseButton, ModalContent, ModalHeader, BodyModal, ListItem, ButtonContainer, ButtonModal, ButtonModalCancelar } from './StyledModalBootservice';
+import * as Yup from "yup";
+import { bootserviceActionAsync } from '../../../redux/actions/bootserviceAction';
+import { useDispatch, useSelector } from 'react-redux';
+const validationSchema = Yup.object().shape({
+  descripcion: Yup.string()
+    .required('La respuesta es requerida'),
+  situacion: Yup.string()
+    .required('La respuesta es requerida'),
+});
+const ModalPsicosocial = ({ isModalOpen, handleModalClose }) => {
+  const { user } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   return (
-    <div>
-      <Modal isOpen={isModalOpen} onClose={handleModalClose} size='xl' bg='blue'>
-        <ModalOverlay  />
-        <ModalContent bg=' #03203A'>
+    isModalOpen && (
+      <ModalContainer>
+        <ModalContent>
+          <CleseContainer>
+            <CloseButton onClick={handleModalClose}>X</CloseButton>
+          </CleseContainer>
           <ModalHeader>
-            <Flex justifyContent='space-between' alignItems='center' marginTop='10px' color='#25ABBC' fontWeight={900} fontSize={30}>
-              <h2 >Apoyo Psicosocial</h2>
-              <Text fontSize={16} >Obligatorio<Text color='red' as='span'> *</Text></Text>
-            </Flex>
+            <p>Apoyo Psicosocial</p>
+            <p>Obligatorio<span>*</span></p>
           </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
+
+          <BodyModal>
+            {/*Contenindo modela */}
             <Formik
               initialValues={{
-                descripcion: '',
-                situacion: ''
+                situacion: '',
+                descripcion: ''
               }}
-              onSubmit={(values, actions) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2))
-                  actions.setSubmitting(false)
-                }, 1000)
+              validationSchema={validationSchema}
+              onSubmit={(values, { resetForm }) => {
+                const data = {
+                  nameService: "Apoyo psicosocial",
+                  descripcion: values.descripcion,
+                  argumento: values.situacion,
+                  uid: user.uid
+                }
+                dispatch(bootserviceActionAsync(data))
+                  .then(() => {
+                    resetForm();
+                  })
               }}
             >
-              {(props) => (
+              {({ errors, touched }) => (
                 <Form>
+
                   <ol>
-                    <ListItem >
-                      <Field name='descripcion' validate={validateName}>
-                        {({ field, form }) => (
+                    <ListItem>
 
-                          <FormControl isInvalid={form.errors.descripcion && form.touched.descripcion}>
-                            <FormLabel color='white'>Déjanos aquí una breve descripción de tu situación y el porqué está afectando tu proceso formativo en el Bootcamp <Text color='red' as='span'> *</Text></FormLabel>
-                            <Input {...field} placeholder='Escriba su respuesta ' as="textarea" bg='white' color='#03203A' border='none'/>
-                            <FormErrorMessage color='#25ABBC'>{form.errors.descripcion}</FormErrorMessage>
-                          </FormControl>
-                        )}
-                      </Field>
-                    </ListItem >
-                    <ListItem >
-                      <Field name='situacion' validate={validateName}>
-                        {({ field, form }) => (
+                      <label htmlFor="descripcion">1. Déjanos aquí una breve descripción de tu situación y el porqué está afectando tu proceso formativo en el Bootcamp <span>*</span></label>
+                      <Field name="descripcion" type="text" placeholder='Escriba su respuesta ' as="textarea" cols="15" rows="5" />
+                      <ErrorMessage name="descripcion" />
+                    </ListItem>
+                    <ListItem>
+                      <label htmlFor="situacion">2. ¿Cómo consideras que podemos apoyarte en esta situación? <span>*</span></label>
+                      <Field name="situacion" placeholder='Escriba su respuesta' as="textarea" cols="15" rows="5" />
+                      <ErrorMessage name="situacion" />
+                    </ListItem>
 
-                          <FormControl isInvalid={form.errors.situacion && form.touched.situacion}>
-                            <FormLabel color='white'> ¿Cómo consideras que podemos apoyarte en esta situación? <Text color='red' as='span'> *</Text></FormLabel>
-                            <Input {...field} placeholder='Escriba su respuesta' as="textarea"  bg='white' border='none'/>
-                            <FormErrorMessage color='#25ABBC'  >{form.errors.situacion}</FormErrorMessage>
-                          </FormControl>
-                        )}
-                      </Field>
-                    </ListItem >
                   </ol>
-                  <ModalFooter>
-                    {/* Botones o acciones en el footer del modal */}
-                    <Button variant="ghost" onClick={handleModalClose} bg='#25ABBC' color='#03203A' fontWeight={800}>Cerrar</Button>
-                    <Button colorScheme="#EEE420"ml={3} isLoading={props.isSubmitting} type='submit' bg="#EEE420" color='#03203A' fontWeight={800}>Guardar</Button>
-                  </ModalFooter>
+                  <ButtonContainer>
+                    <ButtonModal type='submit' primary>
+                      Guardar
+                    </ButtonModal>
+                    <ButtonModalCancelar onClick={handleModalClose}>Cancelar</ButtonModalCancelar>
+                  </ButtonContainer>
                 </Form>
               )}
             </Formik>
-          </ModalBody>
+
+            {/* Fin ontenindo modela */}
+          </BodyModal>
 
         </ModalContent>
-      </Modal></div>
-  )
-}
+      </ModalContainer>
+    )
+  );
+};
 
 export default ModalPsicosocial

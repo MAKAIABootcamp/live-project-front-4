@@ -20,6 +20,7 @@ import FormUser from "../pages/SuperUser/FormUser";
 import Profile from "../pages/SuperUser/Profile";
 import StudentsSU from "../pages/SuperUser/StudentsSU";
 import ProgressStudent from "../pages/Students/progressStudent/ProgressStudent";
+import { registerActionSync } from "../redux/actions/studentAction";
 
 const AppRouter = () => {
   
@@ -36,6 +37,7 @@ const AppRouter = () => {
 
         if (!Object.entries(user).length) {
           console.log("No hay info");
+
           const logged = {
             email: userLogged.auth.currentUser.email,
             nombre: userLogged.auth.currentUser.displayName,
@@ -63,6 +65,22 @@ const AppRouter = () => {
             });
 
           dispatch(loginActionSync(logged));
+          const studentRef =collection(db,"Estudiantes")
+          const qStudent = query(studentRef, where("idUsuario", "==", userLogged.uid));
+          getDocs(qStudent)
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                const studentData = doc.data();
+               dispatch(registerActionSync(studentData))
+              });
+              dispatch(loginActionSync(logged));
+            })
+            .catch((error) => {
+              console.log(
+                "Error al obtener la información del usuario:",
+                error
+              );
+            });
         }
         console.log(userLogged);
         console.log("Tipo de usuario:", user?.userType || "No definido");

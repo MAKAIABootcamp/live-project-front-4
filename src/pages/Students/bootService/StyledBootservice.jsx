@@ -6,17 +6,23 @@ export const DivBootserviceGeneral = styled.div`
   background-size: cover;
   background-position: center;
   width:100% ;
-height:100vh;
-margin:0px 0px 30px 0px ;
+height:95vh;
+margin:0;
+@media screen and (max-width: 414px) {
+    margin-bottom:60px ;
+}
+@media screen and (max-width: 769px) {
+    height:80vh ;
+}
 `
 
 
 export const SectionRobot= styled.section`
  @media screen and (max-width: 1440px) {
  display:flex ;
- margin:5px 0 0 20px;
+margin-top:-10px ;
 figure{
- width:5%;
+ width:6%;
 height:5%; 
 }
 img {
@@ -25,19 +31,19 @@ height:100% ;
 object-fit:contain;
 }
 h1 {
-    font-size:30px ;
+    font-size:40px ;
     font-weight:bold ;
     color:#03203A  ;
-    margin-top:15px ;
+    margin-top:35px ;
 }
  }
- @media screen and (max-width: 376px) {
+ @media screen and (max-width: 414px) {
     figure {
         width:15%;
 height:15%;   
     }
     h1 {
-        margin-top:20px ; 
+        margin-top:30px ; 
         font-size:38px ;
     }
   }
@@ -49,18 +55,19 @@ export const DivBootservices = styled.div`
   width: 100%;
    margin:0;
  }
- @media screen and (max-width: 376px) {
+ @media screen and (max-width: 414px) {
    flex-direction:column ;
+   margin-top:-35px ;
+  
   }
   
 `
 export const SectionServicios= styled.section`
-padding:20px ;
-
  @media screen and (max-width: 1440px) {
+    padding: 0 20px 0px 20px; 
     height:200px ;
     flex: 1;
-
+margin-top:-20px ;
   
 img{
 width:80%;
@@ -92,14 +99,15 @@ button{
     color:#03203A  ;
     font-weight:bold ;
     font-size:16px ;
-    margin-top:15px ;
+ 
+   ;
 
 
 }
  }
- @media screen and (max-width: 376px) {
+ @media screen and (max-width: 414px) {
     height:100px ;
-    margin-top:-20px ;
+    margin-top:15px ;
     h2 {
         margin-top:10px;
     }
@@ -110,9 +118,9 @@ button{
         display:flex ;
         justify-content:center ;
         align-items:center ;
-        width:100% ;
+        width:90% ;
         height:35px ;
-        margin-top:10px;
+  
     }
  }
 `

@@ -8,6 +8,6 @@ background-image: url(${fondoGeneral});
   background-position: center;
   width:100% ;
 height:110vh;
-margin:0px 0px 30px 0px ;
+margin:0px 0px 150px 0px ;
  }
 `
