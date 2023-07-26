@@ -8,7 +8,7 @@ export const DivGeneral = styled.div`
   @media screen and (max-width: 768px) {
     display: flex;
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     display: flex;
     padding-left: 0;
   }
@@ -17,12 +17,13 @@ export const DivGeneral = styled.div`
 export const H2 = styled.h2`
   color: #25abbc;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 40px;
   @media screen and (max-width: 768px) {
     text-align: center;
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     text-align: center;
+    margin-top: 30px;
   }
 `;
 
@@ -40,7 +41,7 @@ export const Figure = styled.div`
       margin-top: 20px;
     }
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     display: flex;
     img {
       width: 200px;
@@ -60,14 +61,14 @@ export const DivButton = styled.div`
     width: 100%;
     max-width: 768px;
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     display: flex;
-    flex-wrap: none;
+    flex-direction: column;
     justify-content: center;
   }
   button {
     flex: 1; /* Hace que los botones ocupen el mismo ancho */
-    max-width: 200px;
+    width: 200px;
     height: 50px;
     border: none;
     margin-left: 20px;
@@ -79,8 +80,8 @@ export const DivButton = styled.div`
       margin-right: 10px;
     }
 
-    @media screen and (max-width: 376px) {
-      max-width: 200px;
+    @media screen and (max-width: 414px) {
+      max-width: 300px;
       height: 50px;
       border: none;
       margin-left: 5px;
@@ -94,7 +95,7 @@ export const DivButton = styled.div`
   p {
     margin-left: 10px;
     font-size: 15px;
-    @media screen and (max-width: 376px) {
+    @media screen and (max-width: 414px) {
       font-size: 12px;
     }
   }
@@ -128,7 +129,7 @@ export const TableBenefits = styled.table`
       font-size: 15px;
     }
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     margin-left: 0px;
 
     th {
@@ -160,7 +161,7 @@ export const Modal = styled.div`
   justify-content: center;
   align-items: center;
   /* margin-top: 30px; */
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
     margin-top: 70px;
   }
 `;
@@ -178,6 +179,13 @@ export const ModalContent = styled.div`
     text-align: center;
   }
   input {
+    width: 270px;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  select {
     width: 270px;
     height: 25px;
     border-radius: 5px;

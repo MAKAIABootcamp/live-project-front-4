@@ -3,7 +3,6 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from "yup";
 import { CleseContainer, ModalContainer, CloseButton, ModalContent, ModalHeader, BodyModal, ListItem, ButtonContainer, ButtonModal, ButtonModalCancelar } from '../bootService/StyledModalBootservice';
 import { useDispatch, useSelector } from 'react-redux';
-import { bootserviceActionAsync } from '../../../redux/actions/bootserviceAction';
 import styled from 'styled-components';
 import { updataActionAsync } from '../../../redux/actions/studentAction';
 

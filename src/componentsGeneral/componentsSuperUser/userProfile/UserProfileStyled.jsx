@@ -4,13 +4,15 @@ export const DivDiv = styled.div``;
 
 export const DivProfile = styled.div`
   text-align: center;
-  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
 `;
 
 export const Div = styled.div`
   position: relative;
   display: inline-block;
-  width: 130px; /* Asegúrate de que el contenedor tenga el mismo ancho que la imagen */
+  width: 150px;
   height: auto;
   border-radius: 100rem;
 
@@ -19,6 +21,14 @@ export const Div = styled.div`
     height: 100%;
     border-radius: 100rem;
     transition: opacity 0.3s ease-in-out;
+    @media (max-width: 768px) {
+      width: 150%;
+      height: 150%;
+    }
+    @media (max-width: 414px) {
+      width: 120%;
+      height: 120%;
+    }
   }
 `;
 
@@ -64,5 +74,10 @@ export const Action = styled.div`
     height: 35px;
     width: 180px;
     margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #25abbc;
+      color: white;
+    }
   }
 `;

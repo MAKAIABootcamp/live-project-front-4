@@ -1,8 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  // SearchContainer,
-  // SearchInput,
-  // SearchButton,
   DivInputTraining,
   Container,
   Title,
@@ -11,12 +8,13 @@ import {
   Modal,
   ModalContent,
 } from "./RequestsBeneficiosStyled";
-// import { SearchOutlined } from "@ant-design/icons";
 import HeaderSuperUser from "../../headerSuperUser/HeaderSuperUser";
 import { CommentOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getBenefitSolicitActions } from "../../../../redux/actions/getBenefitSolicitActions";
 
 const RequestsBeneficios = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,6 +50,17 @@ const RequestsBeneficios = () => {
     }
   };
 
+  // Dispatch para obtener los datos de Firestore
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getBenefitSolicitActions());
+  // }, [dispatch]);
+
+  // // Obtener los datos de beneficiosSolicitados del store de Redux
+  // const beneficiosSolicitados = useSelector(
+  //   (state) => state.BeneficiosSolicitados.beneficiosSolicitados
+  // );
+
   const handleNavigateStudentProfileBenefits = () => {
     navigate("/studentProfileBenefits");
   };
@@ -69,12 +78,6 @@ const RequestsBeneficios = () => {
               onClick={handleNavigateStudentProfileBenefits}
             />
             <Title>Solicitud de beneficios</Title>
-            {/* <SearchContainer>
-              <SearchInput type="text" placeholder="Buscar..." />
-              <SearchButton>
-                <SearchOutlined className="icon" style={{ color: "black" }} />
-              </SearchButton>
-            </SearchContainer> */}
           </Container>
         </DivInputTraining>
       </DivCohortGroupTraining>
@@ -89,39 +92,12 @@ const RequestsBeneficios = () => {
           </tr>
 
           <tr>
-            <td>Apoyo Socioecónomico</td>
-            <td>02/05/2023</td>
-            <td>10/05/2023</td>
+            <td></td>
+            <td></td>
+            <td>{/* Agrega aquí la fecha de entrega del beneficio */}</td>
             <td>
               <select>
-                <option value="aceptado">Aceptado</option>
-                <option value="denegado">Denegado</option>
-              </select>
-            </td>
-            <td>
-              <CommentIcon onClick={openModal} />
-            </td>
-          </tr>
-          <tr>
-            <td>Prestamo de equipo</td>
-            <td>02/05/2023</td>
-            <td>10/05/2023</td>
-            <td>
-              <select>
-                <option value="aceptado">Aceptado</option>
-                <option value="denegado">Denegado</option>
-              </select>
-            </td>
-            <td>
-              <CommentIcon onClick={openModal} />
-            </td>
-          </tr>
-          <tr>
-            <td>Asesoria individual</td>
-            <td>02/05/2023</td>
-            <td>10/05/2023</td>
-            <td>
-              <select>
+                <option value="en Proceso">En proceso</option>
                 <option value="aceptado">Aceptado</option>
                 <option value="denegado">Denegado</option>
               </select>

@@ -1,48 +1,56 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import BurguerButton from "../../../pages/Students/headerStudents/BurguerButton";
 import house from "../../../assets/homeIcons.svg";
-import logo from "../../../assets/LOGO BOOTCAMP.png";
 import process from "../../../assets/setting.svg";
-import perfil from "../../../assets/user.svg";
 import benefits from "../../../assets/rocket-outline gris.svg";
 import avatar from "../../../assets/avatar.jpg";
 import {
-BgDiv,
-ContainerHeader,
-ContainerHeaderLinks,
-ContainerHeaderLinksUnt,
-ContainerHeaderLogo,
-ContainerHeaderSignOff,
-SubItems,
-Item } from "../../componentsSuperUser/headerSuperUser/HeaderSuperUserStyled";
+  BgDiv,
+  ContainerHeader,
+  ContainerHeaderLinks,
+  ContainerHeaderLinksUnt,
+  ContainerHeaderLogo,
+  ContainerHeaderSignOff,
+  SubItems,
+  Item,
+} from "../../componentsSuperUser/headerSuperUser/HeaderSuperUserStyled";
+import BurguerButtonSU from "./BurguerButtonSU";
+import { logoutActionAsync } from "../../../redux/actions/userActions";
+import { useDispatch } from "react-redux";
 
 const HeaderSuperUser = () => {
   const [clicked, setClicked] = useState(false);
+  const dispatch = useDispatch();
   const handleClick = () => {
     setClicked(!clicked);
   };
-
+  const handleLogout = () => {
+    // Realiza la lógica de cierre de sesión aquí, por ejemplo, llamando a la acción de cierre de sesión en tu estado de Redux
+    dispatch(logoutActionAsync());
+  };
   const [deployEstudiantes, setDeployEstudiantes] = useState(false);
-  const [deployPerfil, setDeployPerfil] = useState(false);
 
   const toggleDeploy = (menu) => {
     setClicked(false);
     if (menu === "estudiantes") {
       setDeployEstudiantes((prevDeploy) => !prevDeploy);
-      setDeployPerfil(false);
-    } else if (menu === "perfil") {
-      setDeployPerfil((prevDeploy) => !prevDeploy);
-      setDeployEstudiantes(false);
     }
   };
+
   return (
     <ContainerHeader>
       <ContainerHeaderLogo>
         <figure>
-          <img src={logo} alt="logo" />
+          <img
+            src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690287433/LIVE/Im%C3%A1genes/Icons/LOGO_MAKAIA_BLANCO_nvvqer.svg"
+            alt="logo"
+          />
         </figure>
       </ContainerHeaderLogo>
+      <div className="burguer">
+        <BurguerButtonSU clicked={clicked} handleClick={handleClick} />
+      </div>
+      <BgDiv className={`initial ${clicked ? "active" : ""}`}></BgDiv>
       <ContainerHeaderLinks active={clicked}>
         <ContainerHeaderLinksUnt>
           <Item>
@@ -89,7 +97,7 @@ const HeaderSuperUser = () => {
             <NavLink to={"/selectionSuperUser"}>
               <div>
                 <img
-                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531243/LIVE/Im%C3%A1genes/Icons/grupo_1_bki7qd.png"
+                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690069393/LIVE/Im%C3%A1genes/Icons/sociedad-unscreen_ga7d14.gif"
                   width={20}
                   alt="name"
                 />
@@ -100,7 +108,7 @@ const HeaderSuperUser = () => {
             <NavLink to={"/cohortGroupTraining"}>
               <div>
                 <img
-                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531248/LIVE/Im%C3%A1genes/Icons/huellas_qlv9uy.png"
+                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690069904/LIVE/Im%C3%A1genes/Icons/video-conferencia-unscreen_ffjhza.gif"
                   width={20}
                   alt="name"
                 />
@@ -111,49 +119,27 @@ const HeaderSuperUser = () => {
             <NavLink to={"/certificationSuperUser"}>
               <div>
                 <img
-                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689531233/LIVE/Im%C3%A1genes/Icons/cohete_p5wt0x.png"
+                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690069112/LIVE/Im%C3%A1genes/Icons/graduacion-unscreen_zcnqgo.gif"
                   width={20}
                   alt="name"
                 />
                 <p>Certificación</p>
               </div>
             </NavLink>
-          </SubItems>
-        </ContainerHeaderLinksUnt>
 
-        <ContainerHeaderLinksUnt>
-          <Item onClick={() => toggleDeploy("perfil")}>
-            <figure>
-              <img src={perfil} alt="Perfil" />
-              <NavLink
-                to={"/profileSuperUser"}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "navlink"
-                    : isActive
-                    ? "navlink active"
-                    : "navlink"
-                }
-              >
-                Perfil
-              </NavLink>
-            </figure>
-          </Item>
-          <SubItems
-            className={`SubItems ${deployPerfil ? "deploySubItems" : ""}`}
-          >
-            <NavLink to={"/profileSuperUser"}>
+            <NavLink to={"/formToAddStudent"}>
               <div>
                 <img
-                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689603697/LIVE/Im%C3%A1genes/Icons/editar_x3bkx2.png"
+                  src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690069973/LIVE/Im%C3%A1genes/Icons/mas-unscreen_k3zq7t.gif"
                   width={20}
                   alt="name"
                 />
-                <p>Ver perfil</p>
+                <p>Añadir estudiante</p>
               </div>
             </NavLink>
           </SubItems>
         </ContainerHeaderLinksUnt>
+
         <ContainerHeaderLinksUnt>
           <Item>
             <figure>
@@ -175,21 +161,21 @@ const HeaderSuperUser = () => {
         </ContainerHeaderLinksUnt>
         <ContainerHeaderSignOff>
           <figure>
-            <img src={avatar} alt="" />
+            <NavLink to={"/profileSuperUser"}>
+              <img src={avatar} alt="" />
+            </NavLink>
+
             <NavLink
               className={({ isActive, isPending }) =>
                 isPending ? "navlink" : isActive ? "navlink active" : "navlink"
               }
+              onClick={handleLogout}
             >
               Cerrar sesión
             </NavLink>
           </figure>
         </ContainerHeaderSignOff>
       </ContainerHeaderLinks>
-      <div className="burguer">
-        <BurguerButton clicked={clicked} handleClick={handleClick} />
-      </div>
-      <BgDiv className={`initial ${clicked ? "active" : ""}`}></BgDiv>
     </ContainerHeader>
   );
 };
@@ -319,7 +305,7 @@ export default HeaderSuperUser;
 //               </NavLink>
 //             </figure>
 //           </Item>
-          
+
 //           <SubItems style={{ display: deployPerfil ? "block" : "none" }}>
 //             <NavLink to={'/profileSuperUser'}>
 //               <div>
