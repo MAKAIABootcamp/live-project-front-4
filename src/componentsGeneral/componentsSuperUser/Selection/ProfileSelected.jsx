@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useMemo,useState, useEffect,useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudents } from "../../../redux/actions/coursesActions";
@@ -71,9 +71,6 @@ const ProfileSelected = () => {
       });
   }, [dispatch]);
 
-  console.log("\nUsers::", adminAndStudentsData);
-  console.log("\nEstudiantes::", studentsInfo);
-
 
   useEffect(() => {
   studentsInfo.filter((s) =>
@@ -106,27 +103,7 @@ const ProfileSelected = () => {
   );
 }, [studentsInfo, adminAndStudentsData]);
 console.log("lista final estudiantes", studentFilterInfo);
-  // celular: "1234567890"; //
-  // ciudad: "bogotá"; //
-  // conocimiento: "básico"; //
-  // contacto: "milena"; //
-  // correo: "wapa@gmail.com"; //
-  // correoContacto: "never@hotmali.com"; //
-  // departamento: "antioquia"; //
-  // direccion: "carrera 36 # 31-34b"; //
-  // edad: "30"; //
-  // equipos: "celular"; //
-
-
-  // celular: "3222835645";
-  // contraseña: "wEKlVZiv";
-  // email: "luisa@yopmail.com"; //
-  // formularioLlenado: "false";
-  // nombre: "Luisa Maria Zapata"; //
-  // programa: "Software QA"; //
-  // uid: "uisRWcdRsCf08nPYky8gNcJDqDm1";
-  // userType: "estudiante";
-
+  
   const toSelection = () => {
     navigate("/selectionSuper  er");
   };
