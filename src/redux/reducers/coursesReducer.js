@@ -21,7 +21,7 @@ import { dataBase } from '../../confiFirebase/configFirebase'
 
 
 const initialState = {
-    coursesData: [],
+    coursesSelected: [],
     pageStudentsData: [],
     coursesDataCertification: [],
   };
@@ -31,7 +31,7 @@ const initialState = {
       case courses.LIST_COURSES_SELECTION:
         return {
           ...state,
-          coursesData: action.payload,
+          coursesSelected: action.payload,
         };
   
       case courses.LIST_PAGES_STUDENTS:

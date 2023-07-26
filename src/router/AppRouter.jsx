@@ -27,6 +27,8 @@ import ListCertification from '../componentsGeneral/componentsSuperUser/certific
 import AddStudents from "../pages/SuperUser/AddStudents";
 import NotFoundPages from "../pages/NotFoundPages";
 import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/profileCertified";
+import Prueba from '../componentsGeneral/componentsSuperUser/Selection/Prueba'
+
 
 const AppRouter = () => {
   return (
@@ -58,6 +60,8 @@ const AppRouter = () => {
 
             {/*Sub ruta de Selección*/}
             <Route path="profileSelectedSU" element={<ProfileSelected />} />
+
+            <Route path="pruebaCambioDoc" element={<Prueba />} />
 
             {/* <Route path="formationSuperUser" element={<Formation />} /> */}
             <Route path="certificationSuperUser" element={<Certification />} />

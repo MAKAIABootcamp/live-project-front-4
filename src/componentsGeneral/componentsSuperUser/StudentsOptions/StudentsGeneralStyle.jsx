@@ -61,5 +61,5 @@ transition: 0.4s;
 `;
 
 export const IconOption = styled.img`
-filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(353deg) brightness(107%) contrast(101%);
+/* filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(353deg) brightness(107%) contrast(101%); */
 `;
