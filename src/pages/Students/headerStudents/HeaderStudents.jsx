@@ -14,21 +14,19 @@ import benefits from "../../../assets/rocket-outline gris.svg";
 import bootService from "../../../assets/robot gris.svg";
 import avatar from "../../../assets/avatar.jpg";
 import BurguerButton from "./BurguerButton";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { logoutActionAsync } from "../../../redux/actions/userActions";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 
 const HeaderStudents = () => {
-
   const dispatch = useDispatch();
- 
+
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
     setClicked(!clicked);
   };
 
   const handleLogout = () => {
-    // Realiza la lógica de cierre de sesión aquí, por ejemplo, llamando a la acción de cierre de sesión en tu estado de Redux
     dispatch(logoutActionAsync());
   };
 
@@ -66,7 +64,7 @@ const HeaderStudents = () => {
             </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
-    
+
         <ContainerHeaderLinksUnt>
           <figure>
             <img src={benefits} alt="IconsHouse" />
@@ -109,18 +107,13 @@ const HeaderStudents = () => {
         <ContainerHeaderSignOff>
           <figure>
             <img src={avatar} alt="" />
-            <NavLink
-              onClick={handleLogout}
-            >
-              Cerrar sesión
-            </NavLink>
+            <NavLink onClick={handleLogout}>Cerrar sesión</NavLink>
           </figure>
         </ContainerHeaderSignOff>
       </ContainerHeaderLinks>
       <div className="burguer">
         <BurguerButton clicked={clicked} handleClick={handleClick} />
       </div>
-      
     </ContainerHeader>
   );
 };

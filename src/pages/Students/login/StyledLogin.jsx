@@ -1,7 +1,6 @@
 import { styled, keyframes } from "styled-components";
 import fondoGeneral from "../../../assets/FONDOGENERAL.png";
 
-
 export const appearAnimation = keyframes`
    0% {
     transform: scale(0);
@@ -15,13 +14,13 @@ export const appearAnimation = keyframes`
 
 export const General = styled.div`
   /* @media screen and (max-width: 1440px) { */
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    background-image: url(${fondoGeneral});
-    background-size: cover;
-    background-position: center;
-    justify-content: space-around;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-image: url(${fondoGeneral});
+  background-size: cover;
+  background-position: center;
+  justify-content: space-around;
   /* } */
   @media screen and (max-width: 769px) {
     margin: 80px 0px 0px 15px;
@@ -29,7 +28,7 @@ export const General = styled.div`
   }
 
   @media screen and (max-width: 414px) {
-    margin:0 ;
+    margin: 0;
   }
 `;
 export const DivImagen = styled.div`
@@ -60,10 +59,9 @@ export const DivImagen = styled.div`
     }
   }
   @media screen and (max-width: 414px) {
-    display:none ;
-    figure{
-      display:none ;
-
+    display: none;
+    figure {
+      display: none;
     }
   }
 `;
@@ -90,10 +88,10 @@ export const DivLogin = styled.div`
     }
   }
 
-  @media screen and (max-width: 414px)  {
-  margin:30px 0px 0px 0px ;
-    figure{
-      margin:0 ;
+  @media screen and (max-width: 414px) {
+    margin: 30px 0px 0px 0px;
+    figure {
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -134,25 +132,24 @@ export const SectionRegistro = styled.form`
       font-weight: bold;
       font-size: 25px;
       margin-top: 20px;
-      margin-bottom:10px ;
+      margin-bottom: 10px;
     }
   }
 
-@media screen and (max-width: 414px)  {
-  display:flex ;
-flex-direction:column ;
-align-items:center ;
-margin-top:60px ;
-  input {
-    width:80% ;
-  }
-  button {
-    margin-top:40px ;
-    width:80%;
-  
+  @media screen and (max-width: 414px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    input {
+      width: 80%;
+    }
+    button {
+      margin-top: 40px;
+      width: 80%;
     }
   }
 `;
 export const ResetPassword = styled.label`
-font-size: 12px !important;
-`
+  font-size: 12px !important;
+`;

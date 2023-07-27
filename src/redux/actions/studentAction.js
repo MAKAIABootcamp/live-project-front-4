@@ -11,7 +11,6 @@ import Swal from "sweetalert2";
 import { studentTypes } from "../types/studentType";
 import { dataBase } from "../../confiFirebase/configFirebase";
 
-
 const studentCollectionName = "Estudiantes";
 const studentsRef = collection(dataBase, studentCollectionName);
 
@@ -24,7 +23,7 @@ export const registerActionAsync = (uid, studentData, programa) => {
         estado: ["selección"],
         ...studentData,
       };
-      await addDoc(studentsRef, student);   
+      await addDoc(studentsRef, student);
       dispatch(registerActionSync(student));
     } catch (error) {
       console.log(error);
@@ -42,21 +41,14 @@ export const registerActionSync = (student) => {
 export const updataActionAsync = (telefono, correo, imagen, uid) => {
   return async (dispatch) => {
     try {
-      // Crear un objeto con los campos que deseas actualizar
       const dataToUpdate = {
         celular: telefono,
         correo: correo,
         imagen: imagen,
-        // Añade aquí cualquier otro campo que desees actualizar
       };
 
-      // Crear una consulta (query) con la cláusula "where" para filtrar por el UID
       const q = query(studentsRef, where("uid", "==", uid));
-
-      // Ejecutar la consulta para obtener los documentos que coinciden con el filtro
       const querySnapshot = await getDocs(q);
-
-      // Actualizar cada documento que coincide con el filtro
       querySnapshot.forEach((docSnapshot) => {
         const studentRef = doc(dataBase, "Estudiantes", docSnapshot.id);
         updateDoc(studentRef, dataToUpdate);

@@ -14,25 +14,14 @@ import cohete from "../../../assets/rocket-outline.svg";
 import { getStudentActionAsync } from "../../../redux/actions/studentAction";
 
 const StateStudents = () => {
-
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
   const { student } = useSelector((store) => store.student);
   console.log(student.estado);
 
-  // const [selectedStates, setSelectedStates] = useState([]);
-
   useEffect(() => {
     dispatch(getStudentActionAsync(user.uid));
-  },[dispatch, user.uid])
-
-  // const handleStateChange = (event) => {
-  //   const newState = event.target.value;
-
-  //   if (!selectedStates.includes(newState)) {
-  //     setSelectedStates([...selectedStates, newState]);
-  //   }
-  // };
+  }, [dispatch, user.uid]);
 
   return (
     <>
@@ -40,16 +29,6 @@ const StateStudents = () => {
       <ContainerStateStudents>
         <section>
           <h2>Estado</h2>
-          {/* <form action="">
-            <label htmlFor="">Estado estudiante</label>
-            <select name="" id="" onChange={handleStateChange}>
-              <option value="Selecciona un estado">Selecciona un estado</option>
-              <option value="Selección">Selección</option>
-              <option value="Admitid@">Admitid@</option>
-              <option value="Formación">Formación</option>
-              <option value="Certificación">Certificación</option>
-            </select>
-          </form> */}
         </section>
         <ContainerProgress>
           <ContainerStep>
@@ -158,4 +137,3 @@ const StateStudents = () => {
 };
 
 export default StateStudents;
-

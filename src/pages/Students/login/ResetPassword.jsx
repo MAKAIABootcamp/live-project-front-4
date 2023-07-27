@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import {sendPasswordResetEmail } from 'firebase/auth';
-import Swal from 'sweetalert2';
-import styled from 'styled-components';
-import { auth } from '../../../confiFirebase/configFirebase';
-import { useNavigate } from 'react-router-dom/dist';
-
+import React, { useState } from "react";
+import { sendPasswordResetEmail } from "firebase/auth";
+import Swal from "sweetalert2";
+import styled from "styled-components";
+import { auth } from "../../../confiFirebase/configFirebase";
+import { useNavigate } from "react-router-dom/dist";
 
 const CenteredContainer = styled.div`
   display: flex;
@@ -21,7 +20,7 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #03203A;
+  background-color: #03203a;
 `;
 
 const Label = styled.label`
@@ -38,15 +37,15 @@ const Input = styled.input`
 `;
 
 const ButtonCancelar = styled.button`
-background-color: #25ABBC;
-color: #fff;
-padding: 10px 20px;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+  background-color: #25abbc;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 `;
 const Button = styled.button`
-  background-color: #EEE420;
+  background-color: #eee420;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -54,56 +53,55 @@ const Button = styled.button`
 `;
 
 const ContainerBottom = styled.section`
-    display:flex ;
-    gap:15px ;
-`
+  display: flex;
+  gap: 15px;
+`;
 const PasswordReset = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handlePasswordReset = () => {
-
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        // Password reset email sent successfully
+
         Swal.fire({
-          icon: 'success',
-          title: 'Correo enviado',
-          text: 'Se ha enviado un correo electrónico para restablecer tu contraseña.',
+          icon: "success",
+          title: "Correo enviado",
+          text: "Se ha enviado un correo electrónico para restablecer tu contraseña.",
         });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        let title = '';
-        let message = '';
+        let title = "";
+        let message = "";
 
         switch (errorCode) {
-          case 'auth/invalid-email':
-            title = 'Correo electrónico inválido';
-            message = 'Por favor, ingresa un correo electrónico válido.';
+          case "auth/invalid-email":
+            title = "Correo electrónico inválido";
+            message = "Por favor, ingresa un correo electrónico válido.";
             break;
-          case 'auth/user-not-found':
-            title = 'Usuario no encontrado';
-            message = 'No se encontró ningún usuario con este correo electrónico.';
+          case "auth/user-not-found":
+            title = "Usuario no encontrado";
+            message =
+              "No se encontró ningún usuario con este correo electrónico.";
             break;
           default:
-            title = 'Error al enviar el correo';
+            title = "Error al enviar el correo";
             message = errorMessage;
         }
 
         Swal.fire({
-          icon: 'error',
+          icon: "error",
           title: title,
           text: message,
         });
       });
   };
-  
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
 
   return (
-
-   <CenteredContainer>
+    <CenteredContainer>
       <FormContainer>
         <Label>Correo electrónico:</Label>
         <Input
@@ -112,8 +110,8 @@ const PasswordReset = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <ContainerBottom>
-        <Button onClick={handlePasswordReset}>Restablecer Contraseña</Button>
-        <ButtonCancelar onClick={() => navigate(-2)}>Volver</ButtonCancelar>
+          <Button onClick={handlePasswordReset}>Restablecer Contraseña</Button>
+          <ButtonCancelar onClick={() => navigate(-2)}>Volver</ButtonCancelar>
         </ContainerBottom>
       </FormContainer>
     </CenteredContainer>

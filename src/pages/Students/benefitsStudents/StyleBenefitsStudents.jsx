@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 
-
 export const ContainerBenefitStudents = styled.div`
   display: flex;
   justify-content: space-around;
@@ -8,7 +7,7 @@ export const ContainerBenefitStudents = styled.div`
   padding: 60px 0px;
   color: #03203a;
 
-  @media screen and (max-width: 1286px){
+  @media screen and (max-width: 1286px) {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
