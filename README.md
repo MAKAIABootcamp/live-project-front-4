@@ -6,7 +6,7 @@ En esta emocionante iniciativa, nos enfrentamos a desafíos clave que afectan a 
 
 ![LOGO_MAKAIA_OSCURO_njv30m-Banner (wide)](https://github.com/MAKAIABootcamp/live-project-front-4/assets/138250883/91494179-393d-447f-b708-d5e7f069c68a)
 
-## Esta aplicación fue construida con las siguientes tecnologías:
+## Esta aplicación fue construida con las siguientes herramientas:
 - React-redux
 - Firebase
 - Firestore
