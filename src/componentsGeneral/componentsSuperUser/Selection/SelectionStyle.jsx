@@ -96,7 +96,7 @@ width: 100%;
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
     width: 350px;
     transform: translate(180px, -50px);
 }
@@ -104,7 +104,10 @@ width: 100%;
 `;
 
 export const ContentSelection = styled.section`
-
+overflow: hidden;
+width: 500px;
+display: flex;
+justify-content: center;
 @media screen and (max-width: 1440px) {
 display: flex;
 margin: 0 auto;
@@ -123,13 +126,15 @@ padding-bottom: 80px;
     padding-top: 20px;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
     width: 100%;
 }
 
 `;
 
 export const CoverSelection = styled.img`
+width: 50px;
+/* transform: translateX(-200px); */
 @media screen and (max-width: 1440px) {
 width: 700px;
 margin-top: 50px;
@@ -149,6 +154,8 @@ transform: translate(10px);
 `;
 
 export const CoverSelectionDetails = styled.img`
+width: 400px;
+transform: translate(0, 0);
 @media screen and (max-width: 1440px) {
 width: 700px;
 margin-top: 50px;
@@ -176,7 +183,7 @@ display: flex;
 flex-direction: column;
 width: 25%;
 gap: 5px;  
-transform: translateX(-20%)
+transform: translateX(-20%);
 }
 
 @media screen and (max-width: 768px) {
@@ -191,7 +198,7 @@ transform: translateX(-20%)
    flex-wrap: wrap;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
     margin: 0 auto;
     width: 450px;
 }
@@ -274,22 +281,21 @@ overflow: hidden;
 
 export const AvatarPhoto = styled.div`
 overflow: hidden;
-background-color: orange;
 border-radius: 200px;
-width: 200px;
-height: 200px;
+width: 190px;
+height: 150px;
 
 & img{
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 @media screen and (width: 1440px) {
 overflow: hidden;
-background-color: orange;
-border-radius: 200px;
+border-radius: 500px;
 border: 2px solid black;
-width: 200px;
-height: 200px;
+width: 190px;
+height: 150px;
 object-fit: cover;
 background-size: cover;
 
@@ -313,7 +319,7 @@ display: flex;
 gap: 30px;
 align-items: center;
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
     flex-direction: column;
 }
 `;
@@ -364,12 +370,6 @@ font-weight: bold;
 }
 `;
 
-export const ScrollInfo = styled.section`
-overflow: hidden;
-overflow: scroll;
-height: 300px; 
-`;
-
 export const ContentListInfo = styled.section`
 
 @media screen and (max-width: 1440px) {
@@ -384,7 +384,7 @@ padding-right: 50px;
  flex-direction: column;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
 display: flex;
 flex-direction: column-reverse;
 width: 440px;
@@ -392,8 +392,8 @@ width: 440px;
 `;
 
 export const ListSelected = styled.section`
-display: flex;
-flex-direction: column;
+position: absolute;
+transform: translate(-60px);
 `;
 
 export const CourseSelected = styled.button`
@@ -495,6 +495,7 @@ width: 400px;
 display: flex;
 height: 0px;
 flex-direction: column;
+gap: 15px;
 padding-top: 10px; 
 transform: translate(80px, 220px);
 animation: 2.5s deployStudentsSelection forwards;
@@ -614,71 +615,10 @@ display: flex;
 justify-content: space-between;
 `;
 
-
-
-// Ventana emergente
-
-export const SectionModalStatus = styled.section`
-background-color: #0000005c;
-width: 1440px;
-height: 880px;
-position: absolute;
-z-index: 300;
-margin-top: -800px;
-display: flex;
-
-& h2{
-    text-align: center;
-    color: white;
-    display: flex;
-    justify-content: center;
-    padding-top: 15px;
-}
-
-& .popup{
-    background-color: #03203A;
-    border-radius: 10px;
-    margin: auto;
-    width: 30%;
-    height: 280px;
+export const InfoMainAvatarSelected = styled.section`
+@media screen and (max-width: 1440px){
+    width: 550px;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
 }
-
-& textarea {
-    height: 100px;
-    font-size: 20px;
-    border: transparent;
-    text-align: left;
-    vertical-align: top;
-}
-
-& .divButtonsModalStatus{
-    margin: 0 auto;
-    display: flex;
-    gap: 20px;
-    padding: 10px;
-
-    & button{
-        width: 100px;
-        height: 30px;
-        border-radius: 3px;
-        border: transparent;
-        font-size: 15px;
-        color: white;
-        cursor: pointer;
-        background-color: #25ABBC;
-        transition: 0.3s;
-        font-weight: 600;
-
-        &:hover {
-           background-color: #EEE420;
-           color: #03203A;
-        }
-    }
-    }
 `;

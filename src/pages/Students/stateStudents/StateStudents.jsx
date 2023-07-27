@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import HeaderStudents from "../headerStudents/HeaderStudents";
 import FooterStudents from "../footerStudents/FooterStudents";
 import {
@@ -10,17 +11,17 @@ import {
   ContainerStep,
 } from "./StyleStateStudents";
 import cohete from "../../../assets/rocket-outline.svg";
+import { getStudentActionAsync } from "../../../redux/actions/studentAction";
 
 const StateStudents = () => {
-  const [selectedStates, setSelectedStates] = useState([]);
+  const dispatch = useDispatch();
+  const { user } = useSelector((store) => store.user);
+  const { student } = useSelector((store) => store.student);
+  console.log(student.estado);
 
-  const handleStateChange = (event) => {
-    const newState = event.target.value;
-
-    if (!selectedStates.includes(newState)) {
-      setSelectedStates([...selectedStates, newState]);
-    }
-  };
+  useEffect(() => {
+    dispatch(getStudentActionAsync(user.uid));
+  }, [dispatch, user.uid]);
 
   return (
     <>
@@ -28,20 +29,16 @@ const StateStudents = () => {
       <ContainerStateStudents>
         <section>
           <h2>Estado</h2>
-          <form action="">
-            <label htmlFor="">Estado estudiante</label>
-            <select name="" id="" onChange={handleStateChange}>
-              <option value="Selecciona un estado">Selecciona un estado</option>
-              <option value="Selección">Selección</option>
-              <option value="Admitid@">Admitid@</option>
-              <option value="Formación">Formación</option>
-              <option value="Certificación">Certificación</option>
-            </select>
-          </form>
         </section>
         <ContainerProgress>
           <ContainerStep>
-            <ContainerP active={selectedStates.includes("Certificación")}>
+            <ContainerP
+              active={
+                student &&
+                Object.entries(student).length &&
+                student?.estado.includes("Certificación")
+              }
+            >
               <section>
                 <h3>Certificación</h3>
                 <p>
@@ -60,7 +57,13 @@ const StateStudents = () => {
               </section>
             </ContainerP>
 
-            <ContainerP2 active={selectedStates.includes("Formación")}>
+            <ContainerP2
+              active={
+                student &&
+                Object.entries(student).length &&
+                student?.estado.includes("Formación")
+              }
+            >
               <section>
                 <h3>Formación</h3>
                 <p>
@@ -78,7 +81,13 @@ const StateStudents = () => {
                 <hr />
               </section>
             </ContainerP2>
-            <ContainerP active={selectedStates.includes("Admitid@")}>
+            <ContainerP
+              active={
+                student &&
+                Object.entries(student).length &&
+                student?.estado.includes("Admitid@")
+              }
+            >
               <section>
                 <h3>Admitid@</h3>
                 <p>
@@ -97,7 +106,13 @@ const StateStudents = () => {
               </section>
             </ContainerP>
 
-            <ContainerP4 active={selectedStates.includes("Selección")}>
+            <ContainerP4
+              active={
+                student &&
+                Object.entries(student).length &&
+                student?.estado.includes("selección")
+              }
+            >
               <section>
                 <h3>Selección</h3>
                 <p>

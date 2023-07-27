@@ -5,8 +5,7 @@ import ProfileDatos from './ProfileDatos'
 import FooterStudents from '../footerStudents/FooterStudents'
 
 const ProfileStudents = () => {
-  return (
-    <>
+  return (    <>
     <DivProfileGeneral>
    <HeaderStudents/>
     <ProfileDatos/>

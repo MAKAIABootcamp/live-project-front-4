@@ -4,27 +4,31 @@ import benefitTypesReducer from "../reducers/benefitTypeReducer";
 import { coursesReducer } from "../reducers/coursesReducer";
 import newCohorteReducers from "../reducers/newCohorteReducers";
 import addAdminAndStudentsReducer from "../reducers/addAdminAndStudentsReducer";
-import { getCoursesSelection } from "../actions/coursesActions"; // Importa la acción getCoursesSelection para actualizar la lista de cursos seleccionados en Redux
-import getStudentsProfileBenefit from "../reducers/getStudentsProfileBenefitsReducers";
-import getBenefitSoliciReducers from "../reducers/getBenefitSolicitReducers";
 import benefitsReducer from "../reducers/benefitsReducer";
 import studentReducer from "../reducers/studentReducer";
+import getStudentsProfileBenefit from "../reducers/getStudentsProfileBenefitsReducers";
+import getBenefitSoliciReducers from "../reducers/getBenefitSolicitReducers";
 
-const rootReducer = {
+
+const reducer = {
   user: userReducer,
   benefitTypes: benefitTypesReducer,
   courses: coursesReducer,
   cohort: newCohorteReducers,
   newAdminAndStydentsType: addAdminAndStudentsReducer,
-  studentReducer: getStudentsProfileBenefit,
-  BeneficiosSolicitados: getBenefitSoliciReducers,
   benefits: benefitsReducer,
   student: studentReducer,
+  studentReducer: getStudentsProfileBenefit,
+  BeneficiosSolicitados: getBenefitSoliciReducers,
 };
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer,
   devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;

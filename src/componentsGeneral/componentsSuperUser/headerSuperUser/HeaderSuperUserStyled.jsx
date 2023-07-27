@@ -262,6 +262,7 @@ export const SubItems = styled.span`
     flex-direction: column;
     transform: translate(20%, 65%);
     opacity: 0;
+    display: none;
 
     &.deploySubItems {
       animation: deploySub 0.5s forwards;
@@ -270,10 +271,14 @@ export const SubItems = styled.span`
         0% {
           height: 0px;
           opacity: 0;
+          display: none;
+          overflow: hidden;
         }
         100% {
           height: auto;
           opacity: 1;
+          display: block;
+          overflow: visible;
           background-color: #ffffff;
         }
       }

@@ -1,7 +1,7 @@
 import { typeBenefitSolicitTypes } from "../types/userTypes";
 
 const initialState = {
-  beneficiosSolicitados: [], // Actualiza el nombre del estado a 'beneficiosSolicitados'
+  beneficiosSolicitados: [],
   error: null,
 };
 

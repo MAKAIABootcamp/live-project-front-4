@@ -19,6 +19,7 @@ import ModalComent from "./ModalComent";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+
 const BenefitsSchema = Yup.object().shape({
   benefit: Yup.string().required("*Selecciona un beneficio"),
   notes: Yup.string().required("*El campo Notas es obligatorio"),
@@ -195,5 +196,4 @@ const BenefitsStudents = () => {
     </>
   );
 };
-
 export default BenefitsStudents;

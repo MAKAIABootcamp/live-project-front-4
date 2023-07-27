@@ -47,7 +47,7 @@ const StudentProfileBenefits = ({
   //   navigate("/benefitsReceived");
   // };
   const handleNavigateHome = () => {
-    navigate("/homeSuperUser");
+    navigate("/RequestBenefis");
   };
 
   return (

@@ -82,6 +82,7 @@ const Login = () => {
         </Formik>
       </DivLogin>
     </General>
-  );
-};
-export default Login;
+  )
+}
+
+export default Login
