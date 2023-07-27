@@ -19,3 +19,22 @@ En esta emocionante iniciativa, nos enfrentamos a desafíos clave que afectan a 
 - GitHub
 - Ant Design
 
+## Instalación
+### Clonar repositorio:
+git clone https://github.com/MAKAIABootcamp/live-project-front-4
+
+### Instalación de las dependencias:
+npm install
+
+### Inicia el proyecto con:
+npm start ó npm run start
+
+### Sitio Web
+[enlace]
+
+### Autores
+Lina Isabel Gutiérrez Vaquero
+Yeraldin Montaño Monge
+Lizeth Montoya
+Luisa María Lafaurie Nuno
+
