@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import Flecha from "../../../assets/flecha-hacia-abajo.png";
 import {
   ContentButtonCourses,
   ContentCourses,
@@ -8,31 +7,35 @@ import {
   CoverSelection,
   BackgroundSelection,
 } from "../Selection/SelectionStyle";
-import Flecha from "../../../assets/flecha-hacia-abajo.png";
-import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
-import { getByCollectionName } from "../../../redux/actions/coursesActions";
+import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"; // Agregar la importación de "useSelector"
+import { getByCollectionName, selectCourse } from "../../../redux/actions/coursesActions";
 import { useNavigate } from "react-router-dom";
+import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 
 const Selection = () => {
+
+
+
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCourse, setSelectedCourse] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  
+  // Asegúrate de obtener el estado "coursesSelected" desde el store
+  const coursesSelected = useSelector((state) => state.courses.coursesSelected);
+
   useEffect(() => {
     dispatch(getByCollectionName("Selección"));
   }, [dispatch]);
 
-
-
-  const filteredCourses = (selectedCourse && selectedCourse.length) ? selectedCourse.filter((topic) =>
+  const filteredCourses = coursesSelected.filter((topic) =>
     topic.course.toLowerCase().includes(searchTerm.toLowerCase())
-  ):[];
+  );
 
   const handleCourseSelection = (course) => {
-    setSelectedCourse(course);
-    navigate("/profileSelectedSU", { state: course }); // Pasamos el curso seleccionado como estado en el objeto de ubicación.
+    dispatch(selectCourse(course));
+    navigate("/profileSelectedSU", { state: course });
   };
 
   return (
@@ -43,7 +46,7 @@ const Selection = () => {
         <ContentSelection>
           <div>
             <CoverSelection
-              src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1689684710/LIVE/Im%C3%A1genes/Covers/PORTADA_SELECTION_ncugeo.png"
+              src="https:res.cloudinary.com/ddlvk2lsi/image/upload/v1689684710/LIVE/Im%C3%A1genes/Covers/PORTADA_SELECTION_ncugeo.png"
               alt=""
             />
           </div>

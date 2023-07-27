@@ -9,7 +9,7 @@ const ProfileStudents = () => {
     <>
     <DivProfileGeneral>
    <HeaderStudents/>
-    <ProfileDatos/>
+    {/* <ProfileDatos/> */}
    <FooterStudents/>
     </DivProfileGeneral>
     </>

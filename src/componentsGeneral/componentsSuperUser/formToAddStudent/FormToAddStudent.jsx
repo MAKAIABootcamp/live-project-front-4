@@ -32,6 +32,7 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
       uid: "",
       formularioLlenado: "false",
       img: "https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690344748/LIVE/Im%C3%A1genes/PhotoProfiles/photo-1494790108377-be9c29b29330_mobc0t.jpg",
+      estado:['selección']
     };
 
     try {

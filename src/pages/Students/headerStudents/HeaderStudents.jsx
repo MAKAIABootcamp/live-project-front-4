@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  BgDiv,
   ContainerHeader,
   ContainerHeaderLinks,
   ContainerHeaderLinksUnt,
@@ -120,7 +119,7 @@ const HeaderStudents = () => {
       <div className="burguer">
         <BurguerButton clicked={clicked} handleClick={handleClick} />
       </div>
-      <BgDiv className={`initial ${clicked ? "actives" : ""}`}></BgDiv>
+      
     </ContainerHeader>
   );
 };
