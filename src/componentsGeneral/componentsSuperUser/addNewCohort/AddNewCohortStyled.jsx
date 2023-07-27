@@ -74,6 +74,7 @@ export const ErrorText = styled.div`
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  padding-top: 80px;
 
   @media (min-width: 768px) {
     flex-direction: row;

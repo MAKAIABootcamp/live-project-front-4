@@ -69,12 +69,6 @@ const BenefitsReceived = () => {
               onClick={handleNavigateStudentProfileBenefits}
             />
             <Title>Beneficios recibidos</Title>
-            {/* <SearchContainer>
-              <SearchInput type="text" placeholder="Buscar..." />
-              <SearchButton>
-                <SearchOutlined className="icon" style={{ color: "black" }} />
-              </SearchButton>
-            </SearchContainer> */}
           </Container>
         </DivInputTraining>
       </DivCohortGroupTraining>

@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 0px;
-  padding-top: 30px;
+  padding-top: 80px;
 `;
 
 export const GridContainer = styled.div`
