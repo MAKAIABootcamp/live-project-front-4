@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CheckboxInput,
   CheckboxText,
@@ -24,6 +24,7 @@ import Swal from "sweetalert2";
 import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { registerActionAsync } from "../../../redux/actions/studentAction";
+import { loginActionSync } from "../../../redux/actions/userActions";
 
 const validationSchema = Yup.object().shape({
   nombreCompleto: Yup.string().required("Este campo es requerido"),
@@ -89,43 +90,53 @@ const FormStudents = () => {
     hobbie: "",
     termsAndConditions:false
   };
+  useEffect(() => {
+    if (user?.formularioLlenado) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
-  const registro = (dataForm) => {
+  const registro = async (dataForm) => {
     try {
-      const { uid } = user;
+      const { uid, programa } = user;
       if (!uid) {
         console.error("El UID del usuario no está disponible.");
         return;
       }
 
       // Llamar a la acción `registerActionAsync` para registrar el estudiante
-      dispatch(registerActionAsync(uid, dataForm)).then(async () => {
-        // Actualizar el campo 'formularioLlenado' en la colección 'users'
-        const usersRef = collection(dataBase, "users");
-        const usersQuery = query(usersRef, where("uid", "==", uid));
-        const usersSnapshot = await getDocs(usersQuery);
-        if (usersSnapshot.empty) {
-          console.error("No se encontró un documento con el UID del usuario.");
-          return;
+
+      await dispatch(registerActionAsync(uid, dataForm, programa)).then(
+        async () => {
+          // Actualizar el campo 'formularioLlenado' en la colección 'users'
+          const usersRef = collection(dataBase, "users");
+          const usersQuery = query(usersRef, where("uid", "==", uid));
+          const usersSnapshot = await getDocs(usersQuery);
+
+          if (usersSnapshot.empty) {
+            console.error(
+              "No se encontró un documento con el UID del usuario."
+            );
+            return;
+          }
+         
+          const userDoc = usersSnapshot.docs[0];
+          const userRef = doc(usersRef, userDoc.id);
+          await updateDoc(userRef, {
+            formularioLlenado: true,
+          });
+          const users = await getDocs(usersQuery);
+          dispatch(loginActionSync(users.docs[0].data()));
+          Swal.fire({
+            icon: "success",
+            title: "Éxito",
+            text: "¡El formulario se ha enviado exitosamente!",
+            confirmButtonText: "Ok",
+          });
+          navigate("/");
+
         }
-
-        const userDoc = usersSnapshot.docs[0];
-        const userRef = doc(usersRef, userDoc.id);
-        await updateDoc(userRef, {
-          formularioLlenado: true,
-        });
-
-        console.log("Campo 'formularioLlenado' actualizado a true.");
-
-        // Redireccionar a la página de inicio de los estudiantes
-        navigate("/homeStudents");
-        Swal.fire({
-          icon: "success",
-          title: "Éxito",
-          text: "¡El formulario se ha enviado exitosamente!",
-          confirmButtonText: "Ok",
-        });
-      });
+      );
     } catch (error) {
       console.error("Error al actualizar el campo 'formularioLlenado':", error);
 
@@ -466,8 +477,8 @@ const FormStudents = () => {
                   {...formik.getFieldProps("conocimiento")}
                 >
                   <option value="">Selecciona una respuesta</option>
-                  <option value="Pregrado">Si</option>
-                  <option value="Pregrado">No</option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
                 </select>
                 {formik.touched.conocimiento && formik.errors.conocimiento && (
                   <ErrorFormik>{formik.errors.conocimiento}</ErrorFormik>
@@ -481,10 +492,10 @@ const FormStudents = () => {
                   {...formik.getFieldProps("equipos")}
                 >
                   <option value="">Selecciona una respuesta</option>
-                  <option value="Primaria">Computador</option>
-                  <option value="Técnica">Internet</option>
-                  <option value="Pregrado">Todas</option>
-                  <option value="Pregrado">Ninguna</option>
+                  <option value="Computador">Computador</option>
+                  <option value="Internet">Internet</option>
+                  <option value="Todas">Todas</option>
+                  <option value="Ninguna">Ninguna</option>
                 </select>
                 {formik.touched.equipos && formik.errors.equipos && (
                   <ErrorFormik>{formik.errors.equipos}</ErrorFormik>

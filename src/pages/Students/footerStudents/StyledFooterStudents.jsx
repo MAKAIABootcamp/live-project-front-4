@@ -11,9 +11,10 @@ width:100% ;
 bottom: 0;
 margin:0;
 position:fixed ;
-@media screen and (max-width: 414px) {
-  position: relative;
-  justify-content:flex-start ;
+@media screen and (max-width: 415px) {
+  flex-direction: column-reverse;
+  padding: 35px 0 20px 0px;
+  gap: 5px;
 }
  }
 `
@@ -24,7 +25,7 @@ export const SectionDerechos = styled.section`
   padding-left: 40px;
  }
  @media screen and (max-width: 414px) {
-  padding-left: 20px;
+ 
   
  }
 `;

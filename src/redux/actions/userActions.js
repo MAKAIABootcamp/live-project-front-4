@@ -48,13 +48,14 @@ export const loginActionAsync = (email, password) => {
 
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        const { nombre } = userData;
+        const { nombre, formularioLlenado } = userData;
 
         const userLogged = {
           uid,
           email,
           nombre,
           accessToken: accessToken,
+          formularioLlenado
         };
 
         dispatch(loginActionSync(userLogged));
