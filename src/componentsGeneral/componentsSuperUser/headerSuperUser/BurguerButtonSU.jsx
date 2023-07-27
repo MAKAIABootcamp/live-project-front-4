@@ -19,14 +19,8 @@ const BurguerButtonSU = (props) => {
 export default BurguerButtonSU;
 
 const Burguer = styled.div`
- /* nav-icon-5 */
+  display: none;
 .nav-icon-5{
-  /* width: 35px;
-  height: 30px;
-  margin: 10px 10px;
-  position: relative;
-  cursor: pointer;
-  display: inline-block; */
   position: absolute;
   top: 10px;
   right: 10px;
@@ -35,6 +29,18 @@ const Burguer = styled.div`
   height: 30px;
   z-index: 999;
   transform: translateY(10px);
+  display: none;
+  opacity: 0;
+
+  @media screen and (max-width: 769px) {
+    display: block;
+
+  }
+
+  @media screen and (max-width: 414px) {
+    transform: translateX(-50px);
+
+  }
 }
 .nav-icon-5 span{
   background-color:#fff;
