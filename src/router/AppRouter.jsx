@@ -66,7 +66,6 @@ const AppRouter = () => {
                   ...logged,
                   ...userData,
                 };
-
               }
               dispatch(loginActionSync(logged));
             })
@@ -76,9 +75,6 @@ const AppRouter = () => {
                 error
               );
             });
-
-          // dispatch(loginActionSync(logged));
-
           const studentRef = collection(db, "Estudiantes");
           const qStudent = query(
             studentRef,
@@ -116,7 +112,6 @@ const AppRouter = () => {
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          {/* Rutas Públicas */}
           <Route
             path="*"
             element={
@@ -128,8 +123,6 @@ const AppRouter = () => {
           >
             <Route index element={<Login />} />
           </Route>
-
-          {/* Rutas Privadas */}
           <Route
             path="*"
             element={
@@ -139,7 +132,6 @@ const AppRouter = () => {
               />
             }
           >
-            {/* Rutas específicas para tipo de usuario 'estudiante' */}
             {user?.userType === "estudiante" && (
               <>
                 <Route path="homestudents" element={<HomeStudents />} />
@@ -150,8 +142,6 @@ const AppRouter = () => {
                 <Route path="bootservice" element={<BootService />} />
               </>
             )}
-
-            {/* Rutas específicas para tipo de usuario 'administrador' */}
             {user?.userType === "administrador" && (
               <>
                 <Route path="homeSuperUser" element={<HomeSuperUser />} />
@@ -160,14 +150,11 @@ const AppRouter = () => {
                 <Route path="formToAddStudent" element={<AddStudents />} />
                 <Route path="studentSuperUser" element={<StudentsSU />} />
                 <Route path="selectionSuperUser" element={<Selection />} />
-                {/* Sub ruta de Selección */}
                 <Route path="profileSelectedSU" element={<ProfileSelected />} />
-                {/* <Route path="formationSuperUser" element={<Formation />} />  */}
                 <Route
                   path="certificationSuperUser"
                   element={<Certification />}
                 />
-                {/* Sub ruta de Certificación */}
                 <Route path="listCertifiedSU" element={<ListCertification />} />
                 <Route path="addNewCohort" element={<NewCohort />} />
                 <Route
@@ -194,7 +181,7 @@ const AppRouter = () => {
                 />
               </>
             )}
-            <Route path="NotFoundPages" element={<NotFoundPages />} />
+            <Route path="*" element={<NotFoundPages />} />
           </Route>
         </Routes>
       </BrowserRouter>

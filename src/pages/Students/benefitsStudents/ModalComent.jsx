@@ -38,4 +38,3 @@ const ModalComent = ({ isModalOpen, handleModalClose, selectedBenefit }) => {
 };
 
 export default ModalComent;
-

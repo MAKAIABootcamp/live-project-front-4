@@ -20,7 +20,6 @@ export const ContainerHeader = styled.nav`
   }
 
   @media screen and (max-width: 474px) {
-    
   }
 
   .links {
@@ -74,7 +73,6 @@ export const ContainerHeaderLinks = styled.div`
 
   @media screen and (max-width: 474px) {
     border-radius: 0 0 253px 10px;
-   
   }
 `;
 

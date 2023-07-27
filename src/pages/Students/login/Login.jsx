@@ -28,7 +28,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const navigate = useNavigate();
   const logIn = (dataForm) => {
     dispatch(loginActionAsync(dataForm.email, dataForm.password));
     navigate("/");
@@ -41,8 +40,7 @@ const Login = () => {
         </figure>
       </DivImagen>
       <DivLogin>
-        <figure>
-        </figure>
+        <figure></figure>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}

@@ -1,14 +1,25 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { CleseContainer, ModalContainer, CloseButton, ModalContent, ModalHeader, BodyModal, ListItem, ButtonContainer, ButtonModal, ButtonModalCancelar } from '../bootService/StyledModalBootservice';
-import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { updataActionAsync } from '../../../redux/actions/studentAction';
-import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
-import { auth } from '../../../confiFirebase/configFirebase';
-import Swal from 'sweetalert2';
-
-// Estilos para el contenedor del modal
+import {
+  CleseContainer,
+  ModalContainer,
+  CloseButton,
+  ModalContent,
+  ModalHeader,
+  BodyModal,
+  ListItem,
+  ButtonContainer,
+  ButtonModal,
+  ButtonModalCancelar,
+} from "../bootService/StyledModalBootservice";
+import styled from "styled-components";
+import {
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword,
+} from "firebase/auth";
+import { auth } from "../../../confiFirebase/configFirebase";
+import Swal from "sweetalert2";
 
 const validationSchema = Yup.object().shape({
   oldPassword: Yup.string().required("La contraseña actual es requerida"),
@@ -38,7 +49,6 @@ const ModalPassword = ({ isModalOpen, handleModalClose }) => {
           </ModalHeader>
 
           <BodyModal>
-            {/*Contenindo modela */}
             <Formik
               initialValues={{
                 oldPassword: "",
@@ -48,7 +58,7 @@ const ModalPassword = ({ isModalOpen, handleModalClose }) => {
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm }) => {
                 const user = auth.currentUser;
-                const currentPassword = values.oldPassword; // Reemplaza esto con la contraseña actual del usuario
+                const currentPassword = values.oldPassword;
 
                 const credentials = EmailAuthProvider.credential(
                   user.email,
@@ -57,10 +67,8 @@ const ModalPassword = ({ isModalOpen, handleModalClose }) => {
 
                 reauthenticateWithCredential(user, credentials)
                   .then(() => {
-                    // La reautenticación fue exitosa, ahora puedes actualizar la contraseña
                     updatePassword(user, values.newPassword)
                       .then(() => {
-                        // La actualización de contraseña fue exitosa
                         Swal.fire({
                           icon: "success",
                           title: "Contraseña actualizada",
@@ -69,7 +77,6 @@ const ModalPassword = ({ isModalOpen, handleModalClose }) => {
                         resetForm();
                       })
                       .catch((error) => {
-                        // Ocurrió un error al actualizar la contraseña
                         const errorCode = error.code;
                         if (errorCode === "auth/weak-password") {
                           Swal.fire({
@@ -87,7 +94,6 @@ const ModalPassword = ({ isModalOpen, handleModalClose }) => {
                       });
                   })
                   .catch((error) => {
-                    // Ocurrió un error al reautenticar al usuario
                     const errorCode = error.code;
                     if (errorCode === "auth/wrong-password") {
                       Swal.fire({
@@ -135,8 +141,6 @@ const ModalPassword = ({ isModalOpen, handleModalClose }) => {
                 </Form>
               )}
             </Formik>
-
-            {/* Fin ontenindo modela */}
           </BodyModal>
         </ModalContent>
       </ModalContainer>

@@ -1,12 +1,11 @@
 import { studentTypes } from "../types/studentType";
 
-
 const initialState = {
   student: {},
-  students:[]
+  students: [],
 };
 
-const  studentReducer = (state = initialState, action) => {
+const studentReducer = (state = initialState, action) => {
   switch (action.type) {
     case studentTypes.SET_STUDENT:
       return {
@@ -35,17 +34,16 @@ const  studentReducer = (state = initialState, action) => {
         students: [...action.payload],
       };
     case studentTypes.UPDATE_STATESTUDENT:
-
-      const updateStudent = state.students.map(item => {
+      const updateStudent = state.students.map((item) => {
         if (item.id === action.payload.idStudent) {
           return {
             ...item,
-            estado: action.payload.newState
-          }
+            estado: action.payload.newState,
+          };
         }
         return item;
-      })
-      
+      });
+
       return {
         ...state,
         students: [...updateStudent],
@@ -55,4 +53,4 @@ const  studentReducer = (state = initialState, action) => {
   }
 };
 
-export default  studentReducer;
+export default studentReducer;

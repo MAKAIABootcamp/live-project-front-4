@@ -1,7 +1,7 @@
 import { typeBenefitTypes } from "../types/userTypes";
 
 const initialState = {
-  benefitTypes: [], // Cambia el nombre de "benefitTypes" a "payload"
+  benefitTypes: [],
   error: null,
 };
 
@@ -18,7 +18,7 @@ const benefitTypesReducer = (state = initialState, action) => {
     case typeBenefitTypes.GET_BENEFIT:
       return {
         ...state,
-        benefitTypes: action.payload, // Actualiza el estado con los beneficios recibidos
+        benefitTypes: action.payload,
       };
     default:
       return state;
