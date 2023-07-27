@@ -14,7 +14,7 @@ export const ContainerHeader = styled.nav`
     color: white;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     font-size: 12px;
     justify-content: space-between;
   }
@@ -38,7 +38,7 @@ export const ContainerHeader = styled.nav`
   }
 
   .burguer {
-    @media screen and (min-width: 780px) {
+    @media screen and (min-width: 769px) {
       display: none;
     }
   }
@@ -55,7 +55,7 @@ export const ContainerHeaderLogo = styled.div`
 export const ContainerHeaderLinks = styled.div`
   display: flex;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     flex-direction: column;
     position: absolute;
     /* margin-top: 318px;

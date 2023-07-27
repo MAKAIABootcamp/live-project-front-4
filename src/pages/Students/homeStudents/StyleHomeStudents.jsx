@@ -67,32 +67,28 @@ export const ButtonHomeStudents = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 50px;
+    border: none;
+    background-color: #eee420;
+    color: #03203a;
+    font-size: 25px;
+    font-weight: 200;
+    margin-top: -15px;
+    width:30% ;
+    height:40px ;
+    margin-bottom:60px ;
+  }
+  @media screen and (max-width: 769px) {
+    margin-top: 10px;
+    margin-bottom:40px ;
+  }
+  @media screen and (max-width: 414px) {
+    margin-bottom:60px ;
+   button{
+    font-size: 18px;
+    width:50% ;
+    margin-top: -15px;
+   }
 
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50px;
-      border: none;
-      background-color: #eee420;
-      color: #03203a;
-      font-size: 25px;
-      font-weight: 200;
-      margin-top: -25px;
-      width: 30%;
-      height: 40px;
-    }
-    @media screen and (max-width: 769px) {
-      margin-top: 10px;
-      margin-bottom: 40px;
-    }
-    @media screen and (max-width: 414px) {
-      margin-bottom: 10px;
-      button {
-        font-size: 18px;
-        width: 50%;
-        margin-top: -15px;
-      }
-    }
   }
 `;

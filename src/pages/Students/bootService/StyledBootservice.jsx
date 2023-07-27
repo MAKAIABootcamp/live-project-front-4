@@ -42,18 +42,28 @@ export const SectionRobot = styled.section`
       height: 15%;
     }
     h1 {
-      margin-top: 30px;
-      font-size: 38px;
 
-      margin-top: 20px;
+        margin-top:30px ; 
+        font-size:38px ;
     }
   }
 `;
 export const DivBootservices = styled.div`
   @media screen and (max-width: 1440px) {
     display: flex;
-    width: 100%;
-    margin: 0;
+
+  width: 100%;
+   margin:0;
+ }
+ @media screen and (max-width: 769px) {
+  flex-direction:column ;
+ 
+  gap:30px ;
+}
+ @media screen and (max-width: 414px) {
+   flex-direction:column ;
+   margin-top:35px ;
+  
   }
   @media screen and (max-width: 414px) {
     flex-direction: column;
@@ -66,45 +76,45 @@ export const SectionServicios = styled.section`
     height: 200px;
     flex: 1;
     margin-top: -20px;
-
-    img {
-      width: 80%;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-    h2 {
-      color: #03203a;
-      font-size: 25px;
-      font-weight: bold;
-      display: inline;
-    }
-    p {
-      color: #03203a;
-      font-size: 18px;
-      line-height: 1;
-      margin-top: 5px;
-    }
+    
+}
+p{
+    color:#03203A  ;
+    font-size:18px ;
+    line-height: 1;
+    margin-top:5px ;
+   
+}
+button{
+    background:#EEE420 ;
+    border:none;
+    width:40%;
+    height:25px ;
+    border-radius: 25px;
+    color:#03203A  ;
+    font-weight:bold ;
+    font-size:16px ;
+    margin-bottom:70px ;
+}
+ }
+ @media screen and (max-width: 769px) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+ @media screen and (max-width: 414px) {
+    height:100px ;
+    margin-top:15px ;
+    margin-bottom:40px ;
     button {
-      background: #eee420;
-      border: none;
-      width: 40%;
-      height: 25px;
-      border-radius: 25px;
-      color: #03203a;
-      font-weight: bold;
-      font-size: 16px;
-    }
-  }
-  @media screen and (max-width: 414px) {
-    height: 100px;
-    margin-top: 15px;
+        display:flex ;
+        justify-content:center ;
+        align-items:center ;
+        width:90% ;
+        height:35px ;
+      
 
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 90%;
-      height: 35px;
     }
 
     h2 {

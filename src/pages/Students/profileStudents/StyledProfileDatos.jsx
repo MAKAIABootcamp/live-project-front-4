@@ -1,16 +1,17 @@
 import { styled } from "styled-components";
 
 export const DivAvatar = styled.div`
-  @media screen and (max-width: 1440px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-  }
-  @media screen and (max-width: 414px) {
-    justify-content: center;
-  }
-`;
+ @media screen and (max-width: 1440px) {
+display:flex ;
+flex-direction:column ;
+align-items:center ;
+margin:0 ;
+ }
+ @media screen and (max-width: 414px) {
+    justify-content:center ;
+    margin:0px 0px 180px 0px ;
+ }
+`
 export const SectionImagen = styled.section`
   @media screen and (max-width: 1440px) {
     display: flex;
@@ -117,14 +118,15 @@ export const SectionDatos = styled.section`
   @media screen and (max-width: 769px) {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-  }
-  @media screen and (max-width: 414px) {
-    align-items: center;
-    margin-bottom: 20px;
+    justify-content:center;
+    align-items:center ;
+ }
+ @media screen and (max-width: 414px) {
+    align-items:center ;
+    margin-bottom:40px ;
+    input{
+      margin-top:-15px ;
 
-    input {
-      margin-top: -15px;
     }
   }
 `;
