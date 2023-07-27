@@ -40,6 +40,7 @@ export const updataActionAsync = (telefono, correo, imagen, uid) => {
       const dataToUpdate = {
         celular: telefono,
         correo: correo,
+        imagen: imagen,
         // Añade aquí cualquier otro campo que desees actualizar
       };
 

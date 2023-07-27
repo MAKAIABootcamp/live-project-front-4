@@ -1,5 +1,8 @@
 import React from "react";
 import {
+  CheckboxInput,
+  CheckboxText,
+  CheckboxWrapper,
   DivFormulario,
   ErrorFormik,
   SectionForm,
@@ -51,6 +54,7 @@ const validationSchema = Yup.object().shape({
   motivacion: Yup.string().required("Este campo es requerido"),
   tiempoLibre: Yup.string().required("Este campo es requerido"),
   hobbie: Yup.string().required("Este campo es requerido"),
+  termsAndConditions: Yup.boolean().oneOf([true], 'Debe aceptar los términos y condiciones'),
 });
 
 const FormStudents = () => {
@@ -83,6 +87,7 @@ const FormStudents = () => {
     motivacion: "",
     tiempoLibre: "",
     hobbie: "",
+    termsAndConditions:false
   };
 
   const registro = (dataForm) => {
@@ -99,7 +104,6 @@ const FormStudents = () => {
         const usersRef = collection(dataBase, "users");
         const usersQuery = query(usersRef, where("uid", "==", uid));
         const usersSnapshot = await getDocs(usersQuery);
-
         if (usersSnapshot.empty) {
           console.error("No se encontró un documento con el UID del usuario.");
           return;
@@ -144,7 +148,7 @@ const FormStudents = () => {
         </SectionLogo>
         <Formik
           initialValues={initialValues}
-          // validationSchema={validationSchema}
+          validationSchema={validationSchema}
           onSubmit={registro}
         >
           {(formik) => (
@@ -525,6 +529,13 @@ const FormStudents = () => {
                   <ErrorFormik>{formik.errors.hobbie}</ErrorFormik>
                 )}
               </section>
+              <CheckboxWrapper>
+                <CheckboxInput type="checkbox" {...formik.getFieldProps("termsAndConditions")} />
+                <CheckboxText>He leído y acepto la política de privacidad de MAKAIA* <a href="https://makaia.org/politica-de-tratamiento-de-datos/" target="_blank" rel="noopener noreferrer">Ver Terminos y Condiciones</a></CheckboxText>
+                {formik.touched.termsAndConditions && formik.errors.termsAndConditions && (
+                  <ErrorFormik>{formik.errors.termsAndConditions}</ErrorFormik>
+                )}
+              </CheckboxWrapper>
               <div>
                 <button type="submit">Enviar</button>
               </div>

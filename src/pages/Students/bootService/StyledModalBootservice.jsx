@@ -69,7 +69,7 @@ flex-direction: column ;
 p {
   font-size: 20px;
 font-weight:900 ;
-color:#25ABBC;
+color:#25ABBC  !important;
 padding: 20px 20px 5px 50px;
 }
 label{
@@ -83,7 +83,7 @@ export const ModalHeader = styled.section`
  p {
 font-size: 20px;
 font-weight:900 ;
-color:#25ABBC;
+color:#25ABBC  !important;
  }
  
  span {
