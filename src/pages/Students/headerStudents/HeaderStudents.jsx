@@ -66,19 +66,7 @@ const HeaderStudents = () => {
             </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
-        <ContainerHeaderLinksUnt>
-          <figure>
-            <img src={perfil} alt="Perfil" />
-            <NavLink
-              to={"/profilestudents"}
-              className={({ isActive, isPending }) =>
-                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
-              }
-            >
-              Perfil
-            </NavLink>
-          </figure>
-        </ContainerHeaderLinksUnt>
+    
         <ContainerHeaderLinksUnt>
           <figure>
             <img src={benefits} alt="IconsHouse" />
@@ -102,6 +90,19 @@ const HeaderStudents = () => {
               }
             >
               Boot Service
+            </NavLink>
+          </figure>
+        </ContainerHeaderLinksUnt>
+        <ContainerHeaderLinksUnt>
+          <figure>
+            <img src={perfil} alt="Perfil" />
+            <NavLink
+              to={"/profilestudents"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Perfil
             </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>

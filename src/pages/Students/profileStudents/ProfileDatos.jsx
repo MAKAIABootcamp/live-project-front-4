@@ -27,13 +27,13 @@ const ProfileDatos = () => {
     const handleModalClosePassword = () => {
         setModalOpenPassword(false);
     };
-    console.log(student);
+
     return (
         <div>
             <DivAvatar>
                 <SectionImagen>
                     <FigureAvatar>
-                        <img src={avatar} alt="" />
+                        <img src={student?.imagen? student?.imagen: avatar} alt="" />
                     </FigureAvatar >
                     <FigureIcon onClick={handleOpenModal}>
                         <img src={editar} alt="icono editar" />

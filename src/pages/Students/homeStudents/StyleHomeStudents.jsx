@@ -8,63 +8,94 @@ export const ContainerHomeStudents = styled.div`
 `;
 
 export const ContainerHomeStudentsCont = styled.div`
+  @media screen and (max-width: 1440px) {
   display: flex;
-  flex-direction: column;
-  
+  justify-content:space-around ;
+  margin-top:-15px ;
+
 div{
     display: flex;
     justify-content: center;
 }
 
   h2 {
-    width: 580px;
-    font-size: 48px;
+    width: 450px;
+    font-size: 38px;
     color: #03203aff;
-    padding: 100px 0px 0px 0px;
+    padding:  0px;
     font-family: "Montserrat", sans-serif;
     font-weight: 200;
     text-align: center;
   }
+  section {
+    width: 340px;
+  }
 
   img {
-    width: 550px;
+    width: 100%;
+    height:100% ;
+    object-fit:contain ;
+  
   }
+}
 
-  @media screen and (max-width: 768px) {
-
-   div{
+  @media screen and (max-width: 769px) {
+    display: flex;
     flex-direction: column;
     align-items: center;
-   }
-
-  h2{
-    font-size: 38px;
-    padding: 20px 0px 0px 0px;
-  }
-
+    h2 {
+      width: 400px;
+      font-size: 28px;
+    }
   img{
-    width: 450px;
+    width: 350px;
+    margin-top:-20px ;
   }
   }
-  @media screen and (max-width: 376px) {
-    width: 540px;
+  @media screen and (max-width: 414px) {
+    h2{
+      width: 300px;
+      font-size: 20px;
+    }
+    img{
+      width: 250px;
+    margin-top:-20px ;
+    }
   }
 `;
 export const ButtonHomeStudents = styled.div`
-  display: flex;
-  align-items: center;
+ @media screen and (max-width: 1440px) {
+display: flex;
+flex-direction: column;
+   align-items: center;
+    justify-content: center;
 
   button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 50px;
     border-radius: 50px;
     border: none;
     background-color: #eee420;
     color: #03203a;
     font-size: 25px;
     font-weight: 200;
-    margin-top: -100px;
+    margin-top: -25px;
+    width:30% ;
+    height:40px ;
   }
+  @media screen and (max-width: 769px) {
+    margin-top: 10px;
+    margin-bottom:40px ;
+  }
+  @media screen and (max-width: 414px) {
+    margin-bottom:10px ;
+   button{
+    font-size: 18px;
+    width:50% ;
+    margin-top: -15px;
+   }
+    
+  }
+}
 `;

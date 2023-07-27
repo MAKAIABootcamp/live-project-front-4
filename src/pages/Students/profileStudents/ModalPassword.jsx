@@ -1,25 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
-  CleseContainer,
-  ModalContainer,
-  CloseButton,
-  ModalContent,
-  ModalHeader,
-  BodyModal,
-  ListItem,
-  ButtonContainer,
-  ButtonModal,
-  ButtonModalCancelar,
-} from "../bootService/StyledModalBootservice";
-import styled from "styled-components";
-import {
-  EmailAuthProvider,
-  reauthenticateWithCredential,
-  updatePassword,
-} from "firebase/auth";
-import { auth } from "../../../confiFirebase/configFirebase";
-import Swal from "sweetalert2";
+import { CleseContainer, ModalContainer, CloseButton, ModalContent, ModalHeader, BodyModal, ListItem, ButtonContainer, ButtonModal, ButtonModalCancelar } from '../bootService/StyledModalBootservice';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import { updataActionAsync } from '../../../redux/actions/studentAction';
+import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
+import { auth } from '../../../confiFirebase/configFirebase';
+import Swal from 'sweetalert2';
 
 // Estilos para el contenedor del modal
 

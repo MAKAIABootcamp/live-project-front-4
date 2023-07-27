@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import {
+  CheckboxInput,
+  CheckboxText,
+  CheckboxWrapper,
   DivFormulario,
   ErrorFormik,
   SectionForm,
@@ -52,6 +55,7 @@ const validationSchema = Yup.object().shape({
   motivacion: Yup.string().required("Este campo es requerido"),
   tiempoLibre: Yup.string().required("Este campo es requerido"),
   hobbie: Yup.string().required("Este campo es requerido"),
+  termsAndConditions: Yup.boolean().oneOf([true], 'Debe aceptar los términos y condiciones'),
 });
 
 const FormStudents = () => {
@@ -84,6 +88,7 @@ const FormStudents = () => {
     motivacion: "",
     tiempoLibre: "",
     hobbie: "",
+    termsAndConditions:false
   };
   useEffect(() => {
     if (user?.formularioLlenado) {
@@ -100,6 +105,7 @@ const FormStudents = () => {
       }
 
       // Llamar a la acción `registerActionAsync` para registrar el estudiante
+
       await dispatch(registerActionAsync(uid, dataForm, programa)).then(
         async () => {
           // Actualizar el campo 'formularioLlenado' en la colección 'users'
@@ -128,6 +134,7 @@ const FormStudents = () => {
             confirmButtonText: "Ok",
           });
           navigate("/");
+
         }
       );
     } catch (error) {
@@ -533,6 +540,13 @@ const FormStudents = () => {
                   <ErrorFormik>{formik.errors.hobbie}</ErrorFormik>
                 )}
               </section>
+              <CheckboxWrapper>
+                <CheckboxInput type="checkbox" {...formik.getFieldProps("termsAndConditions")} />
+                <CheckboxText>He leído y acepto la política de privacidad de MAKAIA* <a href="https://makaia.org/politica-de-tratamiento-de-datos/" target="_blank" rel="noopener noreferrer">Ver Terminos y Condiciones</a></CheckboxText>
+                {formik.touched.termsAndConditions && formik.errors.termsAndConditions && (
+                  <ErrorFormik>{formik.errors.termsAndConditions}</ErrorFormik>
+                )}
+              </CheckboxWrapper>
               <div>
                 <button type="submit">Enviar</button>
               </div>

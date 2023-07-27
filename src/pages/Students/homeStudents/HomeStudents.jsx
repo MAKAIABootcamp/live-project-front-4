@@ -24,10 +24,9 @@ const HomeStudents = () => {
   };
   return (
     <ContainerHomeStudents>
-      <HeaderStudents />
+<HeaderStudents/>
       <ContainerHomeStudentsCont>
         <div>
-          <div>
             <h2>
               ¡Bienvenid@ a Live!
               <br />
@@ -42,18 +41,18 @@ const HomeStudents = () => {
               cada fase de tu viaje.
               <br />
             </h2>
-          </div>
-          <div>
-            <figure>
+            </div>
+          <section>
+           
               <img src={ImgHome} alt="" />
-            </figure>
-          </div>
-        </div>
+          
+          </section>
+          </ContainerHomeStudentsCont>
         <ButtonHomeStudents>
           <button onClick={handlePay}>Ver proceso</button>
         </ButtonHomeStudents>
-      </ContainerHomeStudentsCont>
-      <FooterStudents />
+     
+ <FooterStudents/>
     </ContainerHomeStudents>
   );
 };

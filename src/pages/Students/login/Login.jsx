@@ -6,7 +6,6 @@ import {
   ResetPassword,
   SectionRegistro,
 } from "./StyledLogin";
-import logo from "../../../assets/LOGOBOOTCAMOSCURO.png";
 import login from "../../../assets/loginActualizado.png";
 import * as yup from "yup";
 import { Formik, Field } from "formik";
@@ -43,7 +42,6 @@ const Login = () => {
       </DivImagen>
       <DivLogin>
         <figure>
-          <img src={logo} alt="" />
         </figure>
         <Formik
           initialValues={initialValues}

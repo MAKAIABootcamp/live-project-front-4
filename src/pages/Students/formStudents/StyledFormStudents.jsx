@@ -6,11 +6,10 @@ export const DivFormulario = styled.div`
   @media screen and (max-width: 1440px) {
   width: 100%;
   height: 100vh;
- margin-top:5px ;
- background-image: url(${fondoGeneral});
- background-size: cover;
+  margin-top:5px ;
+  background-image: url(${fondoGeneral});
+  background-size: cover;
   background-position: center;
-
   
 }
 
@@ -73,7 +72,8 @@ button {
     color:#03203A  ;
    font-size:20px ;
    font-weight:600 ;
- margin-top:10px ;
+  margin-top:10px ;
+  margin-bottom:50px ;
   }
  @media screen and (max-width: 1440px) {
   display:flex ;
@@ -143,3 +143,26 @@ font-size:10px ;
 border-color:#03203a ;
 
 `
+export const CheckboxWrapper = styled.label`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const CheckboxInput = styled.input`
+  appearance: none;
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid #03203A ;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+
+  &:checked {
+    background-color: #03203A;
+  }
+`;
+
+export const CheckboxText = styled.span`
+  font-size: 16px;
+`;

@@ -191,8 +191,7 @@ const BenefitsStudents = () => {
           selectedBenefit={selectedBenefit}
         />
       )}
-    </>
-  );
-};
-
-export default BenefitsStudents;
+      </>
+        );
+      };
+      export default BenefitsStudents;

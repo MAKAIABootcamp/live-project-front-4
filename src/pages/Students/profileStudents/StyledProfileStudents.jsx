@@ -10,4 +10,8 @@ background-image: url(${fondoGeneral});
 height:110vh;
 margin:0px 0px 150px 0px ;
  }
+ @media screen and (max-width: 769px) {
+  margin:0px 0px 70px 0px ;
+ }
+
 `
