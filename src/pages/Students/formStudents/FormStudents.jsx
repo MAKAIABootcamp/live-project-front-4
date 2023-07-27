@@ -140,12 +140,12 @@ const FormStudents = () => {
       <DivFormulario>
         <SectionLogo>
           <figure>
-            <img src={logo} alt="" />
+            <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690287433/LIVE/Im%C3%A1genes/Icons/LOGO_MAKAIA_OSCURO_njv30m.svg" alt="" />
           </figure>
         </SectionLogo>
         <Formik
           initialValues={initialValues}
-          // validationSchema={validationSchema}
+          validationSchema={validationSchema}
           onSubmit={registro}
         >
           {(formik) => (
