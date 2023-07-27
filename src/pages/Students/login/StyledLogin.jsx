@@ -13,7 +13,7 @@ export const appearAnimation = keyframes`
 `;
 
 export const General = styled.div`
-  /* @media screen and (max-width: 1440px) { */
+   @media screen and (max-width: 1440px) { 
   display: flex;
   width: 100%;
   height: 100vh;
@@ -21,7 +21,7 @@ export const General = styled.div`
   background-size: cover;
   background-position: center;
   justify-content: space-around;
-  /* } */
+   } 
   @media screen and (max-width: 769px) {
     margin: 80px 0px 0px 15px;
     position: absolute;
