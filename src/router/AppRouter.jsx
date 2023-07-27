@@ -65,8 +65,8 @@ const AppRouter = () => {
 
                 logged = {
                   ...userData,
-                  ...logged
-                }
+                  ...logged,
+                };
                 // logged.userType = userData.userType;
                 // logged.nombre = userData.nombre;
                 // logged.formularioLlenado = userData.formularioLlenado;
@@ -178,7 +178,10 @@ const AppRouter = () => {
                   path="studentProfileBenefits/:document"
                   element={<StudentsBenefits />}
                 />
-                <Route path="RequestBenefis/:uidStudent" element={<RequestBenefis />} />
+                <Route
+                  path="RequestBenefis/:uidStudent"
+                  element={<RequestBenefis />}
+                />
                 <Route
                   path="benefitsReceived"
                   element={<BenefitsReceivedStudents />}

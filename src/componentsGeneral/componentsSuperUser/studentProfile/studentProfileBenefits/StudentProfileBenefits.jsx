@@ -46,9 +46,6 @@ const StudentProfileBenefits = ({
   // const handleNavigateBenefitsReceived = () => {
   //   navigate("/benefitsReceived");
   // };
-  const handleNavigateHome = () => {
-    navigate("/homeSuperUser");
-  };
 
   return (
     <div>
@@ -58,7 +55,7 @@ const StudentProfileBenefits = ({
 
       <DivGeneral key={estudiante.id}>
         <DivTitle>
-          <ArrowLeftOutlined onClick={handleNavigateHome} size={30} />
+          <ArrowLeftOutlined size={30} />
           <h2>Front-End/ Cohorte 7</h2>
         </DivTitle>
         <DivGeneralInformation>
