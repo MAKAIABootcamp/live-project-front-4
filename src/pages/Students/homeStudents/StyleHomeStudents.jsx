@@ -67,6 +67,7 @@ export const ButtonHomeStudents = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    button{
     border-radius: 50px;
     border: none;
     background-color: #eee420;
@@ -77,13 +78,15 @@ export const ButtonHomeStudents = styled.div`
     width:30% ;
     height:40px ;
     margin-bottom:60px ;
-  }
+   
+  }}
   @media screen and (max-width: 769px) {
     margin-top: 10px;
     margin-bottom:40px ;
   }
   @media screen and (max-width: 414px) {
     margin-bottom:60px ;
+    
    button{
     font-size: 18px;
     width:50% ;
