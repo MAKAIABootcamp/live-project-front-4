@@ -45,8 +45,15 @@ export const ContainerHeader = styled.nav`
   }
 
   .burguer {
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1440px) {
       display: none;
+    }
+    @media screen and (min-width: 769px) {
+      display: block;
+    }
+
+    @media screen and (max-width: 414px) {
+      transform: translateX(-50px)
     }
   }
 `;
@@ -78,15 +85,14 @@ export const ContainerHeaderLinks = styled.div`
     justify-content: center;
     font-size: 15px;
     border-radius: 0 0 10px 10px;
-    transform: translate(0px, 65%);
+    transform: translate(180px, 65%);
     display: ${(props) => (props.active ? "flex" : "none")};
   }
 
-  @media screen and (max-width: 414p) {
+  @media screen and (max-width: 414px) {
     margin-left: 0px;
-    background-color: red;
-    width: 200px;
-    transform: translate(20px, 85%);
+    width: 230px;
+    transform: translate(0px, 85%);
   }
 `;
 
@@ -113,6 +119,8 @@ export const Item = styled.button`
   cursor: pointer;
   border: transparent;
   background-color: transparent;
+  align-items: center;
+  display: flex;
 
   & img {
     filter: invert(100%) sepia(0%) saturate(7487%) hue-rotate(199deg)
@@ -150,12 +158,15 @@ export const ContainerHeaderSignOff = styled.div`
 `;
 
 export const BgDiv = styled.div`
-  width: 500px;
+@media screen and (max-width: 1440px){
+    width: 500px;
   height: 500px;
   background-color: #03203a;
   transform: translateY(250px);
   position: absolute;
   display: none;
+}
+
   @media screen and (max-width: 768px) {
     position: absolute;
     display: block;
@@ -163,7 +174,7 @@ export const BgDiv = styled.div`
     top: 70px;
     transform: translateX(0px);
     width: 770px;
-    height: 500px;
+    height: 800px;
     opacity: 0;
     margin: 0 auto;
     /* display: none; */
