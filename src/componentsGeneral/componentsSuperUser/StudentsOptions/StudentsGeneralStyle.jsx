@@ -20,21 +20,25 @@ export const SectionStudents = styled.section`
 @media screen and (max-width: 1440px){
 width: 30%;
 height: 100vh;
-margin: 0 auto;
+margin: auto;
 display: flex;
 flex-direction: column;
 justify-content: center;
 gap: 20px;
+padding-top: 70px;
 
 }
 
 @media screen and (max-width: 768px){
 width: 60%;
+height: auto;
+margin: auto;
+padding-top: 100px;
+padding-bottom: 50px;
 }
 
-@media screen and (max-width: 375px){
-width: 100%;
-transform: translate(15%, 10%);
+@media screen and (max-width: 414px){
+width: 80%;
 }
 `;
 
