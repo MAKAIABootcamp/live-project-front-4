@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const DivCohortGroupTraining = styled.div`
-  margin-top: 70px;
+  padding-top: 70px;
+  align-items: center;
+  text-align: center;
 `;
 
 export const SearchContainer = styled.div`
@@ -41,11 +43,11 @@ export const SearchButton = styled.button`
 export const DivInputTraining = styled.div`
   display: flex;
   align-items: center;
+  text-align: center;
 `;
 
 export const Title = styled.h2`
   margin-bottom: 40px;
-  margin-top: 40px;
   font-family: "Monserrat", sans-serif;
   color: #25abbc;
   padding-left: 15px;
@@ -57,7 +59,6 @@ export const Title = styled.h2`
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   text-align: center;
   padding: 10px;
@@ -121,7 +122,6 @@ export const ModalContent = styled.div`
 
 export const TableBenefits = styled.table`
   background-color: white;
-  margin-top: 30px;
 
   th {
     background-color: #dddddd;

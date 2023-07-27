@@ -3,8 +3,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { courses } from "../types/userTypes";
 import { typeStudents } from "../types/userTypes";
 
-
-//Llama a los botones de la página de Estudiantes
 export const getPageStudents = (nameCollection) => {
   return async (dispatch) => {
     try {
@@ -21,10 +19,7 @@ export const getPageStudents = (nameCollection) => {
   };
 };
 
-//Llama a los estudiantes
-
 export const getByCollectionName = (nameCollection) => {
-
   const estudiantesSeleccionados = [];
   return async (dispatch) => {
     try {
@@ -44,26 +39,25 @@ export const getByCollectionName = (nameCollection) => {
     }
   };
 };
+
 export const getStudents = (nameCollection) => {
   return async (dispatch) => {
     try {
-      console.log("::\n nombre colección", nameCollection)
-      // Realiza la consulta a Firestore y obtiene los datos
-      const snapshot = await getDocs(collection(dataBase, nameCollection)); 
-      const data = snapshot.docs.map((doc) => ({id:doc.id, info:doc.data()}));
+      console.log("::\n nombre colección", nameCollection);
+      const snapshot = await getDocs(collection(dataBase, nameCollection));
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        info: doc.data(),
+      }));
       dispatch({ type: typeStudents.GET_DATA_STUDENTS, payload: data });
 
       return data;
     } catch (error) {
-      // Manejo de errores si es necesario
       console.error("Error al obtener los datos:", error);
       throw error;
     }
   };
 };
-
-
-
 
 const getCoursesSelectionSync = (estudiantes) => {
   return {
@@ -72,7 +66,12 @@ const getCoursesSelectionSync = (estudiantes) => {
   };
 };
 
-//Llama a los cursos de la página de Certificación
+export const selectCourse = (course) => {
+  return {
+    type: courses.SELECT_COURSE,
+    payload: course,
+  };
+};
 
 export const getCoursesCertification = (nameCollection) => {
   return async (dispatch) => {

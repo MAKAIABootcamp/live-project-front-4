@@ -1,49 +1,34 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import userReducer from "../reducers/userReducer";
-// import benefitTypesReducer from "../reducers/benefitTypeReducer";
-// import { coursesReducer } from "../reducers/coursesReducer";
-// import newCohorteReducers from "../reducers/newCohorteReducers";
-// import addAdminAndStudentsReducer from "../reducers/addAdminAndStudentsReducer";
-
-// const rootReducer = {
-//   user: userReducer,
-//   benefitTypes: benefitTypesReducer, // Asigna el reducer de benefitTypes a la propiedad benefitTypes
-//   courses: coursesReducer,
-//   cohort: newCohorteReducers,
-//   newAdminAndStydentsType: addAdminAndStudentsReducer,
-// };
-
-// const store = configureStore({
-//   reducer: rootReducer,
-//   devTools: process.env.NODE_ENV !== "production",
-// });
-
-// export default store;
-
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../reducers/userReducer";
 import benefitTypesReducer from "../reducers/benefitTypeReducer";
 import { coursesReducer } from "../reducers/coursesReducer";
 import newCohorteReducers from "../reducers/newCohorteReducers";
 import addAdminAndStudentsReducer from "../reducers/addAdminAndStudentsReducer";
-import { getCoursesSelection } from "../actions/coursesActions"; // Importa la acción getCoursesSelection para actualizar la lista de cursos seleccionados en Redux
+import benefitsReducer from "../reducers/benefitsReducer";
+import studentReducer from "../reducers/studentReducer";
 import getStudentsProfileBenefit from "../reducers/getStudentsProfileBenefitsReducers";
 import getBenefitSoliciReducers from "../reducers/getBenefitSolicitReducers";
 
-const rootReducer = {
+
+const reducer = {
   user: userReducer,
   benefitTypes: benefitTypesReducer,
   courses: coursesReducer,
   cohort: newCohorteReducers,
   newAdminAndStydentsType: addAdminAndStudentsReducer,
+  benefits: benefitsReducer,
+  student: studentReducer,
   studentReducer: getStudentsProfileBenefit,
   BeneficiosSolicitados: getBenefitSoliciReducers,
 };
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer,
   devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;
-

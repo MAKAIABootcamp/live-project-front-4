@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   ButtonHomeStudents,
   ContainerHomeStudents,
@@ -11,6 +12,13 @@ import { useNavigate } from "react-router-dom";
 
 const HomeStudents = () => {
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user);
+  useEffect(() => {
+    if (!user?.formularioLlenado) {
+      navigate("/formStudents");
+    }
+  }, [user, navigate]);
+
   const handlePay = () => {
     navigate("/statestudents");
   };
@@ -19,32 +27,29 @@ const HomeStudents = () => {
       <HeaderStudents />
       <ContainerHomeStudentsCont>
         <div>
-          <div>
-            <h2>
-              ¡Bienvenid@ a Live!
-              <br />
-              Nos complace <br />
-              enormemente que te <br />
-              unas a nosotros en este <br />
-              emocionante proceso. <br />
-              Aquí, encontrarás <br />
-              información detallada
-              <br />
-              sobre tu evolución en <br />
-              cada fase de tu viaje.
-              <br />
-            </h2>
-          </div>
-          <div>
-            <figure>
-              <img src={ImgHome} alt="" />
-            </figure>
-          </div>
+          <h2>
+            ¡Bienvenid@ a Live!
+            <br />
+            Nos complace <br />
+            enormemente que te <br />
+            unas a nosotros en este <br />
+            emocionante proceso. <br />
+            Aquí, encontrarás <br />
+            información detallada
+            <br />
+            sobre tu evolución en <br />
+            cada fase de tu viaje.
+            <br />
+          </h2>
         </div>
-        <ButtonHomeStudents>
-          <button onClick={handlePay}>Ver proceso</button>
-        </ButtonHomeStudents>
+        <section>
+          <img src={ImgHome} alt="" />
+        </section>
       </ContainerHomeStudentsCont>
+      <ButtonHomeStudents>
+        <button onClick={handlePay}>Ver proceso</button>
+      </ButtonHomeStudents>
+
       <FooterStudents />
     </ContainerHomeStudents>
   );

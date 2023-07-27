@@ -232,38 +232,38 @@ const ProfileCertified = () => {
           <div>
             <h2 key={selectedPerson.id}>{selectedPerson.name}</h2>
             <DataProfileCertification>
-            {selectedPerson.infoPersonal.map((data) => (
-              <>
-              <DataInfo>
-                <div>
-                  <h4>Tipo de ingreso:</h4>
-                  <p>{data.typeIncome}</p>
-                </div>
-                <div>
-                  <h4>Estado:</h4>
-                  <p>{data.status}</p>
-                </div>
-                <div>
-                  <h4>Nacionalidad:</h4>
-                  <p>{data.nationality}</p>
-                </div>
-              </DataInfo>
-              <DataInfo>
-                <div>
-                  <h4>Correo:</h4>
-                  <p>{data.email}</p>
-                </div>
-                <div>
-                  <h4>Tipo de documento:</h4>
-                  <p></p>
-                </div>
-                <div>
-                  <h4>Número de identificación:</h4>
-                  <p></p>
-                </div>
-              </DataInfo>
-              </>
-            ))}
+              {selectedPerson.infoPersonal.map((data) => (
+                <>
+                  <DataInfo>
+                    <div>
+                      <h4>Tipo de ingreso:</h4>
+                      <p>{data.typeIncome}</p>
+                    </div>
+                    <div>
+                      <h4>Estado:</h4>
+                      <p>{data.status}</p>
+                    </div>
+                    <div>
+                      <h4>Nacionalidad:</h4>
+                      <p>{data.nationality}</p>
+                    </div>
+                  </DataInfo>
+                  <DataInfo>
+                    <div>
+                      <h4>Correo:</h4>
+                      <p>{data.email}</p>
+                    </div>
+                    <div>
+                      <h4>Tipo de documento:</h4>
+                      <p></p>
+                    </div>
+                    <div>
+                      <h4>Número de identificación:</h4>
+                      <p></p>
+                    </div>
+                  </DataInfo>
+                </>
+              ))}
             </DataProfileCertification>
           </div>
         </ContentInfoCertified>
@@ -340,34 +340,26 @@ const ProfileCertified = () => {
                     <p></p>
                   </div>
                   <div>
-                    <h4>Estrato socioeconómico:</h4>
+                    <h4>Tiene acceso a:</h4>
                     <p></p>
                   </div>
                   <div>
-                    <h4>Trabaja/estudia en:</h4>
+                    <h4>Conocimientos previos:</h4>
                     <p></p>
                   </div>
                   <div>
-                    <h4>Se reconoce como (grupo étnico):</h4>
+                    <h4>Motivación:</h4>
                     <p></p>
                   </div>
                 </DataInfo>
                 <DataInfo>
                   <div>
-                    <h4>Se identifica con la siguiente población:</h4>
-                    <p></p>
+                    <h4>Conocimientos previos:</h4>
+                    <p>{selectedPerson?.conocimiento}</p>
                   </div>
                   <div>
-                    <h4>Nombre y parentezco <br></br>del contacto de emergencia:</h4>
-                    <p></p>
-                  </div>
-                  <div>
-                    <h4>Teléfono del contacto de <br></br>emergencia:</h4>
-                    <p></p>
-                  </div>
-                  <div>
-                    <h4>Correo electrónico del <br></br> contacto de emergencia:</h4>
-                    <p></p>
+                    <h4>Motivación:</h4>
+                    <p>Me gustaría aprender más.</p>
                   </div>
                 </DataInfo>
               </>

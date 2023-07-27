@@ -7,7 +7,7 @@ const NoFound = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/homeSuperUser");
+    navigate("/");
   };
   return (
     <NotFoundContainer>

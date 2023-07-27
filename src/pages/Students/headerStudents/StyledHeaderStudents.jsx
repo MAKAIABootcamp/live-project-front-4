@@ -14,13 +14,12 @@ export const ContainerHeader = styled.nav`
     color: white;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     font-size: 12px;
     justify-content: space-between;
   }
 
-  @media screen and (max-width: 376px) {
-    width: 550px;
+  @media screen and (max-width: 474px) {
   }
 
   .links {
@@ -31,15 +30,15 @@ export const ContainerHeader = styled.nav`
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    /* top: 70px;
     left: 0;
-    width: 100%;
-    padding: 20px;
+    width: 100%; */
+    /* padding: 30px; */
     z-index: 1;
   }
 
   .burguer {
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 769px) {
       display: none;
     }
   }
@@ -56,19 +55,24 @@ export const ContainerHeaderLogo = styled.div`
 export const ContainerHeaderLinks = styled.div`
   display: flex;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     flex-direction: column;
     position: absolute;
-    margin-top: 318px;
-    margin-left: 412px;
-    /* background-color: #03203a; */
+    /* margin-top: 318px;
+    margin-left: 164px; */
+    background-color: #03203a;
     z-index: 100;
-    width: 250px;
+    display: flex;
+    justify-content: space-evenly;
+    top: 7%;
+    width: 100%;
+    border-radius: 0 0 253px 10px;
+    font-size: 18px;
     display: ${(props) => (props.active ? "flex" : "none")};
   }
 
-  @media screen and (max-width: 376px) {
-    margin-left: 380px;
+  @media screen and (max-width: 474px) {
+    border-radius: 0 0 253px 10px;
   }
 `;
 

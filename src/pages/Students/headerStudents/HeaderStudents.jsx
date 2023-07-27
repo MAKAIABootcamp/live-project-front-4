@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
-  BgDiv,
   ContainerHeader,
   ContainerHeaderLinks,
   ContainerHeaderLinksUnt,
   ContainerHeaderLogo,
   ContainerHeaderSignOff,
+  BgDiv
 } from "./StyledHeaderStudents";
 import house from "../../../assets/homeIcons.svg";
 import logo from "../../../assets/LOGO BOOTCAMP.png";
@@ -16,11 +16,20 @@ import bootService from "../../../assets/robot gris.svg";
 import avatar from "../../../assets/avatar.jpg";
 import BurguerButton from "./BurguerButton";
 import { NavLink } from "react-router-dom";
+import { logoutActionAsync } from "../../../redux/actions/userActions";
+import { useDispatch } from "react-redux";
 
 const HeaderStudents = () => {
+  const dispatch = useDispatch();
+
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
     setClicked(!clicked);
+  };
+
+  const handleLogout = () => {
+    // Realiza la lógica de cierre de sesión aquí, por ejemplo, llamando a la acción de cierre de sesión en tu estado de Redux
+    dispatch(logoutActionAsync());
   };
 
   return (
@@ -57,19 +66,7 @@ const HeaderStudents = () => {
             </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
-        <ContainerHeaderLinksUnt>
-          <figure>
-            <img src={perfil} alt="Perfil" />
-            <NavLink
-              to={"/profilestudents"}
-              className={({ isActive, isPending }) =>
-                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
-              }
-            >
-              Perfil
-            </NavLink>
-          </figure>
-        </ContainerHeaderLinksUnt>
+
         <ContainerHeaderLinksUnt>
           <figure>
             <img src={benefits} alt="IconsHouse" />
@@ -96,23 +93,23 @@ const HeaderStudents = () => {
             </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
+        <ContainerHeaderLinksUnt>
+          <figure>
+            <img src={avatar} alt="" />
+            <NavLink onClick={handleLogout}>Cerrar sesión</NavLink>
+          </figure>
+        </ContainerHeaderLinksUnt>
         <ContainerHeaderSignOff>
           <figure>
             <img src={avatar} alt="" />
-            <NavLink
-              className={({ isActive, isPending }) =>
-                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
-              }
-            >
-              Cerrar sesión
-            </NavLink>
+            <NavLink onClick={handleLogout}>Cerrar sesión</NavLink>
           </figure>
         </ContainerHeaderSignOff>
       </ContainerHeaderLinks>
       <div className="burguer">
         <BurguerButton clicked={clicked} handleClick={handleClick} />
       </div>
-      <BgDiv className={`initial ${clicked ? "active" : ""}`}></BgDiv>
+      <BgDiv className={`initial ${clicked ? "actives" : ""}`}></BgDiv>
     </ContainerHeader>
   );
 };

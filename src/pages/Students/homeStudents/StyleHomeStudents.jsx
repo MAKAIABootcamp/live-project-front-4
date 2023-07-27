@@ -4,67 +4,93 @@ export const ContainerHomeStudents = styled.div`
   display: flex;
   flex-direction: column;
   background-image: url(https://res.cloudinary.com/dvk0btnav/image/upload/v1688442314/backgroundLive_htg9zu.jpg);
-
 `;
 
 export const ContainerHomeStudentsCont = styled.div`
   display: flex;
   flex-direction: column;
-  
-div{
+
+  div {
     display: flex;
     justify-content: center;
-}
-
-  h2 {
-    width: 580px;
-    font-size: 48px;
-    color: #03203aff;
-    padding: 100px 0px 0px 0px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 200;
-    text-align: center;
   }
 
-  img {
-    width: 550px;
-  }
+    h2 {
+      width: 450px;
+      font-size: 38px;
+      color: #03203aff;
+      padding: 0px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 200;
+      text-align: center;
+    }
+    section {
+      width: 340px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
   @media screen and (max-width: 768px) {
+    div {
+      flex-direction: column;
+      align-items: center;
+    }
 
-   div{
-    flex-direction: column;
-    align-items: center;
-   }
+    h2 {
+      font-size: 38px;
+      padding: 20px 0px 0px 0px;
+    }
 
-  h2{
-    font-size: 38px;
-    padding: 20px 0px 0px 0px;
+    img {
+      width: 450px;
+    }
   }
-
-  img{
-    width: 450px;
-  }
-  }
-  @media screen and (max-width: 376px) {
-    width: 540px;
+  @media screen and (max-width: 414px) {
+    h2 {
+      width: 300px;
+      font-size: 20px;
+    }
+    img {
+      width: 250px;
+      margin-top: -20px;
+    }
   }
 `;
 export const ButtonHomeStudents = styled.div`
-  display: flex;
-  align-items: center;
-
-  button {
+  @media screen and (max-width: 1440px) {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 15px 50px;
+    button{
     border-radius: 50px;
     border: none;
     background-color: #eee420;
     color: #03203a;
     font-size: 25px;
     font-weight: 200;
-    margin-top: -100px;
+    margin-top: -15px;
+    width:30% ;
+    height:40px ;
+    margin-bottom:60px ;
+   
+  }}
+  @media screen and (max-width: 769px) {
+    margin-top: 10px;
+    margin-bottom:40px ;
+  }
+  @media screen and (max-width: 414px) {
+    margin-bottom:60px ;
+    
+   button{
+    font-size: 18px;
+    width:50% ;
+    margin-top: -15px;
+   }
+
   }
 `;

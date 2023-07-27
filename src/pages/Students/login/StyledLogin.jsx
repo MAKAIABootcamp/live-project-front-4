@@ -1,73 +1,155 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
+import fondoGeneral from "../../../assets/FONDOGENERAL.png";
 
+export const appearAnimation = keyframes`
+   0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
 
 export const General = styled.div`
-display:flex ;
-width:100% ;
-padding:0 ;
-margin:0 ;
-box-sizing: border-box;
-`
+  /* @media screen and (max-width: 1440px) { */
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-image: url(${fondoGeneral});
+  background-size: cover;
+  background-position: center;
+  justify-content: space-around;
+  /* } */
+  @media screen and (max-width: 769px) {
+    margin: 80px 0px 0px 15px;
+    position: absolute;
+  }
+
+  @media screen and (max-width: 414px) {
+    margin: 0;
+  }
+`;
 export const DivImagen = styled.div`
-figure{
-height:100vh;
-width:700px ;
-}
+  animation: ${appearAnimation} 1s ease-in-out;
+  @media screen and (max-width: 1440px) {
+    width: 100%;
+    height: 100vh;
+    display: flex;
 
-img {
-height:100% ;
-width:100% ;
+    figure {
+      width: 99%;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  @media screen and (max-width: 769px) {
+    margin-top: 10px;
 
-}
-`
+    figure {
+      width: 350px;
+      height: 650px;
+    }
+    img {
+      object-fit: contain;
+    }
+  }
+  @media screen and (max-width: 414px) {
+    display: none;
+    figure {
+      display: none;
+    }
+  }
+`;
 export const DivLogin = styled.div`
-margin:20px  ;
-  figure {
-    height:150px ;
-    width:350px ;
+  @media screen and (max-width: 1440px) {
+    width: 100%;
+    height: 100vh;
 
-    
+    figure {
+      height: 40%;
+      width: 80%;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
   }
-  img {
-    height:100% ;
-    width:100% ;
-    border-radius:40px ;
+  @media screen and (max-width: 769px) {
+    margin: 80px 0px 20px -90px;
+    figure {
+      width: 450px;
+      height: 120px;
+    }
   }
 
-`
-
-export const SectionRegistro = styled.section`
-display:flex ;
-flex-direction:column ;
-align-items:center ;
-margin-top:60px ;
-
- label {
-    color:#03203A ;
-  
-    
-   
+  @media screen and (max-width: 414px) {
+    margin: 30px 0px 0px 0px;
+    figure {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    img {
+    }
   }
-  input {
-  
-    height:28px ;
-    width:250px ;
-    border-radius:3px ;
-    border-color:#25ABBC ;
-    margin-bottom:20px ;
+`;
 
+export const SectionRegistro = styled.form`
+  @media screen and (max-width: 1440px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    label {
+      color: #03203a;
+      font-size: 25px;
+      font-weight: bold;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    input {
+      height: 40px;
+      width: 60%;
+      border-radius: 6px;
+      border-color: #25abbc;
+    }
+    button {
+      background: #eee420;
+      border: none;
+      width: 60%;
+      height: 45px;
+      border-radius: 25px;
+      color: #03203a;
+      font-weight: bold;
+      font-size: 25px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
   }
-  button {
-    background:#EEE420 ;
-    border:none;
-    width:280px ;
-    height:45px ;
-    border-radius: 25px;
-    color:#03203A  ;
-    margin-top:40px ;
- 
-    
+
+  @media screen and (max-width: 414px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    input {
+      width: 80%;
+    }
+    button {
+      margin-top: 40px;
+      width: 80%;
+    }
   }
- 
-`
+`;
+export const ResetPassword = styled.label`
+  font-size: 12px !important;
+`;
