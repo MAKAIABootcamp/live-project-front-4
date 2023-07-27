@@ -56,20 +56,3 @@ export const getCohortAction = () => {
     }
   };
 };
-
-// export const getCohortAction = () => {
-//   return async (dispatch) => {
-//     try {
-//       const cohortRef = collection(dataBase, "Cohortes");
-//       const cohortSnapshot = await getDocs(cohortRef);
-//       const cohort = cohortSnapshot.docs.map((doc) => doc.data());
-
-//       dispatch({
-//         type: typeCohort.GET_COHORT,
-//         payload: cohort,
-//       });
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };

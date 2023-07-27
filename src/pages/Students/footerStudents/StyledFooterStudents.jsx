@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 
+
 export const Footer= styled.footer`
  @media screen and (max-width: 1440px) {
 display:flex ;
@@ -22,34 +23,31 @@ position:fixed ;
 `
 
 export const SectionDerechos = styled.section`
- @media screen and (max-width: 1440px) {
-  color: white;
-  padding-left: 40px;
- }
- @media screen and (max-width: 414px) {
- 
-  
- }
+  @media screen and (max-width: 1440px) {
+    color: white;
+    padding-left: 40px;
+  }
+  @media screen and (max-width: 414px) {
+  }
 `;
 
 export const SectionIconos = styled.section`
- @media screen and (max-width: 1440px) {
-  display: flex;
-  justify-content:space-around;
-figure {
-  width: 30px;
-    height: 30px;
-}
-  img {
-    width: 100%;
-    height: 100%;
+  @media screen and (max-width: 1440px) {
+    display: flex;
+    justify-content: space-around;
+    figure {
+      width: 30px;
+      height: 30px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
-}
-@media screen and (max-width: 414px) {
-  
-  figure {
-    width: 15px;
-    height: 15px;
+  @media screen and (max-width: 414px) {
+    figure {
+      width: 15px;
+      height: 15px;
+    }
   }
- }
 `;

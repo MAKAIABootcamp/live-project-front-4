@@ -23,7 +23,6 @@ import EscortRouteStudents from "../pages/SuperUser/EscortRouteStudents";
 import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/profileCertified";
 import GroupListStudenst from "../componentsGeneral/componentsSuperUser/groupListStudents/GroupListStudenst";
 
-
 const PrivateRouter = (props) => {
   const { isAuthentication, userType } = props;
 
@@ -31,7 +30,6 @@ const PrivateRouter = (props) => {
     return <Navigate to="/" />;
   }
 
-  // Define un objeto con las rutas correspondientes a cada tipo de usuario
   const userRoutes = {
     estudiante: [
       { path: "homestudents", element: <HomeStudents /> },
@@ -51,17 +49,19 @@ const PrivateRouter = (props) => {
       { path: "profileSelectedSU", element: <ProfileSelected /> },
       { path: "certificationSuperUser", element: <Certification /> },
       { path: "listCertifiedSU", element: <ListCertification /> },
-      { path: "cohortGroupTraining", element: <TrainingCohort/> },
-      { path: "studentProfileBenefits/:document", element: <StudentsBenefits/> },
-      { path: "RequestBenefis", element: <RequestBenefis/> },
-      { path: "benefitsReceived", element: <BenefitsReceivedStudents/> },
-      { path: "escortRoute", element: <EscortRouteStudents/> },
-      { path: "detailsProfileCertification", element: <ProfileCertified/> },
-      { path: "groupListStudents", element: <GroupListStudenst/> },
+      { path: "cohortGroupTraining", element: <TrainingCohort /> },
+      {
+        path: "studentProfileBenefits/:document",
+        element: <StudentsBenefits />,
+      },
+      { path: "RequestBenefis", element: <RequestBenefis /> },
+      { path: "benefitsReceived", element: <BenefitsReceivedStudents /> },
+      { path: "escortRoute", element: <EscortRouteStudents /> },
+      { path: "detailsProfileCertification", element: <ProfileCertified /> },
+      { path: "groupListStudents", element: <GroupListStudenst /> },
     ],
   };
 
-  // Buscar las rutas correspondientes al userType
   const routes = userRoutes[userType] || [];
 
   return (
@@ -69,8 +69,6 @@ const PrivateRouter = (props) => {
       {routes.map((route) => (
         <Route key={route.path} path={route.path} element={route.element} />
       ))}
-
-      {/* Redirigir a la página principal si el userType no está definido o es inválido */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

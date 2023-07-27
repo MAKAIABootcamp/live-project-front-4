@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
-import FooterStudents from '../footerStudents/FooterStudents'
-import { DivBootservices, DivBootserviceGeneral, SectionRobot, SectionServicios } from './StyledBootservice'
-import robot from '../../../assets/robotColor.png'
-import psicosocial from '../../../assets/psicosocial.png'
-import tecnico from '../../../assets/tecnico.png'
-import inasistencia from '../../../assets/inasistencia.png'
-import ModalPsicosocial from './ModalPsicosocial';
-import ModalTecnico from './ModalTecnico';
-import ModalInasistencia from './ModalInasistencia';
-import HeaderStudents from '../headerStudents/HeaderStudents';
-
-
-
+import React, { useState } from "react";
+import FooterStudents from "../footerStudents/FooterStudents";
+import {
+  DivBootservices,
+  DivBootserviceGeneral,
+  SectionRobot,
+  SectionServicios,
+} from "./StyledBootservice";
+import robot from "../../../assets/robotColor.png";
+import psicosocial from "../../../assets/psicosocial.png";
+import tecnico from "../../../assets/tecnico.png";
+import inasistencia from "../../../assets/inasistencia.png";
+import ModalPsicosocial from "./ModalPsicosocial";
+import ModalTecnico from "./ModalTecnico";
+import ModalInasistencia from "./ModalInasistencia";
+import HeaderStudents from "../headerStudents/HeaderStudents";
 
 const BootService = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isModalOpenTecnico, setModalOpenTecnico] = useState(false);
   const [isModalOpenInasistencia, setModalOpenInasistencia] = useState(false);
-
 
   const handleOpenModal = () => {
     setModalOpen(true);
@@ -35,7 +36,6 @@ const BootService = () => {
     setModalOpenTecnico(false);
   };
 
-
   const handleOpenModalInasistencia = () => {
     setModalOpenInasistencia(true);
   };
@@ -45,59 +45,64 @@ const BootService = () => {
   };
 
   return (
-  <>
-        <DivBootserviceGeneral>
-          <HeaderStudents/>
-          <SectionRobot>
-            <figure>
-              <img src={robot} alt="" />
-            </figure>
-            <h1>Bootservice</h1>
-          </SectionRobot>
-          <DivBootservices>
-            <SectionServicios>
-              <img src={psicosocial} alt="" />
-              <h2>Apoyo Psicosocial</h2>
-              <p>Situaciones que estás viviendo y que pudiesen afectar tu rendimiento o participación.</p>
-              <button onClick={handleOpenModal}>Solicitar</button>
-              <ModalPsicosocial
-                isModalOpen={isModalOpen}
-                handleModalClose={handleModalClose}
-              />
-            </SectionServicios>
-            { }
+    <DivBootserviceGeneral>
+      <HeaderStudents />
+      <SectionRobot>
+        <figure>
+          <img src={robot} alt="" />
+        </figure>
+        <h1>Bootservice</h1>
+      </SectionRobot>
+      <DivBootservices>
+        <SectionServicios>
+          <img src={psicosocial} alt="" />
+          <h2>Apoyo Psicosocial</h2>
+          <p>
+            Situaciones que estás viviendo y que pudiesen afectar tu rendimiento
+            o participación.
+          </p>
+          <button onClick={handleOpenModal}>Solicitar</button>
+          <ModalPsicosocial
+            isModalOpen={isModalOpen}
+            handleModalClose={handleModalClose}
+          />
+        </SectionServicios>
+        {}
 
-            <SectionServicios>
+        <SectionServicios>
+          <img src={tecnico} alt="" />
 
-              <img src={tecnico} alt="" />
+          <h2>Apoyo Técnico</h2>
+          <p>
+            Realiza preguntas que necesitas resolver en el marco del proceso
+            formativo y aclara tus dudas.
+          </p>
+          <button onClick={handleOpenModalTecnico}>Solicitar</button>
+          <ModalTecnico
+            isModalOpen={isModalOpenTecnico}
+            handleModalClose={handleCloseModalTecnico}
+          />
+        </SectionServicios>
 
-              <h2>Apoyo Técnico</h2>
-              <p>Realiza preguntas que necesitas resolver en el marco del proceso formativo y aclara tus dudas.</p>
-              <button onClick={handleOpenModalTecnico}>Solicitar</button>
-              <ModalTecnico
-                isModalOpen={isModalOpenTecnico}
-                handleModalClose={handleCloseModalTecnico}
-              />
-            </SectionServicios>
+        <SectionServicios>
+          <img src={inasistencia} alt="" />
 
-            <SectionServicios>
+          <h2>Reporte Inasistencia</h2>
+          <p>
+            Si conoces con anterioridad que no podrás estar en alguna sesion
+            informa por este medio.
+          </p>
+          <button onClick={handleOpenModalInasistencia}>Solicitar</button>
+          <ModalInasistencia
+            isModalOpen={isModalOpenInasistencia}
+            handleModalClose={handleCloseModalInasistencia}
+          />
+        </SectionServicios>
+      </DivBootservices>
 
-              <img src={inasistencia} alt="" />
+      <FooterStudents />
+    </DivBootserviceGeneral>
+  );
+};
 
-              <h2>Reporte Inasistencia</h2>
-              <p>Si conoces con anterioridad que no podrás estar en alguna sesion informa por este medio.</p>
-              <button onClick={handleOpenModalInasistencia}>Solicitar</button>
-              <ModalInasistencia
-                isModalOpen={isModalOpenInasistencia}
-                handleModalClose={handleCloseModalInasistencia}
-              />
-            </SectionServicios>
-            
-          </DivBootservices>
-        </DivBootserviceGeneral>
-        <FooterStudents />
-        </>
-  )
-}
-
-export default BootService
+export default BootService;

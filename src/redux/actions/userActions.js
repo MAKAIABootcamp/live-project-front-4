@@ -55,7 +55,7 @@ export const loginActionAsync = (email, password) => {
           email,
           nombre,
           accessToken: accessToken,
-          formularioLlenado
+          formularioLlenado,
         };
 
         dispatch(loginActionSync(userLogged));

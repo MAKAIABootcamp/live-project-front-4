@@ -40,11 +40,8 @@ export const addBenefitTypesActionSync = (newBenefit, error) => {
 export const getBenefitAction = (nameCollection) => {
   return async (dispatch) => {
     try {
-      //   console.log("Fetching benefits from database...");
       const getData = await getDocs(collection(dataBase, nameCollection));
       const typeBenefitData = getData.docs.map((doc) => doc.data());
-      // console.log("Fetched benefits:", typeBenefitData);
-
       dispatch({
         type: typeBenefitTypes.GET_BENEFIT,
         payload: typeBenefitData,

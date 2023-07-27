@@ -45,7 +45,6 @@ const BenefitsStudents = () => {
   useEffect(() => {
     dispatch(setBenefits());
 
-    // Consulta a Firebase Firestore para obtener los beneficios del usuario por su uid
     const fetchUserBenefits = async () => {
       try {
         const q = query(
@@ -73,13 +72,13 @@ const BenefitsStudents = () => {
       date: new Date(),
       estado: "en Proceso",
     };
-  
+
     try {
       const docRef = await addDoc(
         collection(dataBase, "BeneficiosSolicitados"),
         formData
       );
-  
+
       console.log(docRef.id);
       Swal.fire("Solicitud enviada exitosamente");
     } catch (error) {
@@ -191,7 +190,7 @@ const BenefitsStudents = () => {
           selectedBenefit={selectedBenefit}
         />
       )}
-      </>
-        );
-      };
-      export default BenefitsStudents;
+    </>
+  );
+};
+export default BenefitsStudents;

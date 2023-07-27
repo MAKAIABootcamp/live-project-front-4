@@ -5,52 +5,53 @@ export const DivBootserviceGeneral = styled.div`
   background-image: url(${fondoGeneral});
   background-size: cover;
   background-position: center;
-  width:100% ;
-height:95vh;
-margin:0;
-@media screen and (max-width: 414px) {
-    margin-bottom:60px ;
-}
-@media screen and (max-width: 769px) {
-    height:80vh ;
-}
-`
-export const SectionRobot= styled.section`
- @media screen and (max-width: 1440px) {
- display:flex ;
-margin-top:-10px ;
-figure{
- width:6%;
-height:5%; 
-}
-img {
-width:100%;
-height:100% ;
-object-fit:contain;
-}
-h1 {
-    font-size:40px ;
-    font-weight:bold ;
-    color:#03203A  ;
-    margin-top:35px ;
-}
- }
+  width: 100%;
+  height: 95vh;
+  margin: 0;
+  @media screen and (max-width: 414px) {
+    margin-bottom: 60px;
+  }
+  @media screen and (max-width: 769px) {
+    height: 80vh;
+  }
+`;
+export const SectionRobot = styled.section`
+  @media screen and (max-width: 1440px) {
+    display: flex;
+    margin-top: -10px;
+    figure {
+      width: 6%;
+      height: 5%;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      color: #03203a;
+      margin-top: 35px;
+    }
+  }
 
- @media screen and (max-width: 414px) {
+  @media screen and (max-width: 414px) {
     figure {
       width: 15%;
       height: 15%;
     }
     h1 {
+
         margin-top:30px ; 
         font-size:38px ;
-
     }
   }
 `;
 export const DivBootservices = styled.div`
   @media screen and (max-width: 1440px) {
     display: flex;
+
   width: 100%;
    margin:0;
  }
@@ -64,27 +65,17 @@ export const DivBootservices = styled.div`
    margin-top:35px ;
   
   }
-  
-`
-export const SectionServicios= styled.section`
- @media screen and (max-width: 1440px) {
-    padding: 0 20px 0px 20px; 
-    height:200px ;
+  @media screen and (max-width: 414px) {
+    flex-direction: column;
+    margin-top: -35px;
+  }
+`;
+export const SectionServicios = styled.section`
+  @media screen and (max-width: 1440px) {
+    padding: 0 20px 0px 20px;
+    height: 200px;
     flex: 1;
-margin-top:-20px ;
-  
-img{
-width:80%;
-object-fit:contain;
-border-radius:10px;
-}
-h2{
-  
-    color:#03203A  ;
-    font-size:25px ;
-    font-weight:bold ;
-    display: inline;
-
+    margin-top: -20px;
     
 }
 p{
@@ -123,6 +114,7 @@ button{
         width:90% ;
         height:35px ;
       
+
     }
 
     h2 {
@@ -137,7 +129,6 @@ button{
       align-items: center;
       width: 100%;
       height: 35px;
-      
     }
   }
 `;

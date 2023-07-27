@@ -6,7 +6,6 @@ import newCohorteReducers from "../reducers/newCohorteReducers";
 import addAdminAndStudentsReducer from "../reducers/addAdminAndStudentsReducer";
 import benefitsReducer from "../reducers/benefitsReducer";
 import studentReducer from "../reducers/studentReducer";
-// import { getCoursesSelection } from "../actions/coursesActions"; // Importa la acción getCoursesSelection para actualizar la lista de cursos seleccionados en Redux
 import getStudentsProfileBenefit from "../reducers/getStudentsProfileBenefitsReducers";
 import getBenefitSoliciReducers from "../reducers/getBenefitSolicitReducers";
 
@@ -32,4 +31,3 @@ const store = configureStore({
 });
 
 export default store;
-
