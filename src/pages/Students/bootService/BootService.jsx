@@ -45,7 +45,7 @@ const BootService = () => {
   };
 
   return (
-  
+  <>
         <DivBootserviceGeneral>
           <HeaderStudents/>
           <SectionRobot>
@@ -94,9 +94,9 @@ const BootService = () => {
             </SectionServicios>
             
           </DivBootservices>
-    
-          <FooterStudents />
         </DivBootserviceGeneral>
+        <FooterStudents />
+        </>
   )
 }
 

@@ -42,11 +42,8 @@ h1 {
       height: 15%;
     }
     h1 {
-
         margin-top:30px ; 
         font-size:38px ;
-
-      margin-top: 20px;
 
     }
   }
@@ -57,9 +54,14 @@ export const DivBootservices = styled.div`
   width: 100%;
    margin:0;
  }
+ @media screen and (max-width: 769px) {
+  flex-direction:column ;
+ 
+  gap:30px ;
+}
  @media screen and (max-width: 414px) {
    flex-direction:column ;
-   margin-top:-35px ;
+   margin-top:35px ;
   
   }
   
@@ -101,18 +103,26 @@ button{
     color:#03203A  ;
     font-weight:bold ;
     font-size:16px ;
+    margin-bottom:70px ;
 }
  }
+ @media screen and (max-width: 769px) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
  @media screen and (max-width: 414px) {
     height:100px ;
     margin-top:15px ;
-
+    margin-bottom:40px ;
     button {
         display:flex ;
         justify-content:center ;
         align-items:center ;
         width:90% ;
         height:35px ;
+      
     }
 
     h2 {

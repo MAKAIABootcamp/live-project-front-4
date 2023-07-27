@@ -2,40 +2,39 @@ import { styled } from "styled-components";
 
 
 export const ContainerBenefitStudents = styled.div`
+ @media screen and (max-width: 1440px) {
   display: flex;
   justify-content: space-around;
   height: 100vh;
-  padding: 60px 0px;
+  padding: 20px 0px;
   color: #03203a;
-
-  @media screen and (max-width: 1286px){
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 80px;
-    height: 140vh;
+    height: 180vh;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 40px;
-    height: 140vh;
+    height: 90vh;
   }
 
-  @media screen and (max-width: 376px) {
-    width: 540px;
-    height: 113vh;
+  @media screen and (max-width: 414px) {
+  height:120vh ;
   }
 `;
 export const ApplicationForBenefits = styled.div`
+ @media screen and (max-width: 1440px) {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #dee1e6;
   border-radius: 10px;
-  height: 70vh;
+  height: 110vh;
 
   div {
     background-color: #25abbc;
@@ -52,10 +51,11 @@ export const ApplicationForBenefits = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 0px;
+
 
     label {
       font-size: 18px;
+      margin-top:10px ;
     }
 
     select {
@@ -63,10 +63,12 @@ export const ApplicationForBenefits = styled.div`
       border: none;
     }
   }
-
-  @media screen and (max-width: 768px) {
+ }
+  @media screen and (max-width: 769px) {
+    height: 60vh;
+    margin-bottom:50px ;
     div {
-      padding: 0px 150px;
+   
 
       h2 {
         font-size: 18px;
@@ -74,25 +76,39 @@ export const ApplicationForBenefits = styled.div`
     }
   }
 
-  @media screen and (max-width: 376px) {
-    height: 100vh;
+  @media screen and (max-width: 414px) {
+  width:80% ;
+  height:60vh ;
   }
+  div{
+    padding: 0px 120px;
+  }
+ 
 `;
 
 export const InputTextArea = styled.section`
+ @media screen and (max-width: 1440px) {
   display: flex;
   flex-direction: column;
-  padding-top: 30px;
-
   textarea {
     border: none;
   }
+}
+@media screen and (max-width: 414px) {
+ justify-content:center ;
+ align-items:center ;
+ 
+  }
+  textarea {
+    width:250px ;
+height:110px ;
+}
 `;
 
 export const ButtonBenefits = styled.section`
+ @media screen and (max-width: 1440px) {
   display: flex;
-  padding: 30px 0px 0px 0px;
-
+margin-top:-5px ;
   button {
     padding: 10px 70px;
     border-radius: 50px;
@@ -100,16 +116,21 @@ export const ButtonBenefits = styled.section`
     border: none;
     font-size: 16px;
     font-weight: 300;
+    margin-bottom:10px ;
   }
+ }
 `;
 
 export const BenefitsReceived = styled.div`
+ @media screen and (max-width: 1440px) {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #dee1e6;
   border-radius: 10px;
-  height: 70vh;
+  height: 80vh;
+  margin-top:-60px ;
+  margin-bottom:50px ;
 
   div {
     background-color: #25abbc;
@@ -126,27 +147,31 @@ export const BenefitsReceived = styled.div`
     width: 25px;
     height: 25px;
   }
-  @media screen and (max-width: 768px) {
-    div {
-      padding: 0px 228px;
-    }
+}
+  @media screen and (max-width: 769px) {
+    height: 40vh;
+    width:93% ;
   }
-  @media screen and (max-width: 376px) {
-    height: 100vh;
-    padding-bottom: 50px;
+  @media screen and (max-width: 414px) {
+ 
+    width:95%;
+   
     h2 {
       font-size: 18px;
+      text-align:center ;
     }
 
     div {
-      padding: 0px 160px;
+      padding: 0px 140px;
+       
     }
   }
 `;
 
 export const TableBenefits = styled.table`
+ @media screen and (max-width: 1440px) {
   background-color: white;
-  margin-top: 30px;
+  margin-top: 15px;
 
   th {
     background-color: #03203a;
@@ -160,7 +185,8 @@ export const TableBenefits = styled.table`
     text-align: center;
     font-size: 10px;
   }
-  @media screen and (max-width: 768px) {
+}
+  @media screen and (max-width: 769px) {
     th {
       padding: 15px 25px;
     }
@@ -169,13 +195,14 @@ export const TableBenefits = styled.table`
       padding: 6px 0px 6px 0px;
     }
   }
-  @media screen and (max-width: 376px) {
+  @media screen and (max-width: 414px) {
+    
     th {
-      padding: 15px;
+      padding: 5px;
     }
 
     td {
-      padding: 6px 0px 6px 0px;
+      padding: 5px 0px 5px 0px;
     }
   }
 `;

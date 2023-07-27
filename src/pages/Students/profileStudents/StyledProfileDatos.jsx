@@ -9,7 +9,7 @@ margin:0 ;
  }
  @media screen and (max-width: 414px) {
     justify-content:center ;
-    
+    margin:0px 0px 180px 0px ;
  }
 `
 export const SectionImagen = styled.section`
@@ -125,12 +125,11 @@ width:20px ;
   display: flex;
     flex-direction: column;
     justify-content:center;
+    align-items:center ;
  }
  @media screen and (max-width: 414px) {
- 
     align-items:center ;
-    margin-bottom:20px ;
-   
+    margin-bottom:40px ;
     input{
       margin-top:-15px ;
     }

@@ -11,10 +11,12 @@ width:100% ;
 bottom: 0;
 margin:0;
 position:fixed ;
-@media screen and (max-width: 415px) {
+
+@media screen and (max-width: 414px) {
   flex-direction: column-reverse;
   padding: 35px 0 20px 0px;
   gap: 5px;
+
 }
  }
 `

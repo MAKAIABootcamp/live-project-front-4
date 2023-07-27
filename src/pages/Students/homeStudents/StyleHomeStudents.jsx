@@ -80,16 +80,17 @@ flex-direction: column;
     color: #03203a;
     font-size: 25px;
     font-weight: 200;
-    margin-top: -25px;
+    margin-top: -15px;
     width:30% ;
     height:40px ;
+    margin-bottom:60px ;
   }
   @media screen and (max-width: 769px) {
     margin-top: 10px;
     margin-bottom:40px ;
   }
   @media screen and (max-width: 414px) {
-    margin-bottom:10px ;
+    margin-bottom:60px ;
    button{
     font-size: 18px;
     width:50% ;

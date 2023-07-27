@@ -2,21 +2,27 @@ import { styled } from "styled-components";
 import backgroundState from "../../../assets/FONDOGENERAL.png";
 
 export const ContainerStateStudents = styled.div`
+ @media screen and (max-width: 1440px) {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: url(${backgroundState});
-  padding-bottom: 30px;
+  padding-bottom: 80px;
+
   h2 {
     font-size: 30px;
     font-weight: 300;
     letter-spacing: 2px;
   }
-  @media screen and (max-width: 376px) {
-    height: 90vh;
-    padding: 100px 0px 150px 150px;
-  }
+}
+@media screen and (max-width: 769px) {
+  font-size: 18px;
+
+}
+@media screen and (max-width: 414px) {
+  margin-bottom:120px ;
+}
 `;
 
 export const ContainerProgress = styled.section`
@@ -45,6 +51,18 @@ export const ContainerStep = styled.section`
     border-right: dashed;
     border-color: #e0e0e0;
   }
+  @media screen and (max-width: 769px) {
+margin-top:-60px ;
+hr {
+  height: 155px;
+}
+
+}
+@media screen and (max-width: 414px) {
+  hr {
+    height: 240px; 
+  }
+}
 `;
 export const ContainerP = styled.section`
   display: ${(props) => (props.active ? "flex" : "none")};
@@ -72,9 +90,23 @@ export const ContainerP = styled.section`
     margin-left: -13px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     flex-direction: row-reverse;
     gap: 20px;
+    text-align: left;
+    margin-top:50px ;
+    h3{
+      text-align: left;
+      margin-bottom:40px ;
+    }
+    p {
+      margin-top:-40px ;
+    }
+  }
+  @media screen and (max-width: 414px) {
+    width: 340px;
+  height: 240px;
+    
   }
 `;
 export const ContainerP2 = styled.section`
@@ -102,8 +134,14 @@ export const ContainerP2 = styled.section`
     margin-left: -13px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     padding: 0px;
+    
+  }
+  @media screen and (max-width: 414px) {
+    width: 340px;
+  height: 240px;
+    
   }
 `;
 export const ContainerP4 = styled.section`
@@ -132,7 +170,13 @@ export const ContainerP4 = styled.section`
     margin-left: -13px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     padding: 0px;
+   
+  }
+  @media screen and (max-width: 414px) {
+    width: 340px;
+  height: 240px;
+    
   }
 `;
