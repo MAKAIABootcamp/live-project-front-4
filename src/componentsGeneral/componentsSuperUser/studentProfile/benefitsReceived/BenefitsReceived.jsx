@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import {
-  // SearchContainer,
-  // SearchInput,
-  // SearchButton,
   DivInputTraining,
   Container,
   Title,

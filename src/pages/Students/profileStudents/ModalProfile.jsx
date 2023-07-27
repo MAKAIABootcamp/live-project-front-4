@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
@@ -16,7 +15,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { updataActionAsync } from "../../../redux/actions/studentAction";
-import { fileUpload } from "../../../services";
+
+// Estilos para el contenedor del modal
 
 const validationSchema = Yup.object().shape({
   telefono: Yup.string().required("La respuesta es requerida"),
@@ -29,14 +29,6 @@ const ListOl = styled.ol`
     height: 30px;
   }
 `;
-const Loader = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 24px;
-  font-weight: bold;
-`;
 const ModalProfile = ({
   isModalOpen,
   handleModalClose,
@@ -44,22 +36,8 @@ const ModalProfile = ({
   correo,
   imagen,
 }) => {
-  const [image, setImage] = useState("");
-  const [load, setLoad] = useState(false);
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-
-  const handleChange = async (e) => {
-    const file = e.target.files[0];
-    setLoad(true);
-    try {
-      const url = await fileUpload(file);
-      setImage(url);
-      setLoad(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     isModalOpen && (
       <ModalContainer>
@@ -72,10 +50,12 @@ const ModalProfile = ({
           </ModalHeader>
 
           <BodyModal>
+            {/*Contenindo modela */}
             <Formik
               initialValues={{
                 telefono: "" || telefono,
                 correo: "" || correo,
+                imagen: "" || imagen,
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm }) => {
@@ -83,12 +63,13 @@ const ModalProfile = ({
                   updataActionAsync(
                     values.telefono,
                     values.correo,
-                    image,
+                    values.imagen,
                     user.uid
                   )
-                );
-                resetForm();
-                handleModalClose();
+                ).then(() => {
+                  resetForm();
+                  handleModalClose();
+                });
               }}
             >
               {({ errors, touched }) => (
@@ -110,15 +91,12 @@ const ModalProfile = ({
                     </ListItem>
                     <ListItem>
                       <label htmlFor="imagen">Imagen de perfil</label>
-                      <input type="file" onChange={(e) => handleChange(e)} />
+                      <Field name="imagen" type="file" />
+                      <ErrorMessage name="imagen" />
                     </ListItem>
                   </ListOl>
                   <ButtonContainer>
-                    {!load ? (
-                      <ButtonModal type="submit">Actualizar</ButtonModal>
-                    ) : (
-                      <Loader>Cargando imagen...</Loader>
-                    )}
+                    <ButtonModal type="submit">Actualizar</ButtonModal>
                     <ButtonModalCancelar onClick={handleModalClose}>
                       Cancelar
                     </ButtonModalCancelar>
@@ -126,6 +104,8 @@ const ModalProfile = ({
                 </Form>
               )}
             </Formik>
+
+            {/* Fin ontenindo modela */}
           </BodyModal>
         </ModalContent>
       </ModalContainer>

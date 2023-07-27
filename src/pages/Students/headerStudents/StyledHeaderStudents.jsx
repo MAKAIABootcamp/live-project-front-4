@@ -116,26 +116,26 @@ export const ContainerHeaderSignOff = styled.div`
   }
 `;
 
-// export const BgDiv = styled.div`
-//   position: absolute;
-//   background-color: #03203a;
-//   top: 76px;
-//   left: 426.323px;
-//   border-radius: 0 0 0 50%;
-//   transition: all 0.6s ease;
+export const BgDiv = styled.div`
+  position: absolute;
+  background-color: #03203a;
+  top: 76px;
+  left: 426.323px;
+  border-radius: 0 0 0 50%;
+  transition: all 0.6s ease;
 
-//   &.active {
-//     width: 45%;
-//     height: 40%;
-//     z-index: 1;
-//     transform: translateX(-20%);
-//   }
-//   @media screen and (max-width: 376px) {
-//     left: 379px;
+  &.active {
+    width: 45%;
+    height: 40%;
+    z-index: 1;
+    transform: translateX(-20%);
+  }
+  @media screen and (max-width: 376px) {
+    left: 379px;
 
-//     &.active {
-//       width: 60%;
-//       height: 35%;
-//     }
-//   }
-// `;
+    &.active {
+      width: 60%;
+      height: 35%;
+    }
+  }
+`;

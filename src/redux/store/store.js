@@ -9,6 +9,7 @@ import studentReducer from "../reducers/studentReducer";
 import getStudentsProfileBenefit from "../reducers/getStudentsProfileBenefitsReducers";
 import getBenefitSoliciReducers from "../reducers/getBenefitSolicitReducers";
 
+
 const reducer = {
   user: userReducer,
   benefitTypes: benefitTypesReducer,

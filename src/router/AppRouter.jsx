@@ -49,7 +49,7 @@ const AppRouter = () => {
         if (!Object.entries(user).length) {
           console.log("No hay info");
 
-          let logged = {
+          const logged = {
             email: userLogged.auth.currentUser.email,
             nombre: userLogged.auth.currentUser.displayName,
             accessToken: userLogged.auth.currentUser.accessToken,
@@ -62,12 +62,15 @@ const AppRouter = () => {
             .then((querySnapshot) => {
               if (!querySnapshot.empty) {
                 const userData = querySnapshot.docs[0].data();
-                logged = {
-                  ...logged,
-                  ...userData,
-                };
+                logged.userType = userData.userType;
+                logged.nombre = userData.nombre;
+                logged.formularioLlenado = userData.formularioLlenado;
+                console.log("User Type:", userData.userType);
+                console.log("name:", userData.nombre);
+                console.log("formularioLlenado:", userData.formularioLlenado);
               }
               dispatch(loginActionSync(logged));
+              console.log(logged);
             })
             .catch((error) => {
               console.log(
@@ -75,6 +78,9 @@ const AppRouter = () => {
                 error
               );
             });
+
+          // dispatch(loginActionSync(logged));
+
           const studentRef = collection(db, "Estudiantes");
           const qStudent = query(
             studentRef,
@@ -123,6 +129,7 @@ const AppRouter = () => {
           >
             <Route index element={<Login />} />
           </Route>
+
           <Route
             path="*"
             element={
@@ -142,6 +149,7 @@ const AppRouter = () => {
                 <Route path="bootservice" element={<BootService />} />
               </>
             )}
+
             {user?.userType === "administrador" && (
               <>
                 <Route path="homeSuperUser" element={<HomeSuperUser />} />
@@ -181,9 +189,73 @@ const AppRouter = () => {
                 />
               </>
             )}
-            <Route path="*" element={<NotFoundPages />} />
+            <Route path="NotFoundPages" element={<NotFoundPages />} />
           </Route>
         </Routes>
+        {/* <Routes>
+          <Route path="/">
+            <Route
+              element={
+                <PublicRouter
+                  isAuthentication={isLoggedIn}
+                  userType={user?.userType}
+                />
+              }
+            >
+              <Route index element={<Login />} />
+            </Route>
+          </Route>
+
+          <Route
+            element={
+              <PrivateRouter
+                isAuthentication={isLoggedIn}
+                userType={user?.userType}
+              />
+            }
+          >
+            <Route element={<AdminRouter userType={user?.userType} />}>
+              <Route path="homeSuperUser" element={<HomeSuperUser />} />
+              <Route path="teamSuperUser" element={<FormUser />} />
+              <Route path="profileSuperUser" element={<Profile />} />
+              <Route path="formToAddStudent" element={<AddStudents />} />
+              <Route path="studentSuperUser" element={<StudentsSU />} />
+              <Route path="selectionSuperUser" element={<Selection />} />
+              <Route path="profileSelectedSU" element={<ProfileSelected />} />
+              <Route
+                path="certificationSuperUser"
+                element={<Certification />}
+              />
+              <Route path="listCertifiedSU" element={<ListCertification />} />
+              <Route path="addNewCohort" element={<NewCohort />} />
+              <Route path="cohortGroupTraining" element={<TrainingCohort />} />
+              <Route
+                path="studentProfileBenefits/:document"
+                element={<StudentsBenefits />}
+              />
+              <Route path="RequestBenefis/:uidStudent" element={<RequestBenefis />} />
+              <Route
+                path="benefitsReceived"
+                element={<BenefitsReceivedStudents />}
+              />
+              <Route path="escortRoute" element={<EscortRouteStudents />} />
+              <Route
+                path="detailsProfileCertification"
+                element={<ProfileCertified />}
+              />
+              <Route path="groupListStudents" element={<GroupListStudenst />} />
+            </Route>
+
+            <Route element={<StudentRouter userType={user?.userType} />}>
+              <Route path="homestudents" element={<HomeStudents />} />
+              <Route path="formstudents" element={<FormStudents />} />
+              <Route path="statestudents" element={<StateStudents />} />
+              <Route path="profilestudents" element={<ProfileStudents />} />
+              <Route path="benefitsStudents" element={<BenefitsStudents />} />
+              <Route path="bootservice" element={<BootService />} />
+            </Route>
+          </Route> 
+        </Routes> */}
       </BrowserRouter>
     </>
   );

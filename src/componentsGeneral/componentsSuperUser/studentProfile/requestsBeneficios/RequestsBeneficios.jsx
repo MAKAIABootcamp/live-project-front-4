@@ -15,11 +15,13 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBenefitSolicitActions } from "../../../../redux/actions/getBenefitSolicitActions";
-
+import { useParams } from "react-router-dom";
+import SimpleDateTime from "react-simple-timestamp-to-date";
 const RequestsBeneficios = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
+  const { uidStudent } = useParams();
 
   const CommentIcon = styled(CommentOutlined)`
     font-size: 24px;
@@ -51,20 +53,25 @@ const RequestsBeneficios = () => {
   };
 
   // Dispatch para obtener los datos de Firestore
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getBenefitSolicitActions());
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBenefitSolicitActions());
+  }, [dispatch]);
 
-  // // Obtener los datos de beneficiosSolicitados del store de Redux
-  // const beneficiosSolicitados = useSelector(
-  //   (state) => state.BeneficiosSolicitados.beneficiosSolicitados
-  // );
+  // Obtener los datos de beneficiosSolicitados del store de Redux
+  const beneficiosSolicitados = useSelector((state) =>
+    state.BeneficiosSolicitados.beneficiosSolicitados.filter(
+      (benefits) => benefits.uid === uidStudent
+    )
+  );
+
+  console.log("Lista beneficiosne", beneficiosSolicitados);
 
   const handleNavigateStudentProfileBenefits = () => {
     navigate("/studentProfileBenefits");
   };
 
+  
   return (
     <div>
       <div>
@@ -91,21 +98,36 @@ const RequestsBeneficios = () => {
             <th> Comentario</th>
           </tr>
 
-          <tr>
-            <td></td>
-            <td></td>
-            <td>{/* Agrega aquí la fecha de entrega del beneficio */}</td>
-            <td>
-              <select>
-                <option value="en Proceso">En proceso</option>
-                <option value="aceptado">Aceptado</option>
-                <option value="denegado">Denegado</option>
-              </select>
-            </td>
-            <td>
-              <CommentIcon onClick={openModal} />
-            </td>
-          </tr>
+          {beneficiosSolicitados.map((benefit) => (
+  
+            <tr key={benefit.id}>
+              <td>{benefit.benefit}</td>
+              <td>
+                <SimpleDateTime
+                  dateFormat="DMY"
+                  dateSeparator="/"
+                  timeSeparator=":"
+                >
+                  {benefit.date}
+                </SimpleDateTime>
+              </td>
+              <td>
+             --
+              </td>
+              <td>
+                <select>
+                  <option value="en Proceso">En proceso</option>
+                  <option value="aceptado">Aceptado</option>
+                  <option value="denegado">Denegado</option>
+                </select>
+              </td>
+
+              <td>
+                {benefit.notes}
+                {/* <CommentIcon onClick={openModal} /> */}
+              </td>
+            </tr>
+          ))}
         </TableBenefits>
 
         {isModalOpen && (
@@ -122,9 +144,9 @@ const RequestsBeneficios = () => {
                   style={{ textAlign: "top" }}
                 />
                 <div>
-                  <button type="submit" onClick={handleSubmit}>
+                  {/* <button type="submit" onClick={handleSubmit}>
                     Guardar
-                  </button>
+                  </button> */}
                   <button onClick={closeModal}>Cerrar</button>
                 </div>
               </form>

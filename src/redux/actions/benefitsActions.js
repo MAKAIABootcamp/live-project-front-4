@@ -8,6 +8,7 @@ export const setBenefits = () => {
       const snapshot = await getDocs(collection(dataBase, "Beneficios"));
       const benefitsData = snapshot.docs.map((doc) => doc.data().label);
 
+      // Dispatch la acción para almacenar los beneficios en el store
       dispatch({
         type: benefitsTypes.SET_BENEFITS,
         payload: benefitsData,

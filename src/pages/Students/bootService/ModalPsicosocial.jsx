@@ -37,6 +37,7 @@ const ModalPsicosocial = ({ isModalOpen, handleModalClose }) => {
           </ModalHeader>
 
           <BodyModal>
+            {/*Contenindo modela */}
             <Formik
               initialValues={{
                 situacion: "",
@@ -100,6 +101,8 @@ const ModalPsicosocial = ({ isModalOpen, handleModalClose }) => {
                 </Form>
               )}
             </Formik>
+
+            {/* Fin ontenindo modela */}
           </BodyModal>
         </ModalContent>
       </ModalContainer>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Back from "../../../assets/devolver.png";
 import BarSearch from "../../barSearch/BarSearch";
 import {
@@ -12,49 +12,73 @@ import {
 } from "./GroupListStudentsStyled";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import imgprofile from "../../../assets/pending.png";
-import { connect } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getStudentsProfileBenefits } from "../../../redux/actions/getStudentsProfileBenefits";
-import { useNavigate } from "react-router-dom";
-
-const GroupListStudenst = ({
-  estudiantes = [],
-  error,
-  getStudentsProfileBenefits,
-}) => {
+import { useDispatch } from "react-redux";
+const GroupListStudents = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showNotFoundMessage, setShowNotFoundMessage] = useState(false);
+  const [students, setStudents] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { users, programa } = location.state || {}; // Obtén la lista de estudiantes y el programa de la ubicación actual
+  const dispatch = useDispatch();
+  // Filter the students based on the selected cohort's program
 
   useEffect(() => {
-    getStudentsProfileBenefits();
-  }, [getStudentsProfileBenefits]);
+    dispatch(getStudentsProfileBenefits()).then((data) => {
+      setStudents(data);
+    });
+  }, [dispatch]);
+
+  const applyFilteredStudents = () => {
+    const listAux = [];
+    students.filter((s) =>
+      users.forEach((u) => {
+        const user = u;
+        const student = s;
+        console.log("User: ", user);
+        console.log("Student", student);
+        if (user.email === student.correo) {
+          console.log("Entre TEST");
+          console.log("userEmail TEST", user.email);
+          console.log("estudianteEmail TEST", student.correo);
+          listAux.push({
+            celular: student.celular,
+            correo: student.correo,
+            conocimiento: student.conocimiento,
+            programa: user.programa,
+            nombreCompleto: user.nombre,
+            edad: student.edad,
+            contacto: student.contacto,
+            departamento: student.departamento,
+            direccion: student.direccion,
+            ciudad: student.ciudad,
+            correoContacto: student.correoContacto,
+            equipos: student.equipos,
+            numeroDocumento: student.numeroDocumento,
+          });
+        }
+      })
+    );
+    console.log("filtrados", listAux);
+    return listAux;
+  };
+
 
   const handleSearch = (value) => {
     setSearchTerm(value);
     setShowNotFoundMessage(false); // Resetear el estado del mensaje al realizar una búsqueda
   };
 
-  const filteredStudents = estudiantes.filter((estudiante) => {
-    if (!searchTerm) {
-      return true;
-    }
-
-    return (
-      estudiante.nombreCompleto
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase()) ||
-      estudiante.numeroDocumento.includes(searchTerm)
-    );
-  });
-
   useEffect(() => {
     // Cuando se realiza una búsqueda y no hay resultados, mostrar el mensaje
-    if (searchTerm && filteredStudents.length === 0) {
+    if (searchTerm && applyFilteredStudents().length === 0) {
       setShowNotFoundMessage(true);
     } else {
       setShowNotFoundMessage(false);
     }
-  }, [searchTerm, filteredStudents]);
+  }, [searchTerm]);
 
   const cohortGroupTraining = () => {
     navigate("/cohortGroupTraining");
@@ -76,7 +100,8 @@ const GroupListStudenst = ({
         <div>
           <TitleCourseFinal>
             <Certified>
-              <strong>Front - End / Cohorte 7</strong>
+              <strong>{programa}</strong>{" "}
+              {/* Display the selected cohort's program */}
             </Certified>
           </TitleCourseFinal>
         </div>
@@ -97,16 +122,18 @@ const GroupListStudenst = ({
                 </DivNotFoundCertified>
               )}
             </>
-            {filteredStudents.length > 0 ? (
-              // Renderiza solo el estudiante seleccionado en lugar de todos los estudiantes
-              <button
-                key={filteredStudents[0].id}
-                onClick={() => navigateToStudentProfile(filteredStudents[0])}
-              >
-                <img src={imgprofile} alt="" />{" "}
-                {filteredStudents[0].nombreCompleto} <br />
-                {filteredStudents[0].numeroDocumento}
-              </button>
+            {applyFilteredStudents().length > 0 ? (
+              // Map through the filtered students to display the list
+              applyFilteredStudents().map((student) => (
+                <button
+                  key={student.id}
+                  onClick={() => navigateToStudentProfile(student)}
+                >
+                  <img src={imgprofile} alt="" /> {student.numeroDocumento}{" "}
+                  <br />
+                  {student.nombreCompleto}
+                </button>
+              ))
             ) : (
               <p>No hay estudiantes disponibles.</p>
             )}
@@ -117,13 +144,4 @@ const GroupListStudenst = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  estudiantes: state.studentReducer.estudiantes,
-  error: state.studentReducer.error,
-});
-
-const mapDispatchToProps = {
-  getStudentsProfileBenefits,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(GroupListStudenst);
+export default GroupListStudents;

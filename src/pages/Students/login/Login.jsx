@@ -6,6 +6,7 @@ import {
   ResetPassword,
   SectionRegistro,
 } from "./StyledLogin";
+import logo from "../../../assets/LOGOBOOTCAMOSCURO.png";
 import login from "../../../assets/loginActualizado.png";
 import * as yup from "yup";
 import { Formik, Field } from "formik";
@@ -28,9 +29,11 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // const navigate = useNavigate();
   const logIn = (dataForm) => {
-    dispatch(loginActionAsync(dataForm.email, dataForm.password));
     navigate("/");
+    dispatch(loginActionAsync(dataForm.email, dataForm.password));
+    navigate("/formStudents");
   };
   return (
     <General>
@@ -40,7 +43,9 @@ const Login = () => {
         </figure>
       </DivImagen>
       <DivLogin>
-        <figure></figure>
+        <figure>
+          <img src={logo} alt="" />
+        </figure>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -77,6 +82,7 @@ const Login = () => {
         </Formik>
       </DivLogin>
     </General>
-  );
-};
-export default Login;
+  )
+}
+
+export default Login

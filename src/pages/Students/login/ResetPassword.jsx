@@ -62,6 +62,7 @@ const PasswordReset = () => {
   const handlePasswordReset = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
+        // Password reset email sent successfully
 
         Swal.fire({
           icon: "success",

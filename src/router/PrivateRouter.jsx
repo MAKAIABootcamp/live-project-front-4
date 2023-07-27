@@ -15,13 +15,14 @@ import Selection from "../componentsGeneral/componentsSuperUser/Selection/Select
 import ProfileSelected from "../componentsGeneral/componentsSuperUser/Selection/ProfileSelected";
 import Certification from "../componentsGeneral/componentsSuperUser/certification/Certification";
 import ListCertification from "../componentsGeneral/componentsSuperUser/certification/ListCertification";
+import NewCohort from "../pages/SuperUser/NewCohort";
 import TrainingCohort from "../pages/SuperUser/TrainingCohort";
+import GroupListStudenst from "../componentsGeneral/componentsSuperUser/groupListStudents/GroupListStudenst";
 import StudentsBenefits from "../pages/SuperUser/StudentsBenefits";
 import RequestBenefis from "../pages/SuperUser/RequestBenefis";
 import BenefitsReceivedStudents from "../pages/SuperUser/BenefitsReceivedStudents";
 import EscortRouteStudents from "../pages/SuperUser/EscortRouteStudents";
 import ProfileCertified from "../componentsGeneral/componentsSuperUser/certification/profileCertified";
-import GroupListStudenst from "../componentsGeneral/componentsSuperUser/groupListStudents/GroupListStudenst";
 
 const PrivateRouter = (props) => {
   const { isAuthentication, userType } = props;
@@ -30,6 +31,7 @@ const PrivateRouter = (props) => {
     return <Navigate to="/" />;
   }
 
+  // Define un objeto con las rutas correspondientes a cada tipo de usuario
   const userRoutes = {
     estudiante: [
       { path: "homestudents", element: <HomeStudents /> },
@@ -43,13 +45,15 @@ const PrivateRouter = (props) => {
       { path: "homeSuperUser", element: <HomeSuperUser /> },
       { path: "teamSuperUser", element: <FormUser /> },
       { path: "profileSuperUser", element: <Profile /> },
-      { path: "studentSuperUser", element: <StudentsSU /> },
       { path: "formToAddStudent", element: <AddStudents /> },
+      { path: "studentSuperUser", element: <StudentsSU /> },
       { path: "selectionSuperUser", element: <Selection /> },
       { path: "profileSelectedSU", element: <ProfileSelected /> },
       { path: "certificationSuperUser", element: <Certification /> },
       { path: "listCertifiedSU", element: <ListCertification /> },
+      { path: "addNewCohort", element: <NewCohort /> },
       { path: "cohortGroupTraining", element: <TrainingCohort /> },
+      { path: "groupListStudents", element: <GroupListStudenst /> },
       {
         path: "studentProfileBenefits/:document",
         element: <StudentsBenefits />,
@@ -58,10 +62,10 @@ const PrivateRouter = (props) => {
       { path: "benefitsReceived", element: <BenefitsReceivedStudents /> },
       { path: "escortRoute", element: <EscortRouteStudents /> },
       { path: "detailsProfileCertification", element: <ProfileCertified /> },
-      { path: "groupListStudents", element: <GroupListStudenst /> },
     ],
   };
 
+  // Buscar las rutas correspondientes al userType
   const routes = userRoutes[userType] || [];
 
   return (
@@ -69,9 +73,21 @@ const PrivateRouter = (props) => {
       {routes.map((route) => (
         <Route key={route.path} path={route.path} element={route.element} />
       ))}
+
+      {/* Redirigir a la página principal si el userType no está definido o es inválido */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
 
 export default PrivateRouter;
+
+//-------------------------------------------------------------------------
+// import React from "react";
+// import { Navigate, Outlet } from "react-router-dom";
+
+// const PrivateRouter = ({ isAuthentication }) => {
+//   return <div>{isAuthentication ? <Outlet /> : <Navigate to="/" />}</div>;
+// };
+
+// export default PrivateRouter;

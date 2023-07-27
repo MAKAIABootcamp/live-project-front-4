@@ -19,6 +19,7 @@ import ModalComent from "./ModalComent";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+
 const BenefitsSchema = Yup.object().shape({
   benefit: Yup.string().required("*Selecciona un beneficio"),
   notes: Yup.string().required("*El campo Notas es obligatorio"),
@@ -45,6 +46,7 @@ const BenefitsStudents = () => {
   useEffect(() => {
     dispatch(setBenefits());
 
+    // Consulta a Firebase Firestore para obtener los beneficios del usuario por su uid
     const fetchUserBenefits = async () => {
       try {
         const q = query(
@@ -80,6 +82,7 @@ const BenefitsStudents = () => {
       );
 
       console.log(docRef.id);
+
       Swal.fire("Solicitud enviada exitosamente");
     } catch (error) {
       console.error("Error al enviar la solicitud:", error);

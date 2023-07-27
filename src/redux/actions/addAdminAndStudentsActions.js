@@ -4,6 +4,8 @@ import {
   getDocs,
   doc,
   updateDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { dataBase } from "../../confiFirebase/configFirebase";
 import { typeFormAdminAndStydents } from "../types/userTypes";
@@ -53,7 +55,6 @@ export const getAdminAndStudents = () => {
         info: doc.data(),
       }));
       dispatch({ type: "GET_FORMADMINSTUDENTS", payload: data });
-
       return data;
     } catch (error) {
       console.error("Error al obtener los datos:", error);
@@ -69,6 +70,24 @@ export const updateAdminAndStudentsAction = (updateData) => {
       await updateDoc(docRef, updateData.info);
     } catch (error) {
       console.error("Error al actualizar los datos del colaborador:", error);
+    }
+  };
+};
+
+export const getStudentsByProgramAction = (programa) => {
+  return async (dispatch) => {
+    try {
+      const q = query(
+        collection(dataBase, "users"),
+        where("programa", "==", programa),
+        where("userType", "==", "estudiante")
+      );
+      const querySnapshot = await getDocs(q);
+      const students = querySnapshot.docs.map((doc) => doc.data());
+      return students;
+    } catch (error) {
+      console.error("Error al obtener los estudiantes:", error);
+      throw error;
     }
   };
 };

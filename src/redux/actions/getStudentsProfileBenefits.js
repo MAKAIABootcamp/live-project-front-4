@@ -13,6 +13,7 @@ export const getStudentsProfileBenefits = () => {
         type: typeStudents.GET_ESTUDIANTES_SUCCESS,
         payload: typeStudentsData,
       });
+      return typeStudentsData;
     } catch (error) {
       console.log(error);
     }
