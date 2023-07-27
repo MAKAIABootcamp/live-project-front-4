@@ -111,6 +111,7 @@ export const getStudentByCourseActionAsync = (course) => {
         id: doc.id,
         ...doc.data(),
       }));
+      console.log(student)
       dispatch(getStudentByCourseActionSync(student));
     } catch (error) {
       console.log(error);

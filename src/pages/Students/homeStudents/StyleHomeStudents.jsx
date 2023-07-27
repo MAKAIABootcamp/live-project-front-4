@@ -7,13 +7,15 @@ export const ContainerHomeStudents = styled.div`
 `;
 
 export const ContainerHomeStudentsCont = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  div {
+  @media screen and (max-width: 1440px) {
     display: flex;
-    justify-content: center;
-  }
+    justify-content: space-around;
+    margin-top: -15px;
+
+    div {
+      display: flex;
+      justify-content: center;
+    }
 
     h2 {
       width: 450px;
@@ -33,20 +35,19 @@ export const ContainerHomeStudentsCont = styled.div`
       height: 100%;
       object-fit: contain;
     }
+  }
 
-  @media screen and (max-width: 768px) {
-    div {
-      flex-direction: column;
-      align-items: center;
-    }
-
+  @media screen and (max-width: 769px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h2 {
-      font-size: 38px;
-      padding: 20px 0px 0px 0px;
+      width: 400px;
+      font-size: 28px;
     }
-
     img {
-      width: 450px;
+      width: 350px;
+      margin-top: -20px;
     }
   }
   @media screen and (max-width: 414px) {

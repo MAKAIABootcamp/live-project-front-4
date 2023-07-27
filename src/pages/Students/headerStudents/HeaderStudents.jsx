@@ -5,7 +5,6 @@ import {
   ContainerHeaderLinksUnt,
   ContainerHeaderLogo,
   ContainerHeaderSignOff,
-  BgDiv
 } from "./StyledHeaderStudents";
 import house from "../../../assets/homeIcons.svg";
 import logo from "../../../assets/LOGO BOOTCAMP.png";
@@ -28,7 +27,6 @@ const HeaderStudents = () => {
   };
 
   const handleLogout = () => {
-    // Realiza la lógica de cierre de sesión aquí, por ejemplo, llamando a la acción de cierre de sesión en tu estado de Redux
     dispatch(logoutActionAsync());
   };
 
@@ -95,8 +93,15 @@ const HeaderStudents = () => {
         </ContainerHeaderLinksUnt>
         <ContainerHeaderLinksUnt>
           <figure>
-            <img src={avatar} alt="" />
-            <NavLink onClick={handleLogout}>Cerrar sesión</NavLink>
+            <img src={perfil} alt="Perfil" />
+            <NavLink
+              to={"/profilestudents"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Perfil
+            </NavLink>
           </figure>
         </ContainerHeaderLinksUnt>
         <ContainerHeaderSignOff>
@@ -109,7 +114,6 @@ const HeaderStudents = () => {
       <div className="burguer">
         <BurguerButton clicked={clicked} handleClick={handleClick} />
       </div>
-      <BgDiv className={`initial ${clicked ? "actives" : ""}`}></BgDiv>
     </ContainerHeader>
   );
 };

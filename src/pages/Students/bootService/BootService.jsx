@@ -6,10 +6,10 @@ import {
   SectionRobot,
   SectionServicios,
 } from "./StyledBootservice";
-// import robot from '../../../assets/robotColor.png'
-// import psicosocial from '../../../assets/psicosocial.png'
-// import tecnico from '../../../assets/tecnico.png'
-// import inasistencia from '../../../assets/inasistencia.png'
+import robot from "../../../assets/robotColor.png";
+import psicosocial from "../../../assets/psicosocial.png";
+import tecnico from "../../../assets/tecnico.png";
+import inasistencia from "../../../assets/inasistencia.png";
 import ModalPsicosocial from "./ModalPsicosocial";
 import ModalTecnico from "./ModalTecnico";
 import ModalInasistencia from "./ModalInasistencia";
@@ -48,12 +48,14 @@ const BootService = () => {
     <DivBootserviceGeneral>
       <HeaderStudents />
       <SectionRobot>
-        <figure>{/* <img src={robot} alt="" /> */}</figure>
+        <figure>
+          <img src={robot} alt="" />
+        </figure>
         <h1>Bootservice</h1>
       </SectionRobot>
       <DivBootservices>
         <SectionServicios>
-          {/* <img src={psicosocial} alt="" /> */}
+          <img src={psicosocial} alt="" />
           <h2>Apoyo Psicosocial</h2>
           <p>
             Situaciones que estás viviendo y que pudiesen afectar tu rendimiento
@@ -68,7 +70,7 @@ const BootService = () => {
         {}
 
         <SectionServicios>
-          {/* <img src={tecnico} alt="" /> */}
+          <img src={tecnico} alt="" />
 
           <h2>Apoyo Técnico</h2>
           <p>
@@ -83,7 +85,7 @@ const BootService = () => {
         </SectionServicios>
 
         <SectionServicios>
-          {/* <img src={inasistencia} alt="" /> */}
+          <img src={inasistencia} alt="" />
 
           <h2>Reporte Inasistencia</h2>
           <p>

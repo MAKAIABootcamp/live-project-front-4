@@ -3,6 +3,7 @@ import { studentTypes } from "../types/studentType";
 
 const initialState = {
   student: {},
+  students:[]
 };
 
 const  studentReducer = (state = initialState, action) => {
@@ -12,15 +13,20 @@ const  studentReducer = (state = initialState, action) => {
         ...state,
         student: action.payload,
       };
-    
+    case studentTypes.GET_STUDENTS:
+      return {
+        ...state,
+        students: action.payload,
+      };
     case studentTypes.UPDATE_STUDENT:
       return {
         ...state,
         student: {
           ...state.student,
-          ...action.payload
-        }
-      }
+          ...action.payload,
+        },
+      };
+
     default:
       return state;
   }

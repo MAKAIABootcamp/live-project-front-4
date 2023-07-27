@@ -40,6 +40,7 @@ const ProfileSelected = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const selectedCourse = location.state;
+  console.log(selectedCourse?.course);
 
   const { students } = useSelector((store) => store.student);
   console.log(students, "estudiantes::::::");
