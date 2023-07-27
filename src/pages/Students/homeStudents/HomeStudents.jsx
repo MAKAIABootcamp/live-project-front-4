@@ -24,33 +24,35 @@ const HomeStudents = () => {
   };
   return (
     <ContainerHomeStudents>
-      <HeaderStudents />
+<HeaderStudents/>
       <ContainerHomeStudentsCont>
         <div>
-          <h2>
-            ¡Bienvenid@ a Live!
-            <br />
-            Nos complace <br />
-            enormemente que te <br />
-            unas a nosotros en este <br />
-            emocionante proceso. <br />
-            Aquí, encontrarás <br />
-            información detallada
-            <br />
-            sobre tu evolución en <br />
-            cada fase de tu viaje.
-            <br />
-          </h2>
-        </div>
-        <section>
-          <img src={ImgHome} alt="" />
-        </section>
-      </ContainerHomeStudentsCont>
-      <ButtonHomeStudents>
-        <button onClick={handlePay}>Ver proceso</button>
-      </ButtonHomeStudents>
-
-      <FooterStudents />
+            <h2>
+              ¡Bienvenid@ a Live!
+              <br />
+              Nos complace <br />
+              enormemente que te <br />
+              unas a nosotros en este <br />
+              emocionante proceso. <br />
+              Aquí, encontrarás <br />
+              información detallada
+              <br />
+              sobre tu evolución en <br />
+              cada fase de tu viaje.
+              <br />
+            </h2>
+            </div>
+          <section>
+           
+              <img src={ImgHome} alt="" />
+          
+          </section>
+          </ContainerHomeStudentsCont>
+        <ButtonHomeStudents>
+          <button onClick={handlePay}>Ver proceso</button>
+        </ButtonHomeStudents>
+     
+ <FooterStudents/>
     </ContainerHomeStudents>
   );
 };

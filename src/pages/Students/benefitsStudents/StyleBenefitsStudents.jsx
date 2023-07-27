@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 
+
 export const ContainerBenefitStudents = styled.div`
  @media screen and (max-width: 1440px) {
   display: flex;
