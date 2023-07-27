@@ -31,9 +31,8 @@ const Login = () => {
 
   // const navigate = useNavigate();
   const logIn = (dataForm) => {
-    navigate("/");
     dispatch(loginActionAsync(dataForm.email, dataForm.password));
-    navigate("/formStudents");
+    navigate("/");
   };
   return (
     <General>
