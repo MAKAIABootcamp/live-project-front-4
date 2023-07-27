@@ -178,7 +178,7 @@ const AppRouter = () => {
                   path="studentProfileBenefits/:document"
                   element={<StudentsBenefits />}
                 />
-                <Route path="RequestBenefis" element={<RequestBenefis />} />
+                <Route path="RequestBenefis/:uidStudent" element={<RequestBenefis />} />
                 <Route
                   path="benefitsReceived"
                   element={<BenefitsReceivedStudents />}
