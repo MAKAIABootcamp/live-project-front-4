@@ -77,7 +77,7 @@ export const SectionServicios = styled.section`
     flex: 1;
     margin-top: -20px;
     
-}
+
 p{
     color:#03203A  ;
     font-size:18px ;
