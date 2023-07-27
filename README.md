@@ -33,8 +33,8 @@ npm start ó npm run start
 [enlace]
 
 ### Autores
-Lina Isabel Gutiérrez Vaquero
-Yeraldin Montaño Monge
-Lizeth Montoya
-Luisa María Lafaurie Nuno
+- Lina Isabel Gutiérrez Vaquero
+- Yeraldin Montaño Monge
+- Lizeth Montoya
+- Luisa María Lafaurie Nuno
 
