@@ -40,12 +40,12 @@ const StudentProfileBenefits = ({
   const handleNavigateEscortRoute = () => {
     navigate("/escortRoute");
   };
-  const handleNavigatePerfilStudentsBenefits = () => {
-    navigate("/RequestBenefis");
+  const handleNavigatePerfilStudentsBenefits = (uid) => {
+    navigate("/RequestBenefis/LngkKf885aebh2CuLrXGRMqm8Xe2");
   };
-  const handleNavigateBenefitsReceived = () => {
-    navigate("/benefitsReceived");
-  };
+  // const handleNavigateBenefitsReceived = () => {
+  //   navigate("/benefitsReceived");
+  // };
   const handleNavigateHome = () => {
     navigate("/homeSuperUser");
   };
@@ -116,9 +116,9 @@ const StudentProfileBenefits = ({
             <button onClick={handleNavigatePerfilStudentsBenefits}>
               Solicitud de beneficio
             </button>
-            <button onClick={handleNavigateBenefitsReceived}>
+            {/* <button onClick={handleNavigateBenefitsReceived}>
               Beneficios recibidos
-            </button>
+            </button> */}
           </DivButton>
         </DivInformation>
       </DivGeneral>

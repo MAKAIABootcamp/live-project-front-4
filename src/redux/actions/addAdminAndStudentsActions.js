@@ -4,6 +4,8 @@ import {
   getDocs,
   doc,
   updateDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { dataBase } from "../../confiFirebase/configFirebase";
 import { typeFormAdminAndStydents } from "../types/userTypes";
@@ -47,23 +49,19 @@ export const addAdminAndStudentsTypesActionSync = (
 export const getAdminAndStudents = () => {
   return async (dispatch) => {
     try {
-      // Realiza la consulta a Firestore y obtiene los datos
-      const snapshot = await getDocs(referenceCollection); // Elimina ".collection" aquí
-      // console.log("llllllllll", snapshot) 
-      const data = snapshot.docs.map((doc) => ({id:doc.id, info:doc.data()}));
-      // console.log("data getstudents", snapshot) 
-      // Dispatch la acción para almacenar los datos en el estado
+      const snapshot = await getDocs(referenceCollection);
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        info: doc.data(),
+      }));
       dispatch({ type: "GET_FORMADMINSTUDENTS", payload: data });
-
       return data;
     } catch (error) {
-      // Manejo de errores si es necesario
       console.error("Error al obtener los datos:", error);
       throw error;
     }
   };
 };
-
 
 export const updateAdminAndStudentsAction = (updateData) => {
   return async (dispatch) => {
@@ -75,6 +73,24 @@ export const updateAdminAndStudentsAction = (updateData) => {
       // console.log("Datos del colaborador actualizados correctamente.");
     } catch (error) {
       console.error("Error al actualizar los datos del colaborador:", error);
+    }
+  };
+};
+
+export const getStudentsByProgramAction = (programa) => {
+  return async (dispatch) => {
+    try {
+      const q = query(
+        collection(dataBase, "users"),
+        where("programa", "==", programa),
+        where("userType", "==", "estudiante")
+      );
+      const querySnapshot = await getDocs(q);
+      const students = querySnapshot.docs.map((doc) => doc.data());
+      return students;
+    } catch (error) {
+      console.error("Error al obtener los estudiantes:", error);
+      throw error;
     }
   };
 };

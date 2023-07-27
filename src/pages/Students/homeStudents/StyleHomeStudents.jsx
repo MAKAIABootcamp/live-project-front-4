@@ -4,17 +4,16 @@ export const ContainerHomeStudents = styled.div`
   display: flex;
   flex-direction: column;
   background-image: url(https://res.cloudinary.com/dvk0btnav/image/upload/v1688442314/backgroundLive_htg9zu.jpg);
-
 `;
 
 export const ContainerHomeStudentsCont = styled.div`
   display: flex;
   flex-direction: column;
-  
-div{
+
+  div {
     display: flex;
     justify-content: center;
-}
+  }
 
   h2 {
     width: 580px;
@@ -31,20 +30,19 @@ div{
   }
 
   @media screen and (max-width: 768px) {
+    div {
+      flex-direction: column;
+      align-items: center;
+    }
 
-   div{
-    flex-direction: column;
-    align-items: center;
-   }
+    h2 {
+      font-size: 38px;
+      padding: 20px 0px 0px 0px;
+    }
 
-  h2{
-    font-size: 38px;
-    padding: 20px 0px 0px 0px;
-  }
-
-  img{
-    width: 450px;
-  }
+    img {
+      width: 450px;
+    }
   }
   @media screen and (max-width: 376px) {
     width: 540px;

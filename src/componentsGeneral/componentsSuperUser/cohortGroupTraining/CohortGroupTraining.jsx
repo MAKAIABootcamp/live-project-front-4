@@ -13,6 +13,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import HeaderSuperUser from "../headerSuperUser/HeaderSuperUser";
 import { useNavigate } from "react-router-dom";
 import { getCohortAction } from "../../../redux/actions/newCohorteActions";
+import { getStudentsByProgramAction } from "../../../redux/actions/addAdminAndStudentsActions";
 
 const CohortGroupTraining = () => {
   const dispatch = useDispatch();
@@ -27,34 +28,16 @@ const CohortGroupTraining = () => {
     navigate("/addNewCohort");
   };
 
-  // Función para verificar si un estudiante puede unirse a una cohorte
-  const canJoinCohort = (cohort) => {
-    const maxStudentsPerCohort = 40;
-    return cohort.estudiantes.length < maxStudentsPerCohort;
-  };
-
-  // Función para unir al estudiante a una cohorte
-  const joinCohort = (cohort) => {
-    cohort.estudiantes.push(/* Código para agregar al estudiante aquí */);
-    // Código para actualizar la información del estudiante en Firestore aquí
-  };
-
-  const handleJoinCohort = (cohort) => {
-    if (canJoinCohort(cohort)) {
-      joinCohort(cohort);
-    } else {
-      // Encuentra la siguiente cohorte disponible con el mismo programa y únete a ella
-      const nextCohort = cohorts.find(
-        (c) => c.cohort.programa === cohort.cohort.programa && canJoinCohort(c)
-      );
-      if (nextCohort) {
-        joinCohort(nextCohort);
-      } else {
-        // No hay más cohortes disponibles para este programa
-        alert(
-          "No hay más cupos disponibles para este programa en ninguna cohorte."
-        );
-      }
+  const handleStudentProfileBenefits = async (programa) => {
+    console.log(".......:", programa);
+    try {
+      // Obtén los estudiantes por programa y pasa la lista a la página GroupListStudents
+      const users = await dispatch(getStudentsByProgramAction(programa));
+      navigate("/groupListStudents", {
+        state: { users, programa }, // Aquí es donde se pasa la información
+      });
+    } catch (error) {
+      console.error("Error al obtener los estudiantes:", error);
     }
   };
 
@@ -72,12 +55,16 @@ const CohortGroupTraining = () => {
 
         <GridContainer>
           {cohorts.map((cohort) => (
-            <GridItem key={cohort.id}>
+            <GridItem
+              key={cohort.id}
+              onClick={() =>
+                handleStudentProfileBenefits(cohort.cohort?.programa)
+              }
+            >
               <h2>{cohort.cohort?.programa}</h2>
               <p>Cohorte: {cohort.cohort?.cohorte}</p>
               <p>Fecha de inicio: {cohort.cohort?.fechaInicio}</p>
               <p>Fecha de cierre: {cohort.cohort?.fechaFinalizacion}</p>
-              {/* <button onClick={() => handleJoinCohort(cohort)}>Unirse</button> */}
             </GridItem>
           ))}
 
@@ -97,3 +84,5 @@ const CohortGroupTraining = () => {
 };
 
 export default CohortGroupTraining;
+
+

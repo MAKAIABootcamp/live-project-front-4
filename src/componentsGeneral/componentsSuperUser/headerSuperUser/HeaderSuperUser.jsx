@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import BurguerButtonSU from "../../../pages/Students/headerStudents/BurguerButton";
 import house from "../../../assets/homeIcons.svg";
+import logo from "../../../assets/LOGO BOOTCAMP.png";
 import process from "../../../assets/setting.svg";
+import perfil from "../../../assets/user.svg";
 import benefits from "../../../assets/rocket-outline gris.svg";
 import avatar from "../../../assets/avatar.jpg";
 import {
@@ -14,7 +17,6 @@ import {
   SubItems,
   Item,
 } from "../../componentsSuperUser/headerSuperUser/HeaderSuperUserStyled";
-import BurguerButtonSU from "./BurguerButtonSU";
 
 const HeaderSuperUser = () => {
   const [clicked, setClicked] = useState(false);
@@ -23,8 +25,10 @@ const HeaderSuperUser = () => {
   };
 
   const [deployEstudiantes, setDeployEstudiantes] = useState(false);
+  const [deployPerfil, setDeployPerfil] = useState(false);
 
   const toggleDeploy = (menu) => {
+    setClicked(false);
     if (menu === "estudiantes") {
       setDeployEstudiantes((prevDeploy) => !prevDeploy);
     }
@@ -49,19 +53,15 @@ const HeaderSuperUser = () => {
           <Item>
             <figure>
               <img src={house} alt="IconsHouse" />
-              <NavLink
-                to={"/homeSuperUser"}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "navlink"
-                    : isActive
-                    ? "navlink active"
-                    : "navlink"
-                }
-              >
-                Home
-              </NavLink>
             </figure>
+            <NavLink
+              to={"/homeSuperUser"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Home
+            </NavLink>
           </Item>
         </ContainerHeaderLinksUnt>
 
@@ -69,21 +69,16 @@ const HeaderSuperUser = () => {
           <Item onClick={() => toggleDeploy("estudiantes")}>
             <figure>
               <img src={process} alt="Proceso" />
-              <NavLink
-                to={"/studentSuperUser"}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "navlink"
-                    : isActive
-                    ? "navlink active"
-                    : "navlink"
-                }
-              >
-                Estudiantes
-              </NavLink>
             </figure>
+            <NavLink
+              to={"/studentSuperUser"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Estudiantes
+            </NavLink>
           </Item>
-
           <SubItems
             className={`SubItems ${deployEstudiantes ? "deploySubItems" : ""}`}
           >
@@ -92,6 +87,7 @@ const HeaderSuperUser = () => {
                 <img
                   src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690069393/LIVE/Im%C3%A1genes/Icons/sociedad-unscreen_ga7d14.gif"
                   width={20}
+                  alt="name"
                 />
                 <p>Selección</p>
               </div>
@@ -102,6 +98,7 @@ const HeaderSuperUser = () => {
                 <img
                   src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690069904/LIVE/Im%C3%A1genes/Icons/video-conferencia-unscreen_ffjhza.gif"
                   width={20}
+                  alt="name"
                 />
                 <p>Formación</p>
               </div>
@@ -112,6 +109,7 @@ const HeaderSuperUser = () => {
                 <img
                   src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690069112/LIVE/Im%C3%A1genes/Icons/graduacion-unscreen_zcnqgo.gif"
                   width={20}
+                  alt="name"
                 />
                 <p>Certificación</p>
               </div>
@@ -133,19 +131,15 @@ const HeaderSuperUser = () => {
           <Item>
             <figure>
               <img src={benefits} alt="IconsHouse" />
-              <NavLink
-                to={"/teamSuperUser"}
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "navlink"
-                    : isActive
-                    ? "navlink active"
-                    : "navlink"
-                }
-              >
-                Equipo
-              </NavLink>
             </figure>
+            <NavLink
+              to={"/teamSuperUser"}
+              className={({ isActive, isPending }) =>
+                isPending ? "navlink" : isActive ? "navlink active" : "navlink"
+              }
+            >
+              Equipo
+            </NavLink>
           </Item>
         </ContainerHeaderLinksUnt>
         <ContainerHeaderSignOff>
@@ -164,6 +158,10 @@ const HeaderSuperUser = () => {
           </figure>
         </ContainerHeaderSignOff>
       </ContainerHeaderLinks>
+      <div className="burguer">
+        <BurguerButtonSU clicked={clicked} handleClick={handleClick} />
+      </div>
+      <BgDiv className={`initial ${clicked ? "active" : ""}`}></BgDiv>
     </ContainerHeader>
   );
 };

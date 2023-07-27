@@ -295,20 +295,4 @@ export const ContentInfoCertified = styled.section`
   align-items: center;
 `;
 
-export const MoreInfoAvatarCertified = styled.section`
-  width: 80%;
-  margin: 0 auto;
 
-  & h2 {
-    font-size: 30px;
-    text-align: center;
-  }
-`;
-
-export const DataHVCertified = styled.div`
-  background-color: yellow;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 20px;
-`;

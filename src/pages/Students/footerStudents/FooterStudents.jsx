@@ -30,4 +30,4 @@ const FooterStudents = () => {
   )
 }
 
-export default FooterStudents
+export default FooterStudents 

@@ -53,7 +53,9 @@ const StateStudents = () => {
                 </p>
               </section>
               <section>
-                <span>4 <img src={cohete} alt="" /></span>
+                <span>
+                  4 <img src={cohete} alt="" />
+                </span>
                 <hr />
               </section>
             </ContainerP>
@@ -70,7 +72,9 @@ const StateStudents = () => {
                 </p>
               </section>
               <section>
-                <span>3 <img src={cohete} alt="" /></span>
+                <span>
+                  3 <img src={cohete} alt="" />
+                </span>
                 <hr />
               </section>
             </ContainerP2>
@@ -86,7 +90,9 @@ const StateStudents = () => {
                 </p>
               </section>
               <section>
-                <span>2<img src={cohete} alt="" /></span>
+                <span>
+                  2<img src={cohete} alt="" />
+                </span>
                 <hr />
               </section>
             </ContainerP>
@@ -102,9 +108,9 @@ const StateStudents = () => {
                 </p>
               </section>
               <section>
-                <span>1<img src={cohete} alt="" /></span>
-
-
+                <span>
+                  1<img src={cohete} alt="" />
+                </span>
               </section>
             </ContainerP4>
           </ContainerStep>
@@ -116,4 +122,3 @@ const StateStudents = () => {
 };
 
 export default StateStudents;
-
