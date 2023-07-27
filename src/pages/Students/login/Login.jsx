@@ -44,7 +44,9 @@ const Login = () => {
       </DivImagen>
       <DivLogin>
       <figure>
-        <img src="https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690287433/LIVE/Im%C3%A1genes/Icons/LOGO_MAKAIA_OSCURO_njv30m.svg" alt="" />
+        <img src="
+https://res.cloudinary.com/ddlvk2lsi/image/upload/v1690287433/LIVE/Im%C3%A1genes/Icons/LOGO_MAKAIA_OSCURO_njv30m.svg
+" alt="" /> 
         </figure>
         <Formik
           initialValues={initialValues}

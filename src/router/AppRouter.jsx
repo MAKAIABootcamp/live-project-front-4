@@ -49,7 +49,7 @@ const AppRouter = () => {
         if (!Object.entries(user).length) {
           console.log("No hay info");
 
-          const logged = {
+          let logged = {
             email: userLogged.auth.currentUser.email,
             nombre: userLogged.auth.currentUser.displayName,
             accessToken: userLogged.auth.currentUser.accessToken,
@@ -62,9 +62,14 @@ const AppRouter = () => {
             .then((querySnapshot) => {
               if (!querySnapshot.empty) {
                 const userData = querySnapshot.docs[0].data();
-                logged.userType = userData.userType;
-                logged.nombre = userData.nombre;
-                logged.formularioLlenado = userData.formularioLlenado;
+
+                logged = {
+                  ...userData,
+                  ...logged
+                }
+                // logged.userType = userData.userType;
+                // logged.nombre = userData.nombre;
+                // logged.formularioLlenado = userData.formularioLlenado;
                 console.log("User Type:", userData.userType);
                 console.log("name:", userData.nombre);
                 console.log("formularioLlenado:", userData.formularioLlenado);

@@ -50,7 +50,7 @@ const BenefitsReceived = () => {
   };
 
   const handleNavigateStudentProfileBenefits = () => {
-    navigate("/studentProfileBenefits");
+    navigate("/RequestBenefis");
   };
 
   return (
