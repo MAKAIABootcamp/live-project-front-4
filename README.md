@@ -30,11 +30,11 @@ npm install
 npm start ó npm run start
 
 ### Sitio Web
-[enlace]
+https://live-3ffed.web.app
 
 ### Autores
-- Lina Isabel Gutiérrez Vaquero
-- Yeraldin Montaño Monge
-- Lizeth Montoya
-- Luisa María Lafaurie Nuno
+- ![Lina Isabel Gutiérrez Vaquero](https://github.com/linavaquero)
+- ![Yeraldin Montaño Monge](https://github.com/yeral-93)
+- ![Lizeth Yomaira Montoya Garcia](https://github.com/LizethYomairaMontoyaGarcia)
+- ![Luisa María Lafaurie Nuno](https://github.com/LuisaNuno)
 
