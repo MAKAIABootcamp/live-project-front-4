@@ -6,6 +6,10 @@ En esta emocionante iniciativa, nos enfrentamos a desafíos clave que afectan a 
 
 ![LOGO_MAKAIA_OSCURO_njv30m-Banner (wide)](https://github.com/MAKAIABootcamp/live-project-front-4/assets/138250883/91494179-393d-447f-b708-d5e7f069c68a)
 
+## Implementación de Firebase:
+- Proveedores de autenticación (Correo electrónico y Contraseña).
+- Base de datos en la nube de Firestore (utilizada para almacenar el contenido de los usuarios que añadimos para que inicien sesión, creen y guarden nuevas cohortes y lleve un registro de los beneficios y cambios de estado).
+
 ## Esta aplicación fue construida con las siguientes herramientas:
 - React-redux
 - Firebase
