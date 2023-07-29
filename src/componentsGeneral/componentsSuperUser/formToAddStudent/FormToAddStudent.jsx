@@ -79,13 +79,13 @@ const FormToAddStudent = ({ addAdminAndStudents }) => {
   };
   const sendMailWelcome = async (templateParams) => {
     // Configurar emailjs-com con los detalles de tu cuenta
-    init("HG4_QlSaoJ-f9recA");
+    init("RPYGBkMMlLkA_hG5iGaZf");
     // Enviar el correo
     const response = await emailjs.send(
-      "service_ewi3quf",
-      "template_hg3t809",
+      "service_jdu2m61",
+      "template_trvd4sz",
       templateParams,
-      "aNjV2AvY_XWC4wve6"
+      "w9iW0ZA-BEGl-GEG2"
     );
     Swal.fire({
       icon: "success",

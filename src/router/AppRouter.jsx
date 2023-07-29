@@ -67,9 +67,6 @@ const AppRouter = () => {
                   ...userData,
                   ...logged,
                 };
-                // logged.userType = userData.userType;
-                // logged.nombre = userData.nombre;
-                // logged.formularioLlenado = userData.formularioLlenado;
                 console.log("User Type:", userData.userType);
                 console.log("name:", userData.nombre);
                 console.log("formularioLlenado:", userData.formularioLlenado);
@@ -83,8 +80,6 @@ const AppRouter = () => {
                 error
               );
             });
-
-          // dispatch(loginActionSync(logged));
 
           const studentRef = collection(db, "Estudiantes");
           const qStudent = query(

@@ -43,9 +43,6 @@ const StudentProfileBenefits = ({
   const handleNavigatePerfilStudentsBenefits = (uid) => {
     navigate("/RequestBenefis/LngkKf885aebh2CuLrXGRMqm8Xe2");
   };
-  // const handleNavigateBenefitsReceived = () => {
-  //   navigate("/benefitsReceived");
-  // };
 
   return (
     <div>
@@ -113,9 +110,6 @@ const StudentProfileBenefits = ({
             <button onClick={handleNavigatePerfilStudentsBenefits}>
               Solicitud de beneficio
             </button>
-            {/* <button onClick={handleNavigateBenefitsReceived}>
-              Beneficios recibidos
-            </button> */}
           </DivButton>
         </DivInformation>
       </DivGeneral>
