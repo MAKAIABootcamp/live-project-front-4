@@ -3,8 +3,8 @@ correo: livemakina458@gmail.com
 pass : LiveMakina2023.
 */
 export const fileUpload = async (file) => {
-  const cloudName = "dumnzchqo";
-  const uploadPreset = "ojuwqug7";
+  const cloudName = "ddlvk2lsi";
+  const uploadPreset = "liveProject";
   const urlCloudinary = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
   try {
